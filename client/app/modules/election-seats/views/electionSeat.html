@@ -1,0 +1,36 @@
+<div class="candidate-search-detail">
+  <section class="election-mgmt">
+       <div class="row">
+         <div class="col-md-12 col-sm-12 col-xs-12">
+           <div class="text-center ze-title2 ">
+             <h2 lang="{{$root.locale.lang}}">{{ctrl.electionSeat.currentElection.currentElectionNameBn}}</h2>
+           </div>
+         </div>
+       </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="candidates-box">
+            <div class="candidates-top">
+               <h3> <span>{{ctrl.electionSeat.seatNameBn}}</span></h3>
+               <h5><span>CANDIDATES</span></h5>
+            </div>
+             <div class="map-box-area"><img src="images/map.png" alt="photo"></div>
+              <div class="candidates-bottom">
+                <h3> <span>voter</span></h3>
+                <h5><span>{{(ctrl.electionSeat.totalVoterMale+ctrl.electionSeat.totalVoterFemale)}}</span></h5>
+                <h2> <span "> <img class="vote-symbol" src="images/icon-hand.jpg" alt="icon"></span> <span><img class="vote-symbol" src="images/icon-3.jpg" alt="icon"></span></h2>
+              </div>
+           </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="row">
+          <div class="col-md-2 col-sm-4 col-xs-12" ng-repeat="candidate in ctrl.electionSeat.candidates">
+             <div class="voter-box">
+               <div class="photo"><img src="images/profile-photo.jpg" alt="chart"></div>
+               <h6>{{candidate.candidateNameBnAF}}</h6>
+               <h2> <span "> <img class="vote-symbol" src="images/al-symbol.png" alt="icon"></span> <span><img class="vote-symbol" src="images/mp-symbol.jpg" alt="icon"></span></h2>
+             </div>
+           </div>
+        </div>
+    </div>
+  </section>
+</div>

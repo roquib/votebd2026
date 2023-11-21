@@ -1,0 +1,61 @@
+<div ng-include="'modules/f-election-analysis/views/eerb-comparison-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Among all the candidates for 300 constituencies about money spent percentage'|translate}}</h2>
+  </div>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">{{'Minimum Total Income Amount'|translate}}</label>
+      <div class="col-sm-9" lang="{{$root.locale.lang}}">
+        <input  type="number" class="form-control" ng-model="piDonation.limit">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="table-responsive">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{pfseTotalIncomeExTableData.length | translateNumber}}
+            {{'Candidates Analysis Report' | translate}}</h3>
+
+          <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+          <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+        </div>
+        <div id="exportable">
+        <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+          <thead>
+          <tr>
+            <th>{{'Sl.'|translate}}</th>
+            <th>{{'Seat'|translate}}</th>
+            <th>{{'District'|translate}}</th>
+            <th>{{'Name'|translate}}</th>
+            <th>{{'Campaign Cost'|translate}}</th>
+            <th>{{'Conveyance Cost'|translate}}</th>
+            <th>{{'PublicMeeting Cost'|translate}}</th>
+            <th>{{'Camp Cost'|translate}}</th>
+            <th>{{'Agent Cost'|translate}}</th>
+            <th>{{'Administration Cost'|translate}}</th>
+            <th>{{'Election Cost'|translate}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in pfseTotalIncomeExTableData">
+            <td>{{($index + 1) | translateNumber}}</td>
+            <td>{{row.districtName}}</td>
+            <td>{{row.seatName}}</td>
+            <td>{{row.candidateName}}</td>
+            <td>{{(row._1b_22_CampaignCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_ConveyanceCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_PublicMeetingCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_CampCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_AgentCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_AdministrationCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+            <td>{{(row._1b_22_ElectionCostAmountEER * 100)/row._1b_22_ElectionCostAmountEER | number: 2 | translateNumber}}%</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

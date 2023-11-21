@@ -1,0 +1,1374 @@
+{
+  "name": "candidate",
+  "plural": "candidates",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "oldId": {
+      "type": "number"
+    },
+    "oldCurrentElectionId": {
+      "type": "number"
+    },
+    "oldDivisionId": {
+      "type": "number"
+    },
+    "districtCode": {
+      "type": "number"
+    },
+    "oldElectionSeatId": {
+      "type": "number"
+    },
+    "oldElectionCandidatePostId": {
+      "type": "number"
+    },
+    "oldPersonId": {
+      "type": "number"
+    },
+    "oldPoliticalPartyId": {
+      "type": "number"
+    },
+    "oldConstitutionalPostId": {
+      "type": "number"
+    },
+    "oldAffidevitId": {
+      "type": "number"
+    },
+    "oldFSEEId": {
+      "type": "number"
+    },
+    "oldALIEId": {
+      "type": "number"
+    },
+    "oldIncomeTaxId": {
+      "type": "number"
+    },
+    "personNameEn": {
+      "type": "string"
+    },
+    "personNameBn": {
+      "type": "string"
+    },
+    "fatherNameEn": {
+      "type": "string"
+    },
+    "fatherNameBn": {
+      "type": "string"
+    },
+    "genderBn": {
+      "type": "string"
+    },
+    "genderEn": {
+      "type": "string"
+    },
+    "constitutionalPostEn": {
+      "type": "string"
+    },
+    "constitutionalPostBn": {
+      "type": "string"
+    },
+    "candidatePhoto": {
+      "type": "string"
+    },
+    "candidateVideoLink": {
+      "type": "string"
+    },
+    "totalCountVote": {
+      "type": "number"
+    },
+    "candidateType": {
+      "type": "string"
+    },
+    "resultType": {
+      "type": "string"
+    },
+    "allienceNameEn": {
+      "type": "string"
+    },
+    "allienceNameBn": {
+      "type": "string"
+    },
+    "electionNameEn": {
+      "type": "string"
+    },
+    "electionNameBn": {
+      "type": "string"
+    },
+    "electionDate": {
+      "type": "date"
+    },
+    "electionDateTimestamp": {
+      "type": "number"
+    },
+    "seatNameEn": {
+      "type": "string"
+    },
+    "seatNameBn": {
+      "type": "string"
+    },
+    "divisionNameEn": {
+      "type": "string"
+    },
+    "divisionNameBn": {
+      "type": "string"
+    },
+    "districtNameEn": {
+      "type": "string"
+    },
+    "districtNameBn": {
+      "type": "string"
+    },
+    "upazillaNameEn": {
+      "type": "string"
+    },
+    "upazillaNameBn": {
+      "type": "string"
+    },
+    "unionNameEn": {
+      "type": "string"
+    },
+    "unionNameBn": {
+      "type": "string"
+    },
+    "wardNameEn": {
+      "type": "string"
+    },
+    "wardNameBn": {
+      "type": "string"
+    },
+    "candidatePostNameEn": {
+      "type": "string"
+    },
+    "candidatePostNameBn": {
+      "type": "string"
+    },
+    "politicalPartyNameEn": {
+      "type": "string"
+    },
+    "politicalPartyNameBn": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "isPublished": {
+      "type": "boolean"
+    },
+    "isFeatured": {
+      "type": "boolean"
+    },
+    "statusAF": {
+      "type": "string"
+    },
+    "candidateNameBnAF": {
+      "type": "string"
+    },
+    "candidateDateOfBirthBnAF": {
+      "type": "string"
+    },
+    "fatherHusbandNameBnAF": {
+      "type": "string"
+    },
+    "motherNameBnAF": {
+      "type": "string"
+    },
+    "addressBnAF": {
+      "type": "string"
+    },
+    "seatInfoBnAF": {
+      "type": "string"
+    },
+    "oldCandidatePostBnAF": {
+      "type": "string"
+    },
+    "highestDegreeBnAF": {
+      "type": "string"
+    },
+    "degreeTypeBnAF": {
+      "type": "string"
+    },
+    "candidateProfessionBusinessBnAF": {
+      "type": "string"
+    },
+    "professionTypeBnAF": {
+      "type": "string"
+    },
+    "submitDateAF": {
+      "type": "date"
+    },
+    "submitDateTimestampAF": {
+      "type": "number"
+    },
+    "identifierNameBnAF": {
+      "type": "string"
+    },
+    "identifierAddressBnAF": {
+      "type": "string"
+    },
+    "ageAtSubmissionDateAF": {
+      "type": "string"
+    },
+    "signatureNotariPublicAF": {
+      "type": "string"
+    },
+    "lastDateAF": {
+      "type": "date"
+    },
+    "dateAF": {
+      "type": "date"
+    },
+    "assetMaterialAF": {
+      "type": "array"
+    },
+    "assetMaterialOwnTotalAF": {
+      "type": "number"
+    },
+    "assetMaterialHusbandWifeTotalAF": {
+      "type": "number"
+    },
+    "assetMaterialDependantsTotalAF": {
+      "type": "number"
+    },
+    "assetMaterialTotalAF": {
+      "type": "number"
+    },
+    "assetImmaterialAF": {
+      "type": "array"
+    },
+    "assetImmaterialOwnTotalAF": {
+      "type": "number"
+    },
+    "assetImmaterialHusbandWifeTotalAF": {
+      "type": "number"
+    },
+    "assetImmaterialDependantsTotalAF": {
+      "type": "number"
+    },
+    "assetJointOwnershipTotalAF": {
+      "type": "number"
+    },
+    "assetJointSharePartTotalAF": {
+      "type": "number"
+    },
+    "assetImmaterialTotalAF": {
+      "type": "number"
+    },
+    "assetGrandTotalAF": {
+      "type": "number"
+    },
+    "incomeSourceAF": {
+      "type": "array"
+    },
+    "totalOwnIncomeAF": {
+      "type": "number"
+    },
+    "totalDependentIncomeAF": {
+      "type": "number"
+    },
+    "grandTotalIncomeAF": {
+      "type": "number"
+    },
+    "liabilitiesDetailsBnAF": {
+      "type": "string"
+    },
+    "liabilitiesAmountAF": {
+      "type": "number"
+    },
+    "noLoansAF": {
+      "type": "boolean"
+    },
+    "loanAF": {
+      "type": "array"
+    },
+    "totalSingleAmountAF": {
+      "type": "number"
+    },
+    "totalJointAmoutAF": {
+      "type": "number"
+    },
+    "totalDependedantsAmountAF": {
+      "type": "number"
+    },
+    "totalDirectorOrChairmenAmoutAF": {
+      "type": "number"
+    },
+    "totalLoanAF": {
+      "type": "number"
+    },
+    "criminalCourtStatusBnAF": {
+      "type": "string"
+    },
+    "criminalCourtStatusAF": {
+      "type": "boolean"
+    },
+    "pastCriminalCourtStatusBnAF": {
+      "type": "string"
+    },
+    "pastCriminalCourtStatusAF": {
+      "type": "boolean"
+    },
+    "lawPresentAF": {
+      "type": "array"
+    },
+    "lawPresentCountAF": {
+      "type": "number"
+    },
+    "lawPastAF": {
+      "type": "array"
+    },
+    "lawPastCountAF": {
+      "type": "number"
+    },
+    "isPastMpAF": {
+      "type": "boolean"
+    },
+    "commitmentBeforeMpAF": {
+      "type": "array"
+    },
+    "achievementWhileMpAF": {
+      "type": "array"
+    },
+    "commitmentAndAchievementWhileMpAF": {
+      "type": "array"
+    },
+    "createdAF": {
+      "type": "date"
+    },
+    "createdByAF": {
+      "type": "string"
+    },
+    "createdByBnAF": {
+      "type": "string"
+    },
+    "modifiedAF": {
+      "type": "date"
+    },
+    "modifiedByAF": {
+      "type": "string"
+    },
+    "modifiedByBnAF": {
+      "type": "string"
+    },
+    "isPublishedAF": {
+      "type": "string"
+    },
+    "pdfFilePathAF": {
+      "type": "string"
+    },
+    "reviewAF": {
+      "type": "string"
+    },
+    "statusFSEE": {
+      "type": "string"
+    },
+    "candiateNameFSEE": {
+      "type": "string"
+    },
+    "candidateAddressFSEE": {
+      "type": "string"
+    },
+    "_1a_personalIncomeFSEE": {
+      "type": "array"
+    },
+    "_1a_personalIncomeTotalFSEE": {
+      "type": "number"
+    },
+    "_1b_loanRelativeFSEE": {
+      "type": "array"
+    },
+    "_1b_loanRelativeTotalFSEE": {
+      "type": "number"
+    },
+    "_1c_freeRelativeFSEE": {
+      "type": "array"
+    },
+    "_1c_freeRelativeTotalFSEE": {
+      "type": "number"
+    },
+    "_1d_loanManFSEE": {
+      "type": "array"
+    },
+    "_1d_loanManTotalFSEE": {
+      "type": "number"
+    },
+    "_1e_freeManFSEE": {
+      "type": "array"
+    },
+    "_1e_freeManTotalFSEE": {
+      "type": "number"
+    },
+    "_1f_freePartyFSEE": {
+      "type": "array"
+    },
+    "_1f_freePartyTotalFSEE": {
+      "type": "number"
+    },
+    "_1g_freeOtherFSEE": {
+      "type": "array"
+    },
+    "_1g_freeOtherTotalFSEE": {
+      "type": "number"
+    },
+    "_1total_abcdefgFSEE": {
+      "type": "number"
+    },
+    "_2a_da_PosterFSEE": {
+      "type": "object"
+    },
+    "_2a_da_CampOfficeFSEE": {
+      "type": "object"
+    },
+    "_2a_da_HeadOfficeFSEE": {
+      "type": "object"
+    },
+    "_2a_da_ConvayanceFSEE": {
+      "type": "object"
+    },
+    "_2a_da_IndoorMeetingFSEE": {
+      "type": "object"
+    },
+    "_2a_da_LeafletFSEE": {
+      "type": "object"
+    },
+    "_2a_da_HandbillFSEE": {
+      "type": "object"
+    },
+    "_2a_da_StickerFSEE": {
+      "type": "object"
+    },
+    "_2a_da_BannerFSEE": {
+      "type": "object"
+    },
+    "_2a_da_DigitalBannerFSEE": {
+      "type": "object"
+    },
+    "_2a_da_RallyFSEE": {
+      "type": "object"
+    },
+    "_2a_da_MikingFSEE": {
+      "type": "object"
+    },
+    "_2a_da_PotraitFSEE": {
+      "type": "object"
+    },
+    "_2a_da_CompetitorSymbolFSEE": {
+      "type": "object"
+    },
+    "_2a_da_CompetitorCandidate": {
+      "type": "object"
+    },
+    "_2a_da_CompetitorWorkerFSEE": {
+      "type": "object"
+    },
+    "_2a_da_TVFridgeFSEE": {
+      "type": "object"
+    },
+    "_2a_da_MiscellaneousFSEE": {
+      "type": "object"
+    },
+    "submissionDateFSEE": {
+      "type": "boolean"
+    },
+    "createdFSEE": {
+      "type": "date"
+    },
+    "createdByFSEE": {
+      "type": "string"
+    },
+    "createdByBnFSEE": {
+      "type": "string"
+    },
+    "modifiedFSEE": {
+      "type": "date"
+    },
+    "modifiedByFSEE": {
+      "type": "string"
+    },
+    "modifiedByBnFSEE": {
+      "type": "string"
+    },
+    "isPublishedFSEE": {
+      "type": "boolean"
+    },
+    "pdfFilePathFSEE": {
+      "type": "string"
+    },
+    "reviewFSEE": {
+      "type": "string"
+    },
+    "statusALIE": {
+      "type": "string"
+    },
+    "submissionDateALIE": {
+      "type": "date"
+    },
+    "submissionDateTimeStampALIE": {
+      "type": "number"
+    },
+    "exceptHousePropertyALIE": {
+      "type": "array"
+    },
+    "exceptHousePropertyTotalPriceALIE": {
+      "type": "number"
+    },
+    "housePropertyALIE": {
+      "type": "array"
+    },
+    "housePropertyTotalPriceALIE": {
+      "type": "number"
+    },
+    "otherPropertyALIE": {
+      "type": "array"
+    },
+    "otherPropertyTotalPriceALIE": {
+      "type": "number"
+    },
+    "liabilityALIE": {
+      "type": "array"
+    },
+    "liabilityTotalAmountALIE": {
+      "type": "number"
+    },
+    "annualIncomeALIE": {
+      "type": "array"
+    },
+    "annualIncomeTotalAmountALIE": {
+      "type": "number"
+    },
+    "annualExpenseALIE": {
+      "type": "array"
+    },
+    "annualExpenseTotalAmountALIE": {
+      "type": "number"
+    },
+    "allGrandTotalALIE": {
+      "type": "number"
+    },
+    "createdALIE": {
+      "type": "date"
+    },
+    "createdByALIE": {
+      "type": "string"
+    },
+    "createdByBnALIE": {
+      "type": "string"
+    },
+    "modifiedALIE": {
+      "type": "date"
+    },
+    "modifiedByALIE": {
+      "type": "string"
+    },
+    "modifiedByBnALIE": {
+      "type": "string"
+    },
+    "isPublishedALIE": {
+      "type": "boolean"
+    },
+    "pdfFilePathALIE": {
+      "type": "string"
+    },
+    "reviewALIE": {
+      "type": "string"
+    },
+    "statusEER": {
+      "type": "string"
+    },
+    "candidateNameEER": {
+      "type": "string"
+    },
+    "candidateAddressEER": {
+      "type": "string"
+    },
+    "agentNameEER": {
+      "type": "string"
+    },
+    "agentAddressEER": {
+      "type": "string"
+    },
+    "_1a_22_PaidAmountEER": {
+      "type": "number"
+    },
+    "_1a_22_ClaimedAmountEER": {
+      "type": "number"
+    },
+    "_1a_22_ControversialAmountEER": {
+      "type": "number"
+    },
+    "_1a_22_TotalElectionAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_CampaignCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_ConveyanceCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_PublicMeetingCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_CampCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_AgentCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_AdministrationCostAmountEER": {
+      "type": "number"
+    },
+    "_1b_22_ElectionCostAmountEER": {
+      "type": "number"
+    },
+    "_1a_murdhanna_campaign_RallyEER": {
+      "type": "array"
+    },
+    "_1a_murdhanna_campaign_RallyTotalCostEER": {
+      "type": "number"
+    },
+    "_1b_mu_ca_PosterEER": {
+      "type": "array"
+    },
+    "_1b_mu_ca_PosterTotalCostEER": {
+      "type": "number"
+    },
+    "_1c_mu_ca_LeafletEER": {
+      "type": "array"
+    },
+    "_1c_mu_ca_LeafletTotalCostEER": {
+      "type": "number"
+    },
+    "_1d_mu_ca_HandbillEER": {
+      "type": "array"
+    },
+    "_1d_mu_ca_HandbillTotalCostEER": {
+      "type": "number"
+    },
+    "_1e_mu_ca_StickerEER": {
+      "type": "array"
+    },
+    "_1e_mu_ca_StickerTotalCostEER": {
+      "type": "number"
+    },
+    "_1fa_mu_ca_BannerEER": {
+      "type": "array"
+    },
+    "_1fa_mu_ca_BannerTotalCostEER": {
+      "type": "number"
+    },
+    "_1fb_mu_ca_DigitalBannerEER": {
+      "type": "array"
+    },
+    "_1fb_mu_ca_DigitalBannerTotalCostEER": {
+      "type": "number"
+    },
+    "_1g_mu_ca_IndoorMeetingEER": {
+      "type": "array"
+    },
+    "_1g_mu_ca_IndoorMeetingTotalCostEER": {
+      "type": "number"
+    },
+    "_1h_mu_ca_MikingEER": {
+      "type": "array"
+    },
+    "_1h_mu_ca_MikingTotalCostEER": {
+      "type": "number"
+    },
+    "_1i_mu_ca_PotraitEER": {
+      "type": "array"
+    },
+    "_1i_mu_ca_PotraitTotalCostEER": {
+      "type": "number"
+    },
+    "_1j_mu_ca_CompetitorSymbolEER": {
+      "type": "array"
+    },
+    "_1j_mu_ca_CompetitorSymbolTotalCostEER": {
+      "type": "number"
+    },
+    "_1k_mu_ca_CampOfficeEER": {
+      "type": "array"
+    },
+    "_1k_mu_ca_CampOfficeTotalCostEER": {
+      "type": "number"
+    },
+    "_1l_mu_ca_OfficeHospitalityEER": {
+      "type": "array"
+    },
+    "_1l_mu_ca_OfficeHospitalityTotalCostEER": {
+      "type": "number"
+    },
+    "_1m_mu_ca_WorkerEER": {
+      "type": "array"
+    },
+    "_1m_mu_ca_WorkerTotalCostEER": {
+      "type": "number"
+    },
+    "_1n_mu_ca_CandidateconveyanceEER": {
+      "type": "array"
+    },
+    "_1n_mu_ca_conveyanceTotalCostEER": {
+      "type": "number"
+    },
+    "_1o_mu_ca_TVFridgeEER": {
+      "type": "array"
+    },
+    "_1o_mu_ca_TVFridgeTotalCostEER": {
+      "type": "number"
+    },
+    "_1p_mu_ca_MiscellaneousEER": {
+      "type": "array"
+    },
+    "_1p_mu_ca_MiscellaneousTotalCostEER": {
+      "type": "number"
+    },
+    "_2ElectionExpenseDetailsEER": {
+      "type": "array"
+    },
+    "_2ElectionExpenseDetailsGrandTotalClearUnclearAmtEER": {
+      "type": "number"
+    },
+    "_3OpponentTotalExpensesEER": {
+      "type": "number"
+    },
+    "_4ControversialClaimDetails": {
+      "type": "array"
+    },
+    "_4ControversialClaimDetailsTotalClaimedAmtEER": {
+      "type": "number"
+    },
+    "_5_claimedUnpaidDetailsEER": {
+      "type": "array"
+    },
+    "_5_claimedUnpaidDetailsTotalClaimedAmtEER": {
+      "type": "number"
+    },
+    "_6_agentTakenMoneyEER": {
+      "type": "array"
+    },
+    "_6_agentTakenMoneyTotalMoneyAmtEER": {
+      "type": "number"
+    },
+    "isCaseFiledByECB_EER": {
+      "type": "boolean"
+    },
+    "submissionDateEER": {
+      "type": "date"
+    },
+    "createdEER": {
+      "type": "date"
+    },
+    "createdByEER": {
+      "type": "string"
+    },
+    "createdByBnEER": {
+      "type": "string"
+    },
+    "modifiedEER": {
+      "type": "date"
+    },
+    "modifiedByEER": {
+      "type": "string"
+    },
+    "modifiedByBnEER": {
+      "type": "string"
+    },
+    "isPublishedEER": {
+      "type": "boolean"
+    },
+    "pdfFilePathEER": {
+      "type": "string"
+    },
+    "reviewEER": {
+      "type": "string"
+    },
+    "statusTR": {
+      "type": "boolean"
+    },
+    "TIN_TR": {
+      "type": "string"
+    },
+    "UTIN_TR": {
+      "type": "string"
+    },
+    "NIDNumberTR": {
+      "type": "string"
+    },
+    "VATNumberTR": {
+      "type": "string"
+    },
+    "taxPayerNameTR": {
+      "type": "string"
+    },
+    "dignityTR": {
+      "type": "object"
+    },
+    "circleTR": {
+      "type": "string"
+    },
+    "taxAreaTR": {
+      "type": "string"
+    },
+    "taxYearEnTR": {
+      "type": "date"
+    },
+    "taxYearBnTR": {
+      "type": "string"
+    },
+    "businessNameTR": {
+      "type": "string"
+    },
+    "husbandSpouseNameTR": {
+      "type": "string"
+    },
+    "fatherNameTR": {
+      "type": "string"
+    },
+    "motherNameTR": {
+      "type": "string"
+    },
+    "dobTR": {
+      "type": "date"
+    },
+    "dobOldTR": {
+      "type": "string"
+    },
+    "presentAddressTR": {
+      "type": "string"
+    },
+    "permanentAddressTR": {
+      "type": "string"
+    },
+    "isNewFlagTR": {
+      "type": "string"
+    },
+    "taxfillTypeTR": {
+      "type": "string"
+    },
+    "localityTR": {
+      "type": "string"
+    },
+    "phoneOfficeTR": {
+      "type": "string"
+    },
+    "phoneResidenceTR": {
+      "type": "string"
+    },
+    "registrationNumTR": {
+      "type": "string"
+    },
+    "registrationDateTR": {
+      "type": "string"
+    },
+    "endDateTR": {
+      "type": "date"
+    },
+    "endDateOldTR": {
+      "type": "string"
+    },
+    "endDateTimestampTR": {
+      "type": "number"
+    },
+    "_1SalaryTR": {
+      "type": "number"
+    },
+    "_2SecurityTR": {
+      "type": "number"
+    },
+    "_3HouseIncomeTR": {
+      "type": "number"
+    },
+    "_4AgriIncomeTR": {
+      "type": "number"
+    },
+    "_5BusinessIncomeTR": {
+      "type": "number"
+    },
+    "_6FirmIncomeTR": {
+      "type": "number"
+    },
+    "_7HusbandWifeSonIncomeTR": {
+      "type": "number"
+    },
+    "_8CapitalProfitTR": {
+      "type": "number"
+    },
+    "_9OtherSourceIncomeTR": {
+      "type": "number"
+    },
+    "_10_1to9TotalTR": {
+      "type": "number"
+    },
+    "_11ForeignIncomeTR": {
+      "type": "number"
+    },
+    "_12_10to11_totalTR": {
+      "type": "number"
+    },
+    "_13ApplicableTaxTR": {
+      "type": "number"
+    },
+    "_14TaxCommissionTR": {
+      "type": "number"
+    },
+    "_15_13_sub_14_givenTaxTR": {
+      "type": "number"
+    },
+    "_16_aReducedTaxTR": {
+      "type": "number"
+    },
+    "_16_bAdvancedTaxTR": {
+      "type": "number"
+    },
+    "_16_cGivenTaxTR": {
+      "type": "number"
+    },
+    "_16_dBalanceTaxTR": {
+      "type": "number"
+    },
+    "_16_abcdTotalTR": {
+      "type": "number"
+    },
+    "_17_sub_15_16_abcdTotalTR": {
+      "type": "number"
+    },
+    "_18_honorTaxTR": {
+      "type": "number"
+    },
+    "_19_previousTaxTR": {
+      "type": "number"
+    },
+    "submissionDateTR": {
+      "type": "date"
+    },
+    "submissionDateTimestampTR": {
+      "type": "number"
+    },
+    "_1BasicSalaryTR": {
+      "type": "object"
+    },
+    "_1SpecialSalaryTR": {
+      "type": "object"
+    },
+    "_1CommissionTR": {
+      "type": "object"
+    },
+    "_1TransportTR": {
+      "type": "object"
+    },
+    "_1HouseRentTR": {
+      "type": "object"
+    },
+    "_1TreatmentTR": {
+      "type": "object"
+    },
+    "_1BoyTR": {
+      "type": "object"
+    },
+    "_1LeaveTR": {
+      "type": "object"
+    },
+    "_1HonurTR": {
+      "type": "object"
+    },
+    "_1OvertimeTR": {
+      "type": "object"
+    },
+    "_1BonusTR": {
+      "type": "object"
+    },
+    "_1FutureTollTR": {
+      "type": "object"
+    },
+    "_1FutureInterestTR": {
+      "type": "object"
+    },
+    "_1VehicleTR": {
+      "type": "object"
+    },
+    "_1FreeHouseTR": {
+      "type": "object"
+    },
+    "_1OtherOptionalIncomeTR": {
+      "type": "object"
+    },
+    "_1TotalnetSalaryIncomeTR": {
+      "type": "object"
+    },
+    "_2_1AnnualIncomeTR": {
+      "type": "number"
+    },
+    "_2_2a_landTR": {
+      "type": "number"
+    },
+    "_2_2b_insuranceTR": {
+      "type": "number"
+    },
+    "_2_2c_loanTR": {
+      "type": "number"
+    },
+    "_2_2d_localTaxTR": {
+      "type": "number"
+    },
+    "_2_2e_modificationTR": {
+      "type": "number"
+    },
+    "_2_2f_emptyHouseTR": {
+      "type": "number"
+    },
+    "_2_2g_otherHouseTR": {
+      "type": "number"
+    },
+    "_2_2h_totalHouseTR": {
+      "type": "number"
+    },
+    "_2_3_1sub_2_netIncomTR": {
+      "type": "number"
+    },
+    "_3a_lifeInsuranceTR": {
+      "type": "number"
+    },
+    "_3b_futureAllowanceTR": {
+      "type": "number"
+    },
+    "_3c_donationFutureAcctTR": {
+      "type": "number"
+    },
+    "_3d_donationOwnAcctTR": {
+      "type": "number"
+    },
+    "_3e_ageAcctTR": {
+      "type": "number"
+    },
+    "_3f_shareAmountTR": {
+      "type": "number"
+    },
+    "_3g_depositAmountTR": {
+      "type": "number"
+    },
+    "_3h_welfareAmountTR": {
+      "type": "number"
+    },
+    "_3i_jakatAmountTR": {
+      "type": "number"
+    },
+    "_3j_othersAmountTR": {
+      "type": "number"
+    },
+    "_3_totalInvestmentRelatedAmountTR": {
+      "type": "number"
+    },
+    "_1a_capitalTR": {
+      "type": "number"
+    },
+    "_1b_shareInvestmentTR": {
+      "type": "number"
+    },
+    "_1b_a_companyNameTR": {
+      "type": "string"
+    },
+    "_1b_b_numberOfSharesTR": {
+      "type": "number"
+    },
+    "_2_notAgriLandHomePriceTR": {
+      "type": "number"
+    },
+    "_2_notAgriLandHomeDescTR": {
+      "type": "string"
+    },
+    "_3_agriLandPriceTR": {
+      "type": "number"
+    },
+    "_3_agriLandPriceDescTR": {
+      "type": "string"
+    },
+    "_4a_investShareDebentureTR": {
+      "type": "object"
+    },
+    "_4b_investSavingsTR": {
+      "type": "object"
+    },
+    "_4c_investPricebondTR": {
+      "type": "object"
+    },
+    "_4d_investPayloanTR": {
+      "type": "number"
+    },
+    "_4e_otherInvestTR": {
+      "type": "number"
+    },
+    "_4_totalInvestTR": {
+      "type": "number"
+    },
+    "_5a_motorPriceTR": {
+      "type": "number"
+    },
+    "_5b_motorDescTR": {
+      "type": "string"
+    },
+    "_6_ornamentsTR": {
+      "type": "number"
+    },
+    "_7_furnitureTR": {
+      "type": "number"
+    },
+    "_8_electronicTR": {
+      "type": "number"
+    },
+    "_9_outOfBusinessTR": {
+      "type": "object"
+    },
+    "_9_totalCashBankOtherTR": {
+      "type": "number"
+    },
+    "_10_otherAssetsPriceTR": {
+      "type": "number"
+    },
+    "_10_otherAssetsDescTR": {
+      "type": "string"
+    },
+    "_10_1_to_10_totalAssetTR": {
+      "type": "number"
+    },
+    "_11_liabilitiesTR": {
+      "type": "object"
+    },
+    "_11_totalLiabilitiesTR": {
+      "type": "number"
+    },
+    "_12_netAssetsTR": {
+      "type": "number"
+    },
+    "_13_netAssetLastYearTR": {
+      "type": "number"
+    },
+    "_14_assetBalanceTR": {
+      "type": "number"
+    },
+    "_15_familyExpenseTR": {
+      "type": "object"
+    },
+    "_16_totalAssetBalanceTR": {
+      "type": "number"
+    },
+    "_17_earnedFundTR": {
+      "type": "object"
+    },
+    "_17_totalEarnedFunTR": {
+      "type": "number"
+    },
+    "_18_differenceAmountTR": {
+      "type": "number"
+    },
+    "personalCostTR": {
+      "type": "number"
+    },
+    "personalCostCommentTR": {
+      "type": "string"
+    },
+    "taxPaidLastYearTR": {
+      "type": "number"
+    },
+    "taxPaidCommentTR": {
+      "type": "string"
+    },
+    "residentialCostTR": {
+      "type": "number"
+    },
+    "residentialCostCommentTR": {
+      "type": "string"
+    },
+    "vehicleCostTR": {
+      "type": "number"
+    },
+    "vehicleCostCommentTR": {
+      "type": "string"
+    },
+    "electricityBillTR": {
+      "type": "number"
+    },
+    "electricityBillCommentTR": {
+      "type": "string"
+    },
+    "waterBillTR": {
+      "type": "number"
+    },
+    "waterBillCommentTR": {
+      "type": "string"
+    },
+    "gasBillTR": {
+      "type": "number"
+    },
+    "gasBillCommentTR": {
+      "type": "string"
+    },
+    "telephoneBillTR": {
+      "type": "number"
+    },
+    "telephoneBillCommentTR": {
+      "type": "string"
+    },
+    "childEducationalExpenseTR": {
+      "type": "number"
+    },
+    "childEducationCommentTR": {
+      "type": "string"
+    },
+    "travelExpenseTR": {
+      "type": "number"
+    },
+    "travelExpenseCommentTR": {
+      "type": "string"
+    },
+    "festivalCostTR": {
+      "type": "number"
+    },
+    "festivalCostCommentTR": {
+      "type": "string"
+    },
+    "oldResidenceTR": {
+      "type": "array"
+    },
+    "oldVehicleTR": {
+      "type": "array"
+    },
+    "oldBillTR": {
+      "type": "array"
+    },
+    "oldLocalNameTR": {
+      "type": "string"
+    },
+    "oldLocalNumberTR": {
+      "type": "string"
+    },
+    "oldLocalAnnualExpTR": {
+      "type": "number"
+    },
+    "oldForeignAnnualExpTR": {
+      "type": "number"
+    },
+    "oldOwnTravelNoTR": {
+      "type": "string"
+    },
+    "oldOwnCountryNameTR": {
+      "type": "string"
+    },
+    "oldAnoTravelNoTR": {
+      "type": "string"
+    },
+    "oldAnoCountryNameTR": {
+      "type": "string"
+    },
+    "oldCareerTR": {
+      "type": "string"
+    },
+    "createdTR": {
+      "type": "date"
+    },
+    "createdByTR": {
+      "type": "string"
+    },
+    "createdByBnTR": {
+      "type": "string"
+    },
+    "modifiedTR": {
+      "type": "date"
+    },
+    "modifiedByTR": {
+      "type": "string"
+    },
+    "modifiedByBnTR": {
+      "type": "string"
+    },
+    "isPublishedTR": {
+      "type": "boolean"
+    },
+    "pdfFilePathTR": {
+      "type": "string"
+    },
+    "reviewTR": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "currentElection": {
+      "type": "belongsTo",
+      "model": "currentElection",
+      "foreignKey": "currentElectionId"
+    },
+    "election": {
+      "type": "belongsTo",
+      "model": "election",
+      "foreignKey": "electionId"
+    },
+    "person": {
+      "type": "belongsTo",
+      "model": "person",
+      "foreignKey": "personId"
+    },
+    "politicalParty": {
+      "type": "belongsTo",
+      "model": "politicalParty",
+      "foreignKey": "politicalPartyId"
+    },
+    "candidatePost": {
+      "type": "belongsTo",
+      "model": "candidatePost",
+      "foreignKey": "candidatePostId"
+    },
+    "electionCandidatePost": {
+      "type": "belongsTo",
+      "model": "electionCandidatePost",
+      "foreignKey": "electionCandidatePostId"
+    },
+    "constitutionalPost": {
+      "type": "belongsTo",
+      "model": "constitutionalPost",
+      "foreignKey": "constitutionalPostId"
+    },
+    "electionSeat": {
+      "type": "belongsTo",
+      "model": "electionSeat",
+      "foreignKey": "electionSeatId"
+    },
+    "division": {
+      "type": "belongsTo",
+      "model": "division",
+      "foreignKey": "divisionId"
+    },
+    "district": {
+      "type": "belongsTo",
+      "model": "district",
+      "foreignKey": "districtId"
+    },
+    "upazilla": {
+      "type": "belongsTo",
+      "model": "upazilla",
+      "foreignKey": "upazillaId"
+    },
+    "union": {
+      "type": "belongsTo",
+      "model": "union",
+      "foreignKey": "unionId"
+    },
+    "posts": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "candidateId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

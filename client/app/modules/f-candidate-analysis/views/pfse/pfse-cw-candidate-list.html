@@ -1,0 +1,42 @@
+<div ng-include="'modules/f-candidate-analysis/views/fsee-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Constituency wise Candidates List which Exceeds Probable Income Spending Limits'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{totalCandidate | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+      <div class="table-responsive">
+        <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+          <thead>
+          <tr>
+            <td>{{'Sl.'|translate}}</td>
+            <td>{{'Election'|translate}}</td>
+            <td>{{'Seat'|translate}}</td>
+            <td>{{'District'|translate}}</td>
+            <td>{{'Name'|translate}}</td>
+            <td>{{'Total Amount'|translate}}</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in pfseIncomeTableData">
+            <td>{{($index + 1) | translateNumber}}</td>
+            <td>{{row.currentElection.id}}</td>
+            <td>{{row.electionSeat.seatNameBn}}</td>
+            <td>{{row.district.nameBn}}</td>
+            <td>{{row.person.personNameBn}}</td>
+            <td>{{row.income | translateNumber}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

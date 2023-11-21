@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.upazilla.name}}
+    <small class="label label-default">{{ctrl.upazilla.description}}</small>
+
+    <span class="pull-right btn-group">
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({upazillaId: ctrl.upazilla.id})">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.delete({upazillaId: ctrl.upazilla.id})">
+      <i class="fa fa-trash-o"></i>
+    </a>
+  </span>
+  </div>
+  <div class="panel-body">
+    <pre>{{ctrl.upazilla | json}}</pre>
+  </div>
+</div>

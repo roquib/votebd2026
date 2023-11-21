@@ -1,0 +1,24 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "votebdmongo": {
+    "host": "localhost",
+    "port": 27017,
+    "database": "votebd2019",
+    "username": "",
+    "password": "",
+    "name": "votebdmongo",
+    "connector": "mongodb"
+  },
+  "votebdold": {
+    "host": "localhost",
+    "port": 3306,
+    "database": "votebd_reorganize_2016",
+    "username": "root",
+    "password": "root",
+    "name": "votebdold",
+    "connector": "mysql"
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "_meta": {
+    "sources": [
+      "../common/models",
+      "./models",
+      "../node_modules/loopback-component-passport/lib/models"
+    ]
+  },
+  "User": {
+    "dataSource": "votebdmongo",
+    "public": false
+  },
+  "accessToken": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "userCredential": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "userIdentity": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "ACL": {
+    "dataSource": "votebdmongo",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Role": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "AppModel": {
+    "dataSource": "votebdmongo",
+    "public": false
+  },
+  "Page": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Note": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Post": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Setting": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Product": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Category": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Event": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "AuthProvider": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "user": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "Meta": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "election": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "division": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "constitutionalPost": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "politicalParty": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "candidatePost": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "district": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "electionSeat": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "upazilla": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "union": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "person": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "currentElection": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "candidate": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "electionCandidatePost": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "seat": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "politicalPartyExpense": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "voter": {
+    "dataSource": "votebdmongo",
+    "public": true
+  },
+  "bannerSetting": {
+    "dataSource": "votebdmongo",
+    "public": true
+  }
+}

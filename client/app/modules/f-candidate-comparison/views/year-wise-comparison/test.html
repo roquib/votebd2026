@@ -1,0 +1,42 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Estimated Annual expenditures of the same candidate'|translate}}</h2>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-12">    <div class="clearfix">
+    <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length | translateNumber}}
+      {{'Candidates Analysis Report' | translate}}</h3>
+
+    <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+  </div>
+    <div id="exportable">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <th class="text-center">{{'Sl.'|translate}}</th>
+          <th class="text-center">{{'Name'|translate}}</th>
+          <th class="text-center">{{'Father Name'|translate}}</th>
+          <th class="text-center">{{'Election Seat'|translate}}</th> <!--Added new column 20 nov 20 -->
+          <th class="text-center">{{'Party Name'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in candidateList.candidateList">
+          <td class="text-center">{{($index + 1)|translateNumber}}</td>
+
+          <td><a  ui-sref="front.candidateComparisonYearWiseDetails({pid:row.personId,
+          cid1:row.one.candidateId,
+          eid1:row.one.currentElectionId,
+          cid2:row.two.candidateId,
+          eid2:row.two.currentElectionId
+        })" target="_blank">{{row.one.candidateName}}</a></td>
+          <td>{{row.one.fatherName}}</td>
+          <td>{{row.two.seatName}}</td> <!--added new column 20 nov -->
+          <td>{{row.two.partyName}}</td> <!--changed 'two' intead of 'one'; changed date 12 nov 20-->
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

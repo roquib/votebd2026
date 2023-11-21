@@ -1,0 +1,302 @@
+<div class="candidate-search-detail">
+<div ng-include="'modules/f-candidate-search/views/candidateprofile.html'"></div>
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+<form>
+  <div class="panel-heading affidavit-Header" lang="{{$root.locale.lang}}">
+    <h1>{{'Expense (22)'|translate}}</h1>
+    <h2>{{'Election Expense Return'|translate}}</h2> </div>
+    <!--<h2>{{'Return of election expenses'|translate}}</h2> </div>-->
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+      <tr>
+        <td colspan="3">
+          <div align="center" class="style2">
+            <p><span class="mjh-TableTitle">{{'Name of candidate'|translate}} : </span>{{ctrl.candidat.personNameBn}} {{ctrl.candidat.personNameEn}}</p>
+            <p><span class="mjh-TableTitle">{{'Father`s Name'|translate}} : </span>{{ctrl.candidat.fatherHusbandNameBnAF}} </p>
+            <p><span class="mjh-TableTitle">{{'Address of candidate'|translate}} : </span>{{ctrl.candidat.addressBnAF}} </p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Name of contesting candidate'|translate}} :</span></td>
+        <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.candidateNameEER}}</span></td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Address of contesting candidate'|translate}} :</span></td>
+        <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.candidateAddressEER}}</span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="mjh-TableTitle">{{'Name of election agent'|translate}} :</span></td>
+        <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.agentNameEER}}</span></td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Address of election agent'|translate}} :</span></td>
+        <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.agentAddressEER}}</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Part A: Summary of election expenses'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'1(a) Type of payments'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td align="center">&nbsp;</td>
+      <td align="center"><span class="mjh-TableTitle">{{'Nature of payments'|translate}}</span> </td>
+      <td align="center"><span class="mjh-TableTitle">{{'Taka'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div align="center">{{'1'|translate}}</div>
+      </td>
+      <td align="right">{{'Paid amount'|translate}}</td>
+      <td><span>{{ctrl.candidat._1a_22_PaidAmountEER | translateNumber}}</span> </td>
+    </tr>
+    <tr>
+      <td align="center">{{''|translate}}
+        <div align="center">{{'2'|translate}}</div>
+      </td>
+      <td height="32" align="right">{{'Unpaid claim'|translate}}</td>
+      <td><span>{{ctrl.candidat._1a_22_ClaimedAmountEER | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <div align="center">{{'3'|translate}}</div>
+      </td>
+      <td align="right">{{'Disputed claim'|translate}}</td>
+      <td><span>{{ctrl.candidat._1a_22_ControversialAmountEER | translateNumber}}</span> </td>
+    </tr>
+    <tr>
+      <td align="center">&nbsp;</td>
+      <td align="right"><span class="mjh-TableTitle">{{'Total expenses in election*'|translate}}</span> </td>
+      <td>{{_1a_22_PaidAmountEER+_1a_22_ClaimedAmountEER+_1a_22_ControversialAmountEER | translateNumber}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+      <tr>
+        <td colspan="3"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'1(b) Class of expenses'|translate}}</span></td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td align="center"><span class="mjh-TableTitle">{{'Objective of expenditure'|translate}}</span></td>
+        <td align="center"><span class="mjh-TableTitle">{{'Taka'|translate}}</span></td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'1'|translate}}</div>
+        </td>
+        <td height="34" align="right">{{'Publicity'|translate}}</td>
+        <td><span   type="text">{{ctrl.candidat._1b_22_CampaignCostAmountEER | translateNumber}}</span></td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'2'|translate}}</div>
+        </td>
+        <td height="32" align="right">{{'Transportation'|translate}}</td>
+        <td>
+          <span   type="text">{{ctrl.candidat._1b_22_ConveyanceCostAmountEER | translateNumber}}</span> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'3'|translate}}</div>
+        </td>
+        <td height="35" align="right">{{'Public meeting'|translate}}</td>
+        <td><span    type="text">{{ctrl.candidat._1b_22_PublicMeetingCostAmountEER | translateNumber}}</span>  </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'4'|translate}}</div>
+        </td>
+        <td height="35" align="right">{{'Election camp'|translate}}</td>
+        <td><span    type="text">{{ctrl.candidat._1b_22_CampCostAmountEER | translateNumber}}</span> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'5'|translate}}</div>
+        </td>
+        <td height="35" align="right">{{'Agent & other staffs'|translate}}</td>
+        <td><span    type="text">{{ctrl.candidat._1b_22_AgentCostAmountEER | translateNumber}}</span>  </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">{{'6'|translate}}</div>
+        </td>
+        <td height="35" align="right">{{'Accommodation and administrative cost'|translate}}</td>
+        <td><span    type="text">{{ctrl.candidat._1b_22_AdministrationCostAmountEER | translateNumber}}</span>  </td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td height="35" align="right"><span class="mjh-TableTitle">{{'Total expenses in election*'|translate}}</span></td>
+        <td>{{_1b_22_CampaignCostAmountEER+_1b_22_ConveyanceCostAmountEER+_1b_22_PublicMeetingCostAmountEER+_1b_22_CampCostAmountEER+_1b_22_AgentCostAmountEER+_1b_22_AdministrationCostAmountEER | translateNumber}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td align="center" colspan="2">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Part B: Account of election expenses'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="table-responsive">
+          <table class="table table-bordered" lang="{{$root.locale.lang}}">
+            <tbody>
+              <tr>
+                <th><span class="mjh-TableTitle">{{'On the date of expenditure or approval'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Nature of expense'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Paid amount (a)'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Unpaid amount (b)'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Sum of (a) & (b)'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Payment date'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Name & address of payer'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Sl no of voucher of paid amounts'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Sl no of bills of unpaid amount, if any'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Name & address of the person to whom'|translate}}</span> </th>
+                <th><span class="mjh-TableTitle">{{'Bank A/C no, Bank name, cheque no & date'|translate}}</span> </th>
+              </tr>
+              <tr ng-repeat="_2ElectionExpenseDetailsEER in ctrl.candidat._2ElectionExpenseDetailsEER">
+                <td><span lang="en">{{_2ElectionExpenseDetailsEER.dateOfApproval | date :'EEEE, MMMM d, y'}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.typeOfExpenses}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.clearedMoneyAmt | translateNumber}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.unclearedMoneyAmt | translateNumber}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.totalClearUnclearAmt | translateNumber}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.dateOfMoneyPay | date :'EEEE, MMMM d, y'}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.payerNameAddress}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.clearedAmtVoucherNo | translateNumber}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.unclearedAmtVoucherNo | translateNumber}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.nameAddressToPay}}</span></td>
+                <td><span>{{_2ElectionExpenseDetailsEER.bankNameOthers}}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Grand Total Clear/Unclar Amount'|translate}}</span> {{ctrl.candidat._2ElectionExpenseDetailsGrandTotalClearUnclearAmtEER}}
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Part C:'|translate}}</span> </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Total amount of individual expenses incurred by contesting candidate'|translate}} :</span>
+        <span>{{ctrl.candidat._3OpponentTotalExpensesEER}}</span> </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 18px;">{{'Part D: Account of disputed claim'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" class="table table-bordered" lang="{{$root.locale.lang}}">
+          <tbody id="part1">
+            <tr>
+              <td><span class="mjh-TableTitle">{{'Date of claim'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Name & address of claimant'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Type of claim'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Amount'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Reason of the amount being disputed'|translate}}</span> </td>
+            </tr>
+            <tr ng-repeat="_4ControversialClaimDetails in ctrl.candidat._4ControversialClaimDetails">
+              <td><span>{{_4ControversialClaimDetails.date}}</span></td>
+              <td><span>{{_4ControversialClaimDetails.nameAddress}}</span></td>
+              <td><span>{{_4ControversialClaimDetails.type}}</span></td>
+              <td><span>{{_4ControversialClaimDetails.claimedAmt | translateNumber}}</span></td>
+              <td><span>{{_4ControversialClaimDetails.causesOfControversy}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Controversial Claim Details Total Amount'|translate}}</span> {{ctrl.candidat._4ControversialClaimDetailsTotalClaimedAmtEER}}</td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Part E: Account of unpaid claim'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" class="table table-bordered" lang="{{$root.locale.lang}}">
+          <tbody>
+            <tr>
+              <td><span class="mjh-TableTitle">{{'Date of claim'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Name & address of claimant'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Type of unpaid claim'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Unpaid claim amount'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Reason of the amount being unpaid'|translate}}</span> </td>
+            </tr>
+            <tr ng-repeat="_5_claimedUnpaidDetailsEER in ctrl.candidat._5_claimedUnpaidDetailsEER">
+              <td><span>{{_5_claimedUnpaidDetailsEER.claimed_date}}</span></td>
+              <td><span>{{_5_claimedUnpaidDetailsEER.name_address}}</span></td>
+              <td><span>{{_5_claimedUnpaidDetailsEER.claimed_type}}</span></td>
+              <td><span>{{_5_claimedUnpaidDetailsEER.claimed_amt | translateNumber}}</span></td>
+              <td><span>{{_5_claimedUnpaidDetailsEER.causes_of_uncleared}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Claimed Unpaid Details Total Amount'|translate}}</span> <span>{{ctrl.candidat._5_claimedUnpaidDetailsTotalClaimedAmtEER}}</span></td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Part F: Account of amount received by election agent, etc.'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" class="table table-bordered" lang="{{$root.locale.lang}}">
+          <tbody>
+            <tr>
+              <td><span class="mjh-TableTitle">{{'Receiving date of taka, security by election agent'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Name & address of payer of Taka, etc.'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Amount, value of security etc.'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Objective of paying/receiving taka, etc.'|translate}}</span> </td>
+              <td><span class="mjh-TableTitle">{{'Bank A/C no, Bank name, cheque no & date'|translate}}</span> </td>
+            </tr>
+            <tr ng-repeat="_6_agentTakenMoneyEER in ctrl.candidat._6_agentTakenMoneyEER">
+              <td><span>{{_6_agentTakenMoneyEER.agent_date}}</span></td>
+              <td><span>{{_6_agentTakenMoneyEER.payer_name_address}}</span></td>
+              <td><span>{{_6_agentTakenMoneyEER.money_amt | translateNumber}}</span></td>
+              <td><span>{{_6_agentTakenMoneyEER.objective_to_pay}}</span></td>
+              <td><span>{{_6_agentTakenMoneyEER.bank_name}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 16px;">{{'Agent Taken Money Total Money Amount'|translate}} </span>
+        <span> {{ctrl.candidat._6_agentTakenMoneyTotalMoneyAmtEER | translateNumber}}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+</div>

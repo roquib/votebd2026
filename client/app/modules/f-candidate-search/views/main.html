@@ -1,0 +1,68 @@
+<div class="candidate-comparison-title">
+  <div class="container about-us-cont">
+    <div class="ze-title">
+      <h2 lang="{{$root.locale.lang}}">{{'Candidate Info Analysis'|translate}}</h2>
+      <p lang="{{$root.locale.lang}}">{{'Find your expected candidate and compare with others'|translate}}</p>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3" ng-hide="hideShow">
+
+        <div class="candidate-search-form" lang="{{$root.locale.lang}}">
+          <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+          <div class="control-btn" style="overflow: hidden">
+            <div class="col-md-6">
+              <div ng-disabled="form.$invalid" class="btn btn-search" ng-click="ctrl.submit(ctrl.electionSeat)">
+                {{'SEARCH'|translate}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-default btnreset" ng-click="ctrl.formOptions.resetModel()">{{'Reset'|translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-sm-9" ng-class="mjhaddclass">
+        <div class="row candidate-search-list">
+          <div class="col-md-12 candidate-search-result" ng-hide="hideShow">
+            <div class='list-group'>
+              <div ng-repeat="item in candidatesss" class="list-group-item">
+                <div class="candidatelist-avater">
+                  <img src="images/demo-blank-avater.png">
+                </div>
+                <h4  class=" col-md-9 list-group-item-heading" lang="{{$root.locale.lang}}">
+                  <a ui-sref="front.candidateSearch.affidavit({id:item.id})">{{'Candidate Name'|translate}} : <strong ng-show="$root.locale.lang != 'bn_BD'">{{item.personNameEn}}</strong><strong ng-show="$root.locale.lang == 'bn_BD'"> {{item.personNameBn}}</strong></a>
+                  <span>{{'Father Name'|translate}} : {{item.fatherHusbandNameBnAF}}, {{'Mother Name'|translate}}: {{item.motherNameBnAF}}, {{'Profession'|translate}} : {{item.professionTypeBnAF}}</span>
+                  <span ng-show="item.addressBnAF">{{'Address'|translate}} : {{item.addressBnAF}}</span>
+                </h4>
+                <p class="col-md-2 list-group-item-text" lang="{{$root.locale.lang}}">
+                  <a class="btn btn-primary" ui-sref="front.candidateSearch.affidavit({id:item.id})" ng-click="candidateData()">{{'View Profile'|translate}}</a>
+                </p>
+              </div>
+              <div ng-show="!candidatesss.length" class="list-group-item">
+                <h4 lang="{{$root.locale.lang}}" class="list-group-item-heading" translate>
+                  {{'There are no candiates'|translate}}
+                </h4>
+              </div>
+            </div>
+          </div>
+
+          <button class="test" ui-sref="front.candidateSearch" ng-click="candidateData()" ng-show="hideShow">
+            <i class="fa fa-backward" aria-hidden="true"></i>
+          </button>
+
+          <div class="col-md-12" ng-show="showHide">
+            <div ui-view>
+              <!--<p ng-show="candidatesss.length" lang="{{$root.locale.lang}}">{{'Select one candidate from top to view his/her Affidavit, Incometax, Income source, Asset-Liability-income-expense'|translate}}</p>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>

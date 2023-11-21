@@ -1,0 +1,66 @@
+<div id="sidebar" class="uitab-menu-eer">
+  <ul class="list-group mjh-abc" lang="{{$root.locale.lang}}">
+    <li><a class="list-group-item" ui-sref-active="active"
+           ui-sref='front.candidateComparisonAffidavit.Candidate-Income-Tax-And-Family-Expense'>{{'Candidate Income Tax and Family Expense'|translate}}</a></li>
+  </ul>
+</div>
+<div class="about-detail-cont">
+  <div class="jumbotron">
+    <h2 lang="{{$root.locale.lang}}">{{'Candidate Income Tax and Family Expense'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length |
+          translateNumber}}
+          {{'Candidates Analysis Report' | translate}}</h3>
+
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th class="text-center" rowspan="2">{{'Sl.'|translate}}</th>
+              <th class="text-center" rowspan="2">{{'Candidate Name'|translate}}</th>
+              <th class="text-center" colspan="4">{{'Income Tax'|translate}}</th>
+              <th class="text-center" colspan="4">{{'Family Expense'|translate}}</th>
+            </tr>
+            <tr>
+              <th class="text-center">{{candidateList.one | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center">{{candidateList.two | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center">{{'Change'|translate}}</th>
+              <th class="text-center">{{'Ratio'|translate}}</th>
+              <th class="text-center">{{candidateList.one | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center">{{candidateList.two | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center">{{'Change'|translate}}</th>
+              <th class="text-center">{{'Ratio'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in candidateList.candidateList">
+              <td>{{($index + 1) | translateNumber}}</td>
+
+              <td>{{row.one.candidateName}}</td>
+
+              <td>{{(row.one._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{row.two._19_previousTaxTR | number:0 | translateNumber}}</td>
+              <td>{{(row.two._19_previousTaxTR - row.one._19_previousTaxTR) | translateNumber}}</td>
+              <td>{{(row.one._19_previousTaxTR | ratio:row.two._19_previousTaxTR) | translateNumber}}%</td>
+
+
+              <td>{{(row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+              <td>{{row.two.totalLifeStyleCostTR | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.totalLifeStyleCostTR - row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+              <td>{{(((row.two.totalLifeStyleCostTR - row.one.totalLifeStyleCostTR)*100)/row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}%</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

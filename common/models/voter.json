@@ -1,0 +1,43 @@
+{
+  "name": "voter",
+  "plural": "voters",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "totalVoter": {
+      "type": "number"
+    },
+    "maleVoter": {
+      "type": "number"
+    },
+    "femaleVoter": {
+      "type": "number"
+    },
+    "isFeatured": {
+      "type": "boolean"
+    },
+    "currentElectionId": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "currentElections": {
+      "type": "hasMany",
+      "model": "currentElection",
+      "foreignKey": "voterId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

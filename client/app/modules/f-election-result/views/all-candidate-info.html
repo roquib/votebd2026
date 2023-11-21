@@ -1,0 +1,63 @@
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Election Candidate List'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{electedCandidates.length | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <p ng-style="{'color':'red'}">{{'যে সকল প্রার্থীর ৩০২ ধারায় মামলা আছে তাদের মামলার সংখ্যার পাশে * মার্ক করা আছে'}}</p>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <td rowspan="2">{{'Sl'|translate}}.</td>
+              <td rowspan="2">{{'Name'|translate}}</td>
+              <td rowspan="2">{{'Seat'|translate}}</td>
+              <td rowspan="2">{{'Political Party'|translate}}</td>
+              <td rowspan="2">{{'Date Of Birth'|translate}}</td>
+              <td rowspan="2">{{'Occupation'|translate}}</td>
+              <td rowspan="2">{{'Education'|translate}}</td>
+              <td colspan="2">{{'Case'|translate}}</td>
+              <td rowspan="2">{{'Income'|translate}}</td>
+              <td rowspan="2">{{'Asset'|translate}}</td>
+              <td rowspan="2">{{'liability'|translate}}</td>
+              <td rowspan="2">{{'Loan'|translate}}</td>
+              <td rowspan="2">{{'Tax'|translate}}</td>
+              <td rowspan="2">{{'Net Asset'|translate}}</td>
+            </tr>
+            <tr>
+              <td>{{'Present'|translate}}</td>
+              <td>{{'Past'|translate}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in electedCandidates">
+              <td>{{($index+1) | translateNumber}}</td>
+              <td>{{row.candidateName}}</td>
+              <td>{{row.seatName}}</td>
+              <td>{{row.partyName}}</td>
+              <td>{{row.candidateDateOfBirthBnAF}}</td>
+              <td>{{row.professionTypeBnAF |translate}}</td>
+              <td>{{row.highestDegreeBnAF |translate}}</td>
+              <td>{{row.lawPresentCountAF |translate}}{{row.lawPresentAF}}</td>
+              <td>{{row.lawPastCountAF |translate}}{{row.lawPastAF}}</td>
+              <td>{{(row.totalOwnIncomeAF+row.totalDependentIncomeAF) | translateNumber}}</td>
+              <td>{{row.asset | translateNumber}}</td>
+              <td>{{row.liabilitiesAmountAF | translateNumber}}</td>
+              <td>{{row.loan | translateNumber}}</td>
+              <td>{{(row._13Tax-row._14Tax) | translateNumber}}</td>
+              <td>{{(row.asset-row.loan) | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

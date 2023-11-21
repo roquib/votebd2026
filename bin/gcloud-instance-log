@@ -1,0 +1,34 @@
+
+gcloud compute instances create votebd-1225 --machine-type=n1-standard-1 --image=ubuntu-14-04 --scopes userinfo-email,cloud-platform --metadata-from-file startup-script=sh/startup-script.sh --zone us-central1-f --tags http-server
+
+ gcloud compute firewall-rules create default-allow-http-8080 --allow tcp:8080  --source-ranges 0.0.0.0/0 --target-tags http-server --description "Allow port 8080 access to http-server"
+
+
+sudo ln -s /home/ze/.nvm/v4.4.0/bin/node /usr/local/bin/nodejs
+
+
+
+cat >/etc/supervisor/conf.d/ze.conf << EOF
+[program:ze]
+directory=/home/ze/zeteq/votebd
+command=npm start
+autostart=true
+autorestart=true
+user=ze
+environment=HOME="/home/ze",USER="ze",NODE_ENV="development"
+stdout_logfile=syslog
+stderr_logfile=syslog
+EOF
+
+
+supervisorctl reread
+supervisorctl update
+
+
+104.197.194.20
+
+
+mongodb-instance-ip : 146.148.60.92
+
+
+ gcloud compute firewall-rules create default-allow-http-3009 --allow tcp:3009  --source-ranges 0.0.0.0/0 --target-tags http-server --description "Allow port 3009 access to http-server"

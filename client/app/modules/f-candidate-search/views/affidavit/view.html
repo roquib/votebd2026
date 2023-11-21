@@ -1,0 +1,516 @@
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+
+<div class="candidate-search-detail">
+  <header class="affidavit-Header" lang="{{$root.locale.lang}}">
+    <h2>{{'Affidavit'|translate}}</h2>
+  </header>
+  <section style="padding: 10px 0;">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="text-center ze-title2 ">
+          <p lang="{{$root.locale.lang}}">{{ctrl.candidat.candidateNameBnAF}} - ({{ctrl.candidat.electionSeat.seatNameBn}})<br>
+          {{ctrl.candidat.currentElection.currentElectionNameBn}}</p>
+        </div>
+      </div>
+    </div>
+       <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-12">
+          <div class="voter-box" style="height:320px;">
+            <div class="photo">
+                <img ng-if="ctrl.candidat.candidatePhoto" src="assets/candidate_photos/{{ctrl.candidat.candidatePhoto}}" style="max-height:180px;">
+                <img ng-if="(!ctrl.candidat.candidatePhoto) && (ctrl.candidat.genderEn=='male')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
+                <img ng-if="(!ctrl.candidat.candidatePhoto) && (ctrl.candidat.genderEn=='female' || ctrl.candidat.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:180px;">
+            </div>
+             <h6>{{ctrl.candidat.candidateNameBnAF}}</h6>
+             <h6> <span> <img class="vote-symbol" src="assets/party_symbols/{{ctrl.candidat.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>
+                  <span><a href="{{ctrl.candidat.candidateVideoLink}}"><img class="vote-symbol" src="images/mp-symbol.jpg" style="margin-top:5px; height:35px;" alt="icon"></a></span></h6>
+           </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+        <div class="row">
+          <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color1">
+                     <i lang="{{$root.locale.lang}}">{{'Education'|translate}}</i>
+                     <ul>
+                         <li>
+                            <span>{{ctrl.candidat.highestDegreeBnAF}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color2">
+                     <i lang="{{$root.locale.lang}}">{{'Occupation'|translate}}</i>
+                     <ul>
+                         <li>
+                            <span>{{ctrl.candidat.professionTypeBnAF}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color3">
+                     <i lang="{{$root.locale.lang}}">{{'Case'|translate}}</i>
+                     <ul>
+                         <li>
+                           <span>Present {{ctrl.candidat.lawPresentAF.length || 0}}</span>&nbsp;&nbsp;
+                           <span>Past {{ctrl.candidat.lawPastAF.length || 0}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col-md-2 col-sm-4 col-xs-12">
+                <div class="info-box b-color3">
+                    <i lang="{{$root.locale.lang}}">{{'Case'|translate}}({{302 | translateNumber}})</i>
+                    <ul>
+                        <li>
+                          <span>Present {{ctrl.candidat.presentCandidate302 || 0}}</span>&nbsp;&nbsp;
+                          <span>Past {{ctrl.candidat.pastCandidate302 || 0}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color4">
+                     <i lang="{{$root.locale.lang}}">{{'Income'|translate}}</i>
+                     <ul>
+                         <li>
+                            <span>BDT-{{ctrl.candidat.totalOwnIncomeAF}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color5">
+                     <i lang="{{$root.locale.lang}}">{{'Asset'|translate}}</i>
+                     <ul>
+                         <li>
+                            <span>BDT-{{(ctrl.candidat.assetMaterialOwnTotalAF+ctrl.candidat.assetImmaterialOwnTotalAF+ctrl.candidat.assetJointSharePartTotalAF+ctrl.candidat.assetMaterialHusbandWifeTotalAF+ctrl.candidat.assetMaterialDependantsTotalAF+ctrl.candidat.assetImmaterialHusbandWifeTotalAF+ctrl.candidat.assetImmaterialDependantsTotalAF)}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color1">
+                     <i lang="{{$root.locale.lang}}">{{'Liabilities'|translate}}</i>
+                     <ul>
+                         <li>
+                            <span>BDT-{{ctrl.candidat.liabilityTotalAmountALIE || 0}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+             <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color2">
+                     <i lang="{{$root.locale.lang}}">{{'Tax'|translate}}</i>
+                     <ul>
+                         <li>
+                        <span>BDT-{{((ctrl.candidat._13ApplicableTaxTR || 0)-(ctrl.candidat._14TaxCommissionTR || 0))}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+              <div class="col-md-2 col-sm-4 col-xs-12">
+                 <div class="info-box b-color3">
+                     <i lang="{{$root.locale.lang}}">{{'Loan'|translate}}</i>
+                     <ul>
+                         <li>
+                           <span>BDT-{{((ctrl.candidat.totalSingleAmountAF || 0)+(ctrl.candidat.totalJointAmoutAF || 0)+(ctrl.candidat.totalDirectorOrChairmenAmoutAF || 0)+(ctrl.candidat.totalDependedantsAmountAF || 0))}}</span>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+            </div>
+          </div>
+         </div>
+  </section>
+  <div class="col-md-12 col-ms-12 col-xs-12">
+    <div class="col-md-2 col-sm-4 col-xs-12">
+       <div class="info-box b-color3">
+        <h3 lang="{{$root.locale.lang}}">{{'Political History'|translate}}</h3>
+       </div>
+   </div>
+    <div class="col-md-2 col-sm-4 col-xs-12" ng-repeat="candidate in candidates">
+     <div class="info-box b-color3">
+         <i>{{(candidate.currentElection.electionDate).slice(0,4)}}</i>
+         <ul>
+           <li>{{candidate.currentElection.currentElectionNameBn}}</li>
+         </ul>
+     </div>
+   </div>
+  </div>
+  <section class="candidate-profile-cont mjh-Commonstyle">
+      <div>
+        <table class="table table-bordered mjh-tableStyle">
+            <tbody lang="{{$root.locale.lang}}">
+              <tr  class="candidate-nameinfo">
+                <td>
+                  {{'I, Candidate name'|translate}} :
+                </td>
+                <td>
+                  <div> {{ctrl.candidat.candidateNameBnAF}}</div><div> {{ctrl.candidat.candidateNameEnAF}}</div>
+                </td>
+              </tr>
+              <tr  class="candidate-nameinfo">
+                <td>
+                  {{'জন্ম তারিখ'}} :
+                </td>
+                <td>
+                  <div> {{ctrl.candidat.candidateDateOfBirthBnAF | translateNumber}}</div>
+                </td>
+              </tr>
+              <tr  class="candidate-nameinfo">
+                <td>
+                  <span class="style2">{{'Father/husband`s name'|translate}} :</span>
+                </td>
+                <td>
+                  <span class="style2"><div>{{ctrl.candidat.fatherHusbandNameBnAF}}</div></span>
+                </td>
+              </tr>
+              <tr  class="candidate-nameinfo">
+                <td>
+                  <span class="style2">{{'Mother`s name'|translate}} :</span>
+                </td>
+                <td>
+                  <span class="style2"><div> {{ctrl.candidat.motherNameBnAF}}</div></span>
+                </td>
+              </tr>
+              <tr  class="candidate-nameinfo">
+                <td>
+                  <span class="style2">{{'Address'|translate}} :</span>
+                </td>
+                <td>
+                  <span class="style2"><div> {{ctrl.candidat.addressBnAF}}</div></span>
+                </td>
+              </tr>
+              <tr  class="candidate-nameinfo">
+                <td>
+                  <span class="style2">{{'From the constituency of'|translate}} :</span><br/>
+                  (<span class="style2">{{'Name and number of the constituency'|translate}}</span>)
+                </td>
+                <td>
+                  <span class="style2"><div> </div></span>
+                </td>
+              </tr>
+            </tbody>
+          </table><!--End-table-->
+          <p lang="{{$root.locale.lang}}">{{'Intend to contest in the parliamentary election as a candidate. I am declaring by sworn that'|translate}},</p>
+          <ul class="affidavit-profile">
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'1. My highest educational qualification'|translate}}-{{ctrl.candidat.highestDegreeBnAF}} -{{'and I enclosed herewith a copy of certificate.'|translate}}
+              </p>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'2. A. I am not accused in the criminal case'|translate}}-{{(ctrl.candidat.criminalCourtStatusAF)}}-{{'Yes : No'|translate}} ? {{'(if applicable put a tick mark)'|translate}}<br/>
+                <span style="text-align: center;display: block;">{{'Or'|translate}}</span>
+                {{'B. I am accused in the criminal case and details are as follows'|translate}} :
+              </p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th width="10%" height="30" align="center">{{'serial number'|translate}}</th>
+                    <th width="29%" align="center">{{'Laws and sections in which case have been filed'|translate}}</th>
+                    <th width="28%" align="center">{{'Name of the court'|translate}} </th>
+                    <th width="16%" align="center">{{'Case Number'|translate}}</th>
+                    <th width="17%" align="center">{{'Present status of the case'|translate}}</th>
+                  </tr>
+                  <tr ng-repeat="crpresent in ctrl.candidat.lawPresentAF">
+                    <td height="34" align="center">{{($index+1)|translate}}</td>
+                    <td align="center"><div>{{crpresent.whichLaw}}</div></td>
+                    <td align="center"><div>{{crpresent.whichCourt}}</div></td>
+                    <td align="center"><div>{{crpresent.courtFileNo}}</div></td>
+                    <td align="center"><div>{{crpresent.currentStatusResult}}</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'3. A. In the past, no criminal case have been filed against me'|translate}}-{{(ctrl.candidat.pastCriminalCourtStatusAF)}}-{{'Yes : No'|translate}} ? {{'(if applicable put a tick mark)'|translate}}<br/>
+                <span style="text-align: center;display: block;">{{'Or'|translate}}</span>
+                {{'B. Criminal case or cases have been filed against me in the past and the results'|translate}} :
+              </p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th width="10%" height="30" align="center">{{'serial number'|translate}}</th>
+                    <th width="29%" align="center">{{'Laws and sections in which case have been filed'|translate}}</th>
+                    <th width="28%" align="center">{{'Name of the court'|translate}} </th>
+                    <th width="16%" align="center">{{'Case Number'|translate}}</th>
+                    <th width="17%" align="center">{{'Results'|translate}} </th>
+                  </tr>
+                  <tr ng-repeat="crpast in ctrl.candidat.lawPastAF">
+                    <td height="34" align="center">{{($index+1)|translate}}</td>
+                    <td align="center"><div>{{crpast.whichLaw}}</div></td>
+                    <td align="center"><div>{{crpast.whichCourt}}</div></td>
+                    <td align="center"><div>{{crpast.courtFileNo}}</div></td>
+                    <td align="center"><div>{{crpast.currentStatusResult}}</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'4. My profession'|translate}}:-{{ctrl.candidat.candidateProfessionBusinessBnAF}}
+              </p>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>{{'5. Dependents’ and my income source/sources'|translate}}:</p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th width="10%" align="center">{{'serial number'|translate}}</th>
+                    <th width="30%" align="center">{{'Source of income'|translate}}</th>
+                    <th width="30%" align="center">{{'Candidate’s annual income from the source'|translate}}</th>
+                    <th width="30%" align="center">{{'Dependent`s income '|translate}}</th>
+                  </tr>
+                  <tr ng-repeat="incomeSrcAf in ctrl.candidat.incomeSourceAF">
+                    <td>{{($index+1)|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='agriculture'" align="left">{{'Agriculture'|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='building_fare'" align="left">{{'House/Apartment/ shop`s or other`s rent'|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='business'" align="left">{{'Business'}}</td>
+                    <td ng-show="incomeSrcAf.type=='shares'" align="left">{{'Share, Savings certificate/Bank deposit'|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='profession'" align="left">{{'Profession (Teaching, Medical practioner, lawyer, consultancy etc.) '|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='service'" align="left">{{'Employment'|translate}}</td>
+                    <td ng-show="incomeSrcAf.type=='others'" align="left">{{'Others ( mention specific source)'|translate}}</td>
+                    <td align="center"><div>{{incomeSrcAf.own|translateNumber}}</div></td>
+                    <td align="center"><div>{{incomeSrcAf.dependents|translateNumber}}</div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'6. Myself, person/persons dependent on me and my wife/husband`s assets and liabilities statement'|translate}}
+              </p>
+              <div>
+                <span style="text-align: center;display: block;margin-bottom: 10px;font-family: arial;font-size: 16px; font-weight: 400;">{{'(A) Intangible assets'|translate}}</span>
+                <table class="table table-bordered">
+                  <tbody>
+                      <tr>
+                        <th width="7%" align="center">{{'serial number'|translate}}</th>
+                        <th width="20%" align="center">{{'Types of assets at the date of submitting the nomination '|translate}}</th>
+                        <th width="20%" align="center">{{'In own name (amount)'|translate}}</th>
+                        <th width="20%" align="center">{{'In own name (price)'|translate}}</th>
+                        <th width="20%" align="center">{{'In wife/husband`s name (amount)'|translate}}</th>
+                        <th width="20%" align="center">{{'In wife/husband`s name (price)'|translate}}</th>
+                        <th width="20%" align="center">{{'In dependents name (amount)'|translate}}</th>
+                        <th width="20%" align="center">{{'In dependents name (price)'|translate}}</th>
+                      </tr>
+                      <tr align="center" ng-repeat="assetMatAf in ctrl.candidat.assetMaterialAF">
+                        <td align="center">{{($index+1)|translate}}</td>
+                        <td  align="center">
+                          <div ng-show="assetMatAf.type == 'cash_taka'"align="left"><span class="style2">{{'Cash taka'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'foreign_currency'" align="left"><span class="style2">{{'Foreign currency(with the name of currency)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'bank_deposit'" align="left"><span class="style2">{{'Money deposited in the bank and financial institutions '|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'all_shares'" align="left"><span class="style2">{{'Bond, letter of credit, Share of a company,which is listed or not listed to the stock exchange(with the quantity and the price at the time of buying)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'dps'" align="left"><span class="style2">{{'Different types of savings certificates and postal certificates or fixed deposits'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'vehicles'" align="left"><span class="style2">{{'Statement of bus, truck, motor car and motor cycle (with the quantity and the price at the time of buying)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'gold_ornaments'" align="left"><span class="style2">{{'Gold and other ornaments which is made by valuable metallic materials and stones (with the quantity and the price at the time of buying)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'electronic_goods'" align="left"><span class="style2">{{'Electronic items(with the quantity and the price at the time of buying)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'furnitures'" align="left"><span class="style2">{{'Furnitures with price'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'others'" align="left"><span class="style2">{{'Others'|translate}}</span></div>
+                        </td>
+                        <td align="center"><div>{{assetMatAf.amountOwn}}</div></td>
+                        <td align="center"><div>{{assetMatAf.priceOwn|translateNumber}}</div></td>
+                        <td align="center"><div>{{assetMatAf.amountHusbandWife}}</div></td>
+                        <td align="center"><div>{{assetMatAf.priceHusbandWife|translateNumber}}</div></td>
+                        <td align="center"><div>{{assetMatAf.amountDependants}}</div></td>
+                        <td align="center"><div>{{assetMatAf.priceDependants|translateNumber}}</div></td>
+                      </tr>
+                  </tbody>
+                </table>
+                <span style="text-align: center;display: block;margin: 0px 0px 15px;font-family: arial;font-size: 16px; font-weight: 400;">{{'(If the dependents are much more in number, information has to be provided in additional pages)'|translate}}</span>
+              </div>
+              <div>
+                <span style="text-align: center;display: block;margin-bottom: 10px;font-family: arial;font-size: 16px; font-weight: 400;"> {{'(B) Tangible assets'|translate}}</span>
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                  <tbody>
+                    <tr>
+                      <th align="center">{{'serial number'|translate}} </th>
+                      <th  align="center">{{'Description of assets'|translate}}</th>
+                      <th align="center">{{'In own name (amount)'|translate}}</th>
+                      <th  align="center">{{'In own name (amount)'|translate}}</th>
+                      <th align="center">{{'In own name (price)'|translate}}</th>
+                      <th  align="center">{{'In wife/husband`s name (amount)'|translate}}</th>
+                      <th  align="center">{{'In wife/husband`s name (price)'|translate}}</th>
+                      <th align="center">{{'In dependent`s name (amount)'|translate}}</th>
+                      <th align="center">{{'In dependent`s name (price)'|translate}}</th>
+                      <th align="center">{{'Joint owner (amount)'|translate}}</th>
+                      <th align="center">{{'Joint owner (price)'|translate}}</th>
+                      <th align="center">{{'Candidate`s share in case of joint ownerships (amount)'|translate}}</th>
+                      <th align="center">{{'Candidate`s share in case of joint ownerships (price)'|translate}}</th>
+                    </tr>
+                    <tr align="center" ng-repeat="assetImatAf in ctrl.candidat.assetImmaterialAF">
+                      <td align="center">{{($index+1)|translate}}</td>
+                      <td align="center">
+                        <div ng-show="assetImatAf.type == 'cultivated_land'">{{'Quantity of agricultural land and the price at time of purchasing'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'noncultivated_land'">{{'Nonagricultural land and the price at the purchasing'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'building'">{{'Number of buildings with location(residential/commercial) and the price at the time of purchasing'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'house_apartment'">{{'Number of house / apartment and the price at the time of purchasing '|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'garden_farm'">{{'Number of tea garden, rubber garden, fisheries farm etc. and the price  at the time of purchasing'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'others'">{{'Others(with detailed description and the initial price)'|translate}}</div>
+                      </td>
+                      <td align="center"><strong>{{assetMatAf.amountOwn|translateNumber}}</strong></td>
+                      <td align="center"><div>{{assetImatAf.amountOwn|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.priceOwn|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.amountHusbandWife|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.priceHusbandWife|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.amountDependants|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.priceDependants|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.amountJointOwnership|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.priceJointOwnership|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.amountJointSharePart|translateNumber}}</div></td>
+                      <td align="center"><div>{{assetImatAf.priceJointSharePart|translateNumber}}</div></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+                <span style="text-align:center;display:block;margin: 15px 0px 12px;font-family: arial;font-size: 16px; font-weight: 400;">{{'(If the dependents are much more in number, information has to be provided in additional pages)'|translate}}</span>
+              </div>
+              <div>
+                <span style="text-align: center;display: block;margin-bottom: 10px;font-family: arial;font-size: 16px; font-weight: 400;"> {{'(C)Liabilities'|translate}} </span>
+                <table class="table table-bordered">
+                  <tbody>
+                    <tr align="center">
+                      <th width="46%" align="center">{{'And describe the nature of the liability'|translate}}</th>
+                      <th width="54%" align="center">{{'Quantity'|translate}}</th>
+                    </tr>
+                    <tr align="center">
+                      <td><strong>{{ctrl.candidat.liabilitiesDetailsBnAF}}</strong></td>
+                      <td><strong>{{ctrl.candidat.liabilitiesAmountAF}}</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <span style="font-family: arial;font-size: 16px; font-weight: 400;">{{'7. A. I have never been elected as member of national parliament (Jatiyo Sangshad)'|translate}}-{{'(if applicable put a tick mark)'|translate}}</span><br/>
+              <span style="text-align: center;display: block;font-family: arial;font-size: 16px; font-weight: 400;">{{'Or'|translate}}</span>
+              <span style="font-family: arial;font-size: 16px; font-weight: 400;">{{'B. I have elected as member of the national parliament previously. Description of my commitment to the voters in previous election and the achievement I have been made ( if applicable) '|translate}}</span>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th>{{'Serial number'|translate}}</th>
+                    <th>{{'Commitments'|translate}}</th>
+                    <th>{{'Achievements'|translate}}</th>
+                  </tr>
+                  <tr ng-repeat=" data in ctrl.candidat.commitmentAndAchievementWhileMpAF">
+                    <td>{{($index+1)|translate}}</td>
+                    <td>{{data.commitment}}</td>
+                    <td>{{data.achievement}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
+            <li lang="{{$root.locale.lang}}">
+              <p>
+                {{'৮. Loan related information ( Unnecessary part could be cut off)'|translate}}<br/>
+                {{'A. I did not take any loan from the bank or financial institutions individually or jointly or any member who is dependent on me as being the chairman, Managing director or director of any bank or financial institutions'|translate}}
+                <span style="text-align: center;display: block;font-family: arial;font-size: 16px; font-weight: 400;">{{'Or'|translate}}</span>
+                {{'B. I have taken the loan from the bank or financial institutions individually or jointly or any member who is dependent on me as being the chairman, Managing director or director of any bank or financial institutions which as follows'|translate}} :
+              </p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th width="36%" align="center"><div align="left">{{'Types of loans'|translate}}</div></th>
+                    <th width="20%" align="center">{{'Name of the bank/Financial institutions'|translate}}</th>
+                    <th width="14%" align="center">{{'Amount of loan'|translate}}</th>
+                    <th width="16%" align="center">{{'Amount of defaulted loan(if any)'|translate}}<br></th>
+                    <th width="14%" align="center">{{'Last date of rescheduling the loan (if any)'|translate}}</th>
+                  </tr>
+                  <tr align="center" ng-repeat="loan in ctrl.candidat.loanAF">
+                    <td ng-show="loan.loanType == 'single'"><div align="left">{{'As an individual'|translate}}</div></td>
+                    <td ng-show="loan.loanType == 'joint'"><div align="left">{{''|translate}}</div></td>
+                    <td ng-show="loan.loanType == 'dependants'"><div align="left">{{'As a dependent person/persons'|translate}}</div></td>
+                    <td ng-show="loan.loanType == 'director_chairman'"><div align="left">{{'As being chairman, managing director or director'|translate}}</div></td>
+                    <td align="center"><strong>{{loan.bankOrganization}}</strong></td>
+                    <td align="center"><strong>{{loan.loanAmount}}</strong></td>
+                    <td align="center"><strong>{{loan.debitedLoanAmount}}</strong></td>
+                    <td align="center"><strong>{{loan.extendedLastDate}}</strong></td>
+                  </tr>
+                <tr ng-show="!ctrl.candidat.loanAF.length">
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                </tbody>
+              </table>
+            </li>
+          </ul><!--Ul-End-->
+          <div>
+            <p lang="{{$root.locale.lang}}">
+              {{'I am saying by sworn that all the information provided in the affidavit and enclosed documents are correct and true according to my belief and knowledge.'|translate}}
+            </p>
+            <p lang="{{$root.locale.lang}}"><span>{{'Date'|translate}}: <!--(yyyy-mm-dd)--> </span><span>2015-03-29</span></p>
+            <p lang="{{$root.locale.lang}}"><span>{{'(Signature/thumb impression of the nominated candidate)'|translate}}</span><span></span></p>
+            <table class="table table-bordered mjh-tableStyle" lang="{{$root.locale.lang}}">
+              <tbody>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'I do hereby Mr. /Mrs.'|translate}} :</td>
+                  <td width="70%">{{ctrl.candidat.candidateNameBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'জন্ম তারিখ'}}:</td>
+                  <td width="70%">{{ctrl.candidat.candidateDateOfBirthBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'Father/husband`s name '|translate}}:</td>
+                  <td width="70%">{{ctrl.candidat.fatherHusbandNameBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'Mothers Name'|translate}}:</td>
+                  <td width="70%">{{ctrl.candidat.motherNameBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'Address'|translate}} :</td>
+                  <td width="70%">{{ctrl.candidat.addressBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'The Mr. / Mrs. (name identifier)'|translate}} :</td>
+                  <td width="70%">{{ctrl.candidat.identifierNameBnAF}}</td>
+                </tr>
+                <tr class="mjh-boderEdit">
+                  <td width="30%">{{'Address'|translate}} :</td>
+                  <td width="70%">{{ctrl.candidat.identifierAddressBnAF}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p lang="{{$root.locale.lang}}">
+              {{'With today being detected'|translate}} <!--(yyyy-mm-dd)-->
+                {{ctrl.candidat.ageAtSubmissionDateAF}}
+              {{'As stated above, upon oath before me on the affidavit has to offer.'|translate}}
+            <p lang="{{$root.locale.lang}}">
+              <span>{{'Date of information'|translate}} : <!--(yyyy-mm-dd)--> </span>
+              <span></span>
+            </p>
+            <p lang="{{$root.locale.lang}}">
+              <span><strong style="font-size: 18px; font-weight: 600; font-family: arial;">{{'Information sources'|translate}} : </strong>
+               {{'According to the Election Commission has prepared this report based on Discounts'|translate}}
+              </span>
+            </p>
+          </div>
+      </div>
+  </section><!--section-end-->
+
+</div>
+<script type="text/javascript">
+    //document.addEventListener("DOMContentLoaded", function(event) {
+        if( document.getElementById("page-loading") ){
+            var element = document.getElementById("page-loading");
+            element.parentNode.removeChild(element);
+        }
+   // });
+</script>

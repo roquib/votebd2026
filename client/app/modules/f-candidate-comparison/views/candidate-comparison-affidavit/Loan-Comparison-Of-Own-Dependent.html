@@ -1,0 +1,69 @@
+<div id="sidebar" class="uitab-menu-eer" lang="{{$root.locale.lang}}">
+    <ul class="list-group mjh-abc">
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Candidate-Comparision-At-A-Glance'>{{'Candidate comparison at a glance'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent'>{{'Asset comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Income-Comparison-Of-Own-Dependent'>{{'Income comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Liability-Comparison-Of-Own-Dependent'>{{'Liability Comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Loan-Comparison-Of-Own-Dependent'>{{'Loan Comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Neat-Asset-Comparison-Of-Own-Dependent'>{{'Neat Asset Comparison of own, dependent'|translate}}</a></li>
+  </ul>
+</div>
+<div class="about-detail-cont">
+  <div class="jumbotron">
+    <h2 lang="{{$root.locale.lang}}">{{'Loan Comparison of own, dependent'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length |
+          translateNumber}}
+          {{'Candidates Analysis Report' | translate}}</h3>
+
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th class="text-center" rowspan="2">{{'Sl.'|translate}}</th>
+              <th class="text-center" rowspan="2">{{'Candidate Name'|translate}}</th>
+              <th class="text-center" colspan="3">{{candidateList.one | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center" colspan="3">{{candidateList.two | translateNumber}} {{'Election'|translate}}</th>
+              <th class="text-center" rowspan="2">{{'Change'|translate}}</th>
+              <th class="text-center" rowspan="2">{{'Ratio'|translate}}</th>
+            </tr>
+            <tr>
+              <th class="text-center">{{'Own'|translate}}</th>
+              <th class="text-center">{{'Dependent'|translate}}</th>
+              <th class="text-center">{{'Total'|translate}}</th>
+              <th class="text-center">{{'Own'|translate}}</th>
+              <th class="text-center">{{'Dependent'|translate}}</th>
+              <th class="text-center">{{'Total'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in candidateList.candidateList">
+              <td>{{($index + 1) | translateNumber}}</td>
+
+              <td>{{row.one.candidateName}}</td>
+
+              <td>{{(row.one.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.loanTotal - row.one.loanTotal) | number:0 | translateNumber}}</td>
+              <td>{{(((row.two.loanTotal - row.one.loanTotal)*100)/row.one.loanTotal) | number:0 | translateNumber}}%</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

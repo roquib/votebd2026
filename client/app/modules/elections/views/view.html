@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.election.title}}
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({id: ctrl.election.id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="" class="btn btn-xs btn-danger" ui-sref="^.delete({id: ctrl.election.id})">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </span>
+  </div>
+  <div class="panel-body">
+    <!--<pre>{{ctrl.election | json}}</pre>-->
+    <label>Name (Bangla) : </label> <span> {{ctrl.election.nameBn}} </span><br/>
+    <label>Name (English) : </label> <span> {{ctrl.election.nameEn}} </span><br/>
+    <label>Detail : </label> <span> {{ctrl.election.detail}} </span><br/>
+    <label>Election History : </label> <span> {{ctrl.election.history}} </span><br/>
+    <label>Election History : </label> <span> {{ctrl.election.seatZone}} </span>
+  </div>
+</div>

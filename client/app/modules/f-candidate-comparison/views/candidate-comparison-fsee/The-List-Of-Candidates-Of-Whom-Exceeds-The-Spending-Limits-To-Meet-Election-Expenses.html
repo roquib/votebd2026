@@ -1,0 +1,40 @@
+<div class="jumbotron">
+  <h2>{{'Estimated Annual expenditures of the same candidate'|translate}}</h2>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-12">      <div class="clearfix">
+    <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length | translateNumber}}
+      {{'Candidates Analysis Report' | translate}}</h3>
+
+    <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+  </div>
+    <div id="exportable">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th class="text-center">{{'Sl.'|translate}}</th>
+          <th class="text-center">{{'Name'|translate}}</th>
+          <th class="text-center">{{candidateList.one | translateNumber}} Election</th>
+          <th class="text-center">{{candidateList.two | translateNumber}} Election</th>
+          <th class="text-center">Change</th>
+          <th class="text-center">Ratio</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in candidateList.candidateList">
+          <td>{{($index +1) | translateNumber}}</td>
+          <td>{{row.one.candidateName}}</td>
+          <td>{{row.one.amount}}</td>
+          <td>{{row.two.amount}}</td>
+
+          <td>{{(row.two.amount - row.one.amount) | translateNumber}}</td>
+          <td>{{(row.one.amount | ratio: row.two.amount) | translateNumber}}%</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+</div>

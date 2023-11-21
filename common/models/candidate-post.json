@@ -1,0 +1,50 @@
+{
+  "name": "candidatePost",
+  "plural": "candidatePosts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "postNameBn": {
+      "type": "string"
+    },
+    "postNameEn": {
+      "type": "string"
+    },
+    "postDescResponsibilityBn": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "election": {
+      "type": "belongsTo",
+      "model": "election",
+      "foreignKey": "electionId"
+    },
+    "electionCandidatePosts": {
+      "type": "hasMany",
+      "model": "electionCandidatePost",
+      "foreignKey": "candidatePostId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

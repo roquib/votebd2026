@@ -1,0 +1,79 @@
+<div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron">
+    <h2 lang="{{$root.locale.lang}}">{{'Cases Analysis'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div id="cases-chart"></div>
+    </div>
+    <!--/.col-xs-6.col-lg-4-->
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{casesData.all.totalCandidate | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','case-analysis')">export excel</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th colspan="2" rowspan="2">{{'Teams'|translate}}</th>
+              <th colspan="2" rowspan="2">{{'The number of candidates'|translate}}</th>
+              <th colspan="2">{{'Current cases'|translate}}</th>
+              <th colspan="2">{{'Past cases'|translate}}</th>
+              <th colspan="2">{{'Both cases'|translate}}</th>
+              <th colspan="2">{{'The current Article 302'|translate}}</th>
+              <th colspan="2">{{'The Past Article 302'|translate}}</th>
+              <th colspan="2">{{'Both cases under section 302'|translate}}</th>
+              <th rowspan="2">{{'Total cases'|translate}}</th>
+            </tr>
+            <tr>
+              <th>{{'Total cases'|translate}}</th>
+              <th>{{'The number of candidates'|translate}}</th>
+              <th>{{'Total cases'|translate}}</th>
+              <th>{{'The number of candidates'|translate}}</th>
+              <th colspan="2">{{'The number of candidates'|translate}}</th>
+              <th>{{'Total cases'|translate}}</th>
+              <th>{{'The number of candidates'|translate}}</th>
+              <th>{{'Total cases'|translate}}</th>
+              <th>{{'The number of candidates'|translate}}</th>
+              <th colspan="2">{{'The number of candidates'|translate}}</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="tr_data in casesData.table">
+              <td colspan="2">{{tr_data.partyName}}</td>
+              <td colspan="2">{{tr_data.data.totalCandidate | translateNumber}}</td>
+              <td>{{tr_data.data.presentCases | translateNumber}}</td>
+              <td>{{tr_data.data.presentCandidate | translateNumber}}</td>
+              <td>{{tr_data.data.pastCases | translateNumber}}</td>
+              <td>{{tr_data.data.pastCandidate | translateNumber}}</td>
+              <td colspan="2">{{tr_data.data.bothCandidate | translateNumber}}</td>
+              <td>{{tr_data.data.presentCases302 | translateNumber}}</td>
+              <td>{{tr_data.data.presentCandidate302 | translateNumber}}</td>
+              <td>{{tr_data.data.pastCases302 | translateNumber}}</td>
+              <td>{{tr_data.data.pastCandidate302 | translateNumber}}</td>
+              <td colspan="2">{{tr_data.data.bothCandidate302 | translateNumber}}</td>
+              <td colspan="2">{{tr_data.data.totalCases | translateNumber}}</td>
+            </tr>
+            <tr>
+              <th colspan="2">{{'Total'|translate}}</th>
+              <th colspan="2">{{casesData.all.totalCandidate | translateNumber}}</th>
+              <th>{{casesData.all.presentCases | translateNumber}}</th>
+              <th>{{casesData.all.presentCandidate | translateNumber}}</th>
+              <th>{{casesData.all.pastCases | translateNumber}}</th>
+              <th>{{casesData.all.pastCandidate | translateNumber}}</th>
+              <th colspan="2">{{casesData.all.bothCandidate | translateNumber}}</th>
+              <th>{{casesData.all.presentCases302 | translateNumber}}</th>
+              <th>{{casesData.all.presentCandidate302 | translateNumber}}</th>
+              <th>{{casesData.all.pastCases302 | translateNumber}}</th>
+              <th>{{casesData.all.pastCandidate302 | translateNumber}}</th>
+              <th colspan="2">{{casesData.all.bothCandidate302 | translateNumber}}</th>
+              <th colspan="2">{{casesData.all.totalCases | translateNumber}}</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div> <!--/.col-xs-6.col-lg-4-->
+  </div><!--/row-->
+</div>

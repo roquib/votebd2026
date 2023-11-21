@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="row">
+    <div class="col-md-12">
+      <form name="form">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <span translate>Election Seat Filter Criteria</span>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-12">
+                <formly-form model="electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <a type="submit" class="btn btn-primary btn-success" ng-click="loadChartData()"
+               ng-disabled="form.$invalid">
+              Find Candidates
+            </a>
+            <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+
+          <span class="pull-right">
+          <span class="btn-group">
+          </span>
+          </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div ng-include="'modules/entry/views/form-entry-statistics.html'"></div>

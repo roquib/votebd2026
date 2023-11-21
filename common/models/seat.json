@@ -1,0 +1,79 @@
+{
+  "name": "seat",
+  "plural": "seats",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "seatNameEn": {
+      "type": "string"
+    },
+    "seatNameBn": {
+      "type": "string"
+    },
+    "enlistedAreaBn": {
+      "type": "string"
+    },
+    "seatInfoBn": {
+      "type": "string"
+    },
+    "geolat": {
+      "type": "string"
+    },
+    "geoLng": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "election": {
+      "type": "belongsTo",
+      "model": "election",
+      "foreignKey": "electionId"
+    },
+    "division": {
+      "type": "belongsTo",
+      "model": "division",
+      "foreignKey": "divisionId"
+    },
+    "district": {
+      "type": "belongsTo",
+      "model": "district",
+      "foreignKey": "districtId"
+    },
+    "upazilla": {
+      "type": "belongsTo",
+      "model": "upazilla",
+      "foreignKey": "upazillaId"
+    },
+    "union": {
+      "type": "belongsTo",
+      "model": "union",
+      "foreignKey": "unionId"
+    },
+    "electionSeats": {
+      "type": "hasMany",
+      "model": "electionSeat",
+      "foreignKey": "seatId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

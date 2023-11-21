@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.currentElection.postNameBn}}
+
+    <span class="pull-right btn-group">
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({currentElectionId: ctrl.currentElection.id})">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.delete({currentElectionId: ctrl.currentElection.id})">
+      <i class="fa fa-trash-o"></i>
+    </a>
+  </span>
+  </div>
+  <div class="panel-body">
+    <!--<pre>{{ctrl.currentElection | json}}</pre>-->
+    <label>Current Election Id : </label> <span> {{ctrl.currentElection.id}} </span><br/>
+    <label>Election Date : </label> <span> {{ctrl.currentElection.electionDate}} </span><br/>
+    <label>Election Name (English) : </label> <span> {{ctrl.currentElection.currentElectionNameEn}} </span><br/>
+    <label>Election Name (Bangla) : </label> <span> {{ctrl.currentElection.currentElectionNameBn}} </span><br/>
+    <label>Total Voter : </label> <span> {{ctrl.currentElection.totalVoter}} </span><br/>
+    <label>Male Voter : </label> <span> {{ctrl.currentElection.maleVoter}} </span><br/>
+    <label>Female Voter : </label> <span> {{ctrl.currentElection.femaleVoter}} </span><br/>
+    <label>isFeatured : </label> <span> {{ctrl.currentElection.isFeatured}} </span><br/>
+    <label>Display Type : </label> <span> {{ctrl.currentElection.displayType}} </span>
+  </div>
+</div>

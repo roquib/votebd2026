@@ -1,0 +1,270 @@
+<!--filed filter-->
+<div class="row">
+  <div class="col-md-12">
+    <form name="form">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 style="margin: 0"><span translate>Election Seat Filter Criteria</span></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit()" >Find Candidates </button>
+          <!--<button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit2()" ng-disabled="form.$invalid">-->
+          <!--Find Seats to add Election Seats-->
+          <!--</button>-->
+          <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+
+          <span class="pull-right">
+          <span class="btn-group">
+          <!--<a ng-disabled="form.$invalid" href="" class="btn btn-xs btn-success" ui-sref="^.add(ctrl.electionSeat)"-->
+            <!--title="Add Candidate">-->
+            <!--<i class="fa fa-plus"></i>-->
+            <!--</a>-->
+          </span>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!--end of filed filter-->
+
+<!--election seat list for certain region-->
+<div id="candidateList" ng-show="candidates.length" style="overflow: hidden">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="cursor: pointer" ng-click="ctrl.showHideCandidateList('candidateList')">
+      <div class="row">
+        <div class="col-md-6">
+          <span ng-show="candidates.length">
+            <h3 style="margin: 0">
+              Candidate List <span style="font-size: 12px;">Total Candidates found: {{candidates.length}}</span>
+            </h3>
+          </span>
+          <span ng-show="!candidates.length">
+            Please select Region from above for showing candidates
+          </span>
+        </div>
+        <div class="col-md-6">
+          <input  ng-model="q" id="search" class="form-control" placeholder="Find candidates by name">
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered" ng-show="candidates.length">
+      <tbody>
+      <tr dir-paginate="candidate in candidates | filter:q | itemsPerPage: ctrl.pageSize"
+          current-page="ctrl.currentPage" pagination-id="electionSeatList">
+        <th>
+          <div class="pull-left">
+            <a class="candidate-name" style="display: block"  ng-click="ctrl.addForms(candidate)">প্রার্থীর
+              নাম : {{candidate.personNameBn}}
+              {{candidate.personNameEn}}  </a>
+            <span>পিতার নাম : {{candidate.fatherNameBn}} - {{candidate.fatherHusbandNameBnAF}}</span> <span>ঠিকানা: {{candidate.addressBnAF}}</span>
+          </div>
+          <div class="pull-right">
+
+            <a class="btn btn-xs btn-success" ng-click="ctrl.addform(candidate.id)" >form</a>
+            <a class="btn btn-xs btn-success" ng-click="ctrl.addNews(candidate.id)" >news</a>
+
+            <a  ng-click = "ctrl.changeCandidateFeatured(candidate)" class="btn btn-xs btn-danger" ng-class="candidate.isFeatured === true ? 'btn-success' : 'btn-danger'" >
+              {{candidate.isFeatured === true ? 'featured' : 'non-featured'}}
+            </a>
+
+
+
+            <button href="" ng-click = "ctrl.changeCandidateIsPublished(candidate)" class="btn btn-xs" ng-class="candidate.isPublished === true ? 'btn-success' : 'btn-danger'" ng-click="ctrl.addForms(candidate)" >
+              {{candidate.isPublished === true ? 'published' : 'draft'}}
+            </button>
+            <a href="" ng-click = "ctrl.changeCandidateResultType(candidate)" class="btn btn-xs" ng-class="candidate.resultType === 'elected' ? 'btn-success' : 'btn-danger'" ng-click="ctrl.addForms(candidate)" >
+              {{candidate.resultType === 'elected' ? 'elected' : 'notelected'}}
+            </a>
+
+            <a href="" class="btn btn-xs btn-success" ng-click="ctrl.addForms(candidate)" >
+              <i class="fa fa-plus"></i>
+            </a>
+            <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({candidateId: candidate.id})">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a  class="btn btn-xs btn-danger" ng-click="ctrl.deleteCandidate(candidate.id, $index)">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="panel-body" ng-show="!candidates.length">
+      <h4 class="list-group-item-heading" translate>
+        There are no candidates!
+      </h4>
+      <p class="list-group-item-text" translate>
+        Click <a href="" ui-sref="^.add({ electionId: election.id })">here</a> to add one!
+      </p>
+    </div>
+  </div>
+  <div class="pagination-cont">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="modules/core/views/dirPagination.tpl.html" pagination-id="electionSeatList"></dir-pagination-controls>
+  </div>
+</div>
+
+<section id="newPersonCandidate">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="overflow: hidden;cursor: pointer" ng-click="ctrl.showHideNewPersonCandidate('newPersonCandidate')">
+      <h3 style="margin: 0"><span translate>Add New Candidate</span></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>New Person<span style="font-size: 12px;font-style: italic;color: #888">(Search person before add new)</span></h3>
+          <form>
+            <label>Enter Person/Candidate Name (Bangla/English)</label> <input type="text" ng-model="ctrl.personName">
+            <br><label>Enter Person/Candidate's Father Name (Bangla/English)</label> <input type="text" ng-model="ctrl.personFatherName">
+            <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.findPerson()"
+                    ng-disabled="form.$invalid">
+              Search Person
+            </button>
+          </form>
+          <ul class="person-add-form">
+            <li ng-repeat="person in persons" class="col-md-6" style="margin: 2px 0; border: 1px solid #ccc;">
+              <div class="row">
+                <div class="col-md-6">
+                  <div><label>ব্যক্তির নাম:</label><span>{{person.personNameBn}}({{person.candidates.length}})</span></div>
+                  <div><label>পিতার নাম:</label><span>{{person.fatherNameBn}}</span></div>
+                </div>
+                <div class="col-md-6">
+                  <a class="btn btn-xs btn-success" style="float: right; margin-top: 10px;" ng-click="ctrl.addMeAsCandidate(person.id)" title="Add as candidate"> <i class="fa fa-plus"></i> </a>
+                </div>
+              </div>
+            </li>
+            <li ng-show="!persons.length && !ctrl.showNewCandidateForm" style="color: red" >
+              No person found, you may <a class="btn btn-xs btn-success"  ng-click="ctrl.showAddPersonEntryform()">add new person</a>
+            </li>
+            <li  style="color: red" ng-show="ctrl.showNewCandidateForm">
+              <a  ng-click="ctrl.showAddPersonEntryform()">Cancel to add new person</a>
+            </li>
+
+            <form ng-show="ctrl.showNewCandidateForm">
+              <li>
+                <lable>Person Name (English):</lable>
+                <input ng-model="ctrl.newPerson.personNameEn"/>
+              </li>
+              <li>
+                <label>Date Of Birth(dd-mm-yyyy):</label>
+                <input  ng-model="gotCandidate.candidateDateOfBirthBnAF" size="50" type="text" placeholder="dd-mm-yyyy" >
+              </li>
+              <li>
+                <lable>Father Name (English):</lable>
+                <input ng-model="ctrl.newPerson.fatherNameEn"/>
+              </li>
+              <li>
+                <lable>Mother Name (English):</lable>
+                <input ng-model="ctrl.newPerson.motherNameEn"/>
+              </li>
+              <li>
+                <lable>Person Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.personNameBn"/>
+              </li>
+              <li>
+                <lable>Father Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.fatherNameBn"/>
+              </li>
+              <li>
+                <lable>Mother Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.motherNameBn"/>
+              </li>
+              <li>
+                <lable>Gender:</lable>
+                <select ng-model="ctrl.newPerson.genderBn" ng-init="ctrl.newPerson.genderBn='পুরুষ'">
+                  <option value="পুরুষ">পুরুষ</option>
+                  <option value="মহিলা">মহিলা</option>
+                </select>
+              </li>
+              <li>
+                <lable>NID:</lable>
+                <input ng-model="ctrl.newPerson.NID"/>
+              </li>
+              <li>
+                <lable>Permanent Address (Bangla):</lable>
+                <textarea ng-model="ctrl.newPerson.permanentAddressBn"></textarea>
+              </li>
+              <li>
+                <lable>Present Address (Bangla):</lable>
+                <textarea ng-model="ctrl.newPerson.currentAddressBn"></textarea>
+              </li>
+              <li>
+                <button ng-click="ctrl.addNewPerson()">Add New Person</button>
+              </li>
+            </form>
+          </ul>
+        </div>
+        <div class="col-md-12" id="candidate-add-and-forms">
+          <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}
+          </alert>
+
+          <h3 ng-show="enableCandidateAdd">New Candidate</h3>
+          <formly-form model="newCandidate" fields="formFieldsForNewCandidate" options="formOptionsForNewCandidate"></formly-form>
+
+          <div ng-show="enableCandidateAdd">
+            <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.addCandidatesubmit()" ng-disabled="form.$invalid">
+              Submit
+            </button>
+            <button type="button" class="btn btn-default" ng-click="formOptionsForNewCandidate.resetModel()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer ">
+    </div>
+  </div>
+</section>
+
+<div class="panel panel-default add-form-tab">
+  <div class="panel-heading">
+    <h3 style="margin: 0"><span translate>Candidate Profile Forms</span> - <strong style="font-weight: normal; margin-right: 10px;font-size: 14px;">(ব্যক্তির নাম: {{gotCandidate.personNameBn}})</strong><strong style="font-weight: normal;font-size: 14px;">(পিতার নাম: {{gotCandidate.fatherNameBn}})</strong> {{gotCandidate.id}}</h3>
+  </div>
+  <div ng-show="gotCandidate" class="got-candidate">
+    <h4 ng-click="ctrl.showHideCandidateGeneralInfoForm()">Edit Candidate General Info <a class="btn btn-xs btn-success" ng-click="ctrl.addFormsShowHide(gotCandidate)">Show/Hide General Form</a></h4>
+    <div class="candidateEditForm" ng-show="formFieldsForGotCandidate">
+      <formly-form model="gotCandidate" fields="formFieldsForGotCandidate" options="formOptionsForGotCandidate"></formly-form>
+
+      <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.saveIsPublished()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="formOptionsForGotCandidate.resetModel()">Reset</button>
+    </div>
+
+    <ul>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusAF" ng-click="ctrl.goToAddEdit('Affidavit',gotCandidate.id)">Add Affidavit</a>-->
+        <a class="btn " ng-click="ctrl.goToAddEdit('Affidavit',gotCandidate.id)" title="Affidavit">{{gotCandidate.statusAF ? 'Edit': 'Add'}} Affidavit</a>
+      </li>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusFSEE" ng-click="ctrl.goToAddEdit('FSEE',gotCandidate.id)">Add  Fund Source of Election Expenses</a>-->
+        <a class="btn"  ng-click="ctrl.goToAddEdit('FSEE',gotCandidate.id)" title="Probable Fund Source of Election Expense">{{gotCandidate.statusFSEE ? 'Edit': 'Add'}} FSEE</a>
+      </li>
+      <li>
+        <!--<a class="btn" ng-show="(!gotCandidate.statusALIE) || (!gotCandidate.hasOwnProperty('statusALIE'))" ng-click="ctrl.goToAddEdit('ALIE',gotCandidate.id)">Add Asset/Liability/Income/Expenses</a>-->
+        <a class="btn"  ng-click="ctrl.goToAddEdit('ALIE',gotCandidate.id)" title="Assets / Liability / Income / Expense">{{gotCandidate.statusALIE ? 'Edit': 'Add'}} ALIE</a>
+      </li>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusEER" ng-click="ctrl.goToAddEdit('EER',gotCandidate.id)">Add Election Expenses Return</a>-->
+        <a class="btn"  ng-click="ctrl.goToAddEdit('EER',gotCandidate.id)" title="Election Expense Return">{{gotCandidate.statusEER ? 'Edit': 'Add'}} EER(22)</a>
+      </li>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusEER" ng-click="ctrl.goToAddEdit('EER',gotCandidate.id)">Add Election Expenses Return</a>-->
+        <a class="btn"  ng-click="ctrl.goToAddEdit('Murdhanno',gotCandidate.id)" title="Election Expense Return Murdhanno">{{gotCandidate.statusEER ? 'Edit': 'Add'}} EER(Murdhanno)</a>
+      </li>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusTR" ng-click="ctrl.goToAddEdit('TR',gotCandidate.id)">Add  Tax Return Return</a>-->
+        <a class="btn" ng-click="ctrl.goToAddEdit('TR',gotCandidate.id)" title="Tax Return">{{gotCandidate.statusTR ? 'Edit': 'Add'}} Tax Return</a>
+      </li>
+    </ul>
+  </div>
+  <section ui-view id="forms-cont" style=" background: rgb(245, 245, 245);">
+  </section>
+</div>

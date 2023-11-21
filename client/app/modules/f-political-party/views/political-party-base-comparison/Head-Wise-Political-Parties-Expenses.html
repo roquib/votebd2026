@@ -1,0 +1,43 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Head wise Political parties Expenses'|translate}}</h2>
+</div>
+<form class="form-horizontal" ng-hide="true">
+  <div class="form-group">
+    <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">{{'Minimum Total Income Amount'|translate}}</label>
+    <div class="col-sm-9" lang="{{$root.locale.lang}}">
+      <input  type="number" class="form-control" ng-model="piDonation.limit">
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+          <tr>
+            <td>{{'Political Party Name'|translate}}</td>
+            <td>{{'Given Donation Total Amount'|translate}}</td>
+            <td>{{'Campain Total Amount'|translate}}</td>
+            <td>{{'Vehicle Total Amount'|translate}}</td>
+            <td>{{'Conference Total Amount'|translate}}</td>
+            <td>{{'Staff Total Amount'|translate}}</td>
+            <td>{{'Other Total Amount'|translate}}</td>
+            <td>{{'Grand Total Amount'|translate}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="row in politicalPartyData">
+            <td>{{row.politicalPartyNameEn}}</td>
+            <td>{{row.givenDonationTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.campainTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.vehicleTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.conferenceTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.staffTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.otherTotalAmount | number:0 | translateNumber}}</td>
+            <td>{{row.grandTotalAmount | number:0 | translateNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

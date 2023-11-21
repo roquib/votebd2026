@@ -1,0 +1,120 @@
+<section id="newPersonCandidate">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="overflow: hidden;cursor: pointer" ng-click="ctrl.showHideNewPersonCandidate('newPersonCandidate')">
+      <h3 style="margin: 0"><span translate>Merge person Id</span></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-6">
+          <form>
+            <label>MergeId With:</label><input type="text" ng-model="ctrl.id"><br>
+            <label>Merge:</label><input type="text" ng-model="ctrl.newId"><br>
+            <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.mergeData()" ng-disabled="form.$invalid">
+              Merge
+            </button>
+          </form>
+        </div>
+        <div class="col-md-12">
+          <h3>Search Person</h3>
+          <form>
+            <label>Enter Person/Candidate Name (Bangla/English)</label> <input type="text" ng-model="ctrl.personName">
+            <br><label>Enter Person/Candidate's Father Name (Bangla/English)</label> <input type="text" ng-model="ctrl.personFatherName">
+            <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.findPerson()"
+                    ng-disabled="form.$invalid">
+              Search Person
+            </button>
+          </form>
+          <ul class="person-add-form">
+            <li ng-repeat="person in persons" class="col-md-6" style="margin: 2px 0; border: 1px solid #ccc;">
+              <div class="row">
+                <div class="col-md-6">
+                  <div><label>ব্যক্তির নাম:</label><span>{{person.personNameBn}}({{person.candidates.length}})</span></div>
+                  <div><label>পিতার নাম:</label><span>{{person.fatherNameBn}}</span></div>
+                  <div><label>আই.ডি:</label><span>{{person.id}}</span></div>
+                </div>
+                <div class="col-md-6">
+                  <a class="btn btn-xs btn-success" style="float: right; margin-top: 10px;" ng-click="ctrl.addMeAsCandidate(person.id)" title="Add as candidate"> <i class="fa fa-plus"></i> </a>
+                </div>
+              </div>
+            </li>
+            <li ng-if="person.length==0" style="color: red" >
+            {{'No person found'}}
+            </li>
+            <li  style="color: red" ng-show="ctrl.showNewCandidateForm">
+              <a  ng-click="ctrl.showAddPersonEntryform()">Cancel to add new person</a>
+            </li>
+
+            <form ng-show="ctrl.showNewCandidateForm">
+              <li>
+                <lable>Person Name (English):</lable>
+                <input ng-model="ctrl.newPerson.personNameEn"/>
+              </li>
+              <li>
+                <label>Date Of Birth(dd-mm-yyyy):</label>
+                <input  ng-model="gotCandidate.candidateDateOfBirthBnAF" size="50" type="text" placeholder="dd-mm-yyyy" >
+              </li>
+              <li>
+                <lable>Father Name (English):</lable>
+                <input ng-model="ctrl.newPerson.fatherNameEn"/>
+              </li>
+              <li>
+                <lable>Mother Name (English):</lable>
+                <input ng-model="ctrl.newPerson.motherNameEn"/>
+              </li>
+              <li>
+                <lable>Person Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.personNameBn"/>
+              </li>
+              <li>
+                <lable>Father Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.fatherNameBn"/>
+              </li>
+              <li>
+                <lable>Mother Name (Bangla):</lable>
+                <input ng-model="ctrl.newPerson.motherNameBn"/>
+              </li>
+              <li>
+                <lable>Gender:</lable>
+                <select ng-model="ctrl.newPerson.genderBn" ng-init="ctrl.newPerson.genderBn='পুরুষ'">
+                  <option value="পুরুষ">পুরুষ</option>
+                  <option value="মহিলা">মহিলা</option>
+                </select>
+              </li>
+              <li>
+                <lable>NID:</lable>
+                <input ng-model="ctrl.newPerson.NID"/>
+              </li>
+              <li>
+                <lable>Permanent Address (Bangla):</lable>
+                <textarea ng-model="ctrl.newPerson.permanentAddressBn"></textarea>
+              </li>
+              <li>
+                <lable>Present Address (Bangla):</lable>
+                <textarea ng-model="ctrl.newPerson.currentAddressBn"></textarea>
+              </li>
+              <li>
+                <button ng-click="ctrl.addNewPerson()">Add New Person</button>
+              </li>
+            </form>
+          </ul>
+        </div>
+        <div class="col-md-12" id="candidate-add-and-forms">
+          <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}
+          </alert>
+
+          <h3 ng-show="enableCandidateAdd">New Candidate</h3>
+          <formly-form model="newCandidate" fields="formFieldsForNewCandidate" options="formOptionsForNewCandidate"></formly-form>
+
+          <div ng-show="enableCandidateAdd">
+            <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.addCandidatesubmit()" ng-disabled="form.$invalid">
+              Submit
+            </button>
+            <button type="button" class="btn btn-default" ng-click="formOptionsForNewCandidate.resetModel()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer ">
+    </div>
+  </div>
+</section>

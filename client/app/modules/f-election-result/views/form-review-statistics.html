@@ -1,0 +1,56 @@
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Candidate Form Review Status'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{electedCandidates.length  | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <td>{{'Sl'|translate}}.</td>
+              <td>{{'Seat'|translate}}</td>
+              <td>{{'Name'|translate}}</td>
+              <td>{{'Affidavit'|translate}}</td>
+              <td>{{'Form20/Dha(FSEE)'|translate}}</td>
+              <td>{{'ALIE'|translate}}</td>
+              <td>{{'Expense (22)/Expense(Murdhanno)'|translate}}</td>
+              <!--<td>{{'Form22/Murdhanno(EER)'|translate}}</td>-->
+              <td>{{'Tax Return'|translate}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in electedCandidates">
+              <td>{{($index+1) | translateNumber}}</td>
+              <td>{{row.seatName}}</td>
+              <td>{{row.candidateName}}</td>
+              <td>{{row.reviewAF}}</td>
+              <td>{{row.reviewFSEE}}</td>
+              <td>{{row.reviewALIE}}</td>
+              <td>{{row.reviewEER}}</td>
+              <td>{{row.reviewTR}}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> {{'Total'|translate}}</td>
+              <!--<td>&nbsp;</td>-->
+              <td>{{electedCandidates.length | translateNumber}}</td>
+              <td>{{grandSum.reviewAF | translateNumber}}</td>
+              <td>{{grandSum.reviewFSEE | translateNumber}}</td>
+              <td>{{grandSum.reviewALIE | translateNumber}}</td>
+              <td>{{grandSum.reviewEER | translateNumber}}</td>
+              <td>{{grandSum.reviewTR | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

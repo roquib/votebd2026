@@ -1,0 +1,1567 @@
+<div class="candidate-search-detail">
+<div ng-include="'modules/f-candidate-search/views/candidateprofile.html'"></div>
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+<!--2ND-PART-FORM-->  <!-- ফর্ম ণ -->
+<form>
+  <header class="affidavit-Header" lang="{{$root.locale.lang}}">
+    <h1>{{'Expense(Murdhanno)'|translate}}</h1>
+    <h2>{{'Election Expense Return'|translate}}</h2>
+  </header>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td colspan="3">
+        <div align="center" class="style2">
+          <p><span class="mjh-TableTitle">{{'Name of candidate'|translate}} : </span>{{ctrl.candidat.personNameBn}} {{ctrl.candidat.personNameEn}}</p>
+          <p><span class="mjh-TableTitle">{{'Father`s Name'|translate}} : </span>{{ctrl.candidat.fatherHusbandNameBnAF}} </p>
+          <p><span class="mjh-TableTitle">{{'Address of candidate'|translate}} : </span>{{ctrl.candidat.addressBnAF}} </p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Name of contesting candidate'|translate}} :</span></td>
+      <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.candidateNameEER}}</span></td>
+    </tr>
+    <tr>
+      <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Address of contesting candidate'|translate}} :</span></td>
+      <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.candidateAddressEER}}</span></td>
+    </tr>
+    <tr>
+      <td align="right"><span class="mjh-TableTitle">{{'Name of election agent'|translate}} :</span></td>
+      <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.agentNameEER}}</span></td>
+    </tr>
+    <tr>
+      <td align="right" style="width: 50%"><span class="mjh-TableTitle">{{'Address of election agent'|translate}} :</span></td>
+      <td colspan="2" style="width: 50%"><span>{{ctrl.candidat.agentAddressEER}}</span></td>
+    </tr>
+    </tbody>
+  </table>
+  <!--(ক) পথসভা -->
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td align="center" colspan="3">
+        <h3>{{'2. advertisement'|translate}} -</h3>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3">
+        <h4>{{'(A) Road rallies'|translate}}:</h4>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>{{'Date and Time'|translate}}</strong></td>
+            <td><strong>{{'Place'|translate}}</strong></td>
+            <td><strong>{{'Mike /Hand Mike costs'|translate}}</strong></td>
+            <td><strong>{{'Other costs'|translate}}</strong></td>
+            <td><strong>{{'Total'|translate}}</strong></td>
+          </tr>
+          <tr ng-repeat="item in ctrl.candidat._1a_murdhanna_campaign_RallyEER">
+            <td>{{item.date1 | date: "yyyy-MM-dd"}}</td>
+            <td>{{item.place2}}</td>
+            <td>{{item.mikeOrHandMikeCostAmt3 |translateNumber}}</td>
+            <td>{{item.otherCostAmt4 |translateNumber}}</td>
+            <td>{{item.totalCostAmt5 |translateNumber}}</td>
+          </tr>
+          <tr>
+            <td colspan="4"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1a_murdhanna_campaign_RallyTotalCostEER | translateNumber}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table><!---EIND-(ক) পথসভা-->
+  <!--(খ) পোস্টার-->
+  <div class="table-responsive mjh-CommonBackendTable" lang="{{$root.locale.lang}}">
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(B) poster'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'The name of the press of printing'|translate}}</strong></td>
+              <td><strong>{{'Design costs'|translate}}</strong></td>
+              <td><strong>{{'Size'|translate}}</strong></td>
+              <td><strong>{{'Numbers'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each poster costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Printing'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Paper'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of printing and paper'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Hanging'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1b_mu_ca_PosterEER">
+              <td colspan="1">{{item.pressName1}}</td>
+              <td colspan="1">{{item.designCost2 | translateNumber}}</td>
+              <td colspan="1">{{item.size3}}</td>
+              <td colspan="1">{{item.quantity4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachPosterCostPrint5a | translateNumber}}</td>
+                    <td colspan="1">{{item.eachPosterCostPage5b | translateNumber}}</td>
+                    <td colspan="1">{{item.eachPosterCostTotal5 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.printAndPageTotalCost6 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity7a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost7b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.hangingPlaceQuantity8a | translateNumber}}</td>
+                    <td colspan="1">{{item.hangingCost8b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost9 | translateNumber}}</td>
+              <td>{{item.allTotalCost10 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="9"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1b_mu_ca_PosterTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(খ) পোস্টার-->
+  <!--(গ) লিফলেট-->
+  <div class="table-responsive mjh-CommonBackendTable" lang="{{$root.locale.lang}}">
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(C) Leaflets'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'The name of the press of printing'|translate}}</strong></td>
+              <td><strong>{{'Design costs'|translate}}</strong></td>
+              <td><strong>{{'Size'|translate}}</strong></td>
+              <td><strong>{{'Numbers'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each leaflet costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Printing'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Paper'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of printing and paper'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Distribution costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1c_mu_ca_LeafletEER">
+              <td colspan="1">{{item.pressName1}}</td>
+              <td colspan="1">{{item.designCost2 | translateNumber}}</td>
+
+              <td colspan="1">{{item.size3}}</td>
+              <td colspan="1">{{item.quantity4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachLeafletCostPrint5a | translateNumber}}</td>
+
+                    <td colspan="1">{{item.eachLeafletCostPage5b | translateNumber}}</td>
+
+                    <td colspan="1">{{item.eachLeafletCostTotal5 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.printAndPageTotalCost6 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity7a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost7b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.distributionPlaceQuantity8a | translateNumber}}</td>
+                    <td colspan="1">{{item.distributionCost8b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{tem.otherCost9 | translateNumber}}</td>
+              <td>{{item.allTotalCost10 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="9"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1c_mu_ca_LeafletTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(গ ) লিফলেট-->
+  <!--(ঘ)হ্যান্ডবিল-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(D) Handbill'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'The name of the press of printing'|translate}}</strong></td>
+              <td><strong>{{'Design costs'|translate}}</strong></td>
+              <td><strong>{{'Size'|translate}}</strong></td>
+              <td><strong>{{'Numbers'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each handbill costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Printing'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Paper'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of printing and paper'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Distribution costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1d_mu_ca_HandbillEER">
+              <td colspan="1">{{item.pressName1}}</td>
+              <td colspan="1">{{item.designCost2 | translateNumber}}</td>
+
+              <td colspan="1">{{item.size3}}</td>
+              <td colspan="1">{{item.quantity4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachHandbillCostPrint5a | translateNumber}}</td>
+
+                    <td colspan="1">{{item.eachHandbillCostPage5b | translateNumber}}</td>
+                    <td colspan="1">{{item.eachHandbillCostTotal5 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.printAndPageTotalCost6 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity7a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost7b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.distributionPlaceQuantity8a | translateNumber}}</td>
+                    <td colspan="1">{{item.distributionCost8b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost9 | translateNumber}}</td>
+              <td>{{item.allTotalCost10 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="9"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1d_mu_ca_HandbillTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঘ)হ্যান্ডবিল-->
+  <!--(ঙ) স্টিকার-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(E) sticker'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'The name of the press of printing'|translate}}</strong></td>
+              <td><strong>{{'Design costs'|translate}}</strong></td>
+              <td><strong>{{'Size'|translate}}</strong></td>
+              <td><strong>{{'Numbers'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each sticker costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Printing'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Paper'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of printing and paper'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Distribution costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1e_mu_ca_StickerEER">
+              <td colspan="1">{{item.pressName1}}</td>
+              <td colspan="1">{{item.designCost2 | translateNumber}}</td>
+              <td colspan="1">{{item.size3}}</td>
+              <td colspan="1">{{item.quantity4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachStickerbillCostPrint5a | translateNumber}}</td>
+                    <td colspan="1">{{item.eachStickerbillCostPage5b | translateNumber}}</td>
+                    <td colspan="1">{{item.eachStickerbillCostTotal5 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.printAndPageTotalCost6 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity7a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost7b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.distributionPlaceQuantity8a | translateNumber}}</td>
+                    <td colspan="1">{{item.distributionCost8b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost9 | translateNumber}}</td>
+              <td>{{item.allTotalCost10 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="9"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1e_mu_ca_StickerTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঙ) স্টিকার-->
+  <!--(চ )(১) ব্যানার-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(F) (1) Banner'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Size of Banner"'|translate}}</strong></td>
+              <td><strong>{{'On account of the amount of each banner cloth'|translate}}</strong></td>
+              <td><strong>{{'The number of banners'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each banner costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Fabrics costs'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Written costs'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of the banner costs'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Hanging on costs'|translate}} </strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1fa_mu_ca_BannerEER">
+              <td colspan="1">{{item.size1}}</td>
+              <td colspan="1">{{item.eachBannerClothSize2 | translateNumber}}</td>
+              <td colspan="1">{{item.bannerQuantity3 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachBannerCostCloth4a | translateNumber}}</td>
+                    <td colspan="1">{{item.eachBannerCostWriting4b | translateNumber}}</td>
+                    <td colspan="1">{{item.eachBannerCostTotal4 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.bannerTotalCost5 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity6a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost6b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.hangingPlaceQuantity7a | translateNumber}}</td>
+                    <td colspan="1">{{item.hangingCost7b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost8 | translateNumber}}</td>
+              <td>{{item.allTotalCost9 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="8"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1fa_mu_ca_BannerTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(চ )(১) ব্যানার-->
+  <!--(চ )(২)ডিজিটাল  ব্যানার-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(F) (2) digital banners'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Size of Banner'|translate}}</strong></td>
+              <td><strong>{{'Numbers'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each banner costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Synthetic'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'clothes'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Print'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total cost of the banner costs'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Hanging on costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1fb_mu_ca_DigitalBannerEER">
+              <td colspan="1">{{item.size1}}</td>
+              <td colspan="1">{{item.quantity2 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.eachBannerCostSynthetic3a | translateNumber}}</td>
+                    <td colspan="1">{{item.eachBannerCostcloth3b | translateNumber}}</td>
+                    <td colspan="1">{{item.eachBannerCostPrint3c | translateNumber}}</td>
+                    <td colspan="1">{{item.eachBannerCostTotal3 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td colspan="1">{{item.bannerTotalCost4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity5a | translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost5b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.hangingPlaceQuantity6a | translateNumber}}</td>
+                    <td colspan="1">{{item.hangingCost6b | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost7 | translateNumber}}</td>
+              <td>{{item.allTotalCost8 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="7"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1fb_mu_ca_DigitalBannerTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(চ )(২)ডিজিটাল  ব্যানার-->
+  <!--(ছ) ঘরোয়া বৈঠক/সভা -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(G) domestic meetings / Meeting'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Date and time of the meeting'|translate}}</strong></td>
+              <td><strong>{{'Organizing meeting space (referred to enter the venue)'|translate}}</strong></td>
+              <td><strong>{{'Rental of venue'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Meeting to organize the manpower / labor cost (enter reference rate)'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Numbers'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Fees per person'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Furniture rental'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Numbers'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Fees per person'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1g_mu_ca_IndoorMeetingEER">
+              <td colspan="1">{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td colspan="1">{{item.meetingPlace2}}</td>
+              <td colspan="1">{{item.venueCost3 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.workerQuantity4a | translateNumber}}</td>
+                    <td colspan="1">{{item.workerUnitCost4b | translateNumber}}</td>
+                    <td colspan="1">{{item.workerTotalCost5 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.furnitureQuantity6a | translateNumber}}</td>
+
+                    <td colspan="1">{{item.furnitureUnitCost6b | translateNumber}}</td>
+                    <td colspan="1">{{item.furnitureTotalCost6 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost7 | translateNumber}}</td>
+              <td>{{item.allTotalCost8 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="6"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1g_mu_ca_IndoorMeetingTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ছ) ঘরোয়া বৈঠক/সভা -->
+  <!--(জ) মাইকিং-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(H) Loudspeakers'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Place'|translate}}</strong></td>
+              <td><strong>{{'The use of loudspeakers transport'|translate}}</strong></td>
+              <td><strong>{{'Rent of the Used transport'|translate}}</strong></td>
+              <td><strong>{{'Person involved in the payment of loudspeakers'|translate}}</strong></td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1h_mu_ca_MikingEER">
+              <td colspan="1">{{item.place1}}</td>
+              <td colspan="1">{{item.mikingVehicle2}}</td>
+              <td colspan="1">{{item.vehicleCost3 |translateNumber}}</td>
+              <td colspan="1">{{item.workerCost4 |translateNumber}}</td>
+              <td>{{item.otherCost5 |translateNumber}}</td>
+              <td>{{item.allTotalCost6 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="5"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1h_mu_ca_MikingTotalCostEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(জ ) মাইকিং-->
+  <!--(ঝ) পোট্রেট -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(I) Portrait'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'size and color of the Portrait'|translate}}</strong></td>
+              <td><strong>{{'Number and the name of the printing company'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Each portrait costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Synthetic / paper / board / cloth'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Printing'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Total cost on account of the Portrait'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Hanging on costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1i_mu_ca_PotraitEER">
+              <td>{{item.sizeAndColor1}}</td>
+              <td>{{item.printQuantityAndPrintingPressName2}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">
+                      <table width="100%" class="table table-bordered">
+                        <tbody>
+                        <tr>
+                          <td>{{item.eachPotraitCostPaper3a |translateNumber}}</td>
+                          <td>{{item.eachPotraitCostPaper3b |translateNumber}}</td>
+                          <td>{{item.eachPotraitCostPaperPrint3c |translateNumber}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.eachPotraitCostPaperTotalCost3 |translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehicleQuantity5a |translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost5b |translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.hangingQuantity6a |translateNumber}}</td>
+                    <td colspan="1">{{item.hangingCost6b |translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost7 |translateNumber}}</td>
+              <td>{{item.allTotalCost8 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="7"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1i_mu_ca_PotraitTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঝ) পোট্রেট-->
+  <!--(ঞ)প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(J) symbol rival candidates'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Symbol of rival candidates'|translate}}</strong></td>
+              <td><strong>{{'The size and type of symbol (key products)'|translate}}</strong></td>
+              <td><strong>{{'Number'|translate}}</strong></td>
+              <td><strong>{{'Picture or symbol on account of the total cost'|translate}} </strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Transport'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="2"><strong>{{'Hanging on costs'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Place (number)'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Costs'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1j_mu_ca_CompetitorSymbolEER">
+              <td>{{item.symbol1}}</td>
+              <td>{{item.sizeAndNature2}}</td>
+              <td colspan="1">{{item.quantity3 |translateNumber}}</td>
+              <td colspan="1">{{item.symbolCost2x3_4 |translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.vehiclePlaceQuantity5a |translateNumber}}</td>
+                    <td colspan="1">{{item.vehicleCost5b |translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.hangingPlaceQuantity6a |translateNumber}}</td>
+                    <td colspan="1">{{item.hanggingCost6b |translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost7 |translateNumber}}</td>
+              <td>{{item.allTotalCost8 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="7"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1j_mu_ca_CompetitorSymbolTotalCostEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঞ)প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক-->
+  <!--(ট) ক্যাম্প/অফিস খরচ -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(K) camp / office expenses'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Campground'|translate}}</strong></td>
+              <td><strong>{{'Date of reference period'|translate}}</strong></td>
+              <td><strong>{{'Size (square feet)'|translate}}</strong></td>
+              <td><strong>{{'Vessels of the camp / camp rental'|translate}}</strong></td>
+              <td><strong>{{'Each costs'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="4"><strong>{{'Furniture rental'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'Used furniture Type'|translate}} </strong></td>
+                    <td colspan="1"><strong>{{'Number'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Each rental'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Total'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total (consumption vouchers to be)'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1k_mu_ca_CampOfficeEER">
+              <td>{{item.campPlace1}}</td>
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td colspan="1">{{item.areaSqft3 |translateNumber}}</td>
+
+              <td colspan="1">{{item.campCost4 |translateNumber}}</td>
+
+              <td colspan="1">{{item.eachCost5 |translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.furnitureType6}}</td>
+                    <td colspan="1">{{item.furnitureQuantity7a |translateNumber}}</td>
+
+                    <td colspan="1">{{item.furniturePricePerUnit7b |translateNumber}}</td>
+
+                    <td colspan="1">{{item.funnitureTotalCost8 |translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.otherCost9 |translateNumber}}</td>
+              <td>{{item.allTotalCost10 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="7"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1k_mu_ca_CampOfficeTotalCostEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ট) ক্যাম্প/অফিস খরচ -->
+  <!--(ঠ) প্রার্থীর অফিস আপায়ন-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(L) the candidate\'s Office hospitality'|translate}}:</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'office space'|translate}}</strong></td>
+              <td><strong>{{'The number of employees in each office'|translate}}</strong></td>
+              <td><strong>{{'The cost per person per day loss'|translate}}</strong></td>
+              <td><strong>{{'Day'|translate}}</strong></td>
+              <td><strong>{{'Total cost'|translate}}</strong></td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total cost'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1l_mu_ca_OfficeHospitalityEER">
+              <td>{{item.officePlace1}}</td>
+              <td>{{item.eachOfficeWorderQuantity2 |translateNumber}}</td>
+              <td colspan="1">{{item.eachPersonHospitalityCost3 |translateNumber}}</td>
+              <td colspan="1">{{item.days4 |translateNumber}}</td>
+              <td colspan="1">{{item.totalCost5 |translateNumber}}</td>
+              <td>{{item.otherCost6 |translateNumber}}</td>
+              <td>{{item.allTotalCost7 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="6"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1l_mu_ca_OfficeHospitalityTotalCostEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঠ) প্রার্থীর অফিস আপায়ন-->
+  <!--(ড) কর্মী বাবদ খরচ -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(M) costs of employee'|translate}}:</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong> {{'Name of working place'|translate}}</strong></td>
+              <td><strong>{{'Name of employee'|translate}}</strong></td>
+              <td><strong>{{'The cost per person per day loss'|translate}}</strong></td>
+              <td><strong>{{'Day'|translate}}</strong></td>
+              <td><strong>{{'Total cost'|translate}}</strong></td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total cost'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1m_mu_ca_WorkerEER">
+              <td>{{item.workPlace1}}</td>
+              <td>{{item.workerQuantity2 |translateNumber}}</td>
+              <td>{{item.eachPersonHospitalityCost3 |translateNumber}}</td>
+              <td>{{item.days4 |translateNumber}}</td>
+              <td>{{item.totalCost5 |translateNumber}}</td>
+              <td>{{item.otherCost6 |translateNumber}}</td>
+              <td>{{item.allTotalCost7 |translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="6"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1m_mu_ca_WorkerTotalCostEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div> <!--END--(ড) কর্মী বাবদ খরচ-->
+  <!--(ঢ) প্রার্থীর যাতায়াত খরচ  -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(N) the candidate\'s travel expenses'|translate}}:</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Date'|translate}}</strong></td>
+              <td><strong>{{'Exit'|translate}}</strong></td>
+              <td><strong>{{'Arrival'|translate}}</strong></td>
+              <td><strong>{{'Distance (km.)'|translate}}</strong></td>
+              <td><strong>{{'Type of vehicle used to travel'|translate}}</strong></td>
+              <td><strong>{{'Other costs'|translate}}</strong></td>
+              <td><strong>{{'Total cost'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1n_mu_ca_CandidateconveyanceEER">
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.departureArea2}}</td>
+              <td colspan="1">{{item.destinationArea3}}</td>
+              <td colspan="1">{{item.distance4 |translateNumber}}</td>
+              <td colspan="1">{{item.vehicleType5}}</td>
+              <td colspan="1">{{item.otherCost6 |translateNumber}}</td>
+              <td>{{item.allTotalCost7}}</td>
+            </tr>
+            <tr>
+              <td colspan="5"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1n_mu_ca_conveyanceTotalCostEER}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(ঢ) প্রার্থীর যাতায়াত খরচ-->
+  <!--অংশ  খ-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>{{'Part B: election expenditure'|translate}}</h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <th><strong>{{'Date of Approval is received or expenditure that is spent on'|translate}}</strong> </th>
+              <th><strong>{{'Nature of expense'|translate}}</strong> </th>
+              <th><strong>{{'Paid amount (a)'|translate}}</strong> </th>
+              <th><strong>{{'Unpaid amount (b)'|translate}}</strong> </th>
+              <th><strong>{{'Sum of (a) & (b)'|translate}}</strong> </th>
+              <th><strong>{{'Payment date'|translate}}</strong> </th>
+              <th><strong>{{'Name & address of payer'|translate}}</strong> </th>
+              <th><strong>{{'Sl no of voucher of paid amounts'|translate}}</strong> </th>
+              <th><strong>{{'Sl no of bills of unpaid amount, if any'|translate}}</strong> </th>
+              <th><strong>{{'Name & address of the person to whom'|translate}}</strong> </th>
+              <th><strong>{{'Bank A/C no, Bank name, cheque no & date'|translate}}</strong> </th>
+            </tr>
+            <tr ng-repeat="item in ctrl.candidat._2ElectionExpenseDetailsEER">
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.typeOfExpenses}}</td>
+              <td>{{item.clearedMoneyAmt |translateNumber}}</td>
+              <td>{{item.unclearedMoneyAmt |translateNumber}}</td>
+              <td>{{item.totalClearUnclearAmt |translateNumber}}</td>
+              <td>{{item.date2 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.payerNameAddress}}</td>
+              <td>{{item.clearedAmtVoucherNo |translateNumber}}</td>
+              <td>{{item.unclearedAmtVoucherNo |translateNumber}}</td>
+              <td>{{item.nameAddressToPay}}</td>
+              <td>{{item.bankNameOthers}}</td>
+            </tr>
+            <tr>
+              <td colspan="10"><strong>{{'Grand Total'|translate}}</strong></td>
+              <td>{{ctrl.candidat._2ElectionExpenseDetailsGrandTotalClearUnclearAmtEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--অংশ  খ-->
+  <!--অংশ গ  -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center">
+          <h3>{{'Part C: The amount of money spent in the total candidates'|translate}} : {{ctrl.candidat._3OpponentTotalExpensesEER |translateNumber}}</h3>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--অংশ-গ-->
+  <!--অংশ ঘ : বিতর্কিত দাবীর হিসব-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'Part D: Account of disputed claim'|translate}}</h4> </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Date of claim'|translate}}</strong> </td>
+              <td><strong>{{'Name & address of claimant'|translate}}</strong> </td>
+              <td><strong>{{'Type of claim'|translate}}</strong> </td>
+              <td><strong>{{'Amount'|translate}}</strong> </td>
+              <td><strong>{{'Reason of the amount being disputed'|translate}}</strong> </td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._4ControversialClaimDetails">
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.nameAddress}}</td>
+              <td>{{item.type}}</td>
+              <td>{{item.claimedAmt |translateNumber}}</td>
+              <td>{{item.causesOfControversy}}</td>
+            </tr>
+            <tr>
+              <td colspan="4"><strong>{{'Grand Total'|translate}}</strong></td>
+              <td>{{ctrl.candidat._4ControversialClaimDetailsTotalClaimedAmtEER |translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--অংশ-ঘ-->
+  <!--অংশ ঙ : দাবিকৃত অপরিশোধিত অর্থের পরিমান -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'Part E: Account of unpaid claim'|translate}}</h4></td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody >
+            <tr>
+              <td><strong>{{'Date of claim'|translate}}</strong> </td>
+              <td><strong>{{'Name & address of claimant'|translate}}</strong> </td>
+              <td><strong>{{'Type of unpaid claim'|translate}}</strong> </td>
+              <td><strong>{{'Unpaid claim amount'|translate}}</strong> </td>
+              <td><strong>{{'Reason of the amount being unpaid'|translate}}</strong> </td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._5_claimedUnpaidDetailsEER">
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.name_address}}</td>
+              <td>{{item.claimed_type}}</td>
+              <td>{{item.claimed_amt | translateNumber}}</td>
+              <td>{{item.causes_of_uncleared}}</td>
+            </tr>
+            <tr>
+              <td colspan="4"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._5_claimedUnpaidDetailsTotalClaimedAmtEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--অংশ-ঙ-->
+  <!--অংশ চ : নির্বাচনী এজেন্ট কর্তৃক গৃহীত অর্থ, ইত্যাদি হিসব -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>{{'Part F: Account of amount received by election agent, etc.'|translate}}</h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody >
+            <tr>
+              <td><strong>{{'Receiving date of taka, security by election agent'|translate}}</strong> </td>
+              <td><strong>{{'Name & address of payer of Taka, etc.'|translate}}</strong> </td>
+              <td><strong>{{'Amount, value of security etc.'|translate}}</strong> </td>
+              <td><strong>{{'Objective of paying/receiving taka, etc.'|translate}}</strong> </td>
+              <td><strong>{{'Bank A/C no, Bank name, cheque no & date'|translate}}</strong> </td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._6_agentTakenMoneyEER">
+              <td>{{item.date1 | date :'EEEE, MMMM d, y'}}</td>
+              <td>{{item.payer_name_address}}</td>
+              <td>{{item.money_amt | translateNumber}}</td>
+              <td>{{item.objective_to_pay}}</td>
+              <td>{{item.bank_name}}</td>
+            </tr>
+            <tr>
+              <td colspan="4"><strong>{{'Grand Total'|translate}}</strong></td><td> {{ctrl.candidat._6_agentTakenMoneyTotalMoneyAmtEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--অংশ-চ-->
+  <!--(ছ) টেলিভিশন অথবা অন্য ইলেক্ট্রনিক মিডিয়ায় প্রচরণা বাবদ খরচ -->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(G) the costs of a television or other electronic media for advertisement'|translate}}</h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Sl'|translate}}</strong></td>
+              <td><strong>{{'The name of the broadcast channel'|translate}}</strong></td>
+              <td><strong>{{'Each channel promotion costs'|translate}}</strong></td>
+              <td><strong>{{'Television costs'|translate}}</strong></td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="3"><strong>{{'Other media'|translate}}</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="1"><strong>{{'The name of the media'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'of the total cost'|translate}}</strong></td>
+                    <td colspan="1"><strong>{{'Amount of the total cost'|translate}}</strong></td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td><strong>{{'The total amount of costs'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1o_mu_ca_TVFridgeEER">
+              <td>{{item.slNo1 | translateNumber}}</td>
+              <td>{{item.channelName2}}</td>
+              <td colspan="1">{{item.eachChannelCost3 | translateNumber}}</td>
+              <td colspan="1">{{item.telecastCost4 | translateNumber}}</td>
+              <td>
+                <table width="100%" class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td colspan="1">{{item.otherMedianame5}}</td>
+                    <td colspan="1">{{item.otherMediaUnitCost6 | translateNumber}}</td>
+                    <td colspan="1">{{item.otherMediaTotalCost7 | translateNumber}}</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td>{{item.allTotalCost8 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="5"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1o_mu_ca_TVFridgeTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END---(ছ)-->
+  <!--(জ) বিবিধ ব্যয়-->
+  <div class="table-responsive mjh-CommonBackendTable">
+    <table class="table table-bordered" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h4>{{'(H) Miscellaneous costs: What are the sectors that will be mentioned in detail how the costs expense'|translate}}: </h4>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong>{{'Sl'|translate}}</strong></td>
+              <td><strong>{{'Sector\'s name'|translate}}</strong></td>
+              <td><strong>{{'of the total cost'|translate}}</strong></td>
+            </tr>
+            <!--Ng-Repeat-->
+            <tr ng-repeat="item in ctrl.candidat._1p_mu_ca_MiscellaneousEER">
+              <td>{{item.slNo1 | translateNumber}}</td>
+              <td>{{item.costAreaName2}}</td>
+              <td>{{item.totalCost3 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><strong>{{'Grand Total'|translate}}</strong></td><td>{{ctrl.candidat._1p_mu_ca_MiscellaneousTotalCostEER | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div><!--END--(জ) বিবিধ ব্যয়-->
+</form>
+</div>

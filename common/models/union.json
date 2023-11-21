@@ -1,0 +1,60 @@
+{
+  "name": "union",
+  "plural": "unions",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nameEn": {
+      "type": "string",
+      "required": true
+    },
+    "nameBn": {
+      "type": "string",
+      "required": true
+    },
+    "descriptionBn": {
+      "type": "string"
+    },
+    "regionType": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "isPublished": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "upazilla": {
+      "type": "belongsTo",
+      "model": "upazilla",
+      "foreignKey": "upazillaId"
+    },
+    "electionSeats": {
+      "type": "hasMany",
+      "model": "electionSeat",
+      "foreignKey": "unionId"
+    },
+    "seats": {
+      "type": "hasMany",
+      "model": "seat",
+      "foreignKey": "unionId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

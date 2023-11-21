@@ -1,0 +1,612 @@
+<table class="table table-bordered">
+  <tbody><tr>
+    <td align="center"><h1>হলফনামা  &nbsp; &nbsp; অংশ/পাতা - (১)</h1></td>
+  </tr>
+  </tbody></table>
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">আমি (প্রার্থীর নাম):</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.candidateNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">জন্ম তারিখ(dd-mm-yyyy):</div></td>
+    <td>
+      <input class="formtextbng extraborder" ng-model="gotCandidate.candidateDateOfBirthBnAF" size="50" type="text" placeholder="dd-mm-yyyy" >
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">পিতা/স্বামীর নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.fatherHusbandNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">মাতার নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.motherNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">ঠিকানা:</div></td>
+    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.addressBnAF" cols="35" rows="2"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">প্রার্থীর ছবি:</div></td>
+    <td>
+      <form name="myForm" enctype="multipart/form-data">
+        <input type="file" ngf-select ng-model="picFile" name="candidatePhoto" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile" />
+        <i ng-show="myForm.candidatePhoto.$error.required">*required</i><br>
+         <i ng-show="myForm.candidatePhoto.$error.maxSize">File too large
+             {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+         <img ng-show="myForm.candidatePhoto.$valid" ngf-thumbnail="picFile" class="thumb">
+         <button ng-click="picFile = null" ng-show="picFile">Remove</button> &nbsp; &nbsp;
+         <br>
+         <button ng-disabled="!myForm.$valid"
+                 ng-click="uploadPic(picFile)">Upload</button>
+         <span class="progress" ng-show="picFile.progress >= 0">
+           <div style="width:{{picFile.progress}}%"
+                ng-bind="picFile.progress + '%'">
+           </div>
+         </span>
+         <span ng-show="picFile.result">Upload Successful</span>
+         <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+       </form>
+       <input type="hidden" ng-model="gotCandidate.candidatePhoto">
+    </td>
+
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td align="right"><div align="right">সীট নং:</div></td>
+    <td align="right"><div align="right">
+      <input class="formtextbng extraborder" ng-model="gotCandidate.seatInfoBnAF" size="30" type="text">
+    </div></td>
+    <!--<td>আসনে&nbsp;&nbsp;-->
+      <!--<select ng-options="item.id as item.postNameBn for item in electionCandidatePosts" ng-model="gotCandidate.electionCandidatePostId"></select>-->
+      <!--পদে নির্বাচনে প্রার্থীরূপে প্রতিদ্বন্দ্বিতা করিতে ইচ্ছুক।</td>-->
+  </tr>
+  <tr>
+    <td>১</td>
+    <td>আমার সবোর্চ্চ শিক্ষাগত যোগ্যতা </td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.highestDegreeBnAF" size="30" type="text"  >
+      &nbsp;&nbsp;<br/>(  উত্তীর্ণ পরিক্ষার নাম )</td>
+  </tr>
+  <tr>
+    <td width="3%"><div align="center">১.১</div></td>
+    <td width="46%"><div align="left">আমার শিক্ষাগত যোগ্যতা  প্রকার  </div></td>
+    <td><div align="left">
+      <select ng-model="gotCandidate.degreeTypeBnAF" >
+        <option value="এসএসসির নীচে">এসএসসির নীচে</option>
+        <option value="এসএসসি">এসএসসি</option>
+        <option value="এইচএসসি">এইচএসসি</option>
+        <option value="স্নাতক" selected="selected">স্নাতক</option>
+        <option value="স্নাতকোত্তর">স্নাতকোত্তর</option>
+        <option value="উল্লেখ নেই">উল্লেখ নেই</option>
+      </select>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>২</td>
+    <td colspan="3"><div align="left">ক. আমি বর্তমানে ফৌজদারী মামলায় অভিযুক্ত নহি
+      <input class="formtextbng extraborder" ng-model="gotCandidate.criminalCourtStatusAF"  type="checkbox" ng-checked="gotCandidate.criminalCourtStatusAF">
+    </div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2"><div align="left">খ. আমি বর্তমানে ফৌজদারী মামলায়অভিযুক্ত এবং উহার বিস্তারিত বিবরণ:</div> <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>  <span ng-click="ctrl.changeCaseListOrder('present_case')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span> </td>
+  </tr>
+  <tr><td  class="tdvalign">
+    <a class="btn btn-success" ng-click="ctrl.add_lawPresentAF()" title="ADD MORE FIELD ">
+      <i class="fa fa-plus"></i></a>&nbsp;
+    <a class="btn btn-danger" ng-click="ctrl.delete_lawPresentAF();" title="DELETE LAST FIELD ">
+      <i class="fa fa-minus"></i></a>
+  </td>
+    <td colspan="2"><table class="table table-bordered">
+      <tbody id="present_cases" ui-sortable ng-model="gotCandidate.lawPresentAF">
+      <tr>
+        <td width="7%" height="30">ক্রমিক নং</td>
+        <td width="32%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
+        <td width="28%" align="center">যে আদালত মামলাটি আমলে নিয়াছে </td>
+        <td width="16%" align="center">মামলা নম্বর</td>
+        <td width="17%" align="center">মামলার বর্তমান অবস্থা</td>
+      </tr>
+      <tr ng-repeat="lpr in gotCandidate.lawPresentAF">
+        <td height="34" align="center" style="cursor: move;">{{($index+1)|translate}}</td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichLaw"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichCourt"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.courtFileNo"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
+      </tr>
+      </tbody>
+    </table>  </td>
+  </tr>
+  <tr>
+    <td>৩</td>
+    <td colspan="3"><div align="left">ক. অতীতে আমার বিরুদ্ধে কোন ফৌজদারী মামলা দায়ের করা হয় নাই
+      <input class="formtextbng extraborder" ng-model="gotCandidate.pastCriminalCourtStatusAF"  type="checkbox" ng-checked="gotCandidate.pastCriminalCourtStatusAF">
+    </div></td>
+  </tr>
+  <tr>
+    <td class="tdvalign"><a class="btn btn-success" ng-click="ctrl.add_lawPastAF()" title="ADD MORE FIELD ">
+      <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_lawPastAF();" title="DELETE LAST FIELD ">
+        <i class="fa fa-minus"></i></a></td>
+    <td colspan="2"><table class="table table-bordered">
+      <tbody id="past_cases" ui-sortable ng-model="gotCandidate.lawPastAF">
+      <tr>
+        <td height="30" colspan="5"><div align="left">খ. অতীতে আমার বিরুদ্ধে কোন ফৌজদারী মামলা বা মামলাসমূহ এবং উহার ফলাফলের বিবরণ:</div>
+          <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>  <span ng-click="ctrl.changeCaseListOrder('past_case')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span>
+        </td>
+      </tr>
+      <tr>
+        <td width="7%" height="30">ক্রমিক নং</td>
+        <td width="32%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
+        <td width="28%" align="center">যে আদালত মামলাটি আমলে নিয়াছে </td>
+        <td width="16%" align="center">মামলা নম্বর</td>
+        <td width="17%" align="center">মামলার ফলাফল </td>
+      </tr>
+
+      <tr ng-repeat="lpr in gotCandidate.lawPastAF">
+        <td height="34" align="center" style="cursor: move;">{{($index+1)|translate}}</td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichLaw"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichCourt"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.courtFileNo"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
+      </tr>
+      </tbody>
+    </table>	</td></tr>
+  <tr>
+    <td>৪</td>
+    <td>আমার ব্যবসা/পেশার বিবরণী:</td>
+    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.candidateProfessionBusinessBnAF" cols="40" rows="2" ></textarea></td>
+  </tr>
+  <tr>
+    <td>৪.১</td>
+    <td><div align="left">আমার ব্যবসা/পেশার ধরনঃ</div></td>
+    <td> <div align="left">
+      <select ng-model="gotCandidate.professionTypeBnAF">
+        <option value="কৃষি">কৃষি</option>
+        <option value="ব্যবসা" selected="selected">ব্যবসা</option>
+        <option value="চাকুরি">চাকুরি</option>
+        <option value="আইনজীবী">আইনজীবী</option>
+        <option value="গৃহিনী">গৃহিনী</option>
+        <option value="উল্লেখ নেই">উল্লেখ নেই</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </div></td>
+  </tr><tr>
+  </tr><tr>
+    <td>৫</td>
+    <td colspan="2"><div align="left">আমার এবং আমার উপর নির্ভরশীলদের আয়ের উৎস/উৎসসমূহ:(ইংরেজীতে)</div></td>
+  </tr>
+  <tr>
+    <td class="tdvalign"><a class="btn btn-success" ng-click="ctrl.add_incomeSourceAF()" title="ADD MORE FIELD ">
+      <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_incomeSourceAF();" title="DELETE LAST FIELD ">
+        <i class="fa fa-minus"></i></a></td>
+    <td colspan="2"><table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td width="5%" align="center">ক্রমিক নং</td>
+        <td width="33%" align="center">আয়ের উৎসের বিবরণ</td>
+        <td width="31%" align="center">এই খাত হইতে প্রার্থীর বাৎসরিক আয়</td>
+        <td width="31%" align="center">প্রার্থীর উপর নির্ভরশীলদের আয়</td>
+      </tr>
+      <tr ng-repeat="income in gotCandidate.incomeSourceAF">
+        <td ng-model="income.order" ng-init="income.order=$index+1">{{income.order|translate}}</td>
+        <td align="right">
+          <select ng-model="income.type">
+            <option value="business">ব্যবসা</option>
+            <option value="agriculture">কৃষিখাত</option>
+            <option value="building_fare">বাড়ি/এপার্টমেন্ট/দোকান বা অন্যান্য ভাড়া</option>
+            <option value="shares">শেয়ার, সঞ্চয়পত্র/ব্যাংক আমানত</option>
+            <option value="profession">পেশা (শিক্ষকতা, চিকিৎসা, আইন, পরামর্শক ইত্যাদি)</option>
+            <option value="service">চাকুরি</option>
+            <option value="others">অন্যান্য(সুনির্দিষ্টভাবে উল্লেখ করিয়া)</option>
+          </select>
+        </td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.own" cols="15"  /></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.dependents" cols="15" /></td>
+      </tr>
+
+      </tbody></table></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
+  </tr>
+  </tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered">
+  <tbody>
+
+  <tr>
+    <td align="center" colspan="2"><h1 class="style1">হলফনামা &nbsp; &nbsp; অংশ/পাতা - (২)</h1></td>
+  </tr>
+
+  <tr>
+    <td colspan="2">৬. আমার, আমার উপর নির্ভশীল ব্যক্তি/ব্যক্তিবর্গের এবং আমার স্ত্রী/স্বামীর পরিসম্পদ এবং দায়ের বিবরণী:</td>
+  </tr>
+
+  <tr>
+    <td align="center" colspan="2">
+      (ক) অস্থাবর সম্পদ <span style="color:#FF0000; font-weight:bold;">|সব অংক ইংরেজীতে দিন|</span>
+      <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>
+      <span ng-click="ctrl.changeCaseListOrder('asset_Material')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="width: 50px" class="tdvalign"><a class="btn btn-success" ng-click="ctrl.add_assetMaterialAF()" title="ADD MORE FIELD ">
+      <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_assetMaterialAF();" title="DELETE LAST FIELD ">
+        <i class="fa fa-minus"></i></a></td>
+    <td>
+      <table class="table table-bordered">
+        <tbody id="asset_Material" ui-sortable ng-model="gotCandidate.assetMaterialAF">
+        <tr>
+          <td  align="center">ক্রমিক নং</td>
+          <td  style="width: 200px" align="center">মনোনয়ন দাখিলের তারিখে সম্পদের ধরণ</td>
+          <td align="center">নিজ নমে(পরিমান)</td>
+          <td  align="center">নিজ নমে(মূল্য)</td>
+          <td  align="center">স্ত্রী/ স্বামীর নামে(পরিমান)</td>
+          <td  align="center">স্ত্রী/ স্বামীর নামে(মূল্য)</td>
+          <td  align="center">নির্ভরশীলদের নামে(পরিমান)</td>
+          <td  align="center">নির্ভরশীলদের নামে(মূল্য)</td>
+        </tr>
+        <tr ng-repeat="assetMat in gotCandidate.assetMaterialAF">
+          <td ng-model="assetMat.order" ng-init="assetMat.order=$index+1">{{assetMat.order|translate}}</td>
+          <td style="width: 200px">
+            <select ng-model="assetMat.type" style="width: 200px">
+              <option value="cash_taka">নগদ টাকার পরিমাণ</option>
+              <option value="foreign_currency">বৈদেশিক মুদ্রার পরিমাণ (মুদ্রার নামসহ)</option>
+              <option value="bank_deposit">ব্যাংক ও আর্থিক প্রতিষঠানে জমাকৃত অর্থের পরিমাণ</option>
+              <option value="all_shares">বন্ড, ঋণপত্র, স্টক একচেঞ্জে তালিকাভুক্ত ও তালিকাভুক্ত  নয় এমন কোম্পানীর শেয়ার (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="dps">পোষ্টাল, সেভিংস সার্টিফিকেটসহ বিভিন্ন ধরণের সঞ্চয় পত্রে বা স্থায়ী আমানতে বিনিয়োগের পরিমাণ</option>
+              <option value="vehicles">বাস, ট্রাক, মটর গাড়ী ও মটর সাইকেল ইত্যাদির বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="gold_ornaments">স্বর্ণ ও অন্যান্য মূল্যবান ধাতু ও পাথর নির্মিত অলংকারাদি (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="electronic_goods">ইলেকট্রনিক সামগ্রীর বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="furnitures">আসবাবপত্রের বিবরণী মূল্যসহ</option>
+              <option value="others">অন্যান্য</option>
+            </select>
+
+          </td>
+          <td><textarea class="formtextbng extraborder" lang="en" ng-model="assetMat.amountOwn" cols="15"  ></textarea></td>
+          <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="assetMat.priceOwn" cols="15" /></td>
+          <td><textarea class="formtextbng extraborder" lang="en" ng-model="assetMat.amountHusbandWife" cols="15" ></textarea></td>
+          <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="assetMat.priceHusbandWife" cols="15" /></td>
+          <td><textarea class="formtextbng extraborder" lang="en" ng-model="assetMat.amountDependants" cols="15" ></textarea></td>
+          <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="assetMat.priceDependants" cols="15" /></td>
+        </tr>
+
+        </tbody></table>
+    </td>
+  </tr>
+
+
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td align="center" colspan="2">
+      (খ) স্থাবর সম্পদ  <span style="color:#FF0000; font-weight:bold;">|সব অংক ইংরেজীতে দিন|</span>
+      <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>
+      <span ng-click="ctrl.changeCaseListOrder('asset_Immaterial')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span>
+    </td>
+  </tr>
+
+  <tr>
+
+    <td>
+      <table class="table table-bordered">
+        <tbody id="asset_Immaterial" ui-sortable ng-model="gotCandidate.assetImmaterialAF">
+        <tr>
+          <td style="width: 15px" align="center">ক্রমিক নং</td>
+          <td  style="width: 150px" align="center">সম্পদের বিবরণ</td>
+          <td style="width: 50px" align="center">নিজ নমে(পরিমান)</td>
+          <td style="width: 50px" align="center">নিজ নমে(মূল্য)</td>
+          <td style="width: 50px" align="center">স্ত্রী/ স্বামীর নামে(পরিমান)</td>
+          <td style="width: 50px" align="center">স্ত্রী/ স্বামীর নামে(মূল্য)</td>
+          <td style="width: 50px" align="center">নির্ভরশীলদের নামে(পরিমান)</td>
+          <td style="width: 50px" align="center">নির্ভরশীলদের নামে(মূল্য)</td>
+          <td style="width: 50px" align="center">যৌথ মালিকানা(পরিমান)</td>
+          <td style="width: 50px" align="center">যৌথ মালিকানা(মূল্য)</td>
+          <td style="width: 50px" align="center">যৌথ মালিকার ক্ষেত্রে প্রার্থীর অংশ(পরিমান)</td>
+          <td style="width: 50px" align="center">যৌথ মালিকার ক্ষেত্রে প্রার্থীর অংশ(মূল্য)</td>
+        </tr>
+        <tr ng-repeat="assetImMat in gotCandidate.assetImmaterialAF">
+          <td style="width: 15px;" ng-model="assetImMat.order" ng-init="assetImMat.order=$index+1">{{assetImMat.order|translate}}</td>
+          <td style="width: 150px;padding: 0;">
+            <select ng-model="assetImMat.type" style="width: 150px">
+              <option value="cultivated_land">কৃষি জমির পরিমাণ ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
+              <option value="noncultivated_land">অকৃষি জমি ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
+              <option value="building">দালান, আবাসিক/বাণিজ্যিক সংখ্যা অবস্থান ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
+              <option value="house_apartment">বাড়ি/ এপার্টমেন্টের সংখ্যা ও অর্জনকালীন সময়ে আর্থিক মূল্য </option>
+              <option value="garden_farm">চা বাগান, রাবার বাগান, মৎস্য খামার ইত্যাদির মূল্য সংখ্যা ও আর্থিক পরিমাণ</option>
+              <option value="others">অন্যান্য(বিস্তারিত বিবরণ বর্তমান মূল্যসহ)</option>
+            </select>
+
+          </td>
+          <td style="width: 50px;padding: 0;">
+            <textarea class="formtextbng extraborder" lang="en" ng-model="assetImMat.amountOwn" cols="15"  ></textarea></td>
+          <td style="width: 50px;padding: 0;">
+            <input type="number" class="formtextbng extraborder" lang="en" ng-model="assetImMat.priceOwn" cols="15" /></td>
+          <td style="width: 50px;padding: 0;">
+            <textarea class="formtextbng extraborder" lang="en" ng-model="assetImMat.amountHusbandWife" cols="15" ></textarea></td>
+          <td style="width: 50px;padding: 0;">
+            <input type="number" class="formtextbng extraborder" lang="en" ng-model="assetImMat.priceHusbandWife" cols="15" /></td>
+          <td style="width: 50px;padding: 0;">
+            <textarea class="formtextbng extraborder" lang="en" ng-model="assetImMat.amountDependants" cols="15" ></textarea></td>
+          <td style="width: 50px;padding: 0;">
+            <input type="number" class="formtextbng extraborder" lang="en" ng-model="assetImMat.priceDependants" cols="15" /></td>
+
+          <td style="width: 50px;padding: 0;">
+            <textarea class="formtextbng extraborder" lang="en" ng-model="assetImMat.amountJointOwnership" cols="15" ></textarea></td>
+          <td style="width: 50px;padding: 0;">
+            <input type="number" class="formtextbng extraborder" lang="en" ng-model="assetImMat.priceJointOwnership" cols="15" /></td>
+          <td style="width: 50px;padding: 0;">
+            <textarea class="formtextbng extraborder" lang="en" ng-model="assetImMat.amountJointSharePart" cols="15" ></textarea></td>
+          <td style="width: 50px;padding: 0;">
+            <input type="number" class="formtextbng extraborder" lang="en" ng-model="assetImMat.priceJointSharePart" cols="15" /></td>
+        </tr>
+
+        </tbody></table>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 50px"  class="tdvalign">
+      <a class="btn btn-success" ng-click="ctrl.add_assetImmaterialAF()" title="ADD MORE FIELD ">
+        <i class="fa fa-plus"></i>
+      </a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_assetImmaterialAF();" title="DELETE LAST FIELD ">
+        <i class="fa fa-minus"></i>
+      </a>
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center" colspan="3"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
+  </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table class="table table-bordered">
+  <tbody><tr>
+    <td align="center"><h1>হলফনামা &nbsp; &nbsp; অংশ/পাতা - (৩)</h1></td>
+  </tr>
+  <tr>
+    <td align="center">(গ) দায়-দেনাসমূহ</td>
+  </tr>
+  </tbody></table>
+
+
+
+<table class="table table-bordered">
+  <tbody><tr>
+    <td width="29%" align="center">&nbsp;</td>
+    <td width="29%" align="center">দায় সমূহের প্রকৃতি ও বর্ণনা</td>
+    <td width="29%" align="center">পরিমান <span style="color:#FF0000; font-weight:bold;">(ইংরেজীতে)</span></td>
+    <td width="42%">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.liabilitiesDetailsBnAF" cols="40" rows="4" ></textarea></td>
+    <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="gotCandidate.liabilitiesAmountAF" cols="40" rows="4" /></td>
+    <td>&nbsp;</td>
+  </tr>
+  </tbody></table>
+
+<table class="table table-bordered">
+  <tbody id="item7">
+  <tr>
+    <td width="4%"><div align="center">৭ </div></td>
+    <td colspan="3"><div align="left">ক. আমি ইতিপুর্বে জাতীয় সংসদের সদস্য নির্বাচিত হই নাই [
+      <input class="formtextbng extraborder" ng-model="gotCandidate.isPastMpAF"  type="checkbox" ng-checked="gotCandidate.isPastMpAF">
+      ] </div></td>
+  </tr>
+  <tr>
+    <td><div align="center"></div></td>
+    <td colspan="3"><div align="left">খ.  আমি ইতিপুর্বে জাতীয় সংসদের সদস্য নির্বাচিত হইয়াছিলাম। নির্বাচনের পুর্বে আমার দ্বারা ভোটারদেরকে প্রদত্ত প্রতিশ্রুতি এবং উহার কি পরিমাণ অর্জন সম্ভব হইয়াছিল তাহার বিবরণ (প্রযোজ্য ক্ষেত্রে)</div></td>
+  </tr>
+  <tr>
+    <td><div align="center"></div></td>
+    <td>
+    <table  class="table table-bordered">
+      <tr>
+        <td>ক্রমিক</td>
+        <td>প্রতিশ্রুতিসমূহ</td>
+        <td>অর্জনসমূহ</td>
+      </tr>
+      <tr  ng-repeat="coac in gotCandidate.commitmentAndAchievementWhileMpAF">
+        <td>{{($index+1) | translate}}</td>
+        <td><textarea  ng-model="coac.commitment" cols="30" rows="2"></textarea></td>
+        <td><textarea  ng-model="coac.achievement" cols="30" rows="2"></textarea></td>
+      </tr>
+      <tr><td colspan="3">
+        <a class="btn btn-success" ng-click="ctrl.add_commitmentAndAchievementWhileMpAF()" title="ADD MORE FIELD ">
+          <i class="fa fa-plus"></i></a>&nbsp;
+        <a class="btn btn-danger" ng-click="ctrl.delete_commitmentAndAchievementWhileMpAF();" title="DELETE LAST FIELD ">
+          <i class="fa fa-minus"></i></a>
+      </td></tr>
+    </table>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td>৮</td>
+    <td><div align="left">ঋণ সংক্রান্ত তথ্যাবলীঃ(অপ্রয়োজনীয় অংশ কাটিয়া দিন)</div></td>
+  </tr>
+  <tr>
+    <td rowspan="3" class="tdvalign">
+      <a class="btn btn-success" ng-click="ctrl.add_loanAF()" title="ADD MORE FIELD ">
+        <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_loanAF();" title="DELETE LAST FIELD ">
+        <i class="fa fa-minus"></i></a>
+
+    </td>
+    <td><div align="left">(ক) আমি একক বা যৌথভাবে বা আমার উপর নির্ভরশীল কোন সদস্য অথবা কোন ব্যাংক
+      বা আর্থিক প্রতিষ্ঠানের চেয়ারম্যান, ম্যানেজিং ডিরেক্টর বা ডিরেক্টর হওয়ার
+      সুবাদে আমি কোন ব্যাংক বা আর্থিক প্রতিষ্ঠান হইতে কোন ঋণ গ্রহণ করি নাই।
+      <input class="formtextbng extraborder" ng-model="gotCandidate.noLoansAF"  type="checkbox" ng-checked="gotCandidate.noLoansAF">
+      &nbsp;&nbsp; (টিক মার্ক দিন) </div></td>
+  </tr>
+  <tr>
+    <td><div align="left">(খ) আমি একক বা যৌথভাবে বা আমার উপর নির্ভরশীল কোন সদস্য অথবা কোন ব্যাংক বা
+      আর্থিক প্রতিষ্ঠানের চেয়ারম্যান, ম্যানেজিং ডিরেক্টর বা ডিরেক্টর হওয়ার
+      সুবাদে ঐ সব ব্যাংক বা আর্থিক প্রতিষ্ঠান হইতে
+      গৃহীত ঋণের পরিমাণ নিম্নে উল্লেখ করিলামঃ </div></td>
+  </tr>
+  <tr><td>
+    <table class="table table-bordered">
+      <tbody><tr>
+        <td width="40%" align="center">ঋণের ধরণ </td>
+        <td width="16%" align="center">ব্যাংক/প্রতিষ্ঠানের নাম</td>
+        <td width="14%" align="center">ঋণের পরিমান<span style="color:#FF0000; font-weight:bold;">(ইংরেজীতে)</span></td>
+        <td width="16%" align="center">খোলাপী ঋণের পরিমাণ (যদি থাকে)<br>
+          <span style="color:#FF0000; font-weight:bold;">(ইংরেজীতে)</span></td>
+        <td width="14%" align="center">পূনঃ তফসিলী করণ করা হইয়া থাকিলে উহার সর্বশেষ তারিখ</td>
+      </tr>
+      <tr ng-repeat="laon in gotCandidate.loanAF">
+        <td>
+          <select ng-model="laon.loanType">
+            <option value="single">একক</option>
+            <option value="joint">যৌথ</option>
+            <option value="dependants">নির্ভরশীল ব্যক্তি বা ব্যক্তিবর্গ</option>
+            <option value="director_chairman">কোন প্রদিষ্ঠানের চেয়ারম্যান, ম্যানেজিং ডিরেক্টর বা ডিরেক্টর হওয়ার সুবাদে</option>
+          </select>
+        </td>
+        <td><textarea class="formtextbng extraborder" ng-model="laon.bankOrganization" cols="20" rows="2" ></textarea></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="laon.loanAmount"   cols="15"/></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="laon.debitedLoanAmount"   cols="15"/></td>
+        <td><textarea class="formtextbng extraborder" ng-model="laon.extendedLastDate"   cols="15" class="embed"></textarea></td>
+      </tr>
+
+      </tbody></table>  </td></tr>
+  </tbody></table>
+
+
+
+<table class="table table-bordered">
+  <tbody><tr>
+    <td>
+      আমি শপথপূর্বক আরও ঘোষণা করিতেছি যে, এই হলফনামায় প্রদত্ত যাবতীয় তথ্য্ এবং এতদসংগে দাখিলকৃত সকল দলিল দস্তাবেজ আমার  জ্ঞান ও বিশ্বাসমতে সম্পূর্ণ সত্য ও নির্ভূল।</td>
+  </tr>
+  </tbody></table>
+
+
+
+<table class="table table-bordered">
+  <tbody><tr>
+    <td width="27%">তারিখঃ (yyyy-mm-dd)</td>
+    <td width="73%" align="left"> <span class="ui-datepicker-wrap">
+      <input class="formtextbng extraborder" type="date" ng-model="gotCandidate.submitDateAF">
+    </span> &nbsp;&nbsp;| ইংরেজীতে |
+    </td>
+  </tr>
+  <tr>
+    <td>মনোনীত প্রার্থীর স্বাক্ষর / টিপসহি</td>
+    <td align="left"><input class="formtextbng extraborder" type="file" name="sigperson" disabled="disabled"></td>
+  </tr>
+  <tr>
+    <td>এতদদ্বারা জনাব / বেগম ( প্রার্থীর নাম )</td>
+    <td align="left"><input class="formtextbng extraborder" type="text" size="50" readonly="readonly" ng-model="gotCandidate.candidateNameBnAF" ></td>
+  </tr>
+  <tr>
+    <td>পিতা / স্বামীর নাম</td>
+    <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.fatherHusbandNameBnAF"  readonly="readonly" ></td>
+  </tr>
+  <tr>
+    <td>মাতার নাম</td>
+    <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.motherNameBnAF" readonly="readonly" ></td>
+  </tr>
+  <tr>
+    <td>ঠিকানা : </td>
+    <td align="left"> <textarea class="formtextbng extraborder" ng-model="gotCandidate.addressBnAF" cols="55" rows="3"  readonly="readonly">।</textarea></td>
+  </tr>
+  <tr>
+    <td>যিনি জনাব / বেগম ( সাক্তকারীর নাম )</td>
+    <td align="left"><input class="formtextbng extraborder" ng-model="gotCandidate.identifierNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>ঠিকানা: </td>
+    <td align="left"><textarea class="formtextbng extraborder" ng-model="gotCandidate.identifierAddressBnAF" cols="55" rows="3" >চেম্বারঃ রুম নং-২১৫, আইনজীবী এনেক্স ভবন ১, কোর্ট হিল, চট্টগ্রাম।</textarea></td>
+  </tr>
+  <tr>
+    <td>এর মাধ্যমে সনাক্তকৃত হইয়া অদ্য তারিখঃ (yyyy-mm-dd )</td>
+    <td align="left"><input class="formtextbng extraborder" lang="en" type="text" size="20" ng-model="gotCandidate.ageAtSubmissionDateAF"  >
+      &nbsp;&nbsp;বৎসর তারিখে আমার সম্মুখে শপথপূর্বক উপরে বর্নিত হলফনামা প্রদান করিয়াছেন। </td>
+  </tr>
+  <tr>
+    <td>তারিখঃ (yyyy-mm-dd )</td>
+    <td align="left"><input class="formtextbng extraborder" lang="en" type="text" size="20" ng-model="gotCandidate.lastDateAF"  ></td>
+  </tr>
+  <tr>
+    <td>ম্যাজিস্ট্রেট /নোটারি পাবলিকের স্বাক্ষর</td>
+    <td align="left"><input class="formtextbng extraborder" type="file" ng-model="gotCandidate.signatureNotariPublicAF"  disabled="disabled"></td>
+  </tr>
+
+  <tr>
+    <td><strong >পিডিএফ ফাইল নাম</strong></td>
+    <td><input lang="en" class="formtextbng extraborder" ng-model="gotCandidate.pdfFilePathAF" type="text"  ></td>
+  </tr>
+
+  <tr>
+    <td ><strong >মন্তব্য</strong></td>
+    <td>
+      <textarea class="formtextbng extraborder" lang="en" ng-model="gotCandidate.reviewAF" type="text"  ></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="3"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
+  </tr>
+  </tbody></table>

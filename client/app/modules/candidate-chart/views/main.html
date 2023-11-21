@@ -1,0 +1,34 @@
+<div class="candidate-comparison-cont">
+    <div class="candidate-comparison-title">
+      <div class="container about-us-cont">
+        <div class="ze-title">
+          <h2> {{'See The Graph of Different Election' | translate}} </h2>
+          <p></p>
+          <!--<h3 class="header">{{'Probable Fund Source for Election Expense Based Analysis'|translate}}</h3>-->
+        </div>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="candidate-search-form">
+          <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+          <div class="control-btn" style="overflow: hidden">
+            <div class="col-md-6">
+              <div ng-disabled="form.$invalid" class="btn btn-search" ng-click="ctrl.submit(ctrl.electionSeat)">
+                {{'SEARCH'|translate}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-default btnreset" ng-click="ctrl.formOptions.resetModel()">{{'Reset'|translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div><!--/column-->
+      <div class="col-sm-9">
+        <div ui-view>
+        </div>
+      </div><!--/column-->
+    </div><!--/row-->
+  </div>
+</div>

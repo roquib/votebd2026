@@ -1,0 +1,930 @@
+<div class="candidate-search-detail">
+<div ng-include="'modules/f-candidate-search/views/candidateprofile.html'"></div>
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+<div class="panel-heading affidavit-Header" lang="{{$root.locale.lang}}">
+  <h2>{{'Income Tax'|translate}}</h2>
+</div>
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td align="center"><span class="mjh-boldstyle">{{'Income Tax Forms'|translate}}</span> <span class="mjh-boldstyle">{{'Part -1'|translate}}</span></td>
+    </tr>
+    <tr>
+      <!--<td class="mjh-TableTitle">{{'Candidate Name'|translate}}: <span ng-show="$root.locale.lang == 'bn_BD'">{{ctrl.candidat.personNameBn}}</span><span ng-show="$root.locale.lang != 'bn_BD'">{{ctrl.candidat.personNameEn}}</span> &nbsp;&nbsp;</td>-->
+      <td class="mjh-TableTitle">{{'Candidate Name'|translate}} : {{ctrl.candidat.taxPayerNameTR}}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" border="0" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td colspan="3">
+        <span ng-class="ctrl.candidat.taxfillTypeTR=='self'?'selected-fill':'noselected-fill'" >{{'self'|translate}}</span>
+        <span ng-class="ctrl.candidat.taxfillTypeTR=='all'?'selected-fill':'noselected-fill'" >{{'all'|translate}}</span>
+        <span ng-class="ctrl.candidat.taxfillTypeTR=='normal'?'selected-fill':'noselected-fill'" >{{'normal'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td width="3%"><div align="center">{{'1'|translate}}</div></td>
+      <td width="42%" class="mjh-TableTitle">{{'Name of the Assessee'|translate}}</td>
+      <td width="55%"><span>{{ctrl.candidat.taxPayerNameTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'2'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'National ID No (if any)'|translate}} </td>
+      <td><span>{{ctrl.candidat.NIDNumberTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'3'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'UTIN (if any)'|translate}}</td>
+      <td><span>{{ctrl.candidat.UTIN_TR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'4'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'TIN'|translate}}</td>
+      <td><span>{{ctrl.candidat.TIN_TR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'5'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'(a) Circle'|translate}}</td>
+      <td><span>{{ctrl.candidat.circleTR}}</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="mjh-TableTitle">{{'(b) Taxes Zone'|translate}}</td>
+      <td><span>{{ctrl.candidat.taxAreaTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'6'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Assessment Year'|translate}}</td>
+      <td><span>{{ctrl.candidat.taxYearEnTR | date:'dd-MM-yyyy'}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'7'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Residential Status: Resident'|translate}}</td>
+      <td>
+        <span ng-class="ctrl.candidat.localityTR=='local'?'selected-fill':'noselected-fill'" >{{'local'|translate}}</span>
+        <span ng-class="ctrl.candidat.localityTR=='non_local'?'selected-fill':'noselected-fill'" >{{'non_local'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'8'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Status'|translate}}</td>
+      <td>
+        <span ng-show="ctrl.candidat.dignityTR.person">{{'person'|translate}},</span>
+        <span ng-show="ctrl.candidat.dignityTR.farm">{{'farm'|translate}},</span>
+        <span ng-show="ctrl.candidat.dignityTR.person_org">{{'person_org'|translate}},</span>
+        <span ng-show="ctrl.candidat.dignityTR.hindu">{{'hindu'|translate}}</span>
+      </td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'9'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Name of the employer/business (where applicable)'|translate}}</td>
+      <td><span>{{ctrl.candidat.businessNameTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'10'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Wife/Husband\'s Name (if assessee, please mention TIN)'|translate}}</td>
+      <td><span>{{ctrl.candidat.husbandSpouseNameTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'11'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Father\'s Name'|translate}} :</td>
+      <td><span>{{ctrl.candidat.fatherNameTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'12'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Mother\'s Name'|translate}}  :</td>
+      <td><span>{{ctrl.candidat.motherNameTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'13'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Date of Birth (in case of individual)'|translate}}</td>
+      <td><span>{{ctrl.candidat.dobTR | date:'dd-MM-yyyy'}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'14'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Address (a) Present'|translate}}</td>
+      <td><span>{{ctrl.candidat.presentAddressTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td class="mjh-TableTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'(b) Permanent'|translate}}</td>
+      <td><span>{{ctrl.candidat.permanentAddressTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'15'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'Telephone: Office/Business'|translate}}</td>
+      <td><span>{{ctrl.candidat.phoneOfficeTR}}</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td class="mjh-TableTitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{'Residential'|translate}}</td>
+      <td><span>{{ctrl.candidat.phoneResidenceTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'16'|translate}}</div></td>
+      <td class="mjh-TableTitle">{{'VAT Registration Number (if any)'|translate}}</td>
+      <td><span>{{ctrl.candidat.VATNumberTR | translateNumber}}</span></td>
+    </tr>
+  </tbody>
+</table><!--PART-1-END-->
+
+<!--PART-2-->
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td align="center"><span class="mjh-boldstyle">{{'Part - 2 of the Income Tax Form'|translate}}</span></td>
+    </tr>
+    <!--<tr>-->
+      <!--<td class="mjh-TableTitle">{{'Candidate Name'|translate}} {{ctrl.candidat.personId}}:</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td class="mjh-TableTitle">{{'Candidate Name'|translate}} : <span ng-show="$root.locale.lang == 'bn_BD'">{{ctrl.candidat.personNameBn}}</span><span ng-show="$root.locale.lang != 'bn_BD'">{{ctrl.candidat.personNameEn}}</span></td>-->
+    <!--</tr>-->
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td class="mjh-TableTitle">{{ctrl.candidat.endDateTR | date:'dd-MM-yyyy'}} {{'Statement of income during the income year ended on'|translate}}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td width="2%"><div align="center">{{'Serial No.'|translate}}</div></td>
+      <td width="59%" class="mjh-TableTitle">{{'Heads of Income'|translate}}</td>
+      <td width="39%" class="mjh-TableTitle">{{'Amount in Taka'|translate}}</td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'1'|translate}}</div></td>
+      <td>{{'Salaries : u/s 21 (as per schedule 1)'|translate}}</td>
+      <td><span>{{ctrl.candidat._1SalaryTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'2'|translate}}</div></td>
+      <td>{{'Interest on Securities : u/s 22'|translate}}</td>
+      <td><span>{{ctrl.candidat._2SecurityTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'3'|translate}}</div></td>
+      <td>{{'Income from house property : u/s 24 (as per schedule 2)'|translate}}</td>
+      <td><span>{{ctrl.candidat._3HouseIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'4'|translate}}</div></td>
+      <td>{{'Agricultural income : u/s 26'|translate}}</td>
+      <td><span>{{ctrl.candidat._4AgriIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'5'|translate}}</div></td>
+      <td>{{'Income from business or profession : u/s 28'|translate}}</td>
+      <td><span>{{ctrl.candidat._5BusinessIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'6'|translate}}</div></td>
+      <td>{{'Share of profit in a firm'|translate}} :</td>
+      <td><span>{{ctrl.candidat._6FirmIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'7'|translate}}</div></td>
+      <td>{{'Income of the spouse or minor child as applicable : u/s 43(4)'|translate}}</td>
+      <td><span>{{ctrl.candidat._7HusbandWifeSonIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'8'|translate}}</div></td>
+      <td>{{'Capital Gains : u/s 31'|translate}}</td>
+      <td><span>{{ctrl.candidat._8CapitalProfitTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'9'|translate}}</div></td>
+      <td>{{'Income from other source : u/s 33'|translate}}</td>
+      <td><span>{{ctrl.candidat._9OtherSourceIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'10'|translate}}</div></td>
+      <td>{{'Total (serial no. 1 to 9)'|translate}}</td>
+      <td><span>{{ctrl.candidat._10_1to9TotalTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'11'|translate}}</div></td>
+      <td> {{'Foreign Income'|translate}} :</td>
+      <td><span>{{ctrl.candidat._11ForeignIncomeTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'12'|translate}}</div></td>
+      <td>{{'Total income (serial no. 10 and 11)'|translate}}</td>
+      <td><span>0{{ctrl.candidat._12_10to11_totalTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'13'|translate}}</div></td>
+      <td>{{'Tax leviable on total income'|translate}}</td>
+      <td><span>{{ctrl.candidat._13ApplicableTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'14'|translate}}</div></td>
+      <td>{{'Tax rebate: u/s 44(2)(b)(as per schedule 3)'|translate}}</td>
+      <td><span>{{ctrl.candidat._14TaxCommissionTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'15'|translate}}</div></td>
+      <td>{{'Tax payable (difference between serial no. 13 and 14)'|translate}}</td>
+      <td><span>{{ctrl.candidat._15_13_sub_14_givenTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'16'|translate}}</div></td>
+      <td colspan="2">{{'Tax Payments'|translate}} :</td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="right">{{'(a) Tax deducted/collected at source (Please attach supporting documents/statement)'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_aReducedTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="right">{{'(b) Advance tax u/s 64/68 (Please attach challan )'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_bAdvancedTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="right">{{'(c) Tax paid on the basis of this return (u/s 74) (Please attach challan/pay order/bank draft/cheque)'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_cGivenTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="right">{{'(d) Adjustment of Tax Refund (if any)'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_dBalanceTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td align="right"></td>
+      <td align="right">{{'Total of (a), (b), (c) and (d)'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_abcdTotalTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'17'|translate}}</div></td>
+      <td>{{'Tax exempted and Tax free income'|translate}}</td>
+      <td><span>{{ctrl.candidat._18_honorTaxTR | translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'18'|translate}}</div></td>
+      <td>{{'Income tax paid in the last assessment year'|translate}}</td>
+      <td><span>{{ctrl.candidat._19_previousTaxTR | translateNumber}}</span></td>
+    </tr>
+  </tbody>
+</table><!--PART-2-END-->
+
+<!--PART-3-->
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td colspan="4" align="center"><span class="mjh-boldstyle">{{'Income Tax Form: Part 3'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" class="mjh-TableTitle">{{'Candidate Name'|translate}} : {{ctrl.candidat.taxPayerNameTR}}
+      </td>
+    </tr>
+    <tr><td colspan="4" align="center" class="mjh-TableTitle">{{'Schedule with details of income'|translate}}</td></tr>
+    <tr>
+      <td colspan="4" align="center" class="mjh-TableTitle">{{'Name of the Assessee'|translate}} :
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" class="mjh-TableTitle">{{'TIN'|translate}} :
+      </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center"><span>{{'Schedule-1 (Salaries)'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td class="mjh-TableTitle">{{'Pay & Allowance'|translate}}</td>
+      <td class="mjh-TableTitle">{{'Amount of Income (Tk.)'|translate}}</td>
+      <td class="mjh-TableTitle">{{'Amount of exempted income (Tk.)'|translate}}</td>
+      <td width="195" class="mjh-TableTitle">{{'Net taxable income (Tk.)'|translate}}</td>
+    </tr>
+    <tr>
+      <td>{{'Basic pay'|translate}}</td>
+      <td><span>{{ctrl.candidat._1BasicSalaryTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1BasicSalaryTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1BasicSalaryTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Special pay'|translate}}</td>
+      <td><span>{{ctrl.candidat._1SpecialSalaryTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1SpecialSalaryTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>0{{ctrl.candidat._1SpecialSalaryTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Dearness allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1CommissionTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1CommissionTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1CommissionTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Conveyance allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1TransportTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1TransportTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1TransportTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'House rent allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1HouseRentTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1HouseRentTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1HouseRentTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Medical allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1TreatmentTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1TreatmentTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1TreatmentTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Servant allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1BoyTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1BoyTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1BoyTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Leave allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1LeaveTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1LeaveTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1LeaveTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Honorarium / Reward/ Fee'|translate}}</td>
+      <td><span>{{ctrl.candidat._1HonurTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1HonurTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1HonurTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Overtime allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._1OvertimeTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1OvertimeTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1OvertimeTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Bonus / Ex-gratia'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1BonusTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1BonusTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1BonusTR.income|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Other allowances'|translate}}</td>
+      <td><span>{{ctrl.candidat._1OtherAllowanceTR.income|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1OtherAllowanceTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1OtherAllowanceTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Employer’s contribution to Recognized Provident Fund'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1FutureTollTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1FutureTollTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1FutureTollTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Interest accrued on Recognized Provident Fund'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1FutureInterestTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1FutureInterestTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1FutureInterestTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Deemed income for transport facility'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1VehicleTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1VehicleTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1VehicleTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Deemed income for free furnished/unfurnished accommodation'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1FreeHouseTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1FreeHouseTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1FreeHouseTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Other, if any (give detail)'|translate}}</td>
+      <td width="206"><span>{{ctrl.candidat._1OtherOptionalIncomeTR.income|translateNumber}}</span></td>
+      <td width="172"><span>{{ctrl.candidat._1OtherOptionalIncomeTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1OtherOptionalIncomeTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td width="317">{{'Net taxable income from salary'|translate}}</td>
+      <td width="206"><span>0{{ctrl.candidat._1TotalnetSalaryIncomeTR.income|translateNumber}}</span></td>
+      <td width="172"><span>0{{ctrl.candidat._1TotalnetSalaryIncomeTR.reduceIncome|translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._1TotalnetSalaryIncomeTR.netIncome|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center"><span class="mjh-boldstyle">{{'Schedule-2 (House Property income)'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td class="mjh-TableTitle">{{'Location and description of property'|translate}}</td>
+      <td class="mjh-TableTitle">{{'Particulars'|translate}}</td>
+      <td class="mjh-TableTitle">{{'Taka'|translate}}</td>
+      <td class="mjh-TableTitle">{{'Taka'|translate}}</td>
+    </tr>
+    <tr>
+      <td rowspan="11">&nbsp;</td>
+      <td colspan="2">{{'1. Annual rental income'|translate}}</td>
+      <td width="195"><span>{{ctrl.candidat._2_1AnnualIncomeTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="3">{{'2. Claimed Expenses'|translate}}:</td>
+    </tr>
+    <tr>
+      <td>{{'Land Revenue'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2a_landTR|translateNumber}}</span></td>
+      <td rowspan="7">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>{{'Insurance Premium'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2b_insuranceTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Interest on Loan/Mortgage/Capital Charge'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2c_loanTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Municipal or Local Tax'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2d_localTaxTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Repair, Collection, etc.'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2e_modificationTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Vacancy Allowance'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2f_emptyHouseTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'Other, if any'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_2g_otherHouseTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="1" align="center"><div align="right">{{'Total'|translate}}</div></td>
+      <td><span>{{ctrl.candidat._2_2h_totalHouseTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="1">{{'3. Net income ( difference between item 1 and 2)'|translate}}</td>
+      <td><span>{{ctrl.candidat._2_3_1sub_2_netIncomTR|translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center"><span class="mjh-boldstyle">{{'Schedule-3 (Investment tax credit)'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <table class="table table-bordered"  width="100%" border="0" cellpadding="1" cellspacing="1" bordercolor="#CC0000" lang="{{$root.locale.lang}}">
+          <tbody>
+          <tr>
+            <td class="mjh-TableTitle">{{'Serial No.'|translate}}</td>
+            <td class="mjh-TableTitle">{{'Details'|translate}}</td>
+            <td class="mjh-TableTitle">{{'Taka'|translate}}</td>
+          </tr>
+          <tr>
+            <td width="7%"><div align="center">{{'1'|translate}}</div></td>
+            <td width="49%">{{'Life insurance premium'|translate}}</td>
+            <td width="44%"><span>{{ctrl.candidat._3a_lifeInsuranceTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'2'|translate}}</div></td>
+            <td>{{'Contribution to deferred annuity'|translate}}</td>
+            <td><span>{{ctrl.candidat._3b_futureAllowanceTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'3'|translate}}</div></td>
+            <td>{{'Contribution to Provident Fund to which Provident Fund Act, 1925 applies'|translate}}</td>
+            <td><span>{{ctrl.candidat._3c_donationFutureAcctTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'4'|translate}}</div></td>
+            <td>{{'Self contribution and employer’s contribution to Recognized Provident Fund'|translate}}</td>
+            <td><span>{{ctrl.candidat._3d_donationOwnAcctTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'5'|translate}}</div></td>
+            <td>{{'Contribution to Super Annuation Fund'|translate}}</td>
+            <td><span>{{ctrl.candidat._3e_ageAcctTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'6'|translate}}</div></td>
+            <td>{{'Investment in approved debenture or debenture stock, Stock or Shares'|translate}}</td>
+            <td><span>{{ctrl.candidat._3f_shareAmountTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'7'|translate}}</div></td>
+            <td>{{'Contribution to deposit pension scheme'|translate}}</td>
+            <td><span>{{ctrl.candidat._3g_depositAmountTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'8'|translate}}</div></td>
+            <td>{{'Contribution to Benevolent Fund and Group Insurance premium'|translate}}</td>
+            <td><span>{{ctrl.candidat._3h_welfareAmountTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'9'|translate}}</div></td>
+            <td>{{'Contribution to Zakat Fund'|translate}}</td>
+            <td><span>{{ctrl.candidat._3i_jakatAmountTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'10'|translate}}</div></td>
+            <td>{{'Others, if any ( give details )'|translate}}</td>
+            <td><span>{{ctrl.candidat._3j_othersAmountTR|translateNumber}}</span></td>
+          </tr>
+          <tr>
+            <td><div align="center">{{'11'|translate}}</div></td>
+            <td>{{'Total'|translate}}</td>
+            <td><span>{{ctrl.candidat._3_totalInvestmentRelatedAmountTR|translateNumber}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table><!--PART-3-END-->
+
+<!--PART-4-->
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td align="center"><span class="mjh-boldstyle">{{'Form part of the income tax - 4'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td class="mjh-TableTitle">{{'Candidate Name'|translate}} : {{ctrl.candidat.taxPayerNameTR}}</td>
+    </tr>
+    <tr>
+      <td align="center" class="mjh-TableTitle">{{'Statement of Assets and Liabilities (as on ...........)'|translate}}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td colspan="4" align="center" class="mjh-TableTitle">{{'Name of the Assessee'|translate}} {{ctrl.candidat.taxpayerNameTR}}: </td>
+    </tr>
+    <tr><td colspan="4" align="center" class="mjh-TableTitle">{{'TIN'|translate}} {{ctrl.candidat.TINTR}} : </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center" style="padding: 0;">
+        <table class="table table-bordered" style="background-color: transparent;">
+          <tr>
+            <td colspan="1"><div align="center">{{'1'|translate}}</div></td>
+            <td colspan="2">{{'(a) Business Capital (Closing balance)'|translate}}</td>
+            <td colspan="2">{{ctrl.candidat._1a_capitalTR |translateNumber}}</td>
+          </tr>
+          <tr>
+            <td rowspan="1">&nbsp;</td>
+            <td colspan="2">{{'(b) Directors Shareholdings in Limited Companies (at cost)'|translate}}</td>
+            <td>{{ctrl.candidat._1b_shareInvestmentTR |translateNumber}}</td>
+          </tr>
+          <tr>
+            <td rowspan="1">&nbsp;</td>
+            <td colspan="2">{{'Name of Companies & Number of shares'|translate}} :</td>
+            <td>
+              <span>{{ctrl.candidat._1b_a_companyNameTR}}</span>
+              <span>{{ctrl.candidat._1b_b_numberOfSharesTR |translateNumber}}</span>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="1">&nbsp;</td>
+            <td colspan="2">মোট মূলধন + শেয়ার</td>
+            <td>{{ctrl.candidat._1_totalCapitalTR}}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'2'|translate}}</div></td>
+      <td colspan="2">{{'Non-Agricultural Property (at cost with legal expenses )'|translate}} :</td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(A) the land / house property (lawful expenditure of the purchase price)'|translate}} </td>
+      <td><span>{{ctrl.candidat._2_notAgriLandHomePriceTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(B) the description and location of the property'|translate}} :</td>
+      <td><span>{{ctrl.candidat._2_notAgriLandHomeDescTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'3'|translate}}</div></td>
+      <td colspan="2">{{'Agricultural Property (at cost with legal expenses )'|translate}}</td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(A) Land (lawful expenditure of the purchase price)'|translate}}</td>
+      <td><span>{{ctrl.candidat._3_agriLandPriceTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(B) Land (Total land and location of land property)'|translate}}</td>
+      <td><span>{{ctrl.candidat._3_agriLandPriceDescTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'4'|translate}}</div></td>
+      <td colspan="2">{{'Investments'|translate}} :</td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(a) Shares/Debentures'|translate}} </td>
+      <td><span>{{ctrl.candidat._4a_investShareDebentureTR.price |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(b) Saving Certificate/Unit Certificate/Bond'|translate}} </td>
+      <td><span>{{ctrl.candidat._4b_investSavingsTR.price |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(c) Prize bond/Savings Scheme'|translate}}</td>
+      <td><span>{{ctrl.candidat._4c_investPricebondTR.price |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(d) Loans given'|translate}}</td>
+      <td><span>{{ctrl.candidat._4d_investPayloanTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(e) Other Investmen'|translate}}</td>
+      <td><span>{{ctrl.candidat._4e_otherInvestTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">{{'Total'|translate}}</td>
+      <td><span>{{ctrl.candidat._4_totalInvestTR |translateNumber}}</span></td>
+    </tr>
+
+
+    <tr>
+      <td><div align="center">{{'5'|translate}}</div></td>
+      <td>{{'Motor Vehicles (at cost)'|translate}}</td>
+      <td><span>{{ctrl.candidat._5a_motorPriceTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'Type of motor vehicle and Registration number'|translate}}</td>
+      <td><span>{{ctrl.candidat._5b_motorDescTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'6'|translate}}</div></td>
+      <td>{{'Jewellery (quantity and cost)'|translate}}</td>
+      <td><span>{{ctrl.candidat._6_ornamentsTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'7'|translate}}</div></td>
+      <td>{{'Furniture (at cost)'|translate}}</td>
+      <td><span>{{ctrl.candidat._7_furnitureTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'8'|translate}}</div></td>
+      <td>{{'Electronic Equipment (at cost)'|translate}}</td>
+      <td><span>{{ctrl.candidat._8_electronicTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'9'|translate}}</div></td><!--Json-file-->
+      <td colspan="2">{{'Cash Asset Outside Business'|translate}} :</td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(a) Cash in hand'|translate}}</td>
+      <td><span>{{ctrl.candidat._9_outOfBusinessTR.cash |translateNumber}}</span> </td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(b) Cash at bank'|translate}}</td>
+      <td><span>{{ctrl.candidat._9_outOfBusinessTR.bank |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(c) Other deposits'|translate}}</td>
+      <td><span>{{ctrl.candidat._9_outOfBusinessTR.other |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(d) Cash, Bank and Other deposits'|translate}}</td>
+      <td><span>{{ctrl.candidat._9_outOfBusinessTR.cashBankAndOther |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>মোট : </td>
+      <td><span>{{ctrl.candidat._9_totalCashBankOtherTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'10'|translate}}</div></td>
+      <td>{{'Any other assets'|translate}}</td>
+      <td><span>{{ctrl.candidat._10_otherAssetsPriceTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(With details)'|translate}}</td>
+      <td>{{ctrl.candidat._10_otherAssetsDescTR}}</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">{{'Total Assets'|translate}}</td>
+      <td><span>{{ctrl.candidat._10_1_to_10_totalAssetTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'11'|translate}}</div></td>
+      <td colspan="2">{{'Less Liabilities'|translate}}</td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(a) Mortgages secured on property or land'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_liabilitiesTR.mortgage |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(b) Unsecured loans'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_liabilitiesTR.securities |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(c) Bank loan'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_liabilitiesTR.bankLoan |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(d) Others'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_liabilitiesTR.other |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">{{'Total Liabilities'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_totalLiabilitiesTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'12'|translate}}</div></td>
+      <td>{{'Net wealth as on last date of this income year'|translate}}</td>
+      <td><span>{{ctrl.candidat._12_netAssetsTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'13'|translate}}</div></td>
+      <td>{{'Net wealth as on last date of previous income year'|translate}}</td>
+      <td><span>{{ctrl.candidat._13_netAssetLastYearTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'14'|translate}}</div></td>
+      <td>{{'Accretion in wealth (Difference between serial no. 12 and 13'|translate}}</td>
+      <td><span>{{ctrl.candidat._14_assetBalanceTR |translateNumber}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'15'|translate}}</div></td><!--Json-file-->
+      <td>{{'(a) Family Expenditure: (Total expenditure as per Form IT 10 BB)'|translate}}</td>
+      <td><span>{{ctrl.candidat._15_familyExpenseTR.amount}}</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>{{'(b) Number of dependant children of the family'|translate}} :</td>
+      <td><span>{{ctrl.candidat._15_familyExpenseTR.noAdult}} {{ctrl.candidat._15_familyExpenseTR.noChild}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'16'|translate}}</div></td>
+      <td>{{'Total Accretion of wealth (Total of serial 14 and 15)'|translate}}</td>
+      <td><span>{{ctrl.candidat._16_totalAssetBalanceTR}} </span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'17'|translate}}</div></td>
+      <td colspan="2">{{'Sources of Fund'|translate}} : </td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(i) Shown Return Income'|translate}}</td>
+      <td><span>{{ctrl.candidat._17_earnedFundTR.returnIncome}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(ii) Tax exempted/Tax free Income'|translate}}</td>
+      <td><span>{{ctrl.candidat._17_earnedFundTR.taxFreeIncome}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center"></div></td>
+      <td>{{'(iii) Other receipts'|translate}}</td>
+      <td><span>{{ctrl.candidat._17_earnedFundTR.otherIncome | translateNumber}}</span></td>
+      <!--<td><span>{{ctrl.candidat._17_earnedFundTR.otherIncome|translateNumbere}}</span></td>-->
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>{{'Total source of Fund'|translate}}</td>
+      <td><span>{{ctrl.candidat._17_totalEarnedFunTR}}</span></td>
+    </tr>
+    <tr>
+      <td>{{'18'|translate}}</td>
+      <td>{{'Difference (Between serial 16 and 17'|translate}}</td>
+      <td><span>{{ctrl.candidat._18_differenceAmountTR}}</span></td>
+    </tr>
+  </tbody>
+</table><!--PART-4-END-->
+
+<!--PART-5-->
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td align="center"><span class="mjh-boldstyle">{{'Form part of the income tax - 5'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td class="mjh-TableTitle">{{'Candidate Name'|translate}} : {{ctrl.candidat.taxPayerNameTR}}</td>
+    </tr>
+    <tr>
+      <td align="center" class="mjh-TableTitle">{{'Statement under section 75(2)(d)(i) and section 80 of the Income Tax Ordinance, 1984 (XXXVI of 1984) regarding particulars of life style'|translate}}</td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr>
+      <td colspan="4" align="center">{{'Name of the Assessee'|translate}} {{ctrl.candidat.taxpayerNameTR}}: </td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">{{'TIN'|translate}} {{ctrl.candidat.TINTR}}: </td>
+    </tr>
+    <tr>
+      <td width="5%" class="mjh-TableTitle">{{'Serial No.'|translate}}</td>
+      <td width="37%" class="mjh-TableTitle">{{'Particulars of Expenditure'|translate}}</td>
+      <td width="21%" class="mjh-TableTitle">{{'Amount of Tk.'|translate}}</td>
+      <td width="37%" class="mjh-TableTitle">{{'Comments'|translate}}</td>
+    </tr>
+    <tr>
+      <td width="5%"><div align="center">{{'1'|translate}}</div></td>
+      <td width="37%">{{'Personal and fooding expenses'|translate}}</td>
+      <td width="21%"><span>{{ctrl.candidat._1_personalCostTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._1_personalCostCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td width="5%"><div align="center">{{'2'|translate}}</div></td>
+      <td width="37%">{{'Tax paid including deduction at source of the last Tk. financial year'|translate}}</td>
+      <td width="21%"><span>{{ctrl.candidat._2_taxPaidLastYearTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._2_taxPaidCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td width="5%"><div align="center">{{'3'|translate}}</div></td>
+      <td width="37%">{{'Accommodation expenses'|translate}}</td>
+      <td width="21%"><span>{{ctrl.candidat._3_residentialCostTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._3_residentialCostCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'4'|translate}}</div></td>
+      <td>{{'Transport expenses'|translate}}</td>
+      <td width="21%"><span>{{ctrl.candidat._4_vehicleCostTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._4_vehicleCostCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'5'|translate}}</div></td>
+      <td>{{'Electricity Bill for residence'|translate}}</td>
+      <td width="21%"> <span>{{ctrl.candidat._5_electricityBillTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._5_electricityBillCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'6'|translate}}</div></td>
+      <td>{{'Wasa Bill for residence'|translate}}</td>
+      <td><span>{{ctrl.candidat._6_waterBillTR | translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._6_waterBillCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'7'|translate}}</div></td>
+      <td>{{'Gas Bill for residence'|translate}}</td>
+      <td width="21%"><span>{{ctrl.candidat._7_gasBillTR | translateNumber}}</span></td>
+      <td width="37%"><span>{{ctrl.candidat._7_gasBillCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'8'|translate}}</div></td>
+      <td>{{'Telephone Bill for residence'|translate}}</td>
+      <td><span>{{ctrl.candidat._8_telephoneBillTR | translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._8_telephoneBillCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'9'|translate}}</div></td>
+      <td>{{'Education expenses for children'|translate}}</td>
+      <td><span>{{ctrl.candidat._9_childEducationalExpenseTR | translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._9_childEducationCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'10'|translate}}</div></td>
+      <td>{{'Personal expenses for Foreign travel'|translate}}</td>
+      <td><span>{{ctrl.candidat._10_travelExpenseTR | translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._10_travelExpenseCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td><div align="center">{{'11'|translate}}</div></td>
+      <td>{{'Festival and other special expenses, if any'|translate}}</td>
+      <td><span>{{ctrl.candidat._11_festivalCostTR | translateNumber}}</span></td>
+      <td><span>{{ctrl.candidat._11_festivalCostCommentTR}}</span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><div align="right">{{'Total Expenditure'|translate}}</div></td>
+      <td><span>{{ctrl.candidat.totalLifeStyleCostTR | translateNumber}}</span></td>
+      <td><span></span></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered"  width="100%" align="center" lang="{{$root.locale.lang}}">
+  <tbody>
+    <tr><td align="center" class="mjh-boldstyle">{{'I solemnly declare that to the best of my knowledge and belief the information given in the IT-10BB is correct and complete.'|translate}}</td></tr>
+    <tr><td align="center" class="mjh-boldstyle">{{'Name and signature of the Assessee'|translate}}</td></tr>
+    <tr><td align="center" class="mjh-boldstyle">{{'Date'|translate}} {{ctrl.candidat.submissionDateTR}}:</td></tr>
+  </tbody>
+</table><!--PART-5-END-->
+</div>

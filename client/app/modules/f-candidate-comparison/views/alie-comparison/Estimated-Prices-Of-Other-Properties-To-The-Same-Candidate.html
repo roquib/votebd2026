@@ -1,0 +1,39 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Estimated Prices of other properties to the same candidate'|translate}}</h2>
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    <div class="clearfix">
+      <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length |
+        translateNumber}}
+        {{'Candidates Analysis Report' | translate}}</h3>
+
+      <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+    </div>
+    <div id="exportable"> <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <th class="text-center">{{'Name'|translate}}</th>
+          <th class="text-center">{{candidateList.one | translateNumber}} {{'Election'|translate}}</th>
+          <th class="text-center">{{candidateList.two | translateNumber}} {{'Election'|translate}}</th>
+          <th class="text-center">{{'Change'|translate}}</th>
+          <th class="text-center">{{'Ratio'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in candidateList.candidateList">
+          <td>{{row.one.candidateName}}</td>
+          <td>{{row.one.otherPropertyTotalPriceALIE | translateNumber}}</td>
+          <td>{{row.two.otherPropertyTotalPriceALIE | translateNumber}}</td>
+          <td>{{(row.two.otherPropertyTotalPriceALIE - row.one.otherPropertyTotalPriceALIE) | translateNumber}}</td>
+          <td>{{(row.one.otherPropertyTotalPriceALIE | ratio : row.two.otherPropertyTotalPriceALIE) | translateNumber}}%</td>
+
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+</div>

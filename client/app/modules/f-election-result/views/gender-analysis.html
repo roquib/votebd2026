@@ -1,0 +1,46 @@
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<!--<div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>-->
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Male/Female Candidates Analysis'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div id="gender-chart"></div>
+    </div>
+    <div class="col-xs-12 col-lg-12">    <div class="clearfix">
+      <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{genderData.all.table.totalCandidate.total | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+      <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','gender-analysis')">export excel</h3>
+    </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th >{{'Teams'|translate}}</th>
+              <th>{{genderData.all.table.male.title}}</th>
+              <th>{{genderData.all.table.female.title}}</th>
+              <th >{{'Total'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="tr_data in genderData.table">
+              <td>{{tr_data.partyName}}</td>
+              <td>{{tr_data.data.table.male.total | translateNumber}}</td>
+              <td>{{tr_data.data.table.female.total | translateNumber}}</td>
+              <td>{{tr_data.data.table.totalCandidate.total | translateNumber}}</td>
+            </tr>
+            <tr>
+              <th >{{'Total'|translate}}</th>
+              <th>{{genderData.all.table.male.total | translateNumber}}</th>
+              <th>{{genderData.all.table.female.total | translateNumber}}</th>
+              <th>{{genderData.all.table.totalCandidate.total | translateNumber}}</th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-xs-6.col-lg-4-->
+  </div><!--/row-->
+</div>

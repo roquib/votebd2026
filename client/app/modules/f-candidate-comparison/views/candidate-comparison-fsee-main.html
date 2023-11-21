@@ -1,0 +1,92 @@
+  <div class="candidate-comparison-title">
+    <div class="container about-us-cont2">
+      <div class="ze-title" lang="{{$root.locale.lang}}">
+        <h2>{{'Candidate Info Comparison'|translate}} </h2>
+        <p lang="{{$root.locale.lang}}">{{ProbableFundSourceforElectionExpenseBasedComparision|translate}}</p>
+        <!--<p>See Analitical Report based on Election</p>-->
+      </div>
+    </div><!--container-end-->
+  </div><!---end-->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="candidate-search-form" lang="{{$root.locale.lang}}">
+          <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+          <div class="control-btn" style="overflow: hidden">
+            <div class="col-md-6">
+              <div ng-disabled="form.$invalid" class="btn btn-search" ng-click="ctrl.submit(ctrl.electionSeat)">
+                {{'SEARCH'|translate}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <button type="button" class="btn btn-default btnreset" ng-click="ctrl.formOptions.resetModel()">{{'Reset'|translate}}</button>
+            </div>
+          </div>
+        </div>
+      </div><!--column-end-->
+      <div class="col-sm-9">
+        <div id="sidebar" class="uitab-menu-eer">
+          <ul class="list-group mjh-fseeComParison" lang="{{$root.locale.lang}}">
+            <li><a   ui-sref-active="active"  class="list-group-item" ui-sref='front.candidateComparisonFSEE.Total-Probable-Income-Including-All-Sources-To-Meet-Election-Expenses-With-Same-Candidate'>{{'Total probable income including all sources to meet election expenses with same candidate'|translate}}</a></li>
+            <li><a   ui-sref-active="active"  class="list-group-item" ui-sref='front.candidateComparisonFSEE.Total-Probable-Income-From-Donation-To-Meet-Election-Expenses-With-The-Same-Candidate'>{{'Total probable income from donation to meet election expenses with the same candidate'|translate}}</a></li>
+            <li><a   ui-sref-active="active"  class="list-group-item" ui-sref='front.candidateComparisonFSEE.All-The-Probable-Income-From-Loans-To-Meet-Election-Expenses-With-The-Same-Candidate'>{{'All the probable income from loans to meet election expenses with the same candidate'|translate}}</a></li>
+            <!--<li><a   ui-sref-active="active"  class="list-group-item" ui-sref='front.candidateComparisonFSEE.The-List-Of-Candidates-Of-Whom-Exceeds-The-Spending-Limits-To-Meet-Election-Expenses'>{{'The list of candidates of whom exceeds the spending limits to meet election expenses'|translate}}</a></li>-->
+          </ul>
+        </div>
+        <div  class="about-detail-cont" ui-view>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<!--<div class="row row-offcanvas row-offcanvas-right">-->
+  <!--<p class="pull-right visible-xs">-->
+    <!--<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>-->
+  <!--</p>-->
+  <!--<div class=" col-sm-9 ">-->
+
+  <!--</div>&lt;!&ndash;/.col-xs-12.col-sm-9&ndash;&gt;-->
+
+<!--</div>-->
+
+
+
+
+
+
+
+<!--<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">-->
+  <!--<div class="list-group">-->
+
+    <!--<h3 class="header">{{'Election Expense Return Based Analysis'|translate}}</h3>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Candidate-List-who-did-not-submit-the-return-of-election-expenses">{{'Candidate List, who did not submit the return of election expenses'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Candidate-List-who-have-submitted-not-submitted-Election-Expenses-Return">{{'Candidate List, who have submitted/not submitted Election Expenses Return'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Case-list-by-ECB-for-non-compliance-of-submitting-the-election-expenses-return">{{'Case list by ECB for non-compliance of submitting the election expenses return'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Constituency-wise-money-spent-by-the-candidates-for-campaigning">{{'Constituency wise money spent by the candidates for campaigning'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.List-of-candidates-of-those-who-spent-more-than-spending-limits">{{'List of candidates of those who spent more than spending limits'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Range-wise-money-spent-by-the-candidates-for-campaigning">{{'Range wise money spent by the candidates for campaigning'|translate}}</a>-->
+    <!--<h3 class="header">{{'Election Expense Return Based Analysis'|translate}}</h3>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Among-The-Candidates-In-A-Constituency-About-How-Much-Money-Spent">{{'Among the candidates in a constituency about how much money spent'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Among-All-The-Candidates-For-300-Constituencies-About-Money-Spent-Percentage">{{'Among all the candidates for 300 constituencies about money spent percentage'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Between-The-Elected-Male-And-Female-Candidates-On-Average-Campaign-Expenses">{{'Between the elected male and female candidates on average campaign expenses'|translate}}</a>-->
+    <!--<h3 class="header">{{'Assets/Liabilities/Income/Expenses Based Comparision - Election year wise increase or decrease to'|translate}}</h3>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Prices-Of-Immoveable-Properties-To-The-Same-Candidate">{{'Estimated Prices of immoveable properties to the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Prices-Of-Dwelling-Houses-To-The-Same-Candidate">{{'Estimated Prices of dwelling houses to the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Prices-Of-Other-Properties-To-The-Same-Candidate">{{'Estimated Prices of other properties to the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Annual-Liabilities-Of-The-Same-Candidate">{{'Estimated Annual liabilities of the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Annual-Income-Of-The-Same-Candidate">{{'Estimated Annual income of the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Annual-Expenditures-Of-The-Same-Candidate">{{'Estimated Annual expenditures of the same candidate'|translate}}</a>-->
+    <!--<a  ui-sref-active="active" class="list-group-item" ui-sref="front.electionAnalysis.Estimated-Price-Of-All-Properties-Of-The-Same-Candidate">{{'Estimated Price of all properties of the same candidate'|translate}}</a>-->
+
+  <!--</div>-->
+<!--</div>&lt;!&ndash;/.sidebar-offcanvas&ndash;&gt;-->

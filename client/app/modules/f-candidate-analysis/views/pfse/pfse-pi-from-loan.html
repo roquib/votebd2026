@@ -1,0 +1,48 @@
+<div ng-include="'modules/f-candidate-analysis/views/fsee-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Probable Income From Loan'|translate}}</h2>
+  </div>
+  <form class="form-horizontal" ng-hide="true">
+    <div class="form-group">
+      <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">Minimum Loan Amount</label>
+      <div class="col-sm-9" lang="{{$root.locale.lang}}">
+        <input  type="number" class="form-control" ng-model="piDonation.limit">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{totalCandidate | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+        <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+          <thead>
+          <tr>
+            <td>{{'Sl.'|translate}}</td>
+            <td>{{'District'|translate}}</td>
+            <td>{{'Seat'|translate}}</td>
+            <td>{{'Name'|translate}}</td>
+            <td>{{'Loan Amount'|translate}}</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="row in pfseLoanTableData">
+            <td>{{($index + 1) | translateNumber}}</td>
+            <td>{{row.districtName}}</td>
+            <td>{{row.seatName}}</td>
+            <td>{{row.candidateName}}</td>
+            <td>{{row.amount | translateNumber}}</td>
+          </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

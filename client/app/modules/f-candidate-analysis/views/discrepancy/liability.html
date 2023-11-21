@@ -1,0 +1,52 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Liability discrepancy of the same candidate'|translate}}</h2>
+
+</div>
+
+<form class="form-horizontal" ng-hide="true">
+  <div class="form-group">
+    <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">Minimum Total Income Amount</label>
+    <div class="col-sm-9" lang="{{$root.locale.lang}}">
+      <input  type="number" class="form-control" ng-model="piDonation.limit">
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-xs-12 col-lg-12">
+    <div class="clearfix">
+      <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{pfseTotalIncomeExTableData.length | translateNumber}}
+        {{'Candidates Analysis Report' | translate}}</h3>
+
+      <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+    </div>
+    <div id="exportable">
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <th>{{'Sl'|translate}}.</th>
+          <th>{{'District'|translate}}</th>
+          <th>{{'Seat'|translate}}</th>
+          <th>{{'Name'|translate}}</th>
+          <th>{{'Liability from Affidavit'|translate}}</th>
+          <th>{{'Liability from Alie'|translate}}</th>
+          <th>{{'Liability from Tax Return'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in pfseTotalIncomeExTableData">
+          <td>{{($index + 1) | translateNumber}}</td>
+          <td>{{row.districtName}}</td>
+          <td>{{row.seatName}}</td>
+          <td>{{row.candidateName}}</td>
+          <td>{{row.liabilityAF | translateNumber}}</td>
+          <td>{{row.liabilityALIE | translateNumber}}</td>
+          <td>{{row.liabilityTR | translateNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>

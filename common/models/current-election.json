@@ -1,0 +1,85 @@
+{
+  "name": "currentElection",
+  "plural": "currentElections",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "oldId": {
+      "type": "number"
+    },
+    "oldElectionId": {
+      "type": "number"
+    },
+    "currentElectionNameEn": {
+      "type": "string"
+    },
+    "currentElectionNameBn": {
+      "type": "string"
+    },
+    "electionDescBn": {
+      "type": "string"
+    },
+    "electionDate": {
+      "type": "date"
+    },
+    "electionDateTimestamp": {
+      "type": "number"
+    },
+    "displayType": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "election": {
+      "type": "belongsTo",
+      "model": "election",
+      "foreignKey": "electionId"
+    },
+    "candidates": {
+      "type": "hasMany",
+      "model": "candidate",
+      "foreignKey": "currentElectionId"
+    },
+    "electionSeats": {
+      "type": "hasMany",
+      "model": "electionSeat",
+      "foreignKey": "currentElectionId"
+    },
+    "electionCandidatePosts": {
+      "type": "hasMany",
+      "model": "electionCandidatePost",
+      "foreignKey": "currentElectionId"
+    },
+    "politicalPartyExpenses": {
+      "type": "hasMany",
+      "model": "politicalPartyExpense",
+      "foreignKey": "currentElectionId"
+    },
+    "voter": {
+      "type": "belongsTo",
+      "model": "voter",
+      "foreignKey": "voterId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

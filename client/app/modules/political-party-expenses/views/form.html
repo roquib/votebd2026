@@ -1,0 +1,293 @@
+<form name="form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+      <span ng-show="!ctrl.politicalPartyExpense.id" translate>Add a new Political Party Expense</span>
+      <span ng-show="ctrl.politicalPartyExpense.id" translate>Edit Political Party Expense</span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-12">
+          <formly-form model="ctrl.politicalPartyExpense" fields="ctrl.formFields" options="ctrl.formOptions">
+
+          </formly-form>
+
+
+
+          <table>
+            <tr>
+              <th>ব্যয়ের খাত</th>
+              <th>
+                <table>
+                  <tr>
+                    <th colspan="7">ব্যয় বিবরণী</th>
+
+                  </tr>
+                </table>
+              </th>
+            </tr>
+            <tr>
+              <td><strong>প্রার্থীকে প্রদত্ত অনুদান</strong><br/>
+                <button ng-click="ctrl.addOneGivenDonation()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneGivenDonation()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachGivenDonation in ctrl.politicalPartyExpense.givenDonation">
+                    <td><input type="text" ng-model="eachGivenDonation.candidateId" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.comment" /></td>
+                    <td><input type="text" ng-model="eachGivenDonation.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+
+            <!--<tr>-->
+              <!--<td>মোট প্রদত্ত অনুদান পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.givenDonation.givenDonationTotalAmount"></td>-->
+            <!--</tr>-->
+
+
+            <tr>
+              <td><strong>প্রচারণা বাবদ</strong><br/>
+                <button ng-click="ctrl.addOneCampain()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneCampain()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachCampain in ctrl.politicalPartyExpense.campain">
+                    <td><input type="text" ng-model="eachCampain.candidateId" /></td>
+                    <td><input type="text" ng-model="eachCampain.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachCampain.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachCampain.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachCampain.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachCampain.comment" /></td>
+                    <td><input type="text" ng-model="eachCampain.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+
+            <!--<tr>-->
+              <!--<td>মোট প্রচারণা ব্যয়ের পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.campain.campainTotalAmount"></td>-->
+            <!--</tr>-->
+
+
+            <tr>
+              <td><strong>পরিবহন বাবদ</strong><br/>
+                <button ng-click="ctrl.addOneVehicle()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneVehicle()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachVehicle in ctrl.politicalPartyExpense.vehicle">
+                    <td><input type="text" ng-model="eachVehicle.candidateId" /></td>
+                    <td><input type="text" ng-model="eachVehicle.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachVehicle.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachVehicle.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachVehicle.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachVehicle.comment" /></td>
+                    <td><input type="text" ng-model="eachVehicle.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+
+            <!--<tr>-->
+              <!--<td>মোট পরিবহন বাবদ পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.vehicle.vehicleTotalAmount"></td>-->
+            <!--</tr>-->
+
+
+
+            <tr>
+              <td><strong>জনসভা বাবদ</strong><br/>
+                <button ng-click="ctrl.addOneconference()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneconference()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachconference in ctrl.politicalPartyExpense.conference">
+                    <td><input type="text" ng-model="eachconference.candidateId" /></td>
+                    <td><input type="text" ng-model="eachconference.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachconference.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachconference.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachconference.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachconference.comment" /></td>
+                    <td><input type="text" ng-model="eachconference.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+
+            <!--<tr>-->
+              <!--<td>মোট জনসভা বাবদ পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.conference.conferenceTotalAmount"></td>-->
+            <!--</tr>-->
+
+
+            <tr>
+              <td><strong>স্টাফ খরচ বাবদ</strong><br/>
+                <button ng-click="ctrl.addOnestaff()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOnestaff()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachstaff in ctrl.politicalPartyExpense.staff">
+                    <td><input type="text" ng-model="eachstaff.candidateId" /></td>
+                    <td><input type="text" ng-model="eachstaff.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachstaff.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachstaff.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachstaff.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachstaff.comment" /></td>
+                    <td><input type="text" ng-model="eachstaff.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+
+            <!--<tr>-->
+              <!--<td>মোট স্টাফ খরচ বাবদ পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.staff.staffTotalAmount"></td>-->
+            <!--</tr>-->
+
+
+
+            <tr>
+              <td><strong>আবাসন ও প্রশাসনিক খরচ বাবদ</strong><br/>
+                <button ng-click="ctrl.addOneadministrative()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneadministrative()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachadministrative in ctrl.politicalPartyExpense.administrative">
+                    <td><input type="text" ng-model="eachadministrative.candidateId" /></td>
+                    <td><input type="text" ng-model="eachadministrative.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachadministrative.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachadministrative.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachadministrative.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachadministrative.comment" /></td>
+                    <td><input type="text" ng-model="eachadministrative.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+            <!--<tr>-->
+              <!--<td>মোট আবাসন ও প্রশাসনিক খরচ বাবদ পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.administrative.administrativeTotLAmount"></td>-->
+            <!--</tr>-->
+
+
+            <tr>
+              <td><strong>বিবিধ</strong><br/>
+                <button ng-click="ctrl.addOneother()"><i class="fa fa-plus"></i></button>
+                <button ng-click="ctrl.removeOneother()"><i class="fa fa-minus"></i></button>
+              </td>
+              <td colspan="7">
+                <table>
+                  <tr>
+                    <th>প্রার্থী আইডি</th>
+                    <th>আসন নং</th>
+                    <th>নির্বাচনী এলাকার নম্বর ও নাম</th>
+                    <th>মনোনীত প্রার্থীর নাম</th>
+                    <th>ব্যয়ের পরিমান</th>
+                    <th>মন্তব্য</th>
+                    <th>নির্দেশিকা</th>
+                  </tr>
+                  <tr ng-repeat="eachother in ctrl.politicalPartyExpense.other">
+                    <td><input type="text" ng-model="eachother.candidateId" /></td>
+                    <td><input type="text" ng-model="eachother.electionSeatId" /></td>
+                    <td><input type="text" ng-model="eachother.locationNoName" /></td>
+                    <td><input type="text" ng-model="eachother.electedCandidateName" /></td>
+                    <td><input type="text" ng-model="eachother.expenseAmount" /></td>
+                    <td><input type="text" ng-model="eachother.comment" /></td>
+                    <td><input type="text" ng-model="eachother.index" /></td>
+                  </tr>
+
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>ফাইল নাম</td><td colspan="7"><input type="text" ng-model="ctrl.politicalPartyExpense.pdfFilePath"></td>
+            </tr>
+            <!--<tr>-->
+              <!--<td>মোট বিবিধ ব্যয়ের পরিমান</td> <td colspan="7"><input ng-disabled=true type="text" ng-model="ctrl.politicalPartyExpense.other.otherTotalAmount"></td>-->
+            <!--</tr>-->
+
+          </table>
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+    </div>
+  </div>
+</form>
+
+
+

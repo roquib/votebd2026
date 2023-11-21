@@ -1,0 +1,101 @@
+
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Use the filters on the left side to view candidate form submission status of any particular election'|translate}}</h2>
+  <!--<h2>{{'candidate form submission status'|translate}}</h2>-->
+</div>
+<div class="row">
+  <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
+    Candidate Statistics
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <td>{{'Candidate'|translate}}</td>
+          <td>{{'Entry'|translate}}</td>
+          <td>{{'Publish'|translate}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{'Total Candidate' | translate}}</td>
+          <td>{{entryList.summary.entryGrandTotal}}</td>
+          <td>{{entryList.summary.publishGrandTotal}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>  <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
+    Summary
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <td>{{'Profile Name'|translate}}</td>
+          <td>{{'Entry'|translate}}</td>
+          <td>{{'Publish'|translate}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{'AF' | translate}}</td>
+          <td>{{entryList.summary.entryAF}}</td>
+          <td>{{entryList.summary.publishAF}}</td>
+        </tr><tr>
+          <td>{{'FSEE' | translate}}</td>
+          <td>{{entryList.summary.entryFSEE}}</td>
+          <td>{{entryList.summary.publishFSEE}}</td>
+        </tr><tr>
+          <td>{{'EER' | translate}}</td>
+          <td>{{entryList.summary.entryEER}}</td>
+          <td>{{entryList.summary.publishEER}}</td>
+        </tr><tr>
+          <td>{{'TR' | translate}}</td>
+          <td>{{entryList.summary.entryTR}}</td>
+          <td>{{entryList.summary.publishTR}}</td>
+        </tr><tr>
+          <td>{{'ALIE' | translate}}</td>
+          <td>{{entryList.summary.entryALIE}}</td>
+          <td>{{entryList.summary.publishALIE}}</td>
+        </tr><tr>
+          <td>{{'Total' | translate}}</td>
+          <td>{{entryList.summary.entryTotal}}</td>
+          <td>{{entryList.summary.publishTotal}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div><div class="row">
+  <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
+    {{entryList.user.length}}
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+        <tr>
+          <td>{{'Sl.'|translate}}</td>
+          <td>{{'User'|translate}}</td>
+          <td>{{'Name'|translate}}</td>
+          <td>{{'countAF'|translate}}</td>
+          <td>{{'countFSEE'|translate}}</td>
+          <td>{{'countALIE'|translate}}</td>
+          <td>{{'countEER'|translate}}</td>
+          <td>{{'countTR'|translate}}</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in entryList.user">
+          <td>{{($index+1) | translate}}</td>
+          <td>{{row.user.username}}</td>
+          <td>{{row.user.firstName + ' '+ row.user.lastName }}</td>
+          <td>{{row.countAF}}</td>
+          <td>{{row.countFSEE}}</td>
+          <td>{{row.countALIE}}</td>
+          <td>{{row.countEER}}</td>
+          <td>{{row.countTR}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

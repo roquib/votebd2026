@@ -1,0 +1,27 @@
+{
+  "name": "bannerSetting",
+  "plural": "bannerSettings",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "electionId": {
+      "type": "string",
+      "required": true
+    },
+    "firstElectionId": {
+      "type": "string",
+      "required": true
+    },
+    "secondElectionId": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

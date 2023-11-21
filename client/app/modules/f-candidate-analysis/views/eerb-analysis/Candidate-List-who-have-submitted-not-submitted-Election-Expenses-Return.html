@@ -1,0 +1,58 @@
+<div ng-include="'modules/f-candidate-analysis/views/eerb-analysis-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Candidate List, who have submitted/not submitted Election Expenses Return'|translate}}</h2>
+  </div>
+  <form class="form-horizontal" ng-hide="true">
+    <div class="form-group">
+      <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">{{'Minimum Total Income Amount'|translate}}</label>
+      <div class="col-sm-9" lang="{{$root.locale.lang}}">
+        <input type="number" class="form-control" ng-model="piDonation.limit">
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{totalCandidate | translateNumber}}
+          {{'Candidates Analysis Report' | translate}}</h3>
+
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th>{{'Sl.'|translate}}</th>
+              <th>{{'District'|translate}}</th>
+              <th>{{'Seat'|translate}}</th>
+              <th>{{'Submitted'|translate}}</th>
+              <th>{{'Not Submitted'|translate}}</th>
+              <th>{{'Total Candidate'|translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in submissionData.table">
+              <td>{{($index + 1) | translateNumber}}</td>
+              <td>{{row.districtName}}</td>
+              <td>{{row.seatName}}</td>
+              <td>{{row.submitted | translateNumber}}</td>
+              <td>{{row.notSubmitted | translateNumber}}</td>
+              <td>{{row.totalCandidate | translateNumber}}</td>
+            </tr>
+            <tr>
+              <th colspan="3">{{'Total'|translate}}</th>
+              <th>{{submissionData.all.submitted  |translateNumber}}</th>
+              <th>{{submissionData.all.notSubmitted  |translateNumber}}</th>
+              <th>{{submissionData.all.totalCandidate  |translateNumber}}</th>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

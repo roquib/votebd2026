@@ -1,0 +1,56 @@
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Candidate Form Submission Status'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{electedCandidates.length  | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <td>{{'Sl'|translate}}.</td>
+              <td>{{'Seat'|translate}}</td>
+              <td>{{'Name'|translate}}</td>
+              <td>{{'Affidavit'|translate}}</td>
+              <td>{{'Form20/Dha(FSEE)'|translate}}</td>
+              <td>{{'ALIE'|translate}}</td>
+              <td>{{'Expense (22)/Expense(Murdhanno)'|translate}}</td>
+              <!--<td>{{'Form22/Murdhanno(EER)'|translate}}</td>-->
+              <td>{{'Tax Return'|translate}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in electedCandidates">
+              <td>{{($index+1) | translateNumber}}</td>
+              <td>{{row.seatName}}</td>
+              <td>{{row.candidateName}}</td>
+              <td>{{(row.statusAF == 'publish' || row.statusAF == 'true' ||   row.statusAF? 'Yes':'No') | translate}}</td>
+              <td>{{(row.statusFSEE == 'true' || row.statusFSEE? 'Yes':'No') | translate}}</td>
+              <td>{{(row.statusALIE == 'true' || row.statusALIE? 'Yes':'No') | translate}}</td>
+              <td>{{(row.statusEER == 'true' || row.statusEER? 'Yes':'No') | translate}}</td>
+              <td>{{(row.statusTR == 'true' || row.statusTR ? 'Yes':'No') | translate}}</td>
+            </tr>
+            <tr>
+              <td colspan="2">{{'Total'|translate}}</td>
+              <!--<td>&nbsp;</td>-->
+              <td>{{electedCandidates.length | translateNumber}}</td>
+              <td>{{grandSum.statusAF | translateNumber}}</td>
+              <td>{{grandSum.statusFSEE | translateNumber}}</td>
+              <td>{{grandSum.statusALIE | translateNumber}}</td>
+              <td>{{grandSum.statusEER | translateNumber}}</td>
+              <td>{{grandSum.statusTR | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

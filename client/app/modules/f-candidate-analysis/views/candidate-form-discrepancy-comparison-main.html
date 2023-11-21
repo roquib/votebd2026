@@ -1,0 +1,40 @@
+<div class="candidate-comparison-title">
+  <div class="container about-us-cont" lang="{{$root.locale.lang}}">
+    <div class="ze-title">
+      <h2>{{'Candidate Info Analysis'|translate}} </h2>
+      <p>{{'Information discrepancy among the forms'|translate}}</p>
+    </div>
+  </div><!--row-end-->
+</div><!--row-end-->
+  <div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="candidate-search-form" lang="{{$root.locale.lang}}">
+        <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+        <div class="control-btn" style="overflow: hidden">
+          <div class="col-md-6">
+            <div ng-disabled="form.$invalid" class="btn btn-search" ng-click="ctrl.submit(ctrl.electionSeat)">
+              {{'SEARCH'|translate}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <button type="button" class="btn btn-default btnreset" ng-click="ctrl.formOptions.resetModel()">{{'Reset'|translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div><!--column-end-->
+    <div class="col-sm-9">
+      <div id="sidebar" class="uitab-menu-eer" lang="{{$root.locale.lang}}">
+        <ul class="list-group mjh-alie">
+          <li><a  ui-sref-active="active" class="list-group-item" ui-sref="front.candidate-form-discrepancy-comparison.asset">{{'asset'|translate}}</a></li>
+          <li><a  ui-sref-active="active" class="list-group-item" ui-sref="front.candidate-form-discrepancy-comparison.expense">{{'expense'|translate}}</a></li>
+          <li><a  ui-sref-active="active" class="list-group-item" ui-sref="front.candidate-form-discrepancy-comparison.income">{{'income'|translate}}</a></li>
+          <li><a  ui-sref-active="active" class="list-group-item" ui-sref="front.candidate-form-discrepancy-comparison.liability">{{'liability'|translate}}</a></li>
+          <li><a  ui-sref-active="active" class="list-group-item" ui-sref="front.candidate-form-discrepancy-comparison.net-asset">{{'net-asset'|translate}}</a></li>
+        </ul>
+      </div>
+      <div  class="about-detail-cont" ui-view>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="candidate-search-detail">
+<div ng-include="'modules/f-candidate-search/views/candidateprofile.html'"></div>
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+<form>
+  <div class="panel-heading affidavit-Header" lang="{{$root.locale.lang}}">
+    <h2>{{'Statement of assets-liabilities, annual earnings-expenses'|translate}}</h2>
+  </div>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td colspan="2">
+        <div align="center" class="style2">
+          <p><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Name of candidate'|translate}} : </span>{{ctrl.candidat.personNameBn}} {{ctrl.candidat.personNameEn}}</p>
+          <p><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Father`s Name'|translate}} : </span>{{ctrl.candidat.fatherHusbandNameBnAF}}</p>
+          <p><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Address of candidate'|translate}} : </span>{{ctrl.candidat.addressBnAF}}</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part A: Assets'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td width="97%"><span class="mjh-boldstyle">{{'Class A- other immoveable properties except dwelling house'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part1">
+            <tr>
+              <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Total no'|translate}}</span></td>
+              <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Location'|translate}}</span></td>
+              <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Estimated value'|translate}}</span></td>
+            </tr>
+            <tr ng-repeat="exceptHousePropertyALIE in ctrl.candidat.exceptHousePropertyALIE">
+              <td><span lang="en">{{exceptHousePropertyALIE.amount}} </span></td>
+              <td><span>{{exceptHousePropertyALIE.location}}</span></td>
+              <td><span>{{exceptHousePropertyALIE.price|translateNumber}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="personal"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Class B- Dwelling house'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part2">
+          <tr>
+            <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'No & type of house/s'|translate}}</span></td>
+            <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Location'|translate}}</span></td>
+            <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Estimated value'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="housePropertyALIE in ctrl.candidat.housePropertyALIE">
+            <td><span lang="en">{{housePropertyALIE.size}}</span></td>
+            <td><span>{{housePropertyALIE.location}}</span></td>
+            <td><span>{{housePropertyALIE.price|translateNumber}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="loan_relative"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Class C: Other properties'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part3">
+            <tr>
+              <td width="171"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Other properties such as security, bond, bank deposits etc.'|translate}}</span></td>
+              <td width="170" align="center"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Estimated value'|translate}}</span></td>
+            </tr>
+            <tr ng-repeat="otherPropertyALIE in ctrl.candidat.otherPropertyALIE">
+              <td><spanlang="en">{{otherPropertyALIE.description}}</span></td>
+              <td><span>{{otherPropertyALIE.price|translateNumber}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_c"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part B: Liabilities'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part4">
+            <tr>
+              <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Type & description of liabilities'|translate}}</span></td>
+              <td align="center"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Amount'|translate}}</span></td>
+            </tr>
+            <tr ng-repeat="liabilityALIE in ctrl.candidat.liabilityALIE">
+              <td><span lang="en">{{liabilityALIE.description}}</span></td>
+              <td><span>{{liabilityALIE.price|translateNumber}}</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_d"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part C-annual income'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part5">
+            <tr>
+              <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Estimated total annual earnings'|translate}}</span></td>
+              <td align="center"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Amount'|translate}}</span></td>
+            </tr>
+            <tr ng-repeat="annualIncomeALIE in ctrl.candidat.annualIncomeALIE">
+              <td><span lang="en">{{annualIncomeALIE.description}}</span></td>
+              <td><span> {{annualIncomeALIE.price|translateNumber}} </span></td>
+            </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_e"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part C: Annual earnings-expenses'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'The total estimated annual expenditure statement'|translate}}</span></td>
+            <td align="center"><span style="font-weight: 400;text-transform: capitalize;font-family: arial;font-size: 14px;">{{'Amount'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="annualExpenseALIE in ctrl.candidat.annualExpenseALIE">
+            <td><span lang="en">{{annualExpenseALIE.description}}</span></td>
+            <td><span>{{annualExpenseALIE.price|translateNumber}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+</div>

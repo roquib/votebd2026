@@ -1,0 +1,87 @@
+{
+  "name": "Post",
+  "plural": "posts",
+  "base": "AppModel",
+  "properties": {
+    "titleBn": {
+      "type": "string",
+      "required": true
+    },
+     "titleEn": {
+      "type": "string",
+      "required": true
+    },
+    "contentBn": {
+      "type": "string",
+      "meta": {
+        "formType": "textarea"
+      }
+    },
+    "contentEn": {
+      "type": "string",
+      "meta": {
+        "formType": "textarea"
+      }
+    },
+    "image": {
+      "type": "string"
+    },
+    "featuredBn": {
+      "type": "string",
+      "meta": {
+        "formType": "textarea"
+      }
+    },
+    "featuredEn": {
+      "type": "string",
+      "meta": {
+        "formType": "textarea"
+      }
+    }
+  },
+  "validations": [],
+  "relations": {
+    "election": {
+      "type": "belongsTo",
+      "model": "election",
+      "foreignKey": "electionId"
+    },
+    "currentElection": {
+      "type": "belongsTo",
+      "model": "currentElection",
+      "foreignKey": "currentElectionId"
+    },
+    "division": {
+      "type": "belongsTo",
+      "model": "division",
+      "foreignKey": "divisionId"
+    },
+    "district": {
+      "type": "belongsTo",
+      "model": "district",
+      "foreignKey": "districtId"
+    },
+    "upazilla": {
+      "type": "belongsTo",
+      "model": "upazilla",
+      "foreignKey": "upazillaId"
+    },
+    "union": {
+      "type": "belongsTo",
+      "model": "union",
+      "foreignKey": "unionId"
+    },
+    "electionSeat": {
+      "type": "belongsTo",
+      "model": "electionSeat",
+      "foreignKey": "electionSeatId"
+    },
+    "candidate": {
+      "type": "belongsTo",
+      "model": "candidate",
+      "foreignKey": "candidateId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

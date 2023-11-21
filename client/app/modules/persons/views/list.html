@@ -1,0 +1,48 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="overflow: hidden">
+    <h4 style="float: left;display: inline-block">Persons</h4>
+    <!--<span class="pull-right btn-group">-->
+      <!--<a href="" class="btn btn-xs btn-success" ui-sref="^.add()">-->
+        <!--<i class="fa fa-plus"></i>-->
+      <!--</a>-->
+    <!--</span>-->
+    <input style="width: 320px;float: right" ng-model="q" id="search" class="form-control" placeholder="Find person by name">
+  </div>
+  <div class="pagination-cont">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
+                             template-url="modules/core/views/dirPagination.tpl.html"
+                             pagination-id="electionSeatList"></dir-pagination-controls>
+  </div>
+  <div class='list-group'>
+    <div
+      dir-paginate="item in ctrl.persons | filter:q | itemsPerPage: ctrl.pageSize"
+      current-page="ctrl.currentPage" pagination-id="electionSeatList"
+      class="list-group-item">
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({id: item.id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="" class="btn btn-xs btn-danger" ui-sref="^.delete({id: item.id})">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </span>
+      <h4 class="list-group-item-heading">
+        <a href="" ui-sref="^.view({id: item.id})">{{item.personNameBn}} {{item.personNameEn}}</a>
+      </h4>
+
+      <p class="list-group-item-text">{{item.fatherNameBn}}-{{item.motherNameBn}} ({{item.genderBn}})<br/> {{item.currentAddressBn}} </p>
+    </div>
+    <div ng-show="!ctrl.persons.length" class="list-group-item">
+      <h4 class="list-group-item-heading" translate>
+        There are no persons
+      </h4>
+
+      <p class="list-group-item-text" translate>Click <a href="" ui-sref="^.add">here</a> to add a person!</p>
+    </div>
+  </div>
+  <div class="pagination-cont">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
+                             template-url="modules/core/views/dirPagination.tpl.html"
+                             pagination-id="electionSeatList"></dir-pagination-controls>
+  </div>
+</div>

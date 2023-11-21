@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.candidate.candidateNameBnAF}}
+
+    <span class="pull-right btn-group">
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({candidateId: ctrl.candidate.id})">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.delete({candidateId: ctrl.candidate.id})">
+      <i class="fa fa-trash-o"></i>
+    </a>
+  </span>
+  </div>
+  <div class="panel-body">
+    <!--<pre>{{ctrl.candidate | json}}</pre>-->
+    <label>Candidate Name (Bangla) : </label> <span> {{ctrl.candidate.candidateNameBnAF}} </span><br/>
+    <label>Candidate Name (English) : </label> <span> {{ctrl.candidate.candidateNameEnAF}} </span><br/>
+    <label>Address (Bangla) : </label> <span> {{ctrl.candidate.addressBnAF}} </span>
+  </div>
+</div>

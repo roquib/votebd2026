@@ -1,0 +1,431 @@
+<style>
+  body{
+    /*font-size:10pt;*/
+  }
+  tr,td,th{
+    border: 1px dotted;
+  }
+  th {
+    font-size:9pt;
+    font-family:SolaimanLipi;
+    font-weight:normal;
+    text-align:center;
+  }
+  td{
+    font-size: 8pt;
+    font-family:SolaimanLipi;
+    font-weight:normal;
+    text-align:center;
+  }
+  .hide{
+    display: none;
+  }
+  .databorder{
+    border-width:1px;
+    border-spacing:0px;
+    border-style:dotted;
+    border-color:#CCCCCC;
+    border-collapse:collapse;
+  }
+ .databorder tr,td,th{
+    border-width:1px;
+    padding:0px;
+    border-style:dotted;
+    border-color:#CCCCCC;
+  }
+</style>
+<table  width="100%" border="1"  cellspacing="0" cellpadding="1" style="border-style:solid;">
+  <div class="row">
+     <div class="col-md-12 col-sm-12 col-xs-12">
+       <div class="text-center ze-title2 ">
+         <h3 ng-show="$root.locale.lang=='bn_BD'">{{candidateComparisonData[0].currentElection.currentElectionNameBn}}, {{ candidateComparisonData[0].electionSeat.seatNameBn}} {{"আসনের প্রতিদ্বন্দ্বী প্রার্থীদের তথ্যাবলী"}}</h3>
+         <h3 ng-show="$root.locale.lang!='bn_BD'">{{candidateComparisonData[0].currentElection.currentElectionNameEn}}, {{ candidateComparisonData[0].electionSeat.seatNameEn}} {{"competitive candidate information"}}</h3>
+         <p lang="{{$root.locale.lang}}">{{}}</p>
+       </div>
+     </div>
+   </div>
+  <tbody>
+  <tr>
+    <td>ক্রম</td>
+    <td>প্রার্থীর নাম ও ঠিকানা</td>
+    <td>শিক্ষাগত যোগ্যতা</td>
+    <td>পেশা/ জীবিকা</td>
+    <td>বর্তমানে কোন ফৌজদারী মামলায় অভিযুক্ত কিনা</td>
+    <td>অতীতে কোন ফৌজদারী মামলা হয়েছে কিনা? মামলার ফলাফল কি?</td>
+    <td>আয়ের উৎসসমূহ ও পরিমাণ (বাৎসরিক)
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>উৎস সমূহ</td>
+          <td>প্রার্থীর নিজের</td>
+          <td>নির্ভরশীল</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td style="text-align:center;">প্রার্থী ও প্রার্থীর উপর নির্ভরশীলদের সম্পদের বিবরণ
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td style="text-align:center;"> অস্থাবর সম্পদ
+            <table width="100%" cellspacing="0" class="databorder">
+              <tbody>
+              <tr>
+                <td style="text-align:center;">প্রার্থীর নিজের নামে</td>
+                <td style="text-align:center;">স্ত্রী/নির্ভরশীল এর নামে</td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td style="text-align:center;">স্থাবর সম্পদ
+            <table width="100%" cellspacing="0" class="databorder">
+              <tbody>
+              <tr style="text-align:center;">
+                <td>নিজ নামে</td>
+                <td>স্ত্রী/নির্ভরশীল এর নামে</td>
+                <td>যৌথমালিকানায় প্রার্থীর অংশ</td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>প্রার্থীর দায়দেনাসমূহের বিবরণ
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td align="center">
+            বিবরণ
+          </td>
+          <td align="center">
+            পরিমাণ
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>প্রার্থীর ঋণ সংক্রান্ত বিবরণী
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>ঋণের ধরণ</td>
+          <td>আর্থিক প্রতিষ্ঠানের নাম</td>
+          <td>ঋণের পরিমাণ</td>
+          <!--<td>খেলাপী ঋণ</td> changed 12 dec 17-->
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>আয়কর বিবরণীতে দাখিলকৃত
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>সম্পদ</td>
+          <td>করযোগ্য আয়</td>
+          <td>জীবনযাত্রার মান</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <center>১</center>
+    </td>
+    <td>
+      <center>২</center>
+    </td>
+    <td>
+      <center>৩</center>
+    </td>
+    <td>
+      <center>৪</center>
+    </td>
+    <td>
+      <center>৫</center>
+    </td>
+    <td>
+      <center>৬</center>
+    </td>
+    <td>
+      <center>৭</center>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>
+            <center>৭(ক)</center>
+          </td>
+          <td>
+            <center>৭(খ)</center>
+          </td>
+          <td>
+            <center>৭(গ)</center>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>
+            <center>৮.১</center>
+            <table width="100%" cellspacing="0" class="databorder">
+              <tbody>
+              <tr>
+                <td>
+                  <center>৮.১(ক)</center>
+                </td>
+                <td>
+                  <center>৮.১(খ)</center>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td>
+            <center>৮.২</center>
+            <table width="100%" cellspacing="0" class="databorder">
+              <tbody>
+              <tr>
+                <td>
+                  <center>৮.২(ক)</center>
+                </td>
+                <td>
+                  <center>৮.২(খ)</center>
+                </td>
+                <td>
+                  <center>৮.২(গ)</center>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <center>৯</center>
+    </td>
+    <td>
+      <center>১০</center>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>
+            <center>১০(ক)</center>
+          </td>
+          <td>
+            <center>১০(খ)</center>
+          </td>
+          <td>
+            <center>১০(গ)</center>
+          </td>
+          <td>
+            <center>১০(ঘ)</center>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <center>১১</center>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td align="center">১১(ক)</td>
+          <td align="center">১১(খ)</td>
+          <td align="center">১১(গ)</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+  <!-- now main data rows begins -->
+  <tr ng-repeat="tr_data in candidateComparisonData">
+
+    <td>{{($index+1) | translate}}</td>
+    <td><a target="_blank" ui-sref="front.candidateSearch.affidavit({id:tr_data.id})"><b>{{tr_data.candidateNameBnAF}}</b></a>
+
+      <p class="edit-link"><a title="edit" target="_blank" ui-sref="app.candidates.addedit.editAffidavit({candidateId: tr_data.id})"><img ng-if="showImg" style="width: 25px"
+        src="images/document_edit.png" border="0"></a></p>
+      <br>
+      দল: {{tr_data.politicalParty.partyNameBn}}
+      <br>পিতা/স্বামী: {{tr_data.fatherHusbandNameBnAF}}
+      <br>
+      মাতা: {{tr_data.motherNameBnAF}}
+      <br>
+      {{tr_data.addressBnAF}}
+    </td>
+    <td>{{tr_data.highestDegreeBnAF}}</td>
+    <td>{{tr_data.professionTypeBnAF}}</td>
+    <td>
+      <ul>
+        <li ng-repeat="presentLaw in tr_data.lawPresentAF">{{($index+1) | translate}} . {{presentLaw.whichLaw}} <br/>({{presentLaw.currentStatusResult}})
+        </li>
+      </ul>
+      <!--{{tr_data.lawPresentAF}}-->
+    </td>
+    <td>
+      <ul>
+        <li ng-repeat="pastLaw in tr_data.lawPastAF">{{($index+1) | translate}}. {{pastLaw.whichLaw}}<br/> ({{pastLaw.currentStatusResult}})</li>
+      </ul>
+      <!--{{tr_data.lawPastAF}}-->
+    </td>
+    <td>
+      <table width="100%"  cellspacing="0" class="databorder">
+        <tr ng-repeat="income in tr_data.incomeSourceAF">
+          <td width="33%"><span>{{income.type | translate}}</span></td>
+          <td width="33%"><span ng-if="income.own > 0">{{income.own | number:0 | translateNumber}}</span></td>
+          <td width="33%"><span ng-if="income.dependents > 0">{{income.dependents | number:0 | translateNumber}}</span></td>
+        </tr>
+      <!--<tr>
+          <td ></td>
+          <td >মোট: {{tr_data.totalOwnIncomeAF | number:0 | translateNumber}}</td>
+          <td >মোট: {{tr_data.totalDependentIncomeAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr>
+          <td  rowspan="3">সর্বমোট আয়: {{tr_data.grandTotalIncomeAF | number:0 | translateNumber}}</td>
+        </tr>-->
+      </table>
+    </td>
+    <td>
+      <table width="100%"  cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td width="40%">
+            <table width="100%"  cellspacing="0" class="databorder">
+              <tbody>
+              <tr ng-repeat="assetMaterial in tr_data.assetMaterialAF">
+                <td width="50%">  <span>{{assetMaterial.type | translate}}:</span>
+                  <br> <span ng-if="assetMaterial.amountOwn">{{assetMaterial.amountOwn | translateNumber}}</span>
+                  <br> <span ng-if="assetMaterial.priceOwn ">{{assetMaterial.priceOwn | number:0 | translateNumber}}</span>
+                </td>
+                <td width="50%">
+                  <br> <span ng-if="assetMaterial.amountHusbandWife || assetMaterial.amountDependants ">{{assetMaterial.amountHusbandWife | translateNumber}}, {{assetMaterial.amountDependants | translateNumber}}</span>
+                  <br> <span class="priceHusbandWife">{{assetMaterial.priceHusbandWife| translateNumber}}</span>
+                  <br> <span class="priceDependent">{{assetMaterial.priceDependants| translateNumber}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+          <td width="60%">
+            <table width="100%" cellspacing="0" class="databorder">
+              <tbody>
+              <tr ng-repeat="assetImmaterialAF in tr_data.assetImmaterialAF">
+                <td width="33%"><span>{{assetImmaterialAF.type | translate}}:</span>
+                  <br> <span>{{assetImmaterialAF.amountOwn | translateNumber}}</span>
+                  <br> <span ng-if="assetImmaterialAF.priceOwn > 0">{{assetImmaterialAF.priceOwn | number:0 | translateNumber}}</span>
+                </td>
+                <td width="33%">
+                  <br> <span>{{assetImmaterialAF.amountHusbandWife | translateNumber}}</span>&emsp;<span ng-if="assetImmaterialAF.priceHusbandWife > 0">{{assetImmaterialAF.priceHusbandWife | number:0 | translateNumber}}</span>
+                  <br> <span>{{assetImmaterialAF.amountDependants | translateNumber}}</span>&emsp;<span ng-if="assetImmaterialAF.priceDependants > 0">{{assetImmaterialAF.priceDependants | number:0 | translateNumber}}</span>
+
+                  <!-- <br> <span ng-if="assetImmaterialAF.priceHusbandWife > 0 || assetImmaterialAF.priceDependants> 0 ">{{assetImmaterialAF.priceHusbandWife | number:0 | translateNumber}},{{assetImmaterialAF.priceDependants | number:0 | translateNumber}}</span> -->
+                  <!-- <br> <span>{{assetImmaterialAF.amountHusbandWife | translateNumber}}-{{assetImmaterialAF.amountDependants | translateNumber}}</span>
+                  <br> <span ng-if="assetImmaterialAF.priceHusbandWife > 0 || assetImmaterialAF.priceDependants> 0 ">{{assetImmaterialAF.priceHusbandWife | number:0 | translateNumber}},{{assetImmaterialAF.priceDependants | number:0 | translateNumber}}</span> -->
+                </td>
+                <td width="33%">
+                  <br> <span>{{assetImmaterialAF.amountJointSharePart | translateNumber}}</span>
+                  <br> <span ng-if="assetImmaterialAF.priceJointSharePart > 0">{{assetImmaterialAF.priceJointSharePart | number:0 | translateNumber}}</span>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <table width="100%"   cellspacing="0" class="databorder">
+        <tbody>
+        <tr align="center">
+          <td>{{tr_data.liabilitiesDetailsBnAF}}</td>
+          <td>{{tr_data.liabilitiesAmountAF | number:0 | translateNumber}}</td>
+        </tr>
+
+        </tbody>
+      </table>
+
+    </td>
+    <td>
+      <table width="100%"  cellspacing="0" class="databorder">
+        <tbody>
+        <tr ng-repeat="loan in tr_data.loanAF">
+          <td>{{loan.loanType | translate}}</td>
+          <td>{{loan.bankOrganization}}</td>
+          <td>{{loan.loanAmount | number:0 | translateNumber}}</td>
+          <td>{{loan.debitedLoanAmount | number:0 | translateNumber}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+
+    <td>
+      <table width="100%"   cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td style="text-align:center;">
+            <span ng-if="tr_data._1_totalCapitalTR > 0">{{'(a) Business Capital (Closing balance)'|translate}} : {{tr_data._1_totalCapitalTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._2_notAgriLandHomePriceTR > 0">{{'Non-Agricultural Property (at cost with legal expenses )'|translate}} : {{tr_data._2_notAgriLandHomePriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._3_agriLandPriceTR > 0">{{'Agricultural Property (at cost with legal expenses )'|translate}} : {{tr_data._3_agriLandPriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._4_totalInvestTR > 0">{{'Investments'|translate}} : {{tr_data._4_totalInvestTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._5a_motorPriceTR > 0">{{'Motor Vehicles (at cost)'|translate}} : {{tr_data._5a_motorPriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._6_ornamentsTR > 0">{{'Jewellery (quantity and cost)'|translate}} : {{tr_data._6_ornamentsTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._7_furnitureTR > 0">{{'Furniture (at cost)'|translate}} : {{tr_data._7_furnitureTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._8_electronicTR > 0">{{'Electronic Equipment (at cost)'|translate}} : {{tr_data._8_electronicTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._9_totalCashBankOtherTR > 0">{{'Cash Asset Outside Business'|translate}} : {{tr_data._9_totalCashBankOtherTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._10_otherAssetsPriceTR > 0">{{'Any other assets'|translate}} : {{tr_data._10_otherAssetsPriceTR | number:0 | translateNumber}}</span>
+
+
+            <!--<hr> changed 12 dec 17
+            {{'Total Assets'|translate}} : {{tr_data._10_1_to_10_totalAssetTR | number:0 | translateNumber}}
+            <hr>-->
+            {{'Total Liabilities'|translate}} : {{tr_data._11_totalLiabilitiesTR | number:0 | translateNumber}}
+            <!--<hr>
+            {{"Total Net Assets" | translate}} : {{tr_data._12_netAssetsTR | number:0 | translateNumber}}
+
+          </td>-->
+          <td style="text-align:center;">
+            {{'Total income (serial no. 10 and 11)'|translate}} : {{tr_data._12_10to11_totalTR | number:0 | translateNumber}}<br>
+            {{'Income tax paid in the last assessment year'|translate}} : {{tr_data._15_13_sub_14_givenTaxTR | number:0 | translateNumber}}
+
+          </td>
+          <td style="text-align:center;">
+            <span ng-if="tr_data._1_personalCostTR  > 0"> {{'Personal and fooding expenses'|translate}} : {{tr_data._1_personalCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._2_taxPaidLastYearTR  > 0"> {{'Tax paid including deduction at source of the last Tk. financial year'|translate}} : {{tr_data._2_taxPaidLastYearTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._3_residentialCostTR  > 0"> {{'Accommodation expenses'|translate}} : {{tr_data._3_residentialCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._4_vehicleCostTR  > 0"> {{'Transport expenses'|translate}} : {{tr_data._4_vehicleCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._5_electricityBillTR  > 0"> {{'Electricity Bill for residence'|translate}} : {{tr_data._5_electricityBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._6_waterBillTR  > 0"> {{'Wasa Bill for residence'|translate}} : {{tr_data._6_waterBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._7_gasBillTR  > 0"> {{'Gas Bill for residence'|translate}} : {{tr_data._7_gasBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._8_telephoneBillTR  > 0"> {{'Telephone Bill for residence'|translate}} : {{tr_data._8_telephoneBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._9_childEducationalExpenseTR  > 0"> {{'Education expenses for children'|translate}} : {{tr_data._9_childEducationalExpenseTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._10_travelExpenseTR  > 0"> {{'Personal expenses for Foreign travel'|translate}} : {{tr_data._10_travelExpenseTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._11_festivalCostTR  > 0"> {{'Festival and other special expenses, if any'|translate}} : {{tr_data._11_festivalCostTR | number:0 | translateNumber }}<br></span>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  <!-- now main data rows finished here -->
+  </tbody>
+</table>
+<div class="mjh-add">তথ্য সমূহ সন্নিবেশনে সর্বোচ্চ সতর্কতা অবলম্বন করা হয়েছে। কোন তথ্যের অসংগতি পরিলক্ষিত হলে,
+  নির্বাচন কমিশনের ওয়েব সাইটের তথ্যই সঠিক বলে পরিগণিত হবে।
+  <br/>
+  সুজন-সুশাসনের জন্য নাগরিক
+  <br/>
+  <span>হেরাল্ডিক হাইটস, ২/২, (লেভেল-৪, বি-৪), ব্লক-এ, মিরপুর রোড, মোহাম্মদপুর, ঢাকা -১২০৭।
+ফোন: ৯১৩ ০৪৭৯ ও ৯১৪ ৬১৯৫, ফ্যাক্স: ৯১৪ ৬১৯৫</span>
+</div>

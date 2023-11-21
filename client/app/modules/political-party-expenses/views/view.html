@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.politicalPartyExpense.politicalPartyNameBn}} {{ctrl.politicalPartyExpense.politicalPartyNameEn}}
+
+  <span class="pull-right btn-group">
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({politicalPartyExpenseId: ctrl.politicalPartyExpense.id})">
+      <i class="fa fa-pencil"></i>
+    </a>
+    <a href="" class="btn btn-xs btn-default" ui-sref="^.delete({politicalPartyExpenseId: ctrl.politicalPartyExpense.id})">
+      <i class="fa fa-trash-o"></i>
+    </a>
+  </span>
+  </div>
+  <div class="panel-body">
+    <!--<pre>{{ctrl.politicalPartyExpense | json}}</pre>-->
+    <label>Political Party (Bangla) : </label> <span> {{ctrl.politicalPartyExpense.politicalPartyId}} </span><br/>
+    <label>Political Party Name (Bangla) : </label> <span> {{ctrl.politicalPartyExpense.politicalPartyNameBn}} </span><br/>
+    <label>Political Party Name (English) : </label> <span> {{ctrl.politicalPartyExpense.politicalPartyNameEn}} </span><br/>
+    <label>Executive Director Name (Bangla) : </label> <span> {{ctrl.politicalPartyExpense.executiveDirectorName}} </span><br/>
+    <label>Executive Director Post (Bangla) : </label> <span> {{ctrl.politicalPartyExpense.executiveDirectorPost}} </span><br/>
+    <label>Political Party Address (Bangla) : </label> <span> {{ctrl.politicalPartyExpense.politicalPartyAddressBn}} </span><br/>
+    <label>Publish : </label> <span> {{ctrl.politicalPartyExpense.isPublished}} </span><br/><br/>
+    <label>Given Donation Total Expense: </label> <span> {{ctrl.politicalPartyExpense.givenDonationTotalAmount}} </span><br/>
+    <label>Campain : </label> <span> {{ctrl.politicalPartyExpense.campainTotalAmount}} </span><br/>
+    <label>Vehicle Total Expense : </label> <span> {{ctrl.politicalPartyExpense.vehicleTotalAmount}} </span><br/>
+    <label>Conference Total Expense : </label> <span> {{ctrl.politicalPartyExpense.conferenceTotalAmount}} </span><br/>
+    <label>Staff Total Expense : </label> <span> {{ctrl.politicalPartyExpense.staffTotalAmount}} </span><br/>
+    <label>Administrative Total Expense : </label> <span> {{ctrl.politicalPartyExpense.administrativeTotalAmount}} </span><br/>
+    <label>Other Total Expense : </label> <span> {{ctrl.politicalPartyExpense.otherTotalAmount}} </span><br/><br/><br/>
+    <label>Grand Total Expense : </label> <span> {{ctrl.politicalPartyExpense.grandTotalAmount}} </span><br/>
+  </div>
+  <div class="panel-body">
+    {{ctrl.politicalPartyExpense}}
+  </div>
+</div>

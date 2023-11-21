@@ -1,0 +1,23 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}" style="text-align: center">
+  <h2>{{'All Registered Political Parties'|translate}}</h2>
+  <p>{{dataa}}</p>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table width="95%" class="table_head" align="center" border="1" lang="{{$root.locale.lang}}">
+      <tbody>
+      <tr>
+      <td width="3%"><div align="center"><strong>{{'No.'|translate}}</strong></div></td>
+      <td width="33%"><div align="center"><strong>{{'Team Name'|translate}}</strong></div></td>
+      <!--<td width="37%"><div align="center"><strong>{{'The name of the group (in English)'|translate}}</strong></div></td>-->
+      <td width="23%"><div align="center"><strong>{{'Chairperson'|translate}}</strong></div></td>
+    </tr>
+    <tr ng-repeat="party in ppList">
+      <td  align="center">{{($index+1) | translateNumber}}</td>
+      <td>{{party.partyName}}</td>
+      <td>{{party.chairPersonName}}</td>
+    </tr>
+    </tbody>
+    </table>
+  </div><!--/.col-xs-6.col-lg-4-->
+</div><!--/row-->

@@ -1,0 +1,172 @@
+<section class="election-mgmt">
+  <div id="pricing" class="pricing-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div class="text-center ze-title2 ">
+            <h2 ng-if="$root.locale.lang=='bn_BD'">{{ election.currentElectionNameBn}}</h2>
+            <h2 ng-if="$root.locale.lang!='bn_BD'">{{ election.currentElectionNameEn}}</h2>
+            <p lang="{{$root.locale.lang}}">{{'Affidavit, Assets, Liabilities, Income, Expense based comparative reports of nominated candidates'|translate}}</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-graduation-cap"></i><span lang="{{$root.locale.lang}}">  {{'Education'|translate}}</span></h3>
+            <div id="education-chart"></div>
+            <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lstart"><p ng-bind-html="educationChartBelowSscCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong>{{'Candidates are below SSC'|translate}}</strong></label>
+                </span>
+            </div>
+              <!-- <h2>Candidates are below SSC</h2> -->
+          </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-tasks"></i><span lang="{{$root.locale.lang}}"> {{'Occupation'|translate}} </span></h3>
+            <div id="occupationChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <!-- <h3 lang="{{$root.locale.lang}}" class="pull-left" ng-bind-html="occupationChartBusinessmenCount"></h3> -->
+               <span lang="{{$root.locale.lang}}" class="right_box rfirst"> <p ng-bind-html="occupationChartBusinessmenCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong>{{'Candidates are Businessman'|translate}}</strong></label>
+               </span>
+             </div>
+             <!-- <h2>
+                <span class="text-right">Candidates are Businessman </span>
+             </h2> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-gavel"></i><span lang="{{$root.locale.lang}}">  {{'Cases'|translate}} </span></h3>
+            <div id="casesChart"></div>
+            <div style="overflow:hidden; clear: both">
+                <span lang="{{$root.locale.lang}}" class="left_box lsecond"><p ng-bind-html="pastCandidate302Case"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates having Past (302 clause)'|translate}}</strong></label>
+                </span>
+                <span lang="{{$root.locale.lang}}" class="right_box rsecond"><p  ng-bind-html="presentCandidate302Case"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-right" style="width:100;">{{'Candidates having Present (302 clause) cases'|translate}}</strong></label>
+                </span>
+            </div>
+            <!-- <h2> -->
+                <!-- <span class="text-left"> Candidates having Past (302 clause)</span>
+                <span class="text-right" style="width:100">Candidates having Present (302 clause) cases</span> -->
+            <!-- </h2> -->
+          </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money"></i><span lang="{{$root.locale.lang}}">  {{'Income'|translate}} </span></h3>
+            <div id="incomeChart"></div>
+             <div style="overflow:hidden; clear: both">
+                 <span lang="{{$root.locale.lang}}" class="left_box lthird"><p  ng-bind-html="incomeChartBelow2Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates earn below 2 Lac'|translate}}</strong></label>
+                </span>
+                 <span lang="{{$root.locale.lang}}" class="right_box rthird"><p ng-bind-html="incomeChartAbove1Crore"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-right" style="width:100;">{{'Candidates earn above 1 Crore'|translate}}</strong></label>
+                </span>
+             </div>
+            <!-- <h2> <span class="text-left">Candidates earn below 2 Lac</span>
+                <span class="text-right">Candidates earn above 1 Crore</span>
+            </h2> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-suitcase"></i><span lang="{{$root.locale.lang}}">  {{'Asset'|translate}} </span></h3>
+            <div id="assetChart"></div>
+             <div style="overflow:hidden; clear: both">
+                 <span lang="{{$root.locale.lang}}" class="left_box lforth"><p ng-bind-html="assetChartBelow5Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong>{{"Candidate's asset below 5 Lac"|translate}}</strong></label>
+                </span>
+                 <span lang="{{$root.locale.lang}}" class="right_box rforth"><p ng-bind-html="assetChartAbove5Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong>{{"Candidate's asset above 5 Lac"|translate}}</strong></label>
+                </span>
+             </div>
+            <!-- <h2> <span class="text-left"> Candidates have below 5 Lac</span> <span class="text-right">Candidates have above 5 Lac</span></h2> -->
+          </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money "></i><span lang="{{$root.locale.lang}}"> {{'Loan & Liabilities'|translate}} </span></h3>
+            <div id="loanChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lfifth"><p ng-bind-html="loanChartAbove5Crore"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates loan above 5 Crore'|translate}}</strong></label>
+               </span>
+               <!-- <span class="right_box rfifth"><p></p></span> -->
+             </div>
+          <!-- <h2>
+              <span class="text-left"> Candidates loan above 5 Crore</span>
+          </h2> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money "></i><span lang="{{$root.locale.lang}}"> {{'Tax'|translate}}</span></h3>
+            <div id="taxChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <!--<span class="left_box lsixth"><p ng-bind-html="taxChartBelow10Lac"></p></span>-->
+               <span lang="{{$root.locale.lang}}" class="right_box rsixth"><p ng-bind-html="taxChartAbove10Lac"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-right">{{'Candidates above 10 Lac'|translate}}</strong></label>
+               </span>
+             </div>
+            <!-- <h2>
+                <span class="text-right">Candidates above 10 Lac</span>
+            </h2> -->
+        </div>
+       </div>
+       <div class="col-md-1">
+
+       </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-user "></i><span lang="{{$root.locale.lang}}"> {{'Gender'|translate}}</span></h3>
+            <div id="genderChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lseventh"><p ng-bind-html="genderChartFemaleCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Number of Female Candidates'|translate}}</strong></label>
+               </span>
+               <!-- <span class="right_box rseventh"><p>3,126</p></span>-->
+             </div>
+             <!-- <h2>
+                <span class="text-left">Number of Female Candidates</span>
+             </h2> -->
+          </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+      </div>
+      </div>
+    </div>
+</section>

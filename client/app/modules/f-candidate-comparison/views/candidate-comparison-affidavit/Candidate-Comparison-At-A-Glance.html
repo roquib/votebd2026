@@ -1,0 +1,254 @@
+<div id="sidebar" class="uitab-menu-eer" lang="{{$root.locale.lang}}">
+  <ul class="list-group mjh-abc">
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Candidate-Comparision-At-A-Glance'>{{'Candidate comparison at a glance'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent'>{{'Asset comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Income-Comparison-Of-Own-Dependent'>{{'Income comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Liability-Comparison-Of-Own-Dependent'>{{'Liability Comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Loan-Comparison-Of-Own-Dependent'>{{'Loan Comparison of own, dependent'|translate}}</a></li>
+    <li><a class="list-group-item" ui-sref-active="active" ui-sref='front.candidateComparisonAffidavit.Neat-Asset-Comparison-Of-Own-Dependent'>{{'Neat Asset Comparison of own, dependent'|translate}}</a></li>
+  </ul>
+</div>
+<div class="about-detail-cont">
+  <div class="jumbotron">
+    <h2 lang="{{$root.locale.lang}}">{{'Candidate comparison at a glance'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length |
+          translateNumber}}
+          {{'Candidates Analysis Report' | translate}}</h3>
+
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <th class="text-center">{{'Sl.'|translate}}</th>
+              <th class="text-center">{{'Candidate Name'|translate}}</th>
+              <th class="text-center">{{'Year'|translate}}</th>
+              <th class="text-center">{{'Election Seat'|translate}}</th>
+              <th class="text-center" colspan="3">{{'Income'|translate}}</th>
+              <th class="text-center" colspan="3">{{'Asset'|translate}}/{{'Net Asset' | translate}}</th>
+              <th class="text-center" colspan="3">{{'Loan'|translate}}</th>
+              <th class="text-center">{{'Tax'|translate}}</th>
+              <th class="text-center">{{'Family Expense'|translate}}</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th class="text-center">{{'Own'|translate}}</th>
+              <th class="text-center">{{'Dependent'|translate}}</th>
+              <th class="text-center">{{'Total'|translate}}</th>
+              <th class="text-center">{{'Own'|translate}}</th>
+              <th class="text-center">{{'Dependent'|translate}}</th>
+              <th class="text-center">{{'Total'|translate}}</th>
+              <th class="text-center">{{'Own'|translate}}</th>
+              <th class="text-center">{{'Dependent'|translate}}</th>
+              <th class="text-center">{{'Total'|translate}}</th>
+              <th></th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody ng-repeat="row in candidateList.candidateList">
+            <tr>
+              <td rowspan="4">{{($index + 1) | translateNumber}}</td>
+              <td rowspan="4">{{row.one.candidateName}}</td>
+              <td>{{candidateList.one | translateNumber}}</td>
+              <td>{{row.one.seatName}}</td>
+              <td>{{(row.one.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.one.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.one.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.one._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td>{{candidateList.two | translateNumber}}</td>
+              <td>{{row.two.seatName}}</td>
+              <td>{{(row.two.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td>{{candidateList.three | translateNumber}}</td>
+              <td>{{row.three.seatName}}</td>
+              <td>{{(row.three.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr>
+              <td>{{candidateList.four | translateNumber}}</td>
+              <td>{{row.four.seatName}}</td>
+              <td>{{(row.four.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr ng-if="(candidateList.one && candidateList.two) && !(candidateList.one && candidateList.two && candidateList.three) && !(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'প্রথম বর্ষ থেকে শেষ বর্ষের পরিবর্তন'}}</th>
+              <td>{{(candidateList.two-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(row.two.incomeOwn-row.one.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.incomeDependent-row.one.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.incomeTotal-row.one.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.assetOwn-row.one.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.assetDependent-row.one.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.assetTotal-row.one.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two.loanOwn-row.one.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanDependent-row.one.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.loanTotal-row.one.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.two._19_previousTaxTR-row.one._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.two.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr ng-if="(candidateList.one && candidateList.two && candidateList.three) && !(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'প্রথম বর্ষ থেকে শেষ বর্ষের পরিবর্তন'}}</th>
+              <td>{{(candidateList.three-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(row.three.incomeOwn-row.one.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.incomeDependent-row.one.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.incomeTotal-row.one.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three.assetOwn-row.one.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.assetDependent-row.one.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.assetTotal-row.one.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three.loanOwn-row.one.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.loanDependent-row.one.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.loanTotal-row.one.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.three._19_previousTaxTR-row.one._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.three.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+            <tr ng-if="(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'প্রথম বর্ষ থেকে শেষ বর্ষের পরিবর্তন'}}</th>
+              <td>{{(candidateList.four-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(row.four.incomeOwn-row.one.incomeOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.incomeDependent-row.one.incomeDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.incomeTotal-row.one.incomeTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four.assetOwn-row.one.assetOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.assetDependent-row.one.assetDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.assetTotal-row.one.assetTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four.loanOwn-row.one.loanOwn) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.loanDependent-row.one.loanDependent) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.loanTotal-row.one.loanTotal) | number:0 | translateNumber}}</td>
+
+              <td>{{(row.four._19_previousTaxTR-row.one._19_previousTaxTR) | number:0 | translateNumber}}</td>
+              <td>{{(row.four.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}</td>
+            </tr>
+
+            <tr ng-if="(candidateList.one && candidateList.two) && !(candidateList.one && candidateList.two && candidateList.three) && !(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'অনুপাত'}}</th>
+              <td>{{(candidateList.two-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(((row.two.incomeOwn-row.one.incomeOwn)*100)/row.one.incomeOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.incomeDependent-row.one.incomeDependent)*100)/row.one.incomeDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.incomeTotal-row.one.incomeTotal)*100)/row.one.incomeTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.two.assetOwn-row.one.assetOwn)*100)/row.one.assetOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.assetDependent-row.one.assetDependent)*100)/row.one.assetDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.assetTotal-row.one.assetTotal)*100)/row.one.assetTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.two.loanOwn-row.one.loanOwn)*100)/row.one.loanOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.loanDependent-row.one.loanDependent)*100)/row.one.loanDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.loanTotal-row.one.loanTotal)*100)/row.one.loanTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.two._19_previousTaxTR-row.one._19_previousTaxTR)*100)/row.one._19_previousTaxTR) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.two.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR)*100)/row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}%</td>
+            </tr>
+            <tr ng-if="(candidateList.one && candidateList.two && candidateList.three) && !(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'অনুপাত'}}</th>
+              <td>{{(candidateList.three-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(((row.three.incomeOwn-row.one.incomeOwn)*100)/row.one.incomeOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.incomeDependent-row.one.incomeDependent)*100)/row.one.incomeDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.incomeTotal-row.one.incomeTotal)*100)/row.one.incomeTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.three.assetOwn-row.one.assetOwn)*100)/row.one.assetOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.assetDependent-row.one.assetDependent)*100)/row.one.assetDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.assetTotal-row.one.assetTotal)*100)/row.one.assetTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.three.loanOwn-row.one.loanOwn)*100)/row.one.loanOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.loanDependent-row.one.loanDependent)*100)/row.one.loanDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.loanTotal-row.one.loanTotal)*100)/row.one.loanTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.three._19_previousTaxTR-row.one._19_previousTaxTR)*100)/row.one._19_previousTaxTR) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.three.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR)*100)/row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}%</td>
+            </tr>
+            <tr ng-if="(candidateList.one && candidateList.two && candidateList.three && candidateList.four)">
+              <th colspan="2">{{'অনুপাত'}}</th>
+              <td>{{(candidateList.four-candidateList.one) | translateNumber}}</td>
+              <td></td>
+              <td>{{(((row.four.incomeOwn-row.one.incomeOwn)*100)/row.one.incomeOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.incomeDependent-row.one.incomeDependent)*100)/row.one.incomeDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.incomeTotal-row.one.incomeTotal)*100)/row.one.incomeTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.four.assetOwn-row.one.assetOwn)*100)/row.one.assetOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.assetDependent-row.one.assetDependent)*100)/row.one.assetDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.assetTotal-row.one.assetTotal)*100)/row.one.assetTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.four.loanOwn-row.one.loanOwn)*100)/row.one.loanOwn) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.loanDependent-row.one.loanDependent)*100)/row.one.loanDependent) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.loanTotal-row.one.loanTotal)*100)/row.one.loanTotal) | number:0 | translateNumber}}%</td>
+
+              <td>{{(((row.four._19_previousTaxTR-row.one._19_previousTaxTR)*100)/row.one._19_previousTaxTR) | number:0 | translateNumber}}%</td>
+              <td>{{(((row.four.totalLifeStyleCostTR-row.one.totalLifeStyleCostTR)*100)/row.one.totalLifeStyleCostTR) | number:0 | translateNumber}}%</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div ng-include="'modules/f-election-result/views/election-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Number of Candidates by Constituency'|translate}}</h2>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{grandSum.totalCandidate | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+            <tr>
+              <td>{{'Sl'|translate}}.</td>
+              <td>{{'Seat'|translate}}</td>
+              <td>{{'possible'|translate}}</td>
+              <td>{{'eligible'|translate}}</td>
+              <td>{{'withdrawn'|translate}}</td>
+              <td>{{'totalCandidate'|translate}}</td>
+              <td>{{'elected'|translate}}</td>
+              <td>{{'male'|translate}}</td>
+              <td>{{'female'|translate}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in electedCandidates">
+              <td>{{($index+1) | translateNumber}}</td>
+              <td>{{row.seatName}}</td>
+              <td>{{row.state.possible | translateNumber}}</td>
+              <td>{{row.state.eligible | translateNumber}}</td>
+              <td>{{row.state.withdrawn | translateNumber}}</td>
+              <td>{{row.state.totalCandidate | translateNumber}}</td>
+              <td>{{row.state.elected | translateNumber}}</td>
+              <td>{{row.state.male | translateNumber}}</td>
+              <td>{{row.state.female | translateNumber}}</td>
+            </tr>
+            <tr >
+              <td colspan="2">{{'Total'|translate}} :</td>
+              <td>{{grandSum.possible | translateNumber}}</td>
+              <td>{{grandSum.eligible | translateNumber}}</td>
+              <td>{{grandSum.withdrawn | translateNumber}}</td>
+              <td>{{grandSum.totalCandidate | translateNumber}}</td>
+              <td>{{grandSum.elected | translateNumber}}</td>
+              <td>{{grandSum.male | translateNumber}}</td>
+              <td>{{grandSum.female | translateNumber}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

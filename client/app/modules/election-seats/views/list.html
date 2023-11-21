@@ -1,0 +1,155 @@
+<div class="row">
+  <div class="col-md-12">
+    <form name="form">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span translate>Election Seat Filter Criteria</span>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit()" ng-disabled="form.$invalid">
+            Find Election Seats
+          </button>
+          <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit2()" ng-disabled="form.$invalid">
+            Find Seats to add Election Seats
+          </button>
+          <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+
+          <!--<span class="pull-right">-->
+            <!--<span class="btn-group">-->
+            <!--<a ng-disabled="form.$invalid" href="" class="btn btn-xs btn-success" ui-sref="^.add(ctrl.seat)" title="Add Seat">-->
+              <!--<i class="fa fa-plus"></i>-->
+            <!--</a>-->
+            <!--</span>-->
+          <!--</span>-->
+
+          Search Params: {{ctrl.electionSeat}}
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--election seat list for certain region-->
+<div ng-show="electionSeats.length">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <span ng-show="electionSeats.length">
+Election: {{electionSeats[0].currentElection.nameBn}} - Division: {{electionSeats[0].division.nameBn}} - District: {{electionSeats[0].district.nameBn}}
+    </span>
+    <span ng-show="!electionSeats.length">
+      Please select Region from above for showing election seats
+    </span>
+
+      <span class="pull-right">
+            <span class="btn-group">
+            <span class="btn btn-xs btn-info">
+              Election Seat List
+            </span>
+            </span>
+          </span>
+
+    </div>
+
+    <table class="table table-bordered" ng-show="electionSeats.length">
+      <tbody>
+
+      <tr dir-paginate="seat in electionSeats | filter:q | itemsPerPage: ctrl.pageSize" current-page="ctrl.currentPage" pagination-id="electionSeatList">
+        <th>
+          <a href="" ui-sref="^.view({seatId: seat.id})"><span ng-if="seat.upazilla.nameBn">Upazilla/CC/MU: {{seat.upazilla.nameBn}} </span><span
+            ng-if="seat.union.nameBn">- Union/MU: {{seat.union.nameBn}} </span><span>- Seat: {{seat.seatNameBn}}</span></a>
+
+          <div class="pull-right">
+
+            <a href="" class="btn btn-xs btn-default" target="_blank" ui-sref="^.edit({electionSeatId: seat.id})">
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a href="" class="btn btn-xs btn-default" ui-sref="^.delete({electionSeatId: seat.id})">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="panel-body" ng-show="!electionSeats.length">
+      <h4 class="list-group-item-heading" translate>
+        There are no Seats in this election!
+      </h4>
+
+      <p class="list-group-item-text" translate>
+        Click <a href="" ui-sref="^.add({ electionId: election.id })">here</a> to add one!
+      </p>
+    </div>
+  </div>
+
+  <div class="pagination-cont">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"
+                             template-url="modules/core/views/dirPagination.tpl.html"  pagination-id="electionSeatList"></dir-pagination-controls>
+  </div>
+
+</div>
+
+<!--seat list for certain region-->
+<div ng-show="seats.length">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+    <span ng-show="seats.length">
+Election: {{seats[0].election.nameBn}} - Division: {{seats[0].division.nameBn}} - District: {{seats[0].district.nameBn}}
+    </span>
+    <span ng-show="!seats.length">
+      Please select Region from above for showing seats
+    </span>
+
+      <span class="pull-right">
+            <span class="btn-group">
+            <span  class="btn btn-xs btn-info">
+              Seat List
+            </span>
+            </span>
+          </span>
+
+    </div>
+
+    <table class="table table-bordered" ng-show="seats.length">
+      <tbody>
+
+      <tr dir-paginate="seat in seats | filter:q | itemsPerPage: ctrl.pageSize" current-page="ctrl.currentPage2" pagination-id="seatlist">
+        <th>
+          <a href="" ui-sref="^.view({seatId: seat.id})"><span ng-if="seat.upazilla.nameBn">Upazilla/CC/MU: {{seat.upazilla.nameBn}} </span><span
+            ng-if="seat.union.nameBn">- Union/MU: {{seat.union.nameBn}} </span><span>- Seat: {{seat.seatNameBn}}</span></a>
+
+          <div class="pull-right">
+
+            <span class="btn btn-xs btn-default" ng-click="ctrl.addThisSeatToCurrentElection(seat,ctrl.electionSeat)">
+              <i class="fa fa-plus"></i>
+            </span>
+          </div>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="panel-body" ng-show="!seats.length">
+      <h4 class="list-group-item-heading" translate>
+        There are no Seats in this election!
+      </h4>
+
+      <p class="list-group-item-text" translate>
+        Click <a href="" ui-sref="^.add({ electionId: election.id })">here</a> to add one!
+      </p>
+    </div>
+  </div>
+
+  <div class="pagination-cont">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="modules/core/views/dirPagination.tpl.html"  pagination-id="seatlist"></dir-pagination-controls>
+  </div>
+</div>

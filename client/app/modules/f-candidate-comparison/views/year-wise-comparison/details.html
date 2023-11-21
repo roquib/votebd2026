@@ -1,0 +1,551 @@
+<style>
+  .accordion-block a.accordion-toggle {
+    /*background-color: aquamarine;*/
+    width: 100%;
+    /* padding: 5px; */
+    display: block;
+    /* height: 38px; */
+    /* line-height: 2; */
+    /* padding: 22px 1px; */
+    /* margin: 18px; */
+    /* margin: 0px 0px; */
+    padding: 8px 0;
+    margin: -9px 0;
+  }
+</style>
+<div class="container">
+  <!--<div class="about-us-cont">-->
+  <!--<div class="ze-title">-->
+  <!--<h2>{{'Candidate Info Comparison Year Wise'|translate}} </h2>-->
+  <!--<p>{{AssetsLiabilitiesIncomeExpensesBasedComparision|translate}}</p>-->
+  <!--</div>-->
+  <!--</div>-->
+  <h2 class="text-center">{{'Comparison report of'|translate}} {{reportData.c1Data.person.personNameEn}}</h2>
+  <h5 class="text-center">{{'First Election'|translate}} : {{reportData.c1Data.currentElection.currentElectionNameEn}}</h5>
+  <h5 class="text-center">{{'Second Election'|translate}} : {{reportData.c2Data.currentElection.currentElectionNameEn}}</h5>
+  <accordion close-others="oneAtATime" class="accordion-block">
+    <accordion-group is-open="status[0].open">
+      <accordion-heading>
+        {{'Education'|translate}} <i class="pull-right glyphicon"
+                     ng-class="{'glyphicon-chevron-down': status[0].open, 'glyphicon-chevron-right': !status[0].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Education'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{reportData.c1Data.highestDegreeBnAF}}</td>
+          <td>{{reportData.c2Data.highestDegreeBnAF}}</td>
+          <td>{{(reportData.c1Data.highestDegreeBnAF === reportData.c2Data.highestDegreeBnAF) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[1].open">
+      <accordion-heading>
+         {{'Occupation'|translate}}<i class="pull-right glyphicon"
+                      ng-class="{'glyphicon-chevron-down': status[1].open, 'glyphicon-chevron-right': !status[1].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Occupation'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{reportData.c1Data.professionTypeBnAF}}</td>
+          <td>{{reportData.c2Data.professionTypeBnAF}}</td>
+          <td>{{(reportData.c1Data.professionTypeBnAF === reportData.c2Data.professionTypeBnAF) ? 'same' : 'change'|translate}}
+          </td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[3].open">
+      <accordion-heading>
+        {{'No. of cases'|translate}} <i class="pull-right glyphicon"
+                        ng-class="{'glyphicon-chevron-down': status[3].open, 'glyphicon-chevron-right': !status[3].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="4" class="text-center">{{'No. of cases'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center"></th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{'Past'|translate}}</td>
+          <td>{{reportData.c1Data.lawPastAF.length ? reportData.c1Data.lawPastAF.length : 0}}</td>
+          <td>{{reportData.c2Data.lawPastAF.length ? reportData.c2Data.lawPastAF.length : 0}}</td>
+          <td>{{(reportData.c1Data.lawPastAF.length === reportData.c2Data.lawPastAF.length) ? 'same' : 'change'|translate}}</td>
+        </tr>
+        <tr>
+          <td>{{'Present'|translate}}</td>
+          <td>{{reportData.c1Data.lawPresentAF.length ? reportData.c1Data.lawPresentAF.length : 0}}</td>
+          <td>{{reportData.c2Data.lawPresentAF.length ? reportData.c2Data.lawPresentAF.length : 0}}</td>
+          <td>{{(reportData.c1Data.lawPresentAF.length === reportData.c2Data.lawPresentAF.length) ? 'same' :
+            'change'|translate}}
+          </td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[4].open">
+      <accordion-heading>
+        {{'Income'|translate}} <i class="pull-right glyphicon"
+                  ng-class="{'glyphicon-chevron-down': status[4].open, 'glyphicon-chevron-right': !status[4].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Yearly Total Income'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data.incomeTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.incomeTotal === reportData.c2Data.incomeTotal) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+      <a ng-click="showHideIncome()" href>{{income.text}}</a>
+      <table class="table table-bordered table-hover" ng-show="income.flag">
+        <thead>
+        <!--<tr>-->
+        <!--<th colspan="3" class="text-center">Living Expenses</th>-->
+        <!--</tr>-->
+        <tr>
+          <th class="text-center">{{'Source'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Own'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Dependents'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Total'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center"></th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="key in reportData.arrayToJson.incomeDetails">
+          <th class="text-center">{{key | translate}}</th>
+          <td>{{(reportData.c1Data.incomeDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].own - reportData.c1Data.incomeDetails[key].own) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.incomeDetails[key].own | ratio: reportData.c2Data.incomeDetails[key].own) | translateNumber}}%</td>
+          <td>{{(reportData.c1Data.incomeDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].dependent - reportData.c1Data.incomeDetails[key].dependent) |
+            number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.incomeDetails[key].dependent | ratio:
+            reportData.c2Data.incomeDetails[key].dependent) | translateNumber}}%
+          </td>
+          <td>{{(reportData.c1Data.incomeDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.incomeDetails[key].total - reportData.c1Data.incomeDetails[key].total) | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.incomeDetails[key].total | ratio: reportData.c2Data.incomeDetails[key].total) | translateNumber}}%</td>
+        </tr>
+        <tr>
+          <th class="text-center">{{'Total'|translate}}</th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.own - reportData.c1Data.incomeDetails.sum.own) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.own | ratio: reportData.c2Data.incomeDetails.sum.own) | translateNumber}}%</th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.dependent - reportData.c1Data.incomeDetails.sum.dependent) |
+            number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.dependent | ratio:
+            reportData.c2Data.incomeDetails.sum.dependent) | translateNumber}}%
+          </th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.incomeDetails.sum.total - reportData.c1Data.incomeDetails.sum.total) | number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.incomeDetails.sum.total | ratio: reportData.c2Data.incomeDetails.sum.total) | translateNumber}}%</th>
+        </tr>
+        </tbody>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[5].open">
+      <accordion-heading>
+        {{'Asset'|translate}} <i class="pull-right glyphicon"
+                 ng-class="{'glyphicon-chevron-down': status[5].open, 'glyphicon-chevron-right': !status[5].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Total Assets'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data.assetTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.assetTotal === reportData.c2Data.assetTotal) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+      <a ng-click="showHideAsset()" href>{{asset.text}}</a>
+
+      <table class="table table-bordered table-hover" ng-show="asset.flag">
+        <thead>
+        <!--<tr>-->
+        <!--<th colspan="3" class="text-center">Living Expenses</th>-->
+        <!--</tr>-->
+        <tr>
+          <th class="text-center">{{'Source'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Own'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Dependents'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Total'|translate}}</th>
+          <th colspan="2" class="text-center">{{'Variance'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center"></th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Amount'|translate}}</th>
+          <th class="text-center">{{'Percentage'|translate}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th colspan="13" class="text-center">{{'Movable asset'|translate}}</th>
+        </tr>
+        <tr ng-repeat="key in reportData.arrayToJson.assetMaterialDetails">
+          <th class="text-center">{{key | translate}}</th>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].total - reportData.c1Data.assetMaterialDetails[key].total)
+            | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].total | ratio:
+            reportData.c2Data.assetMaterialDetails[key].total) | translateNumber}}%
+          </td>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].total - reportData.c1Data.assetMaterialDetails[key].total)
+            | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].total | ratio:
+            reportData.c2Data.assetMaterialDetails[key].total) | translateNumber}}%
+          </td>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetMaterialDetails[key].total - reportData.c1Data.assetMaterialDetails[key].total)
+            | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetMaterialDetails[key].total | ratio:
+            reportData.c2Data.assetMaterialDetails[key].total) | translateNumber}}%
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">{{'Sub Total'|translate}}</th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.total - reportData.c1Data.assetMaterialDetails.sum.total) |
+            number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetMaterialDetails.sum.total) | translateNumber}}%
+          </th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.total - reportData.c1Data.assetMaterialDetails.sum.total) |
+            number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetMaterialDetails.sum.total) | translateNumber}}%
+          </th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetMaterialDetails.sum.total - reportData.c1Data.assetMaterialDetails.sum.total) |
+            number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.assetMaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetMaterialDetails.sum.total) | translateNumber}}%
+          </th>
+        </tr>
+        <tr>
+          <th colspan="13" class="text-center">{{'Immovable asset'|translate}}</th>
+        </tr>
+        <tr ng-repeat="key in reportData.arrayToJson.assetImmaterialDetails">
+          <th class="text-center">{{key | translate}}</th>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].own || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].total -
+            reportData.c1Data.assetImmaterialDetails[key].total) | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].total | ratio:
+            reportData.c2Data.assetImmaterialDetails[key].total) | translateNumber}}%
+          </td>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].dependent || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].total -
+            reportData.c1Data.assetImmaterialDetails[key].total) | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].total | ratio:
+            reportData.c2Data.assetImmaterialDetails[key].total) | translateNumber}}%
+          </td>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].total || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.assetImmaterialDetails[key].total -
+            reportData.c1Data.assetImmaterialDetails[key].total) | number:0 | translateNumber}}
+          </td>
+          <td>{{(reportData.c1Data.assetImmaterialDetails[key].total | ratio:
+            reportData.c2Data.assetImmaterialDetails[key].total) | translateNumber}}%
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">{{'Sub Total'|translate}}</th>
+          <th>{{(reportData.c1Data.assetImmaterialDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.own || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.total -
+            reportData.c1Data.assetImmaterialDetails.sum.total) | number:0 | translateNumber}}
+          </th>
+          <th>{{reportData.c1Data.assetImmaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetImmaterialDetails.sum.total}}%
+          </th>
+          <th>{{(reportData.c1Data.assetImmaterialDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.dependent || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.total -
+            reportData.c1Data.assetImmaterialDetails.sum.total) | number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.assetImmaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetImmaterialDetails.sum.total) | translateNumber}}%
+          </th>
+          <th>{{(reportData.c1Data.assetImmaterialDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.total || 0) | number:0 | translateNumber}}</th>
+          <th>{{(reportData.c2Data.assetImmaterialDetails.sum.total -
+            reportData.c1Data.assetImmaterialDetails.sum.total) | number:0 | translateNumber}}
+          </th>
+          <th>{{(reportData.c1Data.assetImmaterialDetails.sum.total | ratio:
+            reportData.c2Data.assetImmaterialDetails.sum.total) | translateNumber}}%
+          </th>
+        </tr>
+        <tr>
+          <th class="text-center">{{'Grand Total'|translate}}</th>
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.own || 0) +
+            (reportData.c1Data.assetImmaterialDetails.sum.own || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.own || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.own || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.own || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.own || 0) - (reportData.c1Data.assetMaterialDetails.sum.own ||
+            0) - (reportData.c1Data.assetImmaterialDetails.sum.own || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.own + reportData.c1Data.assetImmaterialDetails.sum.own) |
+            ratio: (reportData.c2Data.assetMaterialDetails.sum.own +
+            reportData.c2Data.assetImmaterialDetails.sum.own)) | translateNumber}}%
+          </th>
+
+
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.dependent || 0) +
+            (reportData.c1Data.assetImmaterialDetails.sum.dependent || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.dependent || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.dependent || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.dependent || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.dependent || 0) -
+            (reportData.c1Data.assetMaterialDetails.sum.dependent || 0) -
+            (reportData.c1Data.assetImmaterialDetails.sum.dependent || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.dependent +
+            reportData.c1Data.assetImmaterialDetails.sum.dependent) | ratio:
+            (reportData.c2Data.assetMaterialDetails.sum.dependent +
+            reportData.c2Data.assetImmaterialDetails.sum.dependent)) | translateNumber}}%
+          </th>
+
+
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.total || 0) +
+            (reportData.c1Data.assetImmaterialDetails.sum.total || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.total || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.total || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c2Data.assetMaterialDetails.sum.total || 0) +
+            (reportData.c2Data.assetImmaterialDetails.sum.total || 0) -
+            (reportData.c1Data.assetMaterialDetails.sum.total || 0) -
+            (reportData.c1Data.assetImmaterialDetails.sum.total || 0)) | number:0 | translateNumber}}
+          </th>
+          <th>{{((reportData.c1Data.assetMaterialDetails.sum.total + reportData.c1Data.assetImmaterialDetails.sum.total)
+            | ratio: (reportData.c2Data.assetMaterialDetails.sum.total +
+            reportData.c2Data.assetImmaterialDetails.sum.total)) | translateNumber}}%
+          </th>
+        </tr>
+        </tbody>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[6].open">
+      <accordion-heading>
+         {{'Liabilities'|translate}}<i class="pull-right glyphicon"
+                                   ng-class="{'glyphicon-chevron-down': status[6].open, 'glyphicon-chevron-right': !status[6].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Liabilities'|translate}}
+          </th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data.liabilityTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.liabilityTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.liabilityTotal === reportData.c2Data.liabilityTotal) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[7].open">
+      <accordion-heading>
+         {{'Loan'|translate}}<i class="pull-right glyphicon"
+                                   ng-class="{'glyphicon-chevron-down': status[7].open, 'glyphicon-chevron-right': !status[7].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Loan'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data.loanTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.loanTotal || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.loanTotal === reportData.c2Data.loanTotal) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[9].open">
+      <accordion-heading>
+        {{'Taxable Income'|translate}} <i class="pull-right glyphicon"
+                                   ng-class="{'glyphicon-chevron-down': status[9].open, 'glyphicon-chevron-right': !status[9].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Taxable Income'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data._12_10to11_totalTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data._12_10to11_totalTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data._12_10to11_totalTR === reportData.c2Data._12_10to11_totalTR) ? 'same' : 'change'|translate}}
+          </td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[10].open">
+      <accordion-heading>
+         {{'Tax given'|translate}}<i class="pull-right glyphicon"
+                                   ng-class="{'glyphicon-chevron-down': status[10].open, 'glyphicon-chevron-right': !status[10].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Tax given'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data._19_previousTaxTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data._19_previousTaxTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data._19_previousTaxTR === reportData.c2Data._19_previousTaxTR) ? 'same' : 'change'|translate}}</td>
+        </tr>
+      </table>
+    </accordion-group>
+    <accordion-group is-open="status[11].open">
+      <accordion-heading>
+         {{'Living Expenses'|translate}}<i class="pull-right glyphicon"
+                                   ng-class="{'glyphicon-chevron-down': status[11].open, 'glyphicon-chevron-right': !status[11].open}"></i>
+      </accordion-heading>
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th colspan="3" class="text-center">{{'Living Expenses'|translate}}</th>
+        </tr>
+        <tr>
+          <th class="text-center">{{reportData.e1Year | translateNumber}}</th>
+          <th class="text-center">{{reportData.e2Year | translateNumber}}</th>
+          <th class="text-center">{{'Change/Same'|translate}}</th>
+        </tr>
+        </thead>
+        <tr>
+          <td>{{(reportData.c1Data.totalLifeStyleCostTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c2Data.totalLifeStyleCostTR || 0) | number:0 | translateNumber}}</td>
+          <td>{{(reportData.c1Data.totalLifeStyleCostTR === reportData.c2Data.totalLifeStyleCostTR) ? 'same' :
+            'change'|translate}}
+          </td>
+        </tr>
+      </table>
+    </accordion-group>
+
+  </accordion>
+
+
+</div>

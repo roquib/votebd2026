@@ -1,0 +1,7 @@
+{
+  "name": "VoteBD",
+  "description": "Political Finance and Election Candidate's profile based application",
+  "repository": "https://github.com/beeman/loopback-angular-admin",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "angular", "loopback", "admin", "api","votebd","votebd.org","election", "bangladesh","bangladesh-elections","candidate","database"]
+}

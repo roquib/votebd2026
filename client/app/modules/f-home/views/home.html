@@ -1,0 +1,814 @@
+<section class="banner">
+  <!-- Carousel -->
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <!--<div class="item active">-->
+        <!--<img class="first-slide" src="../../../images/slides/slide1.jpg" alt="First slide">-->
+        <!--<div class="container">-->
+          <!--<div class="carousel-caption row home-slide1">-->
+            <!--<h1>{{'My vote my rights'|translate}}</h1>-->
+            <!--<p>{{'Do not cast your valuable vote to'|translate}}</p>-->
+            <!--<ul>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Kalo takar malik'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Nari nirjaton kari'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Chorakarbari'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Madok Babshay'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Durnitibaz'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Vumi Dokholkari'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Sontrashi'|translate}}</span></li>-->
+              <!--<li class="col-md-6 fa fa-male"><span>{{'Chadabaz'|translate}}</span></li>-->
+            <!--</ul>-->
+
+
+            <!--&lt;!&ndash;<p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>&ndash;&gt;-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--first slide-->
+      <div class="item active">
+        <img class="third-slide" src="../../../images/slides/sl/banner-labbg.jpg" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-xs-4 col-md-4" lang="{{$root.locale.lang}}">
+                <div class="clearfix">
+                  <!--<h3 lang="{{$root.locale.lang}}" class="pull-left">{{'২০০৮ নির্বাচন থেকে ২০১৮ নির্বাচন পর্যন্ত রাজনৈতিক দল সমূহের প্রার্থীদের মোট​ আয় বৃদ্ধি'|translate}}</h3>-->
+                  <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'প্রতিদ্বন্দ্বী প্রার্থীদের আয় হ্রাস-বৃদ্ধির চিত্র'|translate}}</h3>
+                  <p lang="{{$root.locale.lang}}" ng-style="{display:block}">
+                    {{'test'|translate}}
+                  </p>
+                  <button class="button-slide">
+                      সকল চিত্র দেখুন
+                  </button>
+                </div>
+              </div>
+              <div class="col-xs-8 col-md-8" lang="{{$root.locale.lang}}">
+                <canvas id="bar" class="chart chart-bar"
+                  chart-data="candidatesTotalIncome" chart-labels="partyNameBn" chart-options="options"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--second slide-->
+      <div class="item">
+        <img class="second-slide" src="../../../images/slides/sl/banner-labbg.jpg" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <di class="row">
+              <div class="col-xs-10 col-md-10" lang="{{$root.locale.lang}}">
+                <canvas id="bar" class="chart chart-bar"
+                  chart-data="percentageofVote" chart-labels="candidateName" chart-options="options"></canvas>
+              </div>
+            </di>
+            <!--<video width="500" controls>-->
+              <!--<source src="../../../images/paba-election-footage-_mar-31.mp4" type="video/mp4">-->
+              <!--Your browser does not support HTML5 video.-->
+            <!--</video>-->
+            <a href="#" class="slide3-caption">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--third slide-->
+      <div class="item">
+        <img class="third-slide" src="../../../images/slides/sl/banner-labbg.jpg" alt="Third slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <div class="row">
+              <div class="col-md-6 col-sm-12 col-xs-12">
+
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+              <ul ng-repeat="data in percentageofPoliticalPartyVote">
+                <li>{{data.partyNameBn}} ----------- {{(data.politicalPartyCandidateTotalVote).toFixed(2)}}%</li>
+              </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--fourth slide-->
+      <div class="item">
+        <img class="second-slide" src="../../../images/slides/sl/banner-labbg.jpg" alt="Second slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <a href="#" class="slide3-caption">
+              <img ng-show="$root.locale.lang=='bn_BD'"  src="../../../images/slides/sl/banner3txtbn.png"/>
+              <img ng-show="$root.locale.lang!='bn_BD'" src="../../../images/slides/sl/banner3txten.png"/>
+            </a>
+          </div>
+        </div>
+      </div>
+
+
+      <!--<div class="item">-->
+        <!--<img class="second-slide" src="../../../images/slides/sl/banner1bg.jpg" alt="Second slide">-->
+        <!--<div class="container">-->
+          <!--<div class="carousel-caption">-->
+            <!--<a href="#" class="slide1-caption">-->
+              <!--<img ng-show="$root.locale.lang=='bn_BD'"  src="../../../images/slides/sl/banner1txtbn.png"/>-->
+              <!--<img ng-show="$root.locale.lang!='bn_BD'" src="../../../images/slides/sl/banner1txten.png"/>-->
+              <!--&lt;!&ndash;<img ng-show="$root.locale.lang=='bn_BD'"  src="../../../images/slides/sl/banner2txtbn.png"/>&ndash;&gt;-->
+              <!--&lt;!&ndash;<img ng-show="$root.locale.lang!='bn_BD'" src="../../../images/slides/sl/banner2txten.png"/>&ndash;&gt;-->
+            <!--</a>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev" ng-non-bindable >
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" ng-non-bindable >
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div><!-- /.carousel -->
+</section>
+<div>
+<section class="voter election-mgmt"><!-- start voter area -->
+  <div class="container">
+     <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="text-center ze-title2 ">
+            <h2 ng-show="$root.locale.lang=='bn_BD'">{{featuredElections[0].currentElectionNameBn}}</h2>
+            <h2 ng-show="$root.locale.lang!='bn_BD'">{{ featuredElections[0].currentElectionNameEn}}</h2>
+            <p lang="{{$root.locale.lang}}">{{}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12" lang="{{$root.locale.lang}}">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="voter-box">
+                <h3> <span><i class="fa fa-calendar"></i> {{'Voter' | translate}}</span></h3>
+                <h3><span>{{totalVoter | translateNumber}}</span></h3>
+                <div class="tr-vote">
+                  <div class="left-align" ng-repeat="Election in featuredElections">{{((Election.femaleVoter*100)/Election.totalVoter).toFixed(2) | translateNumber}}%</div><div class="right-align" ng-repeat="Election in featuredElections">{{((Election.maleVoter*100)/Election.totalVoter).toFixed(2) | translateNumber}}%</div>
+                </div>
+                <span>{{ (femaleVoter) | translateNumber}}</span><img src="{{cdnUrl}}/images/f-icon.png" alt="icon"><span>{{maleVoter | translateNumber}}</span>
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="voter-box voter-box-pad">
+                  <div class="voter-box-left">
+                    <h4> <span>{{featuredElections[0].electionSeats.length | translateNumber}}</span></h4>
+                    <h5 ng-show="$root.locale.lang!='bn_BD'"><span>{{'Constituencies '}}</span></h5>
+                    <h5 ng-show="$root.locale.lang=='bn_BD'" style="margin-left:20px;"><span lang="{{$root.locale.lang}}">{{'Constituencies ' | translate}}</span></h5>
+                    </div>
+                    <div class="voter-box-right">
+                    <h4> <span>{{featuredElections[0].candidates.length | translateNumber}}</span></h4>
+                    <h5 ng-show="$root.locale.lang!='bn_BD'"><span>{{'Contestants'}}</span></h5>
+                    <h5 ng-show="$root.locale.lang=='bn_BD'" style="margin-right:40px;"><span>{{'Contestants' | translate}}</span></h5>
+                    </div>
+                    <div class="voter-box-left">
+                    <h4 ng-repeat="Election in featuredElections"><span>{{((femaleCandidate/Election.candidates.length)*100).toFixed(1) | translateNumber}}%</span></h4>
+                    <h5 ng-show="$root.locale.lang!='bn_BD'"><span>{{'Women Candidates'}}</span></h5>
+                    <h5 ng-show="$root.locale.lang=='bn_BD'" style="margin-left:15px;"><span>{{'Women Candidates' | translate}}</span></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+         <div class="col-md-6 col-sm-6 col-xs-12">
+             <!-- <div class="map svg" ng-include="'images/bdmaps/divisions.svg'"></div> -->
+             <input id='electionID' name="{{featuredElections[0].id}}" hidden>
+             <label id="tooltip"></label>
+             <div class="map svg" ng-include="bdMapUrl"></div>
+        </div>
+       <div class="row">  <!--start search   -->
+           <div class=" col-sm-12">
+             <div class="col-sm-6">
+               <div class="tr2 tmargin">
+                <div class="search2">
+                   <input type="text" class="searchTerm" ng-model="query" placeholder="Candidate Search.....">
+                   <button type="submit" class="searchButton">
+                     <i class="fa fa-search"></i>
+                   </button>
+                </div>
+                <div>
+                  <li ng-repeat="candidate in featuredElections[0].candidates | filter:query" ng-if="query">
+                    <a style="font-size: 18px" href="/#/front/candidates/affidavit/{{candidate.id}}">{{candidate.candidateNameBnAF}}</a>
+                  </li>
+                </div>
+               </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="tr2 tmargin">
+                 <div class="search2">
+                    <input type="text" class="searchTerm" ng-model="seatquery" placeholder="Constituency Search.....">
+                    <button type="submit" class="searchButton">
+                      <i class="fa fa-search"></i>
+                    </button>
+                   </div>
+                   <div>
+                     <li ng-repeat="seat in featuredElections[0].electionSeats | filter:seatquery" ng-if="seatquery"> <!-- ui-sref="front.electionSeats.electionSeat" -->
+                      <a style="font-size: 18px" href="/#/front/constituencies/{{seat.id}}">{{seat.seatNameBn}}</a>
+                     </li>
+                  </div>
+                </div>
+              </div>
+              </div>
+           <!-- <div class="tr">
+              <div class="col-sm-6">
+              <div class="search"><span class="left">
+                 <input type="text" class="searchTerm"  ng-model="seatquery" placeholder="Constituency Search.....">
+                 <button type="submit" class="searchButton">
+                   <i class="fa fa-search"></i>
+                </button>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="search"><span class="right">
+                 <input type="text" class="searchTerm" placeholder="PoliticalParty Search.....">
+                 <button type="submit" class="searchButton">
+                   <i class="fa fa-search"></i>
+                </button></span>
+              </div>
+            </div>
+            <li ng-repeat="seat in Election.electionSeats | filter:seatquery" ng-if="seatquery"><a href="http://localhost:9003/#/admin/candidates/{{Election.electionId}}/{{Election.currentElectionId}}/////{{seat.id}}" target="_blank">{{seat.seatNameBn}}</a></li>
+
+           </div> -->
+      </div>
+  </div>
+</section><!-- End voter area -->
+<section class="">
+  <div class="election-graph">
+        <a href="#/front/politicalParty/{{featuredElections[0].id}}" class="ng-binding">
+            <div class="btn btn-light btn-align" style='background-color:white;'>
+                <span lang="{{$root.locale.lang}}">{{'Political Party Graph'|translate}}</span>
+                <div class="mjh-b-icon"><i class="fa fa-pie-chart"></i></div>
+            </div>
+        </a>
+  </div>
+</section>
+<section class="election-mgmt "><!-- start Election area -->
+  <div id="pricing" class="pricing-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="text-center ze-title2 ">
+            <h2 ng-if="$root.locale.lang=='bn_BD'">{{ featuredElections[0].currentElectionNameBn}}</h2>
+            <h2 ng-if="$root.locale.lang!='bn_BD'">{{ featuredElections[0].currentElectionNameEn}}</h2>
+            <p lang="{{$root.locale.lang}}">{{'Affidavit, Assets, Liabilities, Income, Expense based comparative reports of nominated candidates'|translate}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-graduation-cap"></i><span lang="{{$root.locale.lang}}">  {{'Education'|translate}}</span></h3>
+            <div id="education-chart"></div>
+            <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lstart"><p ng-bind-html="educationChartBelowSscCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong>{{'Candidates are below SSC'|translate}}</strong></label>
+                </span>
+            </div>
+              <!-- <h2>Candidates are below SSC</h2> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-tasks"></i><span lang="{{$root.locale.lang}}"> {{'Occupation'|translate}} </span></h3>
+            <div id="occupationChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <!-- <h3 lang="{{$root.locale.lang}}" class="pull-left" ng-bind-html="occupationChartBusinessmenCount"></h3> -->
+               <span lang="{{$root.locale.lang}}" class="right_box rfirst"> <p ng-bind-html="occupationChartBusinessmenCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong>{{'Candidates are Businessman'|translate}}</strong></label>
+               </span>
+             </div>
+             <!-- <h2>
+                <span class="text-right">Candidates are Businessman </span>
+             </h2> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-user "></i><span lang="{{$root.locale.lang}}"> {{'Gender'|translate}}</span></h3>
+            <div id="genderChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lseventh"><p ng-bind-html="genderChartFemaleCount"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Number of Female Candidates'|translate}}</strong></label>
+               </span>
+               <!-- <span class="right_box rseventh"><p>3,126</p></span>-->
+             </div>
+             <!-- <h2>
+                <span class="text-left">Number of Female Candidates</span>
+             </h2> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money"></i><span lang="{{$root.locale.lang}}">  {{'Income'|translate}} </span></h3>
+            <div id="incomeChart"></div>
+             <div style="overflow:hidden; clear: both">
+                 <span lang="{{$root.locale.lang}}" class="left_box lthird"><p  ng-bind-html="incomeChartBelow2Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates earn below 2 Lac'|translate}}</strong></label>
+                </span>
+                 <span lang="{{$root.locale.lang}}" class="right_box rthird"><p ng-bind-html="incomeChartAbove1Crore"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-right" style="width:100;">{{'Candidates earn above 1 Crore'|translate}}</strong></label>
+                </span>
+             </div>
+            <!-- <h2> <span class="text-left">Candidates earn below 2 Lac</span>
+                <span class="text-right">Candidates earn above 1 Crore</span>
+            </h2> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-suitcase"></i><span lang="{{$root.locale.lang}}">  {{'Asset'|translate}} </span></h3>
+            <div id="assetChart"></div>
+             <div style="overflow:hidden; clear: both">
+                 <span lang="{{$root.locale.lang}}" class="left_box lforth"><p ng-bind-html="assetChartBelow5Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong>{{"Candidate's asset below 5 Lac"|translate}}</strong></label>
+                </span>
+                 <span lang="{{$root.locale.lang}}" class="right_box rforth"><p ng-bind-html="assetChartAbove5Lac"></p>
+                  <label lang="{{$root.locale.lang}}"><strong>{{"Candidate's asset above 5 Lac"|translate}}</strong></label>
+                </span>
+             </div>
+            <!-- <h2> <span class="text-left"> Candidates have below 5 Lac</span> <span class="text-right">Candidates have above 5 Lac</span></h2> -->
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money "></i><span lang="{{$root.locale.lang}}"> {{'Loan & Liabilities'|translate}} </span></h3>
+            <div id="loanChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <span lang="{{$root.locale.lang}}" class="left_box lfifth"><p ng-bind-html="loanChartAbove5Crore"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates loan above 5 Crore'|translate}}</strong></label>
+               </span>
+               <!-- <span class="right_box rfifth"><p></p></span> -->
+             </div>
+          <!-- <h2>
+              <span class="text-left"> Candidates loan above 5 Crore</span>
+          </h2> -->
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-money "></i><span lang="{{$root.locale.lang}}"> {{'Tax'|translate}}</span></h3>
+            <div id="taxChart"></div>
+             <div style="overflow:hidden; clear: both">
+               <!--<span class="left_box lsixth"><p ng-bind-html="taxChartBelow10Lac"></p></span>-->
+               <span lang="{{$root.locale.lang}}" class="right_box rsixth"><p ng-bind-html="taxChartAbove10Lac"></p>
+                <label lang="{{$root.locale.lang}}"><strong class="text-right">{{'Candidates above 10 Lac'|translate}}</strong></label>
+               </span>
+             </div>
+            <!-- <h2>
+                <span class="text-right">Candidates above 10 Lac</span>
+            </h2> -->
+        </div>
+       </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="pri_table_list">
+            <h3> <i class="fa fa-gavel"></i><span lang="{{$root.locale.lang}}">  {{'Cases'|translate}} </span></h3>
+            <div id="casesChart"></div>
+            <div style="overflow:hidden; clear: both">
+                <span lang="{{$root.locale.lang}}" class="left_box lsecond"><p ng-bind-html="pastCandidate302Case"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-left">{{'Candidates having Past (302 clause)'|translate}}</strong></label>
+                </span>
+                <span lang="{{$root.locale.lang}}" class="right_box rsecond"><p  ng-bind-html="presentCandidate302Case"></p>
+                  <label lang="{{$root.locale.lang}}"><strong class="text-right" style="width:100;">{{'Candidates having Present (302 clause) cases'|translate}}</strong></label>
+                </span>
+            </div>
+            <!-- <h2> -->
+                <!-- <span class="text-left"> Candidates having Past (302 clause)</span>
+                <span class="text-right" style="width:100">Candidates having Present (302 clause) cases</span> -->
+            <!-- </h2> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>  <!-- End Election area -->
+</div>
+<section class="">
+  <div class="election-graph">
+    <a ui-sref="front.candidatechart.allchartanalysis" class="ng-binding" href="#/front/candidate-chart/chart-analysis" >
+        <div class="btn btn-light btn-align" style='background-color:white;'>
+            <span lang="{{$root.locale.lang}}">{{'See Another Election Graph'|translate}}</span>
+            <div class="mjh-b-icon"><i class="fa fa-pie-chart"></i></div>
+        </div>
+    </a>
+  </div>
+</section>
+<section class="news-ticker"></section>
+<section class="election-mgmt">
+  <div class="container">
+    <div class="ze-title2">
+      <!--<h2>{{'NATIONAL AND OTHER ELECTIONS'|translate}}</h2>-->
+      <h2 lang="{{$root.locale.lang}}">{{'Comparison Reports on National and Other Elections'|translate}}</h2>
+      <!--<p>{{'Bangladesh national and other election summary and details page'|translate}}</p>-->
+      <p lang="{{$root.locale.lang}}">{{'Affidavit, Assets, Liabilities, Income, Expense based comparative reports of nominated candidates'|translate}}</p>
+    </div>
+    <figure class="mjh-parlamentimg">
+      <img src="images/national-election-img.jpg" alt="">
+      <figcaption class="mjh-listItemLeft">
+        <h4  lang="{{$root.locale.lang}}">{{'National Election'|translate}}, {{'2014'|translate}}</h4>
+        <span  lang="{{$root.locale.lang}}">{{'5'|translate}} {{'january'|translate}}, {{'2014'|translate}}</h2>
+        <ul class="mjh-lists">
+          <li ui-sref="front.home.affidavit" ui-sref-active="active">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.home.affidavit"  lang="{{$root.locale.lang}}">{{'Affidavit Based Comparision'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.home.fsee" ui-sref-active="active">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.home.fsee"  lang="{{$root.locale.lang}}">{{'Probable Fund Source for Election Expense Based Comparision'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.home.alie" ui-sref-active="active">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.home.alie"  lang="{{$root.locale.lang}}">{{'Assets/Liability/Income/Expense Based Analysis'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.home.eer" ui-sref-active="active">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.home.eer"  lang="{{$root.locale.lang}}">{{'Election Expense Return Based Comparison'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.home.ppe" ui-sref-active="active">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.home.ppe"  lang="{{$root.locale.lang}}">{{'Political Party Based Comparison'|translate}}</a></div>
+          </li>
+          <!--<li>-->
+            <!--<div class="mjh-icon"></div>-->
+            <!--<div class="mjh-iconDetail seeAll" style="margin-top: 0">-->
+              <!--<a ui-sref="front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent">{{'See all National Elections Comparison'|translate}} >> </a>-->
+              <!--</div>-->
+          <!--</li>-->
+        </ul>
+      </figcaption>
+      <figcaption class="mjh-listItem" ui-view="nationalElection">
+        <ul class="mjh-lists">
+          <li ui-sref="front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent"  lang="{{$root.locale.lang}}">{{'Asset comparison of own, dependent'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.candidateComparisonAffidavit.Income-Comparison-Of-Own-Dependent">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.candidateComparisonAffidavit.Income-Comparison-Of-Own-Dependent"  lang="{{$root.locale.lang}}">{{'Income comparison of own, dependent'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.candidateComparisonAffidavit.Candidate-Income-Tax-And-Family-Expense">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.candidateComparisonAffidavit.Candidate-Income-Tax-And-Family-Expense"  lang="{{$root.locale.lang}}">{{'Candidate Income Tax and Family Expense'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.candidateComparisonAffidavit.Liability-Comparison-Of-Own-Dependent">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.candidateComparisonAffidavit.Liability-Comparison-Of-Own-Dependent"  lang="{{$root.locale.lang}}">{{'Liability Comparison of own, dependent'|translate}}</a></div>
+          </li>
+          <li ui-sref="front.candidateComparisonAffidavit.Neat-Asset-Comparison-Of-Own-Dependent">
+            <div class="mjh-icon"><i class="fa fa-pie-chart"></i></div>
+            <div class="mjh-iconDetail"><a ui-sref="front.candidateComparisonAffidavit.Neat-Asset-Comparison-Of-Own-Dependent"  lang="{{$root.locale.lang}}">{{'Neat Asset Comparison of own, dependent'|translate}}</a></div>
+          </li>
+          <!--<li>-->
+          <!--<div class="mjh-icon"></div>-->
+          <!--<div class="mjh-iconDetail"><a href="#">{{'See all National Elections'|translate}} >> </a></div>-->
+          <!--</li>-->
+        </ul>
+      </figcaption>
+    </figure>
+    <div class="row mjh-row">
+      <div class="col-sm-4 mjh-col">
+        <div class="mjh-electionDate" ui-sref="front.home.citycorporaton-election">
+        <!--<div class="mjh-electionDate" ui-sref="front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent">-->
+          <figure class="mjh-otherElection">
+            <a ui-sref="front.home.citycorporaton-election"><img src="images/election1.jpg"></a>
+            <!--<a ui-sref="front.candidateSearch"><img src="images/election1.jpg"></a>-->
+          </figure>
+          <h3><a ui-sref="front.candidateSearch"  lang="{{$root.locale.lang}}">{{'City Corporation Election'|translate}}, {{'2015'|translate}}</a></h3>
+          <span>{{'28'|translate}} {{'april'|translate}}, {{'2015'|translate}}</span>
+        </div>
+      </div>
+      <div class="col-sm-4 mjh-col">
+        <div class="mjh-electionDate" ui-sref="front.home.municipal-election">
+          <figure class="mjh-otherElection">
+            <a ui-sref="front.home.municipal-election"><img src="images/election2.jpg"></a>
+          </figure>
+          <h3><a ui-sref="front.candidateSearch"  lang="{{$root.locale.lang}}">{{'Municipal Election'|translate}}, {{'2015'|translate}}</a></h3>
+          <span>{{'30'|translate}} {{'december'|translate}}, {{'2015'|translate}}</span>
+        </div>
+      </div>
+      <div class="col-sm-4 mjh-col">
+        <div class="mjh-electionDate" ui-sref="front.home.upazilla-election">
+          <figure class="mjh-otherElection">
+            <a ui-sref="front.home.upazilla-election"><img src="images/election3.jpg"></a>
+          </figure>
+          <h3><a ui-sref="front.candidateSearch"  lang="{{$root.locale.lang}}">{{'Upazilla Election'|translate}}, {{'2014'|translate}}</a></h3>
+          <span>{{'19'|translate}} {{'february'|translate}}, {{'2014'|translate}}</span>
+        </div>
+      </div>
+      <!--<div class="col-sm-3 mjh-col">-->
+        <!--<div class="mjh-electionDate">-->
+          <!--<figure class="mjh-otherElection">-->
+            <!--<img src="images/election4.jpg">-->
+          <!--</figure>-->
+          <!--<h3>{{'Union Parishad Election, 2014'|translate}}</h3>-->
+          <!--<span>{{'17 april, 2014'|translate}}</span>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div><!--row-end-->
+    <!--ui-view-->
+    <div ui-view="otherElection"></div>
+  </div><!--container-end-->
+</section>
+
+
+<section class="mjh-election candidate-mgmt">
+  <div class="container">
+    <div>
+      <header class="ze-title2">
+        <h2  lang="{{$root.locale.lang}}">{{'POLITICAL PARTY AND CANDIDATE INFORMATION ANALYSIS'|translate}}</h2>
+        <p  lang="{{$root.locale.lang}}">{{'Know your political parties and candidates before casting your valueable votes'|translate}}</p>
+      </header>
+      <ul class="row mjh-homeParty">
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.politicalPartyBaseComparison.Political-Parties-Spent-Money-For-Election">
+            <div class="mjh-homePartyInfo">
+              <figure>
+                <img class="cnd-candi" ng-src="images/expense-report.png"/>
+                <img class="cnd-candi-white" ng-src="images/expense-report-white.png"/>
+              </figure>
+              <h3  lang="{{$root.locale.lang}}">{{'Political Parties Expense Report'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.candidateAnalysis.occupationAnalysis">
+            <div class="mjh-homePartyInfo">
+              <img class="cnd-candi" ng-src="images/affidavit.png"/>
+              <img class="cnd-candi-white"  ng-src="images/affidavit-white.png"/>
+              <h3  lang="{{$root.locale.lang}}">{{'Candidates Affidavit'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.candidateAnalysis.taxAnalysis">
+            <div class="mjh-homePartyInfo">
+              <img class="cnd-candi" ng-src="images/income-tax.png"/>
+              <img class="cnd-candi-white"  ng-src="images/income-tax-white.png"/>
+              <h3  lang="{{$root.locale.lang}}">{{'Candidates Income Tax'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.candidateAnalysis.pfse-pi-to-meet-election-expense">
+            <div class="mjh-homePartyInfo">
+              <img class="cnd-candi" ng-src="images/income-source.png"/>
+              <img class="cnd-candi-white"  ng-src="images/income-source-white.png"/>
+              <h3  lang="{{$root.locale.lang}}">{{'Candidates Probable Income Source'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.candidateComparison.Estimated-Prices-Of-Immoveable-Properties-To-The-Among-Candidate">
+            <div class="mjh-homePartyInfo">
+              <img class="cnd-candi" ng-src="images/asset-liability.png"/>
+              <img class="cnd-candi-white"  ng-src="images/asset-liability-white.png"/>
+              <h3  lang="{{$root.locale.lang}}">{{'Candidates Assets, Liability, Income, Expense'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+        <li class="col-sm-4">
+          <a class="mjh-homePartyInfolink" ui-sref="front.electionAnalysis.Candidate-List-who-did-not-submit-the-return-of-election-expenses">
+            <div class="mjh-homePartyInfo">
+              <img class="cnd-candi" ng-src="images/expense-return.png"/>
+              <img class="cnd-candi-white"  ng-src="images/expense-return-white.png"/>
+              <h3  lang="{{$root.locale.lang}}">{{'Election Expense Return'|translate}}</h3>
+            </div>
+          </a>
+        </li>
+      </ul>
+
+      <!--<div class="mjh-candidateinfo">-->
+        <!--<form class="mjh-candidateForm">-->
+          <!--<div class="mjh-search">-->
+            <!--<input type="text" placeholder="quick search by candidate name">-->
+            <!--<button><i class="fa fa-search"></i></button>-->
+          <!--</div>-->
+          <!--<div class="mjh-refinebox">-->
+            <!--<h3>{{'REFINE SEARCH'|translate}}</h3>-->
+
+            <!--<formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>-->
+
+            <!--<div class="mjh-searchButton">-->
+              <!--<button>{{'search'|translate}}</button>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</form>-->
+
+        <!--<div class="mjh-comparison">-->
+          <!--<ul class="mjh-comparisonList">-->
+            <!--<li ui-sref="front.candidateSearch">-->
+              <!--<div class="mjh-firscommp">-->
+                <!--<img src="images/party-compare.png">-->
+              <!--</div>-->
+              <!--<div class="mjh-secondcommp">-->
+                  <!--<h3>{{'Political Parties Expense Report'|translate}}</h3>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li ui-sref="front.candidateSearch">-->
+              <!--<div class="mjh-firscommp">-->
+                <!--<img src="images/candidate-compare.png">-->
+              <!--</div>-->
+              <!--<div class="mjh-secondcommp">-->
+                  <!--<h3>{{'Candidates Affidavit'|translate}}</h3>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li ui-sref="front.candidateSearch">-->
+              <!--<div class="mjh-firscommp">-->
+                <!--<img src="images/candidate-compare.png">-->
+              <!--</div>-->
+              <!--<div class="mjh-secondcommp">-->
+                  <!--<h3>{{'Candidates Income Tax'|translate}}</h3>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li ui-sref="front.candidateSearch">-->
+              <!--<div class="mjh-firscommp">-->
+                <!--<img src="images/candidate-compare.png">-->
+              <!--</div>-->
+              <!--<div class="mjh-secondcommp">-->
+                  <!--<h3>{{'Candidates Probable Income Source'|translate}}</h3>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li ui-sref="front.candidateSearch">-->
+              <!--<div class="mjh-firscommp">-->
+                <!--<img src="images/candidate-compare.png">-->
+              <!--</div>-->
+              <!--<div class="mjh-secondcommp">-->
+                  <!--<h3>{{'Candidates Assets, Liability, Income, Expense'|translate}}</h3>-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+        <!--</div>-->
+      <!--</div>-->
+    </div>
+  </div>
+</section>
+<section class="election-timeline">
+  <div class="container">
+    <header class="ze-title2">
+      <h2  lang="{{$root.locale.lang}}">{{'ELECTION RESULTS TIMELINE'|translate}}</h2>
+      <p  lang="{{$root.locale.lang}}">{{'Up-to-date results of all the latest national and local elections'|translate}}</p>
+    </header>
+    <ul class="mjh-timeline">
+      <li ng-repeat="cElection in currentElections">
+        <!--{{cElection}}-->
+        <!--even -->
+        <div class="mjh-firstTimeline" ng-show="$even">
+          <div class="mjh-timeline-left">
+            <div>
+              <span class="mjh-year"  lang="{{$root.locale.lang}}">{{cElection.electionDate|date:'yyyy'|translateNumber}}</span><br/>
+              <span class="mjh-date"  lang="{{$root.locale.lang}}">{{cElection.electionDate|date:'MMMM'|translate}}-{{cElection.electionDate|date:'dd'|translateNumber}}</span>
+            </div>
+          </div>
+          <div class="mjh-timeline-right">
+            <article class="mjh-commonArticle">
+              <h3><a ui-sref="front.electionResult.allElectionResult"  lang="{{$root.locale.lang}}"><span ng-show="$root.locale.lang != 'bn_BD'">{{cElection.currentElectionNameEn}}</span><span ng-show="$root.locale.lang == 'bn_BD'">{{cElection.currentElectionNameBn}}</span></a></h3>
+              <p  lang="{{$root.locale.lang}}">{{cElection.electionDescBn}} </p>
+            </article>
+          </div>
+        </div>
+
+
+
+
+        <!-- odd -->
+        <div class="mjh-secondTimeline" ng-show="$odd">
+          <div class="mjh-timeline-right xtra">
+            <article class="mjh-commonArticle">
+              <h3><a ui-sref="front.electionResult.allElectionResult"  lang="{{$root.locale.lang}}"><span ng-show="$root.locale.lang != 'bn_BD'">{{cElection.currentElectionNameEn}}</span><span ng-show="$root.locale.lang == 'bn_BD'">{{cElection.currentElectionNameBn}}</span></a></h3>
+              <p  lang="{{$root.locale.lang}}">{{cElection.electionDescBn}}</p>
+            </article>
+          </div>
+          <div class="mjh-timeline-left extra">
+            <div>
+              <span class="mjh-year"  lang="{{$root.locale.lang}}">{{cElection.electionDate|date:'yyyy'|translateNumber}}</span><br/>
+              <span class="mjh-date"  lang="{{$root.locale.lang}}">{{cElection.electionDate|date:'MMMM'|translate}}-{{cElection.electionDate|date:'dd'|translateNumber}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+
+
+
+
+      <li class="timeline-showmore">
+        <div class="mjh-showMore">
+          <!--<a  ui-sref="front.electionResult.allElectionResult"  ng-click="showMoreCurrentElection()" lang="{{$root.locale.lang}}">show more</a>-->
+          <a    ng-click="showMoreCurrentElection()" lang="{{$root.locale.lang}}">show more</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+<section class="mjh-other-concern-Secton">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div>
+          <header class="mjh-other-concern-Profile">
+            <h2 ng-click="ctrl.goTOTopp()"  lang="{{$root.locale.lang}}">{{'Recent Posts'|translate}}</h2>
+            <!--<a du-smooth-scroll="myCarousel" du-smooth-scroll du-scrollspy>Scroll it!</a>-->
+            <!--<button ng-click="toTheTop()">Take me back!</button> or <button ng-click="toSection3()">To section 3</button>-->
+            <span class="rss-source"  lang="{{$root.locale.lang}}">Source: <a href="http://shujan.org"  target="_blank">shujan.org</a></span>
+          </header>
+          <ul class="mjh-other-concern-Lists">
+            <li ng-repeat="eachNews in sujonFeed">
+              <figure class="mjh-other-concern-Img">
+                <a href="{{eachNews.link}}">
+                    <img ng-if="!eachNews.thumbImage" src="/images/content-placeholder.svg">
+                    <img ng-if="eachNews.thumbImage" src="{{eachNews.thumbImage}}">
+                </a>
+              </figure>
+              <div class="mjh-other-concern">
+                <h3 class="mjh-Pname"><a href="{{eachNews.link}}" target="_blank"  lang="{{$root.locale.lang}}">{{eachNews.newsTitle}}</a></h3>
+                <span  lang="{{$root.locale.lang}}">{{eachNews.publishedDate|date:"dd/MM/yyyy"}}</span><br/>
+                <span  lang="{{$root.locale.lang}}">{{eachNews.category}}</span>
+              </div>
+            </li>
+            <!--<li>-->
+              <!--<figure class="mjh-other-concern-Img">-->
+                <!--<img src="images/thumb1.jpg">-->
+              <!--</figure>-->
+              <!--<div class="mjh-other-concern">-->
+                <!--<h3 class="mjh-Pname">printing and typesetting</h3>-->
+                <!--<span>printing and typesetting</span><br/>-->
+                <!--<span>printing and typesetting</span>-->
+              <!--</div>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<figure class="mjh-other-concern-Img">-->
+                <!--<img src="images/thumb1.jpg">-->
+              <!--</figure>-->
+              <!--<div class="mjh-other-concern">-->
+                <!--<h3 class="mjh-Pname">printing and typesetting</h3>-->
+                <!--<span>printing and typesetting</span><br/>-->
+                <!--<span>printing and typesetting</span>-->
+              <!--</div>-->
+            <!--</li>-->
+          </ul>
+          <div class="mjh-more"><a href="http://shujan.org"  target="_blank"  lang="{{$root.locale.lang}}">&#x271A See More</a></div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div>
+          <header class="mjh-other-concern-Profile">
+            <h2  lang="{{$root.locale.lang}}">{{'Political Corruption'|translate}}</h2>
+            <span class="rss-source"  lang="{{$root.locale.lang}}">Source: <a href="http://votebd.wordpress.com" target="_blank">votebd.wordpress.com</a></span>
+          </header>
+          <ul class="mjh-other-concern-Lists">
+            <li ng-repeat="eachNews in politicalViolance">
+              <figure class="mjh-other-concern-Img">
+                <a href="{{eachNews.link}}"><img src="{{eachNews.thumbImage}}"></a>
+              </figure>
+              <div class="mjh-other-concern">
+                <h3 class="mjh-Pname"><a href="{{eachNews.link}}" target="_blank"  lang="{{$root.locale.lang}}">{{eachNews.newsTitle}}</a></h3>
+                <span  lang="{{$root.locale.lang}}">{{eachNews.publishedDate|date:"dd/MM/yyyy"}}</span><br/>
+                <span  lang="{{$root.locale.lang}}">{{eachNews.category}}</span>
+              </div>
+            </li>
+          </ul>
+          <div class="mjh-more"><a href="http://votebd.wordpress.com" target="_blank"  lang="{{$root.locale.lang}}">&#x271A See More</a></div>
+        </div>
+      </div>
+      <!--col-start-->
+      <div class="col-sm-4">
+        <header class="mjh-other-concern-Profile pprofile">
+          <h2  lang="{{$root.locale.lang}}">{{'Featured Candidate'|translate}}</h2>
+        </header>
+        <div class="myWrapper">
+          <ul class="mjh-other-concern-Lists">
+            <li ng-repeat="item in featuredCandidates">
+             <h4 class="mjh-Pname Pname mjhCandidatefeature" ui-sref="front.candidateSearch.affidavit({id:item.id})">
+               <span  lang="{{$root.locale.lang}}">{{'Name'|translate}}
+                 <span ng-show="$root.locale.lang != 'bn_BD'"> : {{item.personNameEn}}</span>
+                 <span ng-show="$root.locale.lang == 'bn_BD'"> : {{item.personNameBn}}</span>
+               </span>
+             </h4>
+             <p class="mjh-Pname Pname">
+               <span  lang="{{$root.locale.lang}}">{{'Father/husband`s name'|translate}}
+                <span ng-show="$root.locale.lang != 'bn_BD'"> : {{item.fatherNameEn}}</span>
+                <span ng-show="$root.locale.lang == 'bn_BD'"> : {{item.fatherNameBn}}</span>
+              </span>
+             </p>
+             <p class="mjh-Pname Pname">
+               <span  lang="{{$root.locale.lang}}">
+                 {{'address'|translate}} : {{item.addressBnAF}}
+               </span>
+             </p>
+            </li>
+          </ul>
+        </div>
+      </div><!--col-end-->
+    </div>
+  </div>
+</section>

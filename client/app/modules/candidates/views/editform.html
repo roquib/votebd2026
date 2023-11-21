@@ -1,0 +1,15 @@
+<div class="panel panel-default add-form-tab">
+
+<h4>Edit Candidate General Info</h4>
+<div class="candidateEditForm">
+<formly-form model="gotCandidate" fields="formFieldsForGotCandidate" options="formOptionsForGotCandidate"></formly-form>
+<div class="col-md-12">
+  <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.saveIsPublished()" ng-disabled="form.$invalid">
+    Submit
+  </button>
+  <button type="button" class="btn btn-default" ng-click="formOptionsForGotCandidate.resetModel()">Reset</button>
+</div>
+
+</div>
+</div>
+

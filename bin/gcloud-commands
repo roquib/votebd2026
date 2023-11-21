@@ -1,0 +1,2 @@
+//creating instance
+gcloud compute instances create votebd-1225-2 --machine-type=n1-standard-1 --image=ubuntu-14-04 --scopes userinfo-email,cloud-platform --metadata-from-file startup-script=sh/startup-script.sh --zone us-central1-f --tags http-server

@@ -1,0 +1,198 @@
+<div class="candidate-search-detail">
+<div ng-include="'modules/f-candidate-search/views/candidateprofile.html'"></div>
+<ul class="candidate-profile-tab" lang="{{$root.locale.lang}}">
+  <li><a ui-sref="front.candidateSearch.affidavit({id:ctrl.candidat.id})" title="Affidavit">{{'Affidavit'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.taxreturn({id:ctrl.candidat.id})" title="Tax Return">{{'Income Tax'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.fsee({id:ctrl.candidat.id})"  title="Probable Fund Source of Election Expense">{{'Probable Income Source (20/Dh)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.alie({id:ctrl.candidat.id})" title="Assets / Liability / Income / Expense">{{'Assets, Liability'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer({id:ctrl.candidat.id})" title="Election Expense Return">{{'Expense (22)'|translate}}</a></li>
+  <li><a ui-sref="front.candidateSearch.eer-murdhanno({id:ctrl.candidat.id})" title="Election Expense Return Murdhanno">{{'Expense(Murdhanno)'|translate}}</a></li>
+</ul>
+<form>
+  <div class="panel-heading affidavit-Header" lang="{{$root.locale.lang}}">
+    <h2>{{'Statement of sources of income to meet election expenses'|translate}}</h2>
+  </div>
+  <table class="table table-bordered" lang="{{$root.locale.lang}}">
+    <tbody>
+    <tr>
+      <td colspan="2">
+        <div align="center" class="style2">
+          <p><span class="mjh-TableTitle">{{'Name of candidate'|translate}} : </span>{{ctrl.candidat.personNameBn}} {{ctrl.candidat.personNameEn}}</p>
+          <p><span class="mjh-TableTitle">{{'Father`s Name'|translate}} : </span>{{ctrl.candidat.fatherHusbandNameBnAF}}</p>
+          <p><span class="mjh-TableTitle">{{'Address of candidate'|translate}} : </span>{{ctrl.candidat.addressBnAF}}</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td width="97%"><span class="mjh-boldstyle">{{'Part A: probable income from self'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered mjh-spanstyle">
+          <tbody id="part1">
+          <tr>
+            <td><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Source of income'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1a_personalIncomeFSEE in ctrl.candidat._1a_personalIncomeFSEE">
+            <td>{{_1a_personalIncomeFSEE.amount|translateNumber}}</td>
+            <td>{{_1a_personalIncomeFSEE.source}}</td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="personal"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part B: probable loan from relatives'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%">
+          <tbody id="part2">
+          <tr>
+            <td><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Name of relative'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Address of relative'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Relation'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Source of income of relative'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1b_loanRelativeFSEE in ctrl.candidat._1b_loanRelativeFSEE">
+            <td><span lang="en">{{_1b_loanRelativeFSEE.amount|translateNumber}}</span></td>
+            <td><span>{{_1b_loanRelativeFSEE.name}}</span></td>
+            <td><span>{{_1b_loanRelativeFSEE.address}}</span></td>
+            <td><span>{{_1b_loanRelativeFSEE.relation}}</span></td>
+            <td><span>{{_1b_loanRelativeFSEE.source}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="loan_relative"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part C: probable income through voluntary gift from relatives'|translate}}	</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part3">
+          <tr>
+            <td width="171"><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td width="170" align="center"><span class="mjh-TableTitle">{{'Name of relative'|translate}}</span></td>
+            <td width="165" align="center"><span class="mjh-TableTitle">{{'Address of relative'|translate}}</span></td>
+            <td width="167" align="center"><span class="mjh-TableTitle">{{'Relation'|translate}}</span></td>
+            <td width="178" align="center"><span class="mjh-TableTitle">{{'Source of income of relative'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1c_freeRelativeFSEE in ctrl.candidat._1c_freeRelativeFSEE">
+            <td>
+              <span lang="en">{{_1c_freeRelativeFSEE.amount|translateNumber}}</span>
+            </td>
+            <td>
+              <span>{{_1c_freeRelativeFSEE.name}}</span>
+            </td>
+            <td>
+              <span>{{_1c_freeRelativeFSEE.address}}</span>
+            </td>
+            <td>
+              <span>{{_1c_freeRelativeFSEE.relation}}</span>
+            </td>
+            <td><span>{{_1c_freeRelativeFSEE.source}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_c"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part D: probable loan from the persons other than relatives'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part4">
+          <tr>
+            <td><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td align="center"><span class="mjh-TableTitle">{{'Name of the person'|translate}}</span></td>
+            <td><span class="mjh-TableTitle">{{'Address of the person'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1d_loanManFSEE in ctrl.candidat._1d_loanManFSEE">
+            <td><span lang="en">{{_1d_loanManFSEE.amount|translateNumber}}</span></td>
+            <td><span>{{_1d_loanManFSEE.name}}</span></td>
+            <td><span>{{_1d_loanManFSEE.address}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_d"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part E: probable income through voluntary gift from the persons other than relatives'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%">
+          <tbody id="part5">
+          <tr>
+            <td><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td align="center"><span class="mjh-TableTitle">{{'Name of the person'|translate}}</span></td>
+            <td align="center"><span class="mjh-TableTitle">{{'Address of the person'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1e_freeManFSEE in ctrl.candidat._1e_freeManFSEE">
+            <td><span lang="en">{{_1e_freeManFSEE.amount|translateNumber}}</span></td>
+            <td><span>{{_1e_freeManFSEE.name}}</span></td>
+            <td><span>{{_1e_freeManFSEE.address}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_e"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part F-political party / organization / association of the money received on account of voluntarily giving'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part6">
+          <tr>
+            <td width="33%" align="center"><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td width="33%" align="center"><span class="mjh-TableTitle">{{'Political party / organization / association name'|translate}}</span></td>
+            <td width="34%" align="center"><span class="mjh-TableTitle">{{'Political party / organization / association headquarters address'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1f_freePartyFSEE in ctrl.candidat._1f_freePartyFSEE">
+            <td><span lang="en">{{_1f_freePartyFSEE.amount|translateNumber}}</span></td>
+            <td><span>{{_1f_freePartyFSEE.name}}</span></td>
+            <td><span>{{_1f_freePartyFSEE.office}}</span>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_f"></table>
+      </td>
+    </tr>
+    <tr>
+      <td><span class="mjh-boldstyle">{{'Part G: probable income from other sources apart from sources mentioned in A, B, C, D & E part'|translate}}</span></td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%"  class="table table-bordered">
+          <tbody id="part7">
+          <tr>
+            <td align="center"><span class="mjh-TableTitle">{{'Probable income amount'|translate}}</span></td>
+            <td align="center"><span class="mjh-TableTitle">{{'Source of Name'|translate}}</span></td>
+            <td align="center"><span class="mjh-TableTitle">{{'Source of income'|translate}}</span></td>
+          </tr>
+          <tr ng-repeat="_1g_freeOtherFSEE in ctrl.candidat._1g_freeOtherFSEE">
+            <td><span lang="en">{{_1g_freeOtherFSEE.amount|translateNumber}}</span></td>
+            <td><span>{{_1g_freeOtherFSEE.name}}</span></td>
+            <td><span>{{_1g_freeOtherFSEE.source}}</span></td>
+          </tr>
+          </tbody>
+        </table>
+        <table width="100%" id="part_g"></table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
+</div>

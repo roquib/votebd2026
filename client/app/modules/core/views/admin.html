@@ -1,0 +1,170 @@
+<header class="header adminheader">
+  <a class="logo" href="/">{{ getSetting('appName') }}</a>
+  <navbar></navbar>
+</header>
+<div>
+  <div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="left-side sidebar-offcanvas">
+      <section class="sidebar">
+        <div class="user-panel">
+          <div class="pull-left image">
+            <img gravatar-src="currentUser.email" class="img-circle" alt="User Image">
+          </div>
+          <div class="pull-left info">
+            <p>
+              <a href="" ng-if="currentUser.usertype=='superadmin'" ui-sref="app.users.profile">
+                {{ 'Hello,' | translate }} {{currentUser.usertype || currentUser.profiles[0].profile.name.givenName}}
+              </a>
+            </p>
+
+            <p>
+              <small><a href="" ui-sref="app.users.profile">{{ currentUser.email }}</a></small>
+            </p>
+          </div>
+        </div>
+
+
+        <ul class="sidebar-menu">
+
+
+
+          <!--<li class="treeview">-->
+            <!--<a href="#">-->
+              <!--<i class="fa fa-share"></i> <span></span>-->
+              <!--<i class="fa fa-angle-right pull-right"></i>-->
+            <!--</a>-->
+            <!--<ul class="treeview-menu">-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>-->
+              <!--<li>-->
+                <!--<a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-right pull-right"></i></a>-->
+                <!--<ul class="treeview-menu">-->
+                  <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>-->
+                  <!--<li>-->
+                    <!--<a href="#"><i class="fa fa-circle-o"></i> Political Party<i class="fa fa-angle-right pull-right"></i></a>-->
+                    <!--<ul class="treeview-menu">-->
+                      <!--<li><a href="#"><i class="fa fa-circle-o"></i> Parties</a></li>-->
+                      <!--<li><a href="#"><i class="fa fa-circle-o"></i> Alliances</a></li>-->
+                    <!--</ul>-->
+                  <!--</li>-->
+                <!--</ul>-->
+              <!--</li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+
+          <li class="header" data-mgtgrp="candidate" data-visib="show"><i class="fa fa-users"></i> Candidate Management<i class="fa fa-angle-right pull-right"></i></li>
+          <li data-grpitem="candidate" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin' || currentUser.usertype=='editor'" ui-sref-active="active"><a href="" ui-sref="app.candidates.list"><i class="fa ion-android-contacts"></i>Candidates All Forms</span></a></li>
+          <li data-grpitem="candidate" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin' || currentUser.usertype=='editor'" ui-sref-active="active"><a href="" ui-sref="app.candidates.candidateMerge"><i class="fa ion-android-contacts"></i>Merge Candidates</span></a></li>
+
+          <!--<li data-grpitem="candidate" class="treeview">-->
+            <!--<a href="#">-->
+              <!--<i class="fa fa-thumbs-o-up"></i> <span>Affidavit</span>-->
+              <!--<i class="fa fa-angle-right pull-right"></i>-->
+            <!--</a>-->
+            <!--<ul class="treeview-menu">-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Assets</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Income</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Liability</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Loan</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Law</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Commitment</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <!--<li data-grpitem="candidate" ui-sref-active="active"><a href=""><i class="fa fa-money"></i> <span>Form 20 (FSforEE)</span></a></li>-->
+          <!--<li data-grpitem="candidate" ui-sref-active="active"><a href=""><i class="fa fa-street-view"></i> <span>Form 21 (ALandIE)</span></a></li>-->
+          <!--<li data-grpitem="candidate" ui-sref-active="active"><a href=""><i class="fa fa-exchange"></i> <span>Form 22 (EER)</span></a></li>-->
+          <li data-grpitem="candidate" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin' || currentUser.usertype=='editor'" ui-sref-active="active"><a ui-sref="app.politicalPartyExpenses.list"><i class="fa fa-flag"></i> <span>Political Party Expenses</span></a></li>
+          <!--<li data-grpitem="candidate" class="treeview">-->
+            <!--<a>-->
+              <!--<i class="fa fa-usd"></i> <span>Income Tax</span>-->
+              <!--<i class="fa fa-angle-right pull-right"></i>-->
+            <!--</a>-->
+            <!--<ul class="treeview-menu">-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Tax Return</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Income</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Salary/Property/Investment</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Asset/Liability</a></li>-->
+              <!--<li><a href="#"><i class="fa fa-circle-o"></i> Life Style</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <li data-grpitem="candidate" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin' || currentUser.usertype=='editor'" ui-sref-active="active"><a href="" ui-sref="app.persons.list"><i class="fa fa-venus-mars"></i> <span>Persons</span></a></li>
+
+          <!--<li data-grpitem="candidate" class="treeview">-->
+            <!--<a>-->
+              <!--<i class="fa fa-line-chart"></i> <span>Candidate Reports</span>-->
+              <!--<i class="fa fa-angle-right pull-right"></i>-->
+            <!--</a>-->
+            <!--<ul class="treeview-menu">-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Comparison Report</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Profession</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Education</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Case</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Asset</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Liability</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Incometax</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Yearly Income</a></li>-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Men vs Women</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+
+          <li data-mgtgrp="election" class="header" data-visib="show"><i class="fa fa-university"></i>Election Management<i class="fa fa-angle-right pull-right"></i></li>
+          <li data-grpitem="election" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'"  ui-sref-active="active"><a href="" ui-sref="app.electionSeats.list"><i class="fa fa-calendar"></i> <span>Election Seats</span></a></li>
+          <li data-grpitem="election" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref-active="active"><a href="" ui-sref="app.electionCandidatePosts.list"><i class="fa fa-calendar"></i> <span>E. Candidate Posts</span></a></li>
+          <li data-grpitem="election" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref-active="active"><a href="" ui-sref="app.currentElections.list"><i class="fa fa-calendar"></i> <span>Current Elections</span></a></li>
+          <li data-grpitem="election" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref-active="active"><a href="" ui-sref="app.bannerSettings.add"><i class="fa fa-calendar"></i> <span>Banner Settings</span></a></li>
+
+          <!--<li data-grpitem="election" class="treeview">-->
+            <!--<a>-->
+              <!--<i class="fa fa-line-chart"></i> <span>Election Reports</span>-->
+              <!--<i class="fa fa-angle-right pull-right"></i>-->
+            <!--</a>-->
+            <!--<ul class="treeview-menu">-->
+              <!--<li ui-sref-active="active"><a href="#" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Election Results</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+          <li data-grpitem="election" class="treeview">
+            <a>
+              <i class="fa fa-cog"></i> <span>Election Settings</span>
+              <i class="fa fa-angle-right pull-right"></i>
+            </a>
+            <ul class="treeview-menu">
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.seats.list"><i class="fa fa-circle-o"></i>Seats</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.unions.list" title="Unions or Municipalities"><i class="fa fa-circle-o"></i> Unions/Municipalities</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" title="Upazillas or City corporations or Municipalities" ui-sref="app.upazillas.list"><i class="fa fa-circle-o"></i> Upazillas/City Corporations/Municipalities</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.districts.list"><i class="fa fa-circle-o"></i> Districts</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.divisions.list"><i class="fa fa-circle-o"></i> Divisions</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.candidatePosts.list"><i class="fa fa-circle-o"></i>Candidate Posts</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.elections.list"><i class="fa fa-circle-o"></i> Elections</a></li>
+              <li ui-sref-active="active"><a href="#" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'" ui-sref="app.constitutionalPosts.list"><i class="fa fa-circle-o"></i> Constitutional Posts</a></li>
+              <li ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'"><a href="#"><i class="fa fa-circle-o" ui-sref="front.politicalParty.alliances"></i> Alliances</a></li>
+              <li ui-sref-active="active" ng-if="currentUser.usertype=='superadmin' || currentUser.usertype=='admin'"><a href="#" ui-sref="app.politicalParties.list"><i class="fa fa-circle-o"></i> Political Parties</a></li>
+            </ul>
+          </li>
+
+          <li data-mgtgrp="site" class="header" data-visib="show"><i class="fa fa-cogs"></i> Site Management<i class="fa fa-angle-right pull-right"></i></li>
+          <!--<li data-grpitem="site" class="treeview">-->
+          <!--<a>-->
+            <!--<i class="fa fa-sitemap"></i> <span>All Modules</span>-->
+          <!--<i class="fa fa-angle-right pull-right"></i>-->
+          <!--</a>-->
+          <!--<ul class="treeview-menu">-->
+            <li data-grpitem="site" ng-if="currentUser.usertype=='superadmin'" ng-repeat="item in menuoptions" ui-sref-active="active">
+              <a class="" href="" ui-sref="{{item.sref}}"><i class="fa fa-fw {{item.icon}}"></i> {{item.name | translate}}</a>
+            </li>
+          <!--</ul>-->
+          <!--</li>-->
+        </ul>
+
+        <!--<ul class="sidebar-menu">-->
+          <!--<li ng-repeat="item in menuoptions" ui-sref-active="active">-->
+            <!--<a class="" href="" ui-sref="{{item.sref}}"><i class="fa fa-fw {{item.icon}}"></i> {{item.name | translate}}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+
+      </section>
+    </aside>
+    <aside ui-view class="right-side at-view-fade-in at-view-fade-out">
+
+    </aside>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <form name="form">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span translate>Election Seat Filter Criteria</span>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12">
+              <formly-form model="ctrl.electionSeat" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a type="submit" class="btn btn-primary btn-success" ui-sref="^.addedit(ctrl.electionSeat)"
+                  >
+            Find Candidates
+          </a>
+          <!--<button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit2()" ng-disabled="form.$invalid">-->
+          <!--Find Seats to add Election Seats-->
+          <!--</button>-->
+          <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+
+          <span class="pull-right">
+          <span class="btn-group">
+          <a ng-disabled="form.$invalid" href="" class="btn btn-xs btn-success" ui-sref="^.addedit(ctrl.electionSeat)"
+             title="Add Candidate">
+            <i class="fa fa-plus"></i>
+          </a>
+          </span>
+          </span>
+          <!--{{ctrl.electionSeat}}-->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+

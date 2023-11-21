@@ -1,0 +1,276 @@
+<form>
+    <div class="panel-heading">
+      <h2>সম্পদ ও দায় এবং বাৎসরিক আয় ও ব্যয়ের বিবরণী</h2>
+    </div>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td colspan="2">
+          <div align="center" class="style2">
+            <h4><span>নাম : </span>{{gotCandidate.personNameBn}} {{gotCandidate.personNameEn}}</h4>
+            <p>
+              <strong>পিতার নাম : </strong>{{gotCandidate.fatherHusbandNameBnAF}}
+            </p>
+            <p>
+              <strong>ঠিকানা: </strong>{{gotCandidate.addressBnAF}}
+            </p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="97%"><span class="style1"><h3>অংশ ক-সম্পদ</h3></span></td>
+      </tr>
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="97%"><span class="style1">শ্রেণী ক-গৃহ সম্পত্তি ব্যতীত অন্যান্য স্থাবর সম্পত্তি</span></td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.addexceptHousePropertyALIE()" title="ADD MORE FIELD ">
+            <i class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.deleteexceptHousePropertyALIE();" title="DELETE LAST FIELD ">
+            <i class="fa fa-minus"></i></a>
+        </td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part1">
+            <tr>
+              <td><strong>মোট পরিমাণ</strong></td>
+              <td><strong>অবস্থান</strong></td>
+              <td><strong>আনুমানিক মূল্য</strong></td>
+            </tr>
+            <tr ng-repeat="exceptHousePropertyALIE in gotCandidate.exceptHousePropertyALIE">
+              <td><textarea lang="en" class="formtextbng extraborder" rows="2" ng-model="exceptHousePropertyALIE.amount" cols="10" autocomplete="off"></textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2"  cols="10"  ng-model="exceptHousePropertyALIE.location"  ></textarea></td>
+              <td><input type="number" class="formtextbng extraborder" rows="2"  cols="10"  ng-model="exceptHousePropertyALIE.price"  /></td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="personal"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>শ্রেণী খ-গৃহ সম্পত্তি</td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.addhousePropertyALIE();" title="ADD MORE FIELD FOR Other Relation"><i class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.deletehousePropertyALIE();" title="DELETE LAST FIELD Of Other Relations"><i class="fa fa-minus"></i></a>
+        </td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part2">
+            <tr>
+              <td>
+                <strong>গৃহের প্রকৃতি ও সংখ্যা</strong>
+              </td>
+              <td>
+                <strong>অবস্থান</strong>
+              </td>
+              <td>
+                <strong>	আনুমানিক মূল্য</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="housePropertyALIE in gotCandidate.housePropertyALIE">
+              <td><textarea lang="en" class="formtextbng extraborder" rows="2" ng-model="housePropertyALIE.size" cols="10"></textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="housePropertyALIE.location" cols="10"> </textarea></td>
+              <td><input type="number" class="formtextbng extraborder" rows="2" ng-model="housePropertyALIE.price" cols="10" /></td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="loan_relative"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span
+          class="style1">শ্রেণী গ-অন্যান্য সম্পত্তি</span></td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.addotherPropertyALIE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.deleteotherPropertyALIE();"
+             title="DELETE LAST FIELD"><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part3">
+            <tr>
+              <td width="171">
+                <strong>অন্যান্য সম্পদ, যথা-সিকিউরিটি, বন্ড, ব্যাংকের আমানত ইত্যাদি</strong>
+              </td>
+              <td width="170" align="center">
+                <strong>আনুমানিক মূল্য</strong>
+              </td>
+            </tr>
+
+            <tr ng-repeat="otherPropertyALIE in gotCandidate.otherPropertyALIE">
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" lang="en" ng-model="otherPropertyALIE.description" cols="10"> </textarea>
+              </td>
+              <td>
+                <input type="number" class="formtextbng extraborder" rows="2" ng-model="otherPropertyALIE.price" cols="10"/>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_c"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1"><h3>অংশ খ-দায়সমূহ</h3></span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.addliabilityALIE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.deleteliabilityALIE();"
+             title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part4">
+            <tr>
+              <td>
+                <strong>দায়সমূহের প্রকৃতি এবং বর্ণনা</strong>
+              </td>
+              <td align="center"><strong>পরিমাণ</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="liabilityALIE in gotCandidate.liabilityALIE">
+              <td>
+                <textarea class="formtextbng extraborder" lang="en" rows="2" ng-model="liabilityALIE.description" cols="10"> </textarea>
+              </td>
+              <td>
+                <input type="number" class="formtextbng extraborder" rows="2" ng-model="liabilityALIE.price" cols="10" />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_d"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1"><h3>অংশ গ-বাৎসরিক আয়়</h3></span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.addannualIncomeALIE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;<a class="btn btn-danger" ng-click="ctrl.deleteannualIncomeALIE();"
+                                              title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part5">
+            <tr>
+              <td>
+                <strong>মোট আনুমানিক বাৎসরিক আয় বিবরণী</strong>
+              </td>
+              <td align="center"><strong>পরিমান়</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="annualIncomeALIE in gotCandidate.annualIncomeALIE">
+              <td>
+                <textarea class="formtextbng extraborder" lang="en" rows="2" ng-model="annualIncomeALIE.description" cols="10"> </textarea>
+              </td>
+              <td>
+                <input type="number" class="formtextbng extraborder" rows="2" ng-model="annualIncomeALIE.price" cols="10" />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_e"></table>
+        </td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td><span class="style1"><h3>অংশ গ-বাৎসরিক ব্যয়</h3></span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.addannualExpenseALIE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;<a class="btn btn-danger" ng-click="ctrl.deleteannualExpenseALIE();"
+                                              title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody>
+            <tr>
+              <td>
+                <strong>মোট আনুমানিক বাৎসরিক ব্যয বিবরণী</strong>
+              </td>
+              <td align="center"><strong>পরিমান়</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="annualExpenseALIE in gotCandidate.annualExpenseALIE">
+              <td>
+                <textarea class="formtextbng extraborder" lang="en" rows="2" ng-model="annualExpenseALIE.description"  cols="10"> </textarea>
+              </td>
+              <td>
+                <input type="number" class="formtextbng extraborder" rows="2" ng-model="annualExpenseALIE.price" cols="10" />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" ></table>
+        </td>
+      </tr>
+
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong >পিডিএফ ফাইল নাম</strong></td>
+              <td><input lang="en" class="formtextbng extraborder" ng-model="gotCandidate.pdfFilePathALIE" type="text"  ></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table  style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td ><strong >মন্তব্য</strong></td>
+              <td>
+                <textarea class="formtextbng extraborder" lang="en" ng-model="gotCandidate.reviewALIE" type="text"  ></textarea>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+
+      </tr>
+
+
+      <!--<tr>-->
+        <!--<td>&nbsp;</td>-->
+        <!--<td>জমাদানের তারিখ (yyyy-mm-dd):-->
+                  <!--<span class="ui-datepicker-wrap">-->
+                  <!--<input lang="en" ng-model="gotCandidate.submissionDateALIE" type="text" id="submission_date" size="20" value="0000-00-00" class="hasDatepicker embed">-->
+                  <!--</span>-->
+          <!--Publish:-->
+          <!--<select ng-init="true" ng-model="gotCandidate.isPublishedALIE">-->
+            <!--<option value="true">Publish</option>-->
+            <!--<option value="false">Draft</option>-->
+          <!--</select>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <tr>
+        <td colspan="2">
+          <div align="center">
+            <input type="submit" ng-click="ctrl.submit()" name="submit_b" id="submit_b" value="তথ্য সংরক্ষণ করুন ">
+          </div>
+        </td>
+      </tr>
+      <!-- Form Validation Ends Here -->
+      <script language="javascript"></script>
+      </tbody>
+    </table>
+</form>

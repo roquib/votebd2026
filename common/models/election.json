@@ -1,0 +1,73 @@
+{
+  "name": "election",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "oldId": {
+      "type": "number"
+    },
+    "nameEn": {
+      "type": "string",
+      "required": true
+    },
+    "nameBn": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "string"
+    },
+    "history": {
+      "type": "string"
+    },
+    "electionType": {
+      "type": "string"
+    },
+    "seatZone": {
+      "type": "array"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "isPublished": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "electionSeats": {
+      "type": "hasMany",
+      "model": "electionSeat",
+      "foreignKey": "electionId"
+    },
+    "currentElections": {
+      "type": "hasMany",
+      "model": "currentElection",
+      "foreignKey": "electionId"
+    },
+    "candidatePosts": {
+      "type": "hasMany",
+      "model": "candidatePost",
+      "foreignKey": "electionId"
+    },
+    "seats": {
+      "type": "hasMany",
+      "model": "seat",
+      "foreignKey": "electionId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

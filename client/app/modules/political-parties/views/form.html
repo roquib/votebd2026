@@ -1,0 +1,41 @@
+<form name="form">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+      <span ng-show="!ctrl.politicalParty.id" translate>Add a new Political Party</span>
+      <span ng-show="ctrl.politicalParty.id" translate>Edit Political Party</span>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="alert alert-danger" ng-if="addError" translate>Could not add Political Party!</div>
+          <formly-form model="ctrl.politicalParty" fields="ctrl.formFields" options="ctrl.formOptions"></formly-form>
+          <label>Political Party Marka:</label>
+          <form name="myForm" enctype="multipart/form-data">
+            <input type="file" ngf-select ng-model="picFile" name="politicalPartyMarka" accept="image/*" ngf-max-size="2MB" required ngf-model-invalid="errorFile" />
+            <i ng-show="myForm.politicalPartyMarka.$error.required">*required</i><br>
+             <i ng-show="myForm.politicalPartyMarka.$error.maxSize">File too large
+                 {{errorFile.size / 1000000|number:1}}MB: max 2M</i>
+             <img ng-show="myForm.politicalPartyMarka.$valid" ngf-thumbnail="picFile" class="thumb">
+             <button ng-click="picFile = null" ng-show="picFile">Remove</button> &nbsp; &nbsp;
+             <br>
+             <button ng-click="uploadPic(picFile)">Upload</button>
+             <span class="progress" ng-show="picFile.progress >= 0">
+               <div style="width:{{picFile.progress}}%"
+                    ng-bind="picFile.progress + '%'">
+               </div>
+             </span>
+             <span ng-show="picFile.result">Upload Successful</span>
+             <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+           </form>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-primary btn-success" ng-click="ctrl.submit()" ng-disabled="form.$invalid">
+        Submit
+      </button>
+      <button type="button" class="btn btn-default" ng-click="ctrl.formOptions.resetModel()">Reset</button>
+    </div>
+  </div>
+</form>

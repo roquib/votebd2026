@@ -1,0 +1,35 @@
+<div class="jumbotron" lang="{{$root.locale.lang}}">
+  <h2>{{'Candidates, got donations(by Constituencies)'|translate}}</h2>
+</div>
+
+<form class="form-horizontal" ng-hide="true">
+  <div class="form-group">
+    <label class="col-sm-3 control-label" lang="{{$root.locale.lang}}">{{'Minimum Total Income Amount'|translate}}</label>
+    <div class="col-sm-9" lang="{{$root.locale.lang}}">
+      <input  type="number" class="form-control" ng-model="piDonation.limit">
+    </div>
+  </div>
+</form>
+<div class="row">
+  <div class="col-xs-12 col-lg-12" ng-repeat="party in politicalPartyData">
+    <h3 lang="{{$root.locale.lang}}">{{party.politicalPartyNameEn}}</h3>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+        <thead>
+          <tr>
+            <td>{{'Constituencies'|translate}}</td>
+            <td>{{'Candidate Name'|translate}}</td>
+            <td>{{'Donation Amount'|translate}}</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="donar in party.givenDonation">
+            <td>{{donar.locationNoName}}</td>
+            <td>{{donar.electedCandidateName}}</td>
+            <td>{{donar.expenseAmount | number:0 | translateNumber}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

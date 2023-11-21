@@ -1,0 +1,61 @@
+<div class="mjhCandidateProfile" ng-controller="CandidateProfileCtrl">
+  <!--ng-show="hideShow"-->
+  <header>
+    <h2 lang="{{$root.locale.lang}}">{{'Candidate Profile'|translate}}</h2>
+  </header>
+  <div>
+    <div class="mjhCandidateImage">
+      <figure><img ng-src="images/demo-blank-avater.png"></figure>
+    </div>
+    <div class="mjhCandidateDetails">
+      <div class="mjhcandidatedata">
+        <h3 lang="{{$root.locale.lang}}">{{'Personal Details'|translate}}</h3>
+        <ul class="input-group" lang="{{$root.locale.lang}}">
+          <li><pre>{{'Name'|translate}}    : </pre>
+            <span ng-show="$root.locale.lang != 'bn_BD'">{{ctrl.candidat.personNameEn}}</span>
+            <span ng-show="$root.locale.lang == 'bn_BD'">{{ctrl.candidat.personNameBn}}</span>
+          </li>
+          <li><pre>{{'জন্ম তারিখ'}}  : </pre> {{ctrl.candidat.candidateDateOfBirthBnAF}}</li>
+          <li><pre>{{'Father'|translate}}  : </pre> {{ctrl.candidat.fatherHusbandNameBnAF}}</li>
+          <li><pre>{{'Mother'|translate}}  : </pre> {{ctrl.candidat.motherNameBnAF}}</li>
+          <li><pre>{{'Address'|translate}} : </pre> {{ctrl.candidat.addressBnAF}}</li>
+        </ul>
+      </div>
+      <div>
+        <h3 lang="{{$root.locale.lang}}">{{'Candidate\'s  News'|translate}}</h3>
+        <ul>
+          <li ng-repeat="item in posts" class="newstitle">
+              <a ng-click="newsShow(item.id)">
+                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                <span ng-show="$root.locale.lang != 'bn_BD'">{{item.titleEn}}</span>
+                <span ng-show="$root.locale.lang == 'bn_BD'">{{item.titleBn}}</span>
+              </a>
+          </li>
+        </ul>
+      </div>
+      <!--newsDetails-start-->
+      <div class="candidate-search-detail mjhCandidateNewsDetails modal" ng-class="modal">
+        <div class="modal-content">
+          <span ng-click="closeNews()" class="close">×</span>
+          <div class="mjh-modelContent">
+            <header>
+              <h3>
+                <span ng-show="$root.locale.lang != 'bn_BD'">{{post.titleEn}}</span>
+                <span ng-show="$root.locale.lang == 'bn_BD'">{{post.titleBn}}</span>
+              </h3>
+            </header>
+            <figure ng-show="post.image">
+               <img ng-src="{{post.image}}">
+             </figure>
+             <article>
+               <p>
+                 <span ng-show="$root.locale.lang != 'bn_BD'">{{post.contentEn}}</span>
+                 <span ng-show="$root.locale.lang == 'bn_BD'">{{post.contentBn}}</span>
+               </p>
+             </article>
+           </div>
+        </div>
+      </div><!--newsDetails-end-->
+    </div>
+  </div>
+</div>

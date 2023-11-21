@@ -1,0 +1,287 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
+      <div class="text-center ze-title2 ">
+        <h2>{{'Comparative reports of all political party' | translate}}</h2>
+        <p ng-if="$root.locale.lang=='bn_BD'">{{ election.currentElectionNameBn}}</p>
+        <p ng-if="$root.locale.lang!='bn_BD'">{{ election.currentElectionNameEn}}</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-lg-8" lang="{{$root.locale.lang}}" style="height:400px">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" ng-if="politicalPartyData" class="text-center">{{'The parcentage of candidates of all political party'|translate}}</h3>
+        </div>
+        <div id="politicalParty-chart"></div>
+      </div>
+      <div class="col-xs-12 col-lg-4" ng-if="politicalPartyData" style="overflow-y:scroll; height:400px">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{politicalPartyData.all.table.totalCandidate.total | translateNumber}} {{'Candidates Chart' | translate}}</h3>
+        </div>
+        <div id="exportable">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+              <thead>
+              <tr>
+                <th>{{'Teams'|translate}}</th>
+                <th>{{'totalCandidate'|translate}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>{{politicalPartyData.all.table._1.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._1.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._2.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._2.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._3.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._3.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._4.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._4.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._5.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._5.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._6.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._6.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._7.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._7.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._8.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._8.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._9.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._9.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._10.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._10.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._11.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._11.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._12.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._12.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._13.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._13.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._14.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._14.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._15.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._15.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._16.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._16.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._17.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._17.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._18.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._18.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._19.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._19.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._20.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._20.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._21.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._21.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._22.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._22.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._23.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._23.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._24.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._24.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._25.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._25.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._26.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._26.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._27.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._27.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._28.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._28.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._29.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._29.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._30.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._30.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._31.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._31.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._32.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._32.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._33.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._33.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._34.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._34.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._35.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._35.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._36.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._36.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._37.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._37.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._38.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._38.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._39.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._39.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._40.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._40.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._41.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._41.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._42.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._42.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._43.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._43.total | translateNumber}}</td>
+              </tr>
+              <tr>
+                <td>{{politicalPartyData.all.table._44.title | translate}}</td>
+                <td>{{politicalPartyData.all.table._44.total | translateNumber}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--/.col-xs-6.col-lg-4-->
+  </div><!--/row-->
+</div><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
+      <div class="text-center ze-title2 ">
+        <h3 lang="{{$root.locale.lang}}">{{'Education of All Political Parties Candidates' | translate}}</h3>
+      </div>
+    </div>
+  </div>
+    <!-- <div class="col-xs-12 col-lg-6" lang="{{$root.locale.lang}}">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left" style="padding-left:35px; padding-button:10px;">{{'Bellow SSC'|translate}}</h3>
+        <p></p>
+      </div>
+      <canvas id="bar" class="chart chart-bar"
+        chart-data="databellowssc" chart-labels="partyNamesBn"> chart-series="series"
+      </canvas
+    </div> -->
+    <div class="row">
+      <div class="col-xs-12 col-md-12" lang="{{$root.locale.lang}}">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Below SSC'|translate}}</h3>
+          <p></p>
+        </div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="databelowssc" chart-labels="partyNamesBn" chart-options="options"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12" lang="{{$root.locale.lang}}">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'SSC'|translate}}</h3>
+          <p></p>
+        </div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="datassc" chart-labels="partyNamesBn" chart-options="options"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12" lang="{{$root.locale.lang}}">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'HSC'|translate}}</h3>
+          <p></p>
+        </div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="datahsc" chart-labels="partyNamesBn" chart-options="options"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12" lang="{{$root.locale.lang}}">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Graduate'|translate}}</h3>
+          <p></p>
+        </div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="databsc" chart-labels="partyNamesBn" chart-options="options"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-12" lang="{{$root.locale.lang}}">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Postgraduate'|translate}}</h3>
+          <p></p>
+        </div>
+        <canvas id="bar" class="chart chart-bar"
+          chart-data="datamsc" chart-labels="partyNamesBn" chart-options="options"></canvas>
+      </div>
+    </div>
+</div>

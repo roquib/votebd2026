@@ -1,0 +1,174 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="text-center ze-title2 ">
+      <h2 ng-if="$root.locale.lang='bn_BD'">{{ctrl.electionSeat.currentElection.currentElectionNameBn}}</h2>
+      <h2 ng-if="$root.locale.lang!='bn_BD'">{{ctrl.electionSeat.currentElection.currentElectionNameEn}}</h2>
+      <p>{{ctrl.electionSeat.seatNameBn}} {{'আসনের প্রার্থীদের তালিকা'}}</p>
+    </div>
+  </div>
+  <div class="col-md-3 col-sm-3 col-xs-12">
+  <div class="candidates-box">
+    <div class="candidates-top row">
+     <img class="col-xs-4" src="images/map.png" alt="photo">
+     <div class="col-xs-8">
+      <h3> <span>{{ctrl.electionSeat.seatNameBn}}</span></h3>
+      <h5><span lang="{{$root.locale.lang}}">{{'CANDIDATES' | translate}}</span></h5>
+     </div>
+    </div>
+  </div>
+  <div class="map-box-area row">
+    <img class="" src="/images/seatmaps/{{(ctrl.electionSeat.seatNameEn).toLowerCase()}}.svg" style="padding: 0;" alt="photo">
+  </div>
+  <div class="candidates-bottom" lang="{{$root.locale.lang}}">
+    <h3> <span>{{'Voter' | translate}}</span></h3>
+    <h4><span>{{(ctrl.electionSeat.totalVoterMale+ctrl.electionSeat.totalVoterFemale) | translateNumber}}</span></h4>
+    <h2> <span "> <img class="vote-symbol" src="images/icon-hand.jpg" alt="icon"></span> <span><img class="vote-symbol" src="images/icon-3.jpg" alt="icon"></span></h2>
+  </div>
+  </div>
+  <div class="col-md-9 col-sm-9 col-xs-12">
+  <div class="row">
+  <div class="col-md-3 col-sm-4 col-xs-12" ng-repeat="candidate in ctrl.electionSeat.candidates">
+  <div class="voter-box">
+   <div class="photo">
+     <img ng-if="candidate.candidatePhoto" src="assets/candidate_photos/{{candidate.candidatePhoto}}" style="max-height:180px;">
+     <img ng-if="(!candidate.candidatePhoto) && (candidate.genderEn=='male')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
+     <img ng-if="(!candidate.candidatePhoto) && (candidate.genderEn=='female' || candidate.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:180px;">
+   </div>
+   <a href="/#/front/candidates/affidavit/{{candidate.id}}"><h6>{{candidate.candidateNameBnAF}}</h6></a>
+   <h2><span><img src="assets/party_symbols/{{candidate.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>
+       <span><a href="{{candidate.candidateVideoLink}}"><img class="vote-symbol" src="images/mp-symbol.jpg" style="margin-top:5px; height:35px;"></a></span></h2>
+   <!-- <h2><span><img ng-repeat="party in parties" ng-if="candidat.politicalPartyId==party.id" src="assets/party_symbols/{{party.politicalPartyMarka}}" style="width:50px; height:30px;"></span><span><a href="{{candidat.candidateVideoLink}}" target="_blank"><img class="vote-symbol" src="images/mp-symbol.jpg" style="margin-top:5px; height:35px;"></a></span></h2> -->
+  </div>
+  </div>
+  </div>
+</div>
+<div class="candidate-search-detail">
+  <section class="election-mgmt">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="text-center ze-title2 ">
+          <p>{{ctrl.electionSeat.seatNameBn}} {{'আসনের প্রার্থীদের তুলনামূলক চিত্র'}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row" ng-repeat="candidat in ctrl.electionSeat.candidates">
+    <div class="col-md-2 col-sm-2 col-xs-12">
+      <div class="voter-box">
+       <div class="photo">
+         <img ng-if="candidat.candidatePhoto" src="assets/candidate_photos/{{candidat.candidatePhoto}}" style="height:175px;">
+         <img ng-if="!candidat.candidatePhoto && candidat.genderEn=='male'" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:175px;">
+         <img ng-if="!candidat.candidatePhoto && (candidat.genderEn=='female' || candidat.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:175px;">
+       </div>
+       <a href="/#/front/candidates/affidavit/{{candidat.id}}"><h6>{{candidat.candidateNameBnAF}}</h6></a>
+       <h2><span><img src="assets/party_symbols/{{candidat.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>
+           <span><a href="{{candidat.candidateVideoLink}}"><img class="vote-symbol" src="images/mp-symbol.jpg" style="margin-top:5px; height:35px;"></a></span>
+       </h2>
+      </div>
+    </div>
+    <div class="col-md-9 col-sm-9 col-xs-12">
+    <div class="row">
+      <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color1">
+                 <i lang="{{$root.locale.lang}}">{{'Education'|translate}}</i>
+                 <ul>
+                     <li>
+                        <span>{{candidat.highestDegreeBnAF}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color2">
+                 <i lang="{{$root.locale.lang}}">{{'Occupation'|translate}}</i>
+                 <ul>
+                     <li>
+                        <span>{{candidat.professionTypeBnAF}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color3">
+                 <i lang="{{$root.locale.lang}}">{{'Case'|translate}}</i>
+                 <ul>
+                     <li>
+                       <span>Present {{candidat.lawPresentAF.length || 0}}</span>&nbsp;&nbsp;
+                       <span>Past {{candidat.lawPastAF.length || 0}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col-md-2 col-sm-4 col-xs-12">
+            <div class="info-box b-color3">
+              <i lang="{{$root.locale.lang}}">{{'Case'|translate}}({{302 | translateNumber}})</i>
+                <ul>
+                    <li>
+                      <span>Present {{candidat.presentCandidate302 || 0}}</span>&nbsp;&nbsp;
+                      <span>Past {{candidat.pastCandidate302 || 0}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color4">
+                 <i lang="{{$root.locale.lang}}">{{'Income'|translate}}</i>
+                 <ul>
+                     <li>
+                        <span>BDT-{{candidat.totalOwnIncomeAF}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color5">
+                 <i lang="{{$root.locale.lang}}">{{'Asset'|translate}}</i>
+                 <ul>
+                     <li>
+                        <span>BDT-{{(candidat.assetMaterialOwnTotalAF+ctrl.candidat.assetImmaterialOwnTotalAF+ctrl.candidat.assetJointSharePartTotalAF+ctrl.candidat.assetMaterialHusbandWifeTotalAF+ctrl.candidat.assetMaterialDependantsTotalAF+ctrl.candidat.assetImmaterialHusbandWifeTotalAF+ctrl.candidat.assetImmaterialDependantsTotalAF)}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color1">
+                 <i lang="{{$root.locale.lang}}">{{'Liabilities'|translate}}</i>
+                 <ul>
+                     <li>
+                        <span>BDT-{{candidat.liabilityTotalAmountALIE || 0}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color2">
+                 <i lang="{{$root.locale.lang}}">{{'Tax'|translate}}</i>
+                 <ul>
+                     <li>
+                       <span>BDT-{{((ctrl.candidat._13ApplicableTaxTR || 0)-(ctrl.candidat._14TaxCommissionTR || 0))}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+          <div class="col-md-2 col-sm-4 col-xs-12">
+             <div class="info-box b-color3">
+                 <i lang="{{$root.locale.lang}}">{{'Loan'|translate}}</i>
+                 <ul>
+                     <li>
+                       <span>BDT-{{((candidat.totalSingleAmountAF || 0)+(candidat.totalJointAmoutAF || 0)+(candidat.totalDirectorOrChairmenAmoutAF || 0)+(candidat.totalDependedantsAmountAF || 0))}}</span>
+                     </li>
+                 </ul>
+             </div>
+         </div>
+        </div>
+      </div>
+     </div>
+  </section>
+</div>
+<script type="text/javascript">
+    //document.addEventListener("DOMContentLoaded", function(event) {
+        if( document.getElementById("page-loading") ){
+            var element = document.getElementById("page-loading");
+            element.parentNode.removeChild(element);
+        }
+   // });
+</script>

@@ -1,0 +1,7 @@
+//[
+//  {electionType:"national-election", includedOption:["division","district"]},
+//  {electionType:"city-corporation-election", includedOption:["division"]},
+//  {electionType:"municipal-election", includedOption:["division","district"]},
+//  {electionType:"upazilla-election", includedOption:["division","district","upazilla"]},
+//  {electionType:"union-election", includedOption:["division","district","upazilla",]},
+//]

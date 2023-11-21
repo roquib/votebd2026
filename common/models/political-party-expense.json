@@ -1,0 +1,127 @@
+{
+  "name": "politicalPartyExpense",
+  "plural": "politicalPartyExpenses",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "submissionDate": {
+      "type": "date"
+    },
+    "submissionDateTimestamp": {
+      "type": "number"
+    },
+    "politicalPartyNameBn": {
+      "type": "string"
+    },
+    "politicalPartyNameEn": {
+      "type": "string"
+    },
+    "politicalPartyAddressBn": {
+      "type": "string"
+    },
+    "executiveDirectorName": {
+      "type": "string"
+    },
+    "executiveDirectorPost": {
+      "type": "string"
+    },
+    "givenDonation": {
+      "type": [
+        "object"
+      ]
+    },
+    "givenDonationTotalAmount": {
+      "type": "number"
+    },
+    "campain": {
+      "type": [
+        "object"
+      ]
+    },
+    "campainTotalAmount": {
+      "type": "number"
+    },
+    "vehicle": {
+      "type": [
+        "object"
+      ]
+    },
+    "vehicleTotalAmount": {
+      "type": "number"
+    },
+    "conference": {
+      "type": [
+        "object"
+      ]
+    },
+    "conferenceTotalAmount": {
+      "type": "number"
+    },
+    "staff": {
+      "type": [
+        "object"
+      ]
+    },
+    "staffTotalAmount": {
+      "type": "number"
+    },
+    "administrative": {
+      "type": [
+        "object"
+      ]
+    },
+    "administrativeTotLAmount": {
+      "type": "number"
+    },
+    "other": {
+      "type": [
+        "object"
+      ]
+    },
+    "otherTotalAmount": {
+      "type": "number"
+    },
+    "grandTotalAmount": {
+      "type": "number"
+    },
+    "pdfFilePath": {
+      "type": "string"
+    },
+    "created": {
+      "type": "date"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "modified": {
+      "type": "date"
+    },
+    "modifiedBy": {
+      "type": "string"
+    },
+    "isPublished": {
+      "type": "boolean"
+    },
+    "review": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "politicalParty": {
+      "type": "belongsTo",
+      "model": "politicalParty",
+      "foreignKey": "politicalPartyId"
+    },
+    "currentElection": {
+      "type": "belongsTo",
+      "model": "currentElection",
+      "foreignKey": "currentElectionId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

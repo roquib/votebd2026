@@ -1,0 +1,20 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+    {{ctrl.division.nameBn}}
+    <span class="pull-right btn-group">
+      <a href="" class="btn btn-xs btn-default" ui-sref="^.edit({id: ctrl.division.id})">
+        <i class="fa fa-pencil"></i>
+      </a>
+      <a href="" class="btn btn-xs btn-danger" ui-sref="^.delete({id: ctrl.division.id})">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </span>
+  </div>
+  <div class="panel-body ">
+    <!--<pre>{{ctrl.division | json}}</pre>-->
+    <label>Name (Bangla) : </label> <span> {{ctrl.division.nameBn}} </span><br/>
+    <label>Name (English) : </label> <span> {{ctrl.division.nameEn}} </span><br/>
+    <label>Info : </label> <span> {{ctrl.division.info}} </span>
+  </div>
+</div>

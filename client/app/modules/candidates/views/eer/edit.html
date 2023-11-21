@@ -1,0 +1,2329 @@
+<form>
+    <div class="panel-heading">
+      <h2>নির্বাচনী ব্যয়ের রিটার্ণ</h2> </div>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td colspan="3">
+          <div align="center" class="style2">
+            <h4><span>নাম : </span>{{gotCandidate.personNameBn}} {{gotCandidate.personNameEn}}</h4>
+            <p> <strong>পিতার নাম : </strong>{{gotCandidate.fatherHusbandNameBnAF}} </p>
+            <p> <strong>ঠিকানা: </strong>{{gotCandidate.addressBnAF}} </p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%">প্রার্থীর নাম :</td>
+        <td colspan="2" style="width: 50%">
+          <textarea ng-model="gotCandidate.candidateNameEER" cols="35" autocomplete="off"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%">ঠিকানা :</td>
+        <td colspan="2" style="width: 50%">
+          <textarea ng-model="gotCandidate.candidateAddressEER" cols="35" ></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="right">নির্বাচনী এজেন্টের নাম :</td>
+        <td colspan="2" style="width: 50%">
+          <textarea ng-model="gotCandidate.agentNameEER" cols="35" ></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td align="right" style="width: 50%">নির্বাচনী এজেন্টের ঠিকানা :</td>
+        <td colspan="2" style="width: 50%">
+          <textarea ng-model="gotCandidate.agentAddressEER" cols="35" ></textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ ক : নির্বাচনী ব্যয়ের সারসংক্ষেপ</h3> </td>
+      </tr>
+      <tr>
+        <td colspan="3"><strong>১. এ-অর্থ পরিশোধের প্রকার</strong> </td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td align="center"><b>অর্থ পরিশোধের ধরন</b> </td>
+        <td align="center"><b>টাকা</b> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">১</div>
+        </td>
+        <td align="right">পরিশোধিত অর্থের পরিমাণ</td>
+        <td>
+          <input  ng-model="gotCandidate._1a_22_PaidAmountEER" type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">২</div>
+        </td>
+        <td height="32" align="right">দাবীকৃত অপরিশোধিত অর্থ</td>
+        <td>
+          <input  ng-model="gotCandidate._1a_22_ClaimedAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">৩</div>
+        </td>
+        <td align="right">বিতর্কিত দাবী</td>
+        <td>
+          <input  ng-model="gotCandidate._1a_22_ControversialAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td align="right"><strong>নির্বাচনী মোট খরচ</strong> </td>
+        <td>{{_1a_22_TotalElectionAmountEER=_1a_22_PaidAmountEER+_1a_22_ClaimedAmountEER+_1a_22_ControversialAmountEER}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td colspan="3"><strong>১. বি-অর্থ ব্যয়ের শ্রেণী</strong> </td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td align="center"><b>ব্যয়ের উদ্দেশ্য</b> </td>
+        <td align="center"><b>টাকা</b> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">১</div>
+        </td>
+        <td height="34" align="right">প্রচারণা বাবদ</td>
+        <td>
+          <input  ng-model="gotCandidate._1b_22_CampaignCostAmountEER" type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">২</div>
+        </td>
+        <td height="32" align="right">পরিবহণ বাবদ</td>
+        <td>
+          <input ng-model="gotCandidate._1b_22_ConveyanceCostAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">৩</div>
+        </td>
+        <td height="35" align="right">জনসভা বাবদ</td>
+        <td>
+          <input  ng-model="gotCandidate._1b_22_PublicMeetingCostAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">৪</div>
+        </td>
+        <td height="35" align="right">নির্বাচনী ক্যাম্প বাবদ</td>
+        <td>
+          <input  ng-model="gotCandidate._1b_22_CampCostAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">৫</div>
+        </td>
+        <td height="35" align="right">এজেন্ট ও অন্যান্য ষ্ট্যাফ খরচ বাবদ</td>
+        <td>
+          <input  ng-model="gotCandidate._1b_22_AgentCostAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <div align="center">৬</div>
+        </td>
+        <td height="35" align="right">আবাসন ও প্রশাসনিক খরচ বাবদ</td>
+        <td>
+          <input  ng-model="gotCandidate._1b_22_AdministrationCostAmountEER"  type="number"> <strong><span class="style1">** ইংরেজীতে</span></strong> </td>
+      </tr>
+      <tr>
+        <td align="center">&nbsp;</td>
+        <td height="35" align="right"><strong>নির্বাচনী মোট খরচ</strong> </td>
+        <td>{{_1b_22_ElectionCostAmountEER=_1b_22_CampaignCostAmountEER+_1b_22_ConveyanceCostAmountEER+_1b_22_PublicMeetingCostAmountEER+_1b_22_CampCostAmountEER+_1b_22_AgentCostAmountEER+_1b_22_AdministrationCostAmountEER}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ খ : নির্বাচনী ব্যয়ের হিসাব</h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_2ElectionExpenseDetailsEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_2ElectionExpenseDetailsEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>
+        </td>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody >
+            <tr>
+              <th><strong>যে তারিখে ব্যয করা হয় বা ব্যয়ের অনুমোদন প্রাপ্ত হয়</strong> </th>
+              <th><strong>ব্যয়ের প্রকৃতি</strong> </th>
+              <th><strong>পরিশোধিত অর্থের পরিমান (ক)(<span>ইংরেজীতে</span>)</strong> </th>
+              <th><strong>অপরিশোধিত অর্থের পরিমান (খ)(<span>ইংরেজীতে</span>)</strong> </th>
+              <th><strong>(ক) ও (খ) এর যোগফল</strong> </th>
+              <th><strong>অর্থ পরিশোধের তারিখ</strong> </th>
+              <th><strong>অর্থ পরিশোধ কারীর নাম ও ঠিকানা</strong> </th>
+              <th><strong>পরিশোধিত অর্থের ক্ষেত্রে ভাউচার সমূহের ক্রমিক নম্বর</strong> </th>
+              <th><strong>অপরিশোধিত অর্থের ক্ষেত্রে বিলসমূহের ক্রমিক নম্বর (যদি থাকে)</strong> </th>
+              <th><strong>অপরিশোধিত অর্থ যে ব্যক্তির অনুকূলে পরিশোধ যোগ্য তাহার নাম ও ঠিকানা</strong> </th>
+              <th><strong>ব্যাংক একাউন্ট নম্বর,ব্যাংকের নাম, চেক নম্বর এবং তারিখ</strong> </th>
+            </tr>
+            <tr ng-repeat="_2ElectionExpenseDetailsEER in gotCandidate._2ElectionExpenseDetailsEER">
+              <td>
+                <input type="date" placeholder="yyyy/mm/dd" class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.dateOfApproval" />
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.typeOfExpenses"/>
+              </td>
+              <td>
+                <input type="number" placeholder="00.00" class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.clearedMoneyAmt"/>
+              </td>
+              <td>
+                <input type="number" placeholder="00.00" class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.unclearedMoneyAmt"/>
+              </td>
+              <td>
+                <input type="number" placeholder="00.00" class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.totalClearUnclearAmt"/>
+              </td>
+              <td>
+                <input type="date" class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.dateOfMoneyPay"/>
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.payerNameAddress"/>
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.clearedAmtVoucherNo"/>
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.unclearedAmtVoucherNo"/>
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.nameAddressToPay"/>
+              </td>
+              <td>
+                <input class="formtextbng extraborder"  ng-model="_2ElectionExpenseDetailsEER.bankNameOthers"/>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>Grand Total Clear/Unclar Amount</h3> {{gotCandidate._2ElectionExpenseDetailsGrandTotalClearUnclearAmtEER}}</td>
+      </tr>
+
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ গ </h3> </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3">প্রতিদ্বন্দ্বী প্রার্থীর সর্বমোট ব্যক্তিগত ব্যয়িত অর্থের পরিমাণ :
+          <input  type="number"  ng-model="gotCandidate._3OpponentTotalExpensesEER" > </td>
+      </tr>
+
+
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ ঘ : বিতর্কিত দাবীর হিসাব </h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_4ControversialClaimDetails()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_4ControversialClaimDetails();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>
+        </td>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody id="part1">
+            <tr>
+              <td><strong>দাবী উত্থাপনের তারিখ</strong> </td>
+              <td><strong>দাবী উত্থাপনকারীর নাম ও ঠিকানা</strong> </td>
+              <td><strong>দাবীর প্রকৃতি</strong> </td>
+              <td><strong>দাবীর পরিমাণ(<span>ইংরেজীতে</span>)</strong> </td>
+              <td><strong>দাবীকৃত অর্থ বিতর্কিত হওয়ার কারণ</strong> </td>
+            </tr>
+            <tr ng-repeat="_4ControversialClaimDetails in gotCandidate._4ControversialClaimDetails">
+              <td>
+                <!--<input type="date"  placeholder="yyyy/mm/dd"  lang="en" class="formtextbng extraborder" rows="2" ng-model="_4ControversialClaimDetails.date" />-->
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_4ControversialClaimDetails.nameAddress"></textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_4ControversialClaimDetails.type"></textarea>
+              </td>
+              <td>
+                <input type="number"  placeholder="00.00" class="formtextbng extraborder" rows="2" cols="10" ng-model="_4ControversialClaimDetails.claimedAmt"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_4ControversialClaimDetails.causesOfControversy"></textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>Controversial Claim Details Total Amount</h3> {{gotCandidate._4ControversialClaimDetailsTotalClaimedAmtEER}}</td>
+      </tr>
+
+
+
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ ঙ : দাবীকৃত অপরিশোধিত অর্থের হিসাব</h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_5_claimedUnpaidDetailsEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_5_claimedUnpaidDetailsEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>
+        </td>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody >
+            <tr>
+              <td><strong>দাবী উত্থাপনের তারিখ</strong> </td>
+              <td><strong>দাবী উত্থাপনকারীর নাম ও ঠিকানা</strong> </td>
+              <td><strong>অপরিশোধিত দাবীর প্রকৃতি</strong> </td>
+              <td><strong>দাবীকৃত অপরিশোধিত অর্থের পরিমাণ (<span>ইংরেজীতে</span>)</strong> </td>
+              <td><strong>দাবীকৃত অর্থ অপরিশোধিত থাকার কারণ</strong> </td>
+            </tr>
+            <tr ng-repeat="_5_claimedUnpaidDetailsEER in gotCandidate._5_claimedUnpaidDetailsEER">
+              <td>
+                <!--<input type="date" placeholder="yyyy/mm/dd"  lang="en" class="formtextbng extraborder" rows="2" ng-model="_5_claimedUnpaidDetailsEER.claimed_date" />-->
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_5_claimedUnpaidDetailsEER.name_address"></textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_5_claimedUnpaidDetailsEER.claimed_type"></textarea>
+              </td>
+              <td>
+                <input type="number"  placeholder="00.00" class="formtextbng extraborder" rows="2" cols="10" ng-model="_5_claimedUnpaidDetailsEER.claimed_amt"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_5_claimedUnpaidDetailsEER.causes_of_uncleared"></textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>Claimed Unpaid Details Total Amount</h3> {{gotCandidate._5_claimedUnpaidDetailsTotalClaimedAmtEER}}</td>
+      </tr>
+
+
+      <tr>
+        <td align="center" colspan="3">
+          <h3>অংশ চ : নির্বাচনী এজেন্ট কর্তৃক গৃহীত অর্থ, ইত্যাদির হিসাব</h3> </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_6_agentTakenMoneyEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_6_agentTakenMoneyEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>
+        </td>
+        <td>
+          <table width="100%" class="table table-bordered">
+            <tbody >
+            <tr>
+              <td><strong>নির্বাচনী এজেন্ট কর্তৃক অর্থ সিকিউরিটি বা উহার সমতুল্য অর্থ গ্রহণের তারিখ</strong> </td>
+              <td><strong>অর্থ, ইত্যাদি প্রদানকারী ব্যক্তির নাম ও ঠিকানা</strong> </td>
+              <td><strong>অর্থের পরিমাণ অথবা সিকিউরিটির মূল্য, ইত্যাদি(<span>ইংরেজীতে</span>)</strong> </td>
+              <td><strong>অর্থ, ইত্যাদি গ্রহণ/প্রদান করার উদ্দেশ্য</strong> </td>
+              <td><strong>ব্যাংক একাউন্ট নম্বর, ব্যাংকের নাম, চেক নম্বর এবং তারিখ</strong> </td>
+            </tr>
+            <tr ng-repeat="_6_agentTakenMoneyEER in gotCandidate._6_agentTakenMoneyEER">
+              <td>
+                <input placeholder="yyyy/mm/dd"  lang="en" class="formtextbng extraborder" rows="2" ng-model="_6_agentTakenMoneyEER.agent_date" />
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_6_agentTakenMoneyEER.payer_name_address"></textarea>
+              </td>
+              <td>
+                <input type="number"  placeholder="00.00"  class="formtextbng extraborder" rows="2" cols="10" ng-model="_6_agentTakenMoneyEER.money_amt"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_6_agentTakenMoneyEER.objective_to_pay"></textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" cols="10" ng-model="_6_agentTakenMoneyEER.bank_name"></textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3">
+          <h3>Agent Taken Money Total Money Amount </h3> {{gotCandidate._6_agentTakenMoneyTotalMoneyAmtEER}}</td>
+      </tr>
+
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong >পিডিএফ ফাইল নাম</strong></td>
+              <td><input lang="en" class="formtextbng extraborder" ng-model="gotCandidate.pdfFilePathEER" type="text"  ></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table  style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td ><strong >মন্তব্য</strong></td>
+              <td>
+                <textarea  placeholder="review " class="formtextbng extraborder" lang="en" ng-model="gotCandidate.reviewEER" type="text"  ></textarea>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+
+      </tr>
+
+
+
+
+      <!--<tr>-->
+      <!--<td>&nbsp;</td>-->
+      <!--<td>জমাদানের তারিখ (yyyy-mm-dd):-->
+      <!--<span class="ui-datepicker-wrap">-->
+      <!--<input lang="en" ng-model="gotCandidate.submissionDateALIE" type="text" id="submission_date" size="20" value="0000-00-00" class="hasDatepicker embed">-->
+      <!--</span>-->
+      <!--Publish:-->
+      <!--<select ng-init="true" ng-model="gotCandidate.isPublishedALIE">-->
+      <!--<option value="true">Publish</option>-->
+      <!--<option value="false">Draft</option>-->
+      <!--</select>-->
+      <!--</td>-->
+      <!--</tr>-->
+      <tr>
+        <td colspan="2">
+          <div align="center">
+            <input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>
+        </td>
+      </tr>
+      <!-- Form Validation Ends Here -->
+      <script language="javascript"></script>
+      </tbody>
+    </table>
+</form><!--1ST-PART-FORM-END-->
+
+
+
+
+
+
+<!--2ND-PART-FORM-->  <!-- ফর্ম ণ -->
+<!--<form>-->
+  <!--<div class="panel-heading mjh-formMordhonno">-->
+    <!--<h1>ফর্ম ণ</h1>-->
+    <!--<h2>নির্বাচনী ব্যয়ের রিটার্ণ</h2>-->
+  <!--</div>-->
+  <!--<table class="table table-bordered">-->
+    <!--<tbody>-->
+    <!--<tr>-->
+      <!--<td colspan="3">-->
+        <!--<div align="center" class="style2">-->
+          <!--<h4><span>নাম : </span>{{gotCandidate.personNameBn}} {{gotCandidate.personNameEn}}</h4>-->
+          <!--<p> <strong>পিতার নাম : </strong>{{gotCandidate.fatherHusbandNameBnAF}} </p>-->
+          <!--<p> <strong>ঠিকানা: </strong>{{gotCandidate.addressBnAF}} </p>-->
+        <!--</div>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td align="right" style="width: 50%">প্রার্থীর নাম :</td>-->
+      <!--<td colspan="2" style="width: 50%">-->
+        <!--<textarea ng-model="gotCandidate.candidateNameEER" cols="35" autocomplete="off"></textarea>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td align="right" style="width: 50%">ঠিকানা :</td>-->
+      <!--<td colspan="2" style="width: 50%">-->
+        <!--<textarea ng-model="gotCandidate.candidateAddressEER" cols="35" ></textarea>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td align="right">নির্বাচনী এজেন্টের নাম :</td>-->
+      <!--<td colspan="2" style="width: 50%">-->
+        <!--<textarea ng-model="gotCandidate.agentNameEER" cols="35" ></textarea>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td align="right" style="width: 50%">নির্বাচনী এজেন্টের ঠিকানা :</td>-->
+      <!--<td colspan="2" style="width: 50%">-->
+        <!--<textarea ng-model="gotCandidate.agentAddressEER" cols="35" ></textarea>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+
+  <!--&lt;!&ndash;(ক) পথসভা &ndash;&gt;-->
+  <!--<table class="table table-bordered">-->
+    <!--<tbody>-->
+    <!--<tr>-->
+      <!--<td align="center" colspan="3">-->
+        <!--<h3>২। প্রচরণা -</h3>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td align="center" colspan="3">-->
+        <!--<h4>ক) পথসভা :</h4>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>-->
+        <!--<a class="btn btn-success" ng-click="ctrl.add_1a_murdhanna_campaign_RallyEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+        <!--<a class="btn btn-danger" ng-click="ctrl.delete_1a_murdhanna_campaign_RallyEER ()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--<table width="100%" class="table table-bordered">-->
+          <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>তারিখ ও সময় </strong></td>-->
+              <!--<td><strong>স্থান  </strong></td>-->
+              <!--<td><strong>মাইক / হ্যান্ড মাইক বাবদ খরচ </strong></td>-->
+              <!--<td><strong>অন্যন্য খরচ </strong></td>-->
+              <!--<td><strong>সর্বমোট </strong></td>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="item in gotCandidate._1a_murdhanna_campaign_RallyEER">-->
+              <!--<td><input type="date"  placeholder="yyyy/mm/dd"  lang="en"  rows="2" ng-model="item.date1" /></td>-->
+              <!--<td><textarea placeholder="Write text" ng-model="item.place2"></textarea></td>-->
+              <!--<td>-->
+                <!--<input type="number" placeholder="00.00"  ng-model="item.mikeOrHandMikeCostAmt3"-->
+                       <!--ng-change="ctrl.change_1a_murdhanna_campaign_RallyEER()"/>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<input type="number"  placeholder="00.00"  ng-model="item.otherCostAmt4"-->
+                         <!--ng-change="ctrl.change_1a_murdhanna_campaign_RallyEER()"/>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--{{item.totalCostAmt5}}-->
+              <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="4"><strong>Grand Total</strong></td><td>{{gotCandidate._1a_murdhanna_campaign_RallyTotalCostEER}}</td>-->
+            <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+      <!--<td colspan="2">-->
+        <!--<div align="center">-->
+          <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>&lt;!&ndash;-EIND-(ক) পথসভা&ndash;&gt;-->
+
+  <!--&lt;!&ndash;(খ) পোস্টার&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(খ) পোস্টার : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1b_mu_ca_PosterEER ()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1b_mu_ca_PosterEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+              <!--<tr>-->
+                <!--<td><strong>মদ্রণকারী প্রেসের নাম </strong></td>-->
+                <!--<td><strong>ডিজাইন বাবদ খরচ </strong></td>-->
+                <!--<td><strong>সাইজ</strong></td>-->
+                <!--<td><strong>সংখ্যায়  </strong></td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                      <!--<tr>-->
+                        <!--<td colspan="3"><strong>প্রতিটি পোস্টার বাবদ খরচ</strong></td>-->
+                      <!--</tr>-->
+                      <!--<tr>-->
+                        <!--<td colspan="1"><strong>মুদ্রণ </strong></td>-->
+                        <!--<td colspan="1"><strong>কাগজ </strong></td>-->
+                        <!--<td colspan="1"><strong>মোট </strong></td>-->
+                      <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td><strong>মুদ্রণ ও কাগজ বাবদ সর্বমোট খরচ</strong></td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                      <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td colspan="2"><strong>ঝুলানো  </strong></td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                      <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                      <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td><strong>অন্যান্য  বাবদ খরচ  </strong></td>-->
+                <!--<td><strong>সর্বমোট (খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+              <!--</tr>-->
+              <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+              <!--<tr ng-repeat="item in gotCandidate._1b_mu_ca_PosterEER">-->
+                <!--<td colspan="1"><textarea ng-model="item.pressName1"></textarea></td>-->
+                <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.designCost2"-->
+                                       <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+
+                <!--<td colspan="1"><input type="text" ng-model="item.size3" /></td>-->
+                <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.quantity4"/></td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td colspan="1"><input type="number" ng-model="item.eachPosterCostPrint5a"-->
+                                             <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                      <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachPosterCostPage5b"-->
+                                             <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                      <!--<td colspan="1">{{item.eachPosterCostTotal5}}</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.printAndPageTotalCost6"-->
+                                       <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                      <!--<tr>-->
+                        <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity7a"></textarea></td>-->
+                        <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost7b"-->
+                                               <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                      <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td>-->
+                  <!--<table width="100%" class="table table-bordered">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td colspan="1"><textarea ng-model="item.hangingPlaceQuantity8a"></textarea></td>-->
+                      <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.hangingCost8b"-->
+                                             <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+                <!--</td>-->
+                <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost9"-->
+                           <!--ng-change="ctrl.change_1b_mu_ca_PosterEER()"/></td>-->
+                <!--<td>{{item.allTotalCost10}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td colspan="9"><strong>Grand Total</strong></td><td>{{gotCandidate._1b_mu_ca_PosterTotalCostEER}}</td>-->
+              <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(খ) পোস্টার&ndash;&gt;-->
+  <!--&lt;!&ndash;(গ) লিফলেট&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(গ) লিফলেট : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1c_mu_ca_LeafletEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1c_mu_ca_LeafletEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>মদ্রণকারী প্রেসের নাম </strong></td>-->
+              <!--<td><strong>ডিজাইন বাবদ খরচ </strong></td>-->
+              <!--<td><strong>সাইজ</strong></td>-->
+              <!--<td><strong>সংখ্যায়  </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি লিফলেট বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>মুদ্রণ </strong></td>-->
+                    <!--<td colspan="1"><strong>কাগজ </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>মুদ্রণ ও কাগজ বাবদ সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>বিতরণ বাবদ খরচ </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1c_mu_ca_LeafletEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.pressName1"></textarea></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.designCost2"-->
+                                     <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+
+              <!--<td colspan="1"><input type="text" ng-model="item.size3" /></td>-->
+              <!--<td colspan="1"><input type="number" ng-model="item.quantity4" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" ng-model="item.eachLeafletCostPrint5a"-->
+                                           <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+
+                    <!--<td colspan="1"><input type="number" ng-model="item.eachLeafletCostPage5b"-->
+                                           <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+
+                    <!--<td colspan="1">{{item.eachLeafletCostTotal5}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.printAndPageTotalCost6"-->
+                                     <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity7a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost7b"-->
+                                           <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.distributionPlaceQuantity8a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.distributionCost8b"-->
+                                           <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" ng-model="item.otherCost9"-->
+                         <!--ng-change="ctrl.change_1c_mu_ca_LeafletEER()"/></td>-->
+              <!--<td>{{item.allTotalCost10}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="9"><strong>Grand Total</strong></td><td>{{gotCandidate._1c_mu_ca_LeafletTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(গ ) লিফলেট&ndash;&gt;-->
+  <!--&lt;!&ndash;(ঘ)হ্যান্ডবিল&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঘ) হ্যান্ডবিল  : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1d_mu_ca_HandbillEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1d_mu_ca_HandbillEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>মদ্রণকারী প্রেসের নাম </strong></td>-->
+              <!--<td><strong>ডিজাইন বাবদ খরচ </strong></td>-->
+              <!--<td><strong>সাইজ</strong></td>-->
+              <!--<td><strong>সংখ্যায়  </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি হ্যান্ডবিল বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>মুদ্রণ </strong></td>-->
+                    <!--<td colspan="1"><strong>কাগজ </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>মুদ্রণ ও কাগজ বাবদ সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>বিতরণ বাবদ খরচ </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1d_mu_ca_HandbillEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.pressName1"></textarea></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.designCost2"-->
+                                     <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+
+              <!--<td colspan="1"><input type="text" ng-model="item.size3" /></td>-->
+              <!--<td colspan="1"><input type="number" ng-model="item.quantity4" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachHandbillCostPrint5a"-->
+                                           <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachHandbillCostPage5b"-->
+                                           <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+                    <!--<td colspan="1">{{item.eachHandbillCostTotal5}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.printAndPageTotalCost6"-->
+                                     <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity7a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost7b"-->
+                                           <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.distributionPlaceQuantity8a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.distributionCost8b"-->
+                                           <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost9"-->
+                         <!--ng-change="ctrl.change_1d_mu_ca_HandbillEER()"/></td>-->
+              <!--<td>{{item.allTotalCost10}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="9"><strong>Grand Total</strong></td><td>{{gotCandidate._1d_mu_ca_HandbillTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঘ)হ্যান্ডবিল&ndash;&gt;-->
+  <!--&lt;!&ndash;(ঙ) স্টিকার&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঙ) স্টিকার : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1e_mu_ca_StickerEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1e_mu_ca_StickerEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>মদ্রণকারী প্রেসের নাম </strong></td>-->
+              <!--<td><strong>ডিজাইন বাবদ খরচ </strong></td>-->
+              <!--<td><strong>সাইজ</strong></td>-->
+              <!--<td><strong>সংখ্যায়  </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি স্টিকার বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>মুদ্রণ </strong></td>-->
+                    <!--<td colspan="1"><strong>কাগজ </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>মুদ্রণ ও কাগজ বাবদ সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>বিতরণ বাবদ খরচ </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1e_mu_ca_StickerEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.pressName1"></textarea></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.designCost2"-->
+                                     <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+              <!--<td colspan="1"><input type="text" ng-model="item.size3" /></td>-->
+              <!--<td colspan="1"><input type="number" ng-model="item.quantity4" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachStickerbillCostPrint5a"-->
+                                           <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachStickerbillCostPage5b"-->
+                                           <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+                    <!--<td colspan="1">{{item.eachStickerbillCostTotal5}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.printAndPageTotalCost6"-->
+                                     <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity7a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost7b"-->
+                                           <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.distributionPlaceQuantity8a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.distributionCost8b"-->
+                                           <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost9"-->
+                         <!--ng-change="ctrl.change_1e_mu_ca_StickerEER()"/></td>-->
+              <!--<td>{{item.allTotalCost10}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="9"><strong>Grand Total</strong></td><td>{{gotCandidate._1e_mu_ca_StickerTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঙ) স্টিকার&ndash;&gt;-->
+  <!--&lt;!&ndash;(চ )(১) ব্যানার&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(চ )(১) ব্যানার: </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1fa_mu_ca_BannerEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1fa_mu_ca_BannerEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>ব্যানারের সাইজ  </strong></td>-->
+              <!--<td><strong>প্রতিটি ব্যানার তৈরী বাবদ কাপড়ের পরিমান </strong></td>-->
+              <!--<td><strong>ব্যানারের সংখ্যায়</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি ব্যানার বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>কাপড় বাবদ  </strong></td>-->
+                    <!--<td colspan="1"><strong>লেখা  বাবদ</strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>ব্যানার তৈরী বাবদ  সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>টাঙ্গানো বাবদ </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1fa_mu_ca_BannerEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.size1"></textarea></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachBannerClothSize2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.bannerQuantity3" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachBannerCostCloth4a"-->
+                                           <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachBannerCostWriting4b"-->
+                                           <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+                    <!--<td colspan="1">{{item.eachBannerCostTotal4}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.bannerTotalCost5"-->
+                                     <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity6a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost6b"-->
+                                           <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.hangingPlaceQuantity7a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.hangingCost7b"-->
+                                           <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost8"-->
+                         <!--ng-change="ctrl.change_1fa_mu_ca_BannerEER()"/></td>-->
+              <!--<td>{{item.allTotalCost9}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="8"><strong>Grand Total</strong></td><td>{{gotCandidate._1fa_mu_ca_BannerTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(চ )(১) ব্যানার&ndash;&gt;-->
+  <!--&lt;!&ndash;(চ )(২)ডিজিটাল  ব্যানার&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(চ )(২)ডিজিটাল  ব্যানার: </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1fb_mu_ca_DigitalBannerEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1fb_mu_ca_DigitalBannerEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>ব্যানারের সাইজ  </strong></td>-->
+              <!--<td><strong>সংখ্যা</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি ব্যানার বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>সিনথেটিক  </strong></td>-->
+                    <!--<td colspan="1"><strong>কাপড়</strong></td>-->
+                    <!--<td colspan="1"><strong>প্রিন্ট </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>ব্যানার তৈরী বাবদ  সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>টাঙ্গানো বাবদ </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1fb_mu_ca_DigitalBannerEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.size1"></textarea></td>-->
+              <!--<td colspan="1"><input type="number"  placeholder="00.00" ng-model="item.quantity2" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number"  placeholder="00.00" ng-model="item.eachBannerCostSynthetic3a"-->
+                                           <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+                    <!--<td colspan="1"><input type="number"  placeholder="00.00" ng-model="item.eachBannerCostcloth3b"-->
+                                           <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+                    <!--<td colspan="1"><input type="number"  placeholder="00.00" ng-model="item.eachBannerCostPrint3c"-->
+                                           <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+                    <!--<td colspan="1">{{item.eachBannerCostTotal3}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.bannerTotalCost4"-->
+                                     <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity5a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost5b"-->
+                                           <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.hangingPlaceQuantity6a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.hangingCost6b"-->
+                                           <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost7"-->
+                         <!--ng-change="ctrl.change_1fb_mu_ca_DigitalBannerEER()"/></td>-->
+              <!--<td>{{item.allTotalCost8}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="7"><strong>Grand Total</strong></td><td>{{gotCandidate._1fb_mu_ca_DigitalBannerTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(চ )(২)ডিজিটাল  ব্যানার&ndash;&gt;-->
+  <!--&lt;!&ndash;(ছ) ঘরোয়া বৈঠক/সভা &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ছ) ঘরোয়া বৈঠক/সভা : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1g_mu_ca_IndoorMeetingEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1g_mu_ca_IndoorMeetingEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>সভার তারিখ ও সময় </strong></td>-->
+              <!--<td><strong>সভা আয়োজনের স্থান(ভেন্যু উল্লেখ পূর্বক )</strong></td>-->
+              <!--<td><strong>ভেন্যু এর ভাড়া </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>সভা আয়োজনের জন্য জনবল/শ্রমিকের পারিশ্রমিক (হার উল্লেখ পূর্বক)</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>সংখা  </strong></td>-->
+                    <!--<td colspan="1"><strong>জনপ্রতি পারিশ্রমিক </strong></td>-->
+                    <!--<td colspan="1"><strong>সর্বমোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>আসবাবপত্রের ভাড়া  </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>সংখা</strong></td>-->
+                    <!--<td colspan="1"><strong>প্রতিটি ভাড়া </strong></td>-->
+                    <!--<td colspan="1"><strong>সর্বমোট</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1g_mu_ca_IndoorMeetingEER">-->
+              <!--<td colspan="1"><input type="date" ng-model="item.date1"></td>-->
+              <!--<td colspan="1"><input type="number" ng-model="item.meetingPlace2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.venueCost3"-->
+                                     <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.workerQuantity4a"-->
+                                           <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.workerUnitCost4b"-->
+                                           <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+                    <!--<td colspan="1">{{item.workerTotalCost5}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.furnitureQuantity6a"-->
+                                           <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.furnitureUnitCost6b"-->
+                                           <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+                    <!--<td colspan="1">{{item.furnitureTotalCost6}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost7"-->
+                         <!--ng-change="ctrl.change_1g_mu_ca_IndoorMeetingEER()"/></td>-->
+              <!--<td>{{item.allTotalCost8}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="6"><strong>Grand Total</strong></td><td>{{gotCandidate._1g_mu_ca_IndoorMeetingTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ছ) ঘরোয়া বৈঠক/সভা &ndash;&gt;-->
+  <!--&lt;!&ndash;(জ) মাইকিং&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(জ) মাইকিং : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1h_mu_ca_MikingEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1h_mu_ca_MikingEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>স্থান</strong></td>-->
+              <!--<td><strong>মাইকিং এর কাজে ব্যবহৃত যানবহনের ধরন </strong></td>-->
+              <!--<td><strong>ব্যবহৃত যানবহনের ভাড়া </strong></td>-->
+              <!--<td><strong>মাইকিং এর কাজে নিয়োজিত বাক্তির পারিশ্রমিক </strong></td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1h_mu_ca_MikingEER">-->
+              <!--<td colspan="1"><textarea ng-model="item.place1"></textarea></td>-->
+              <!--<td colspan="1"><textarea ng-model="item.mikingVehicle2"></textarea></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost3"-->
+                                     <!--ng-change="ctrl.change_1h_mu_ca_MikingEER()"/></td>-->
+
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.workerCost4"-->
+                                     <!--ng-change="ctrl.change_1h_mu_ca_MikingEER()"/></td>-->
+
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost5"-->
+                         <!--ng-change="ctrl.change_1h_mu_ca_MikingEER()"/></td>-->
+
+              <!--<td>{{item.allTotalCost6}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="5"><strong>Grand Total</strong></td><td>{{gotCandidate._1h_mu_ca_MikingTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(জ ) মাইকিং&ndash;&gt;-->
+  <!--&lt;!&ndash;(ঝ) পোট্রেট &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঝ) পোট্রেট  : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1i_mu_ca_PotraitEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1i_mu_ca_PotraitEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>পোট্রেট এর সাইজ ও রং </strong></td>-->
+              <!--<td><strong>সংখা ও মুদ্রণকারী প্রতিষ্ঠানের নাম </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>প্রতিটি পোট্রেট বাবদ খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>সিন্থেটিক/কাগজ/হার্ডবোর্ড/কাপড় </strong></td>-->
+                    <!--<td colspan="1"><strong>মুদ্রণ </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>পোট্রেট তৈরী বাবদ সর্বমোট খরচ</strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>টাঙ্গানো বাবদ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1i_mu_ca_PotraitEER">-->
+              <!--<td><input type="text" ng-model="item.sizeAndColor1" /></td>-->
+              <!--<td><input type="text" ng-model="item.printQuantityAndPrintingPressName2" /></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1">-->
+                      <!--<table width="100%" class="table table-bordered">-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                          <!--<td><input type="number" placeholder="00.00" ng-model="item.eachPotraitCostPaper3a"-->
+                                     <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+                          <!--<td><input type="number" placeholder="00.00" ng-model="item.eachPotraitCostPaper3b"-->
+                                     <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+                          <!--<td>{{item.eachPotraitCostPaperPrint3c}}</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                      <!--</table>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.eachPotraitCostPaperTotalCost3"-->
+                         <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehicleQuantity5a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost5b"-->
+                                           <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.hangingQuantity6a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.hangingCost6b"-->
+                                           <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost7"-->
+                         <!--ng-change="ctrl.change_1i_mu_ca_PotraitEER()"/></td>-->
+
+              <!--<td>{{item.allTotalCost8}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="7"><strong>Grand Total</strong></td><td>{{gotCandidate._1i_mu_ca_PotraitTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঝ) পোট্রেট&ndash;&gt;-->
+  <!--&lt;!&ndash;(ঞ)প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঞ)প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1j_mu_ca_CompetitorSymbolEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1j_mu_ca_CompetitorSymbolEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক</strong></td>-->
+              <!--<td><strong>প্রতীকের সাইজ ও ধরন (কি দ্বারা তৈরী) </strong></td>-->
+              <!--<td><strong>সংখা</strong></td>-->
+              <!--<td><strong>ছবি বা প্রতিক তৈরী বাবদ সর্বমোট খরচ </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>পরিবহন </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা) </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="2"><strong>টাঙ্গানো বাবদ</strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>স্থান (সংখা)</strong></td>-->
+                    <!--<td colspan="1"><strong>খরচ</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1j_mu_ca_CompetitorSymbolEER">-->
+              <!--<td><input type="text" ng-model="item.symbol1" /></td>-->
+              <!--<td><input type="text" ng-model="item.sizeAndNature2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.quantity3" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.symbolCost2x3_4"-->
+                                     <!--ng-change="ctrl.change_1j_mu_ca_CompetitorSymbolEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.vehiclePlaceQuantity5a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.vehicleCost5b"-->
+                                           <!--ng-change="ctrl.change_1j_mu_ca_CompetitorSymbolEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><textarea ng-model="item.hangingPlaceQuantity6a"></textarea></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.hanggingCost6b"-->
+                                           <!--ng-change="ctrl.change_1j_mu_ca_CompetitorSymbolEER()"/></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost7"-->
+                         <!--ng-change="ctrl.change_1j_mu_ca_CompetitorSymbolEER()"/></td>-->
+              <!--<td>{{item.allTotalCost8}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="7"><strong>Grand Total</strong></td><td>{{gotCandidate._1j_mu_ca_CompetitorSymbolTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঞ)প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক&ndash;&gt;-->
+  <!--&lt;!&ndash;(ট) ক্যাম্প/অফিস খরচ &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ট) ক্যাম্প/অফিস খরচ  : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1k_mu_ca_CampOfficeEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1k_mu_ca_CampOfficeEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>ক্যাম্পের স্থান</strong></td>-->
+              <!--<td><strong>তারিখ উল্লেখসহ সময়সীমা </strong></td>-->
+              <!--<td><strong>আয়তন (বর্গফুট)</strong></td>-->
+              <!--<td><strong>ক্যাম্প তৈরী জিনিসপত্র/ক্যাম্পের ভাড়া </strong></td>-->
+              <!--<td><strong>প্রতিটির খরচ </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="4"><strong>আসবাবপত্রের ভাড়া  </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>ব্যবহৃত আসবাবপত্রের ধরন </strong></td>-->
+                    <!--<td colspan="1"><strong>সংখা</strong></td>-->
+                    <!--<td colspan="1"><strong>প্রতিটির ভাড়া </strong></td>-->
+                    <!--<td colspan="1"><strong>মোট</strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট(খরচের ভাউচারসহ দিতে হইবে )</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1k_mu_ca_CampOfficeEER">-->
+              <!--<td><input type="text" ng-model="item.campPlace1" /></td>-->
+              <!--<td><input type="datetime" ng-model="item.dateRange2" /></td>-->
+              <!--<td colspan="1"><input type="number" ng-model="item.areaSqft3" /></td>-->
+
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.campCost4"-->
+                                     <!--ng-change="ctrl.change_1k_mu_ca_CampOfficeEER()"/></td>-->
+
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachCost5"-->
+                                     <!--ng-change="ctrl.change_1k_mu_ca_CampOfficeEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><input type="text" ng-model="item.furnitureType6" /></td>-->
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.furnitureQuantity7a"-->
+                                           <!--ng-change="ctrl.change_1k_mu_ca_CampOfficeEER()"/></td>-->
+
+                    <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.furniturePricePerUnit7b"-->
+                                           <!--ng-change="ctrl.change_1k_mu_ca_CampOfficeEER()"/></td>-->
+
+                    <!--<td colspan="1">{{item.funnitureTotalCost8}}</td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost9"-->
+                         <!--ng-change="ctrl.change_1k_mu_ca_CampOfficeEER()"/></td>-->
+              <!--<td>{{item.allTotalCost10}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="7"><strong>Grand Total</strong></td><td>{{gotCandidate._1k_mu_ca_CampOfficeTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ট) ক্যাম্প/অফিস খরচ &ndash;&gt;-->
+  <!--&lt;!&ndash;(ঠ) প্রার্থীর অফিস আপায়ন&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঠ) প্রার্থীর অফিস আপায়ন :</h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1l_mu_ca_OfficeHospitalityEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1l_mu_ca_OfficeHospitalityEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>অফিস এর স্থান</strong></td>-->
+              <!--<td><strong>প্রতিটি অফিস এর কর্মচারীর সংখ্যা </strong></td>-->
+              <!--<td><strong>জনপ্রতি দৈনিক অপায়ান খরচ  </strong></td>-->
+              <!--<td><strong>দিন </strong></td>-->
+              <!--<td><strong>মোট খরচ </strong></td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট খরচ</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1l_mu_ca_OfficeHospitalityEER">-->
+              <!--<td><input type="text" ng-model="item.officePlace1" /></td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.eachOfficeWorderQuantity2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachPersonHospitalityCost3"-->
+                                     <!--ng-change="ctrl.change_1l_mu_ca_OfficeHospitalityEER()"/></td>-->
+
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.days4" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.totalCost5"-->
+                                     <!--ng-change="ctrl.change_1l_mu_ca_OfficeHospitalityEER()"/></td>-->
+
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost6"-->
+                         <!--ng-change="ctrl.change_1l_mu_ca_OfficeHospitalityEER()"/></td>-->
+              <!--<td>{{item.allTotalCost7}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="6"><strong>Grand Total</strong></td><td>{{gotCandidate._1l_mu_ca_OfficeHospitalityTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঠ) প্রার্থীর অফিস আপায়ন&ndash;&gt;-->
+    <!--&lt;!&ndash;(ড) কর্মী বাবদ খরচ &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ড) কর্মী বাবদ খরচ  :</h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1m_mu_ca_WorkerEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1m_mu_ca_WorkerEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>কর্মস্থানের নাম </strong></td>-->
+              <!--<td><strong>কর্মীর নাম</strong></td>-->
+              <!--<td><strong>জনপ্রতি দৈনিক অপায়ান খরচ  </strong></td>-->
+              <!--<td><strong>দিন </strong></td>-->
+              <!--<td><strong>মোট খরচ </strong></td>-->
+              <!--<td><strong>অন্যান্য  বাবদ খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট খরচ</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1m_mu_ca_WorkerEER">-->
+              <!--<td><input type="text" ng-model="item.workPlace1" /></td>-->
+              <!--<td><input type="number" ng-model="item.workerQuantity2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.eachPersonHospitalityCost3"-->
+                                     <!--ng-change="ctrl.change_1m_mu_ca_WorkerEER()"/></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.days4" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00" ng-model="item.totalCost5"-->
+                                     <!--ng-change="ctrl.change_1m_mu_ca_WorkerEER()"/></td>-->
+              <!--<td><input type="number" placeholder="00.00" ng-model="item.otherCost6"-->
+                         <!--ng-change="ctrl.change_1m_mu_ca_WorkerEER()"/></td>-->
+              <!--<td>{{item.allTotalCost7}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="6"><strong>Grand Total</strong></td><td>{{gotCandidate._1m_mu_ca_WorkerTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div> &lt;!&ndash;END&#45;&#45;(ড) কর্মী বাবদ খরচ&ndash;&gt;-->
+  <!--&lt;!&ndash;(ঢ) প্রার্থীর যাতায়াত খরচ  &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ঢ) প্রার্থীর যাতায়াত খরচ  :</h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1n_mu_ca_CandidateconveyanceEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1n_mu_ca_CandidateconveyanceEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>তারিখ </strong></td>-->
+              <!--<td><strong>প্রস্থান </strong></td>-->
+              <!--<td><strong>আগমন </strong></td>-->
+              <!--<td><strong>দুরত্ব (কি :মি :) </strong></td>-->
+              <!--<td><strong>ভ্রমণে ব্যবহৃত যানবাহনের ধরন </strong></td>-->
+              <!--<td><strong>অন্যান্য খরচ</strong></td>-->
+              <!--<td><strong>সর্বমোট খরচ</strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1n_mu_ca_CandidateconveyanceEER">-->
+              <!--<td><input type="date" ng-model="item.date1" /></td>-->
+              <!--<td><input type="text" ng-model="item.departureArea2" /></td>-->
+              <!--<td colspan="1"><input type="text" ng-model="item.destinationArea3" /></td>-->
+              <!--<td colspan="1"><input type="text" ng-model="item.distance4" /></td>-->
+              <!--<td colspan="1"><input type="text" ng-model="item.vehicleType5" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.otherCost6"-->
+                                     <!--ng-change="ctrl.change_1n_mu_ca_CandidateconveyanceEER()"/></td>-->
+              <!--<td>{{item.allTotalCost7}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="6"><strong>Grand Total</strong></td><td>{{gotCandidate._1n_mu_ca_conveyanceTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(ঢ) প্রার্থীর যাতায়াত খরচ&ndash;&gt;-->
+  <!--&lt;!&ndash;অংশ  খ&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h3>অংশ খ : নির্বাচনী ব্যয়ের হিসাব</h3> </td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_2ElectionExpenseDetailsEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_2ElectionExpenseDetailsEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<th><strong>যে তারিখে ব্যয করা হয় বা ব্যয়ের অনুমোদন প্রাপ্ত হয়</strong> </th>-->
+              <!--<th><strong>ব্যয়ের প্রকৃতি</strong> </th>-->
+              <!--<th><strong>পরিশোধিত অর্থের পরিমান (ক)(<span>ইংরেজীতে</span>)</strong> </th>-->
+              <!--<th><strong>অপরিশোধিত অর্থের পরিমান (খ)(<span>ইংরেজীতে</span>)</strong> </th>-->
+              <!--<th><strong>(ক) ও (খ) এর যোগফল</strong> </th>-->
+              <!--<th><strong>অর্থ পরিশোধের তারিখ</strong> </th>-->
+              <!--<th><strong>অর্থ পরিশোধ কারীর নাম ও ঠিকানা</strong> </th>-->
+              <!--<th><strong>পরিশোধিত অর্থের ক্ষেত্রে ভাউচার সমূহের ক্রমিক নম্বর</strong> </th>-->
+              <!--<th><strong>অপরিশোধিত অর্থের ক্ষেত্রে বিলসমূহের ক্রমিক নম্বর (যদি থাকে)</strong> </th>-->
+              <!--<th><strong>অপরিশোধিত অর্থ যে ব্যক্তির অনুকূলে পরিশোধ যোগ্য তাহার নাম ও ঠিকানা</strong> </th>-->
+              <!--<th><strong>ব্যাংক একাউন্ট নম্বর,ব্যাংকের নাম, চেক নম্বর এবং তারিখ</strong> </th>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="_2ElectionExpenseDetailsEER in gotCandidate._2ElectionExpenseDetailsEER">-->
+              <!--<td><input type="date" placeholder="yyyy/mm/dd" ng-model="_2ElectionExpenseDetailsEER.dateOfApproval" /></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.typeOfExpenses"/></td>-->
+
+              <!--<td><input type="number" placeholder="00.00" ng-model="_2ElectionExpenseDetailsEER.clearedMoneyAmt"-->
+                       <!--ng-change="ctrl.change_2ElectionExpenseDetailsEER()"/></td>-->
+
+              <!--<td><input type="number" placeholder="00.00" ng-model="_2ElectionExpenseDetailsEER.unclearedMoneyAmt"-->
+                       <!--ng-change="ctrl.change_2ElectionExpenseDetailsEER()"/></td>-->
+
+              <!--<td>{{_2ElectionExpenseDetailsEER.totalClearUnclearAmt}}</td>-->
+
+              <!--<td><input type="date" ng-model="_2ElectionExpenseDetailsEER.dateOfMoneyPay"/></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.payerNameAddress"/></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.clearedAmtVoucherNo"/></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.unclearedAmtVoucherNo"/></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.nameAddressToPay"/></td>-->
+              <!--<td><input ng-model="_2ElectionExpenseDetailsEER.bankNameOthers"/></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="10"><strong>Grand Total</strong></td>-->
+              <!--<td>{{gotCandidate._2ElectionExpenseDetailsGrandTotalClearUnclearAmtEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;অংশ  খ&ndash;&gt;-->
+  <!--&lt;!&ndash;অংশ গ  &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+        <!--<tr>-->
+          <!--<td align="center">-->
+            <!--<h3>অংশ গ : প্রতিদ্বন্দ্বী প্রার্থীর সর্বমোট ব্যক্তিগত ব্যয়িত অর্থের পরিমাণ :</h3>-->
+          <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+          <!--<td align="center" style="text-align: center;">-->
+            <!--<input  type="number"  ng-model="gotCandidate._3OpponentTotalExpensesEER" > </td>-->
+        <!--</tr>-->
+        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td colspan="2"><strong>Grand Total</strong></td>&ndash;&gt;-->
+          <!--&lt;!&ndash;<td>{{gotCandidate._3OpponentTotalExpensesEER}}</td>&ndash;&gt;-->
+        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+        <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+          <!--<td>-->
+            <!--<div align="center">-->
+              <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+          <!--</td>-->
+        <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;অংশ-গ&ndash;&gt;-->
+  <!--&lt;!&ndash;অংশ ঘ : বিতর্কিত দাবীর হিসব&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>অংশ ঘ : বিতর্কিত দাবীর হিসাব </h4> </td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_4ControversialClaimDetails()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_4ControversialClaimDetails();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>দাবী উত্থাপনের তারিখ</strong> </td>-->
+              <!--<td><strong>দাবী উত্থাপনকারীর নাম ও ঠিকানা</strong> </td>-->
+              <!--<td><strong>দাবীর প্রকৃতি</strong> </td>-->
+              <!--<td><strong>দাবীর পরিমাণ(<span>ইংরেজীতে</span>)</strong> </td>-->
+              <!--<td><strong>দাবীকৃত অর্থ বিতর্কিত হওয়ার কারণ</strong> </td>-->
+            <!--</tr>-->
+            <!--<tr ng-repeat="_4ControversialClaimDetails in gotCandidate._4ControversialClaimDetails">-->
+              <!--<td><input type="date"  placeholder="yyyy/mm/dd" ng-model="_4ControversialClaimDetails.date" /></td>-->
+              <!--<td><textarea ng-model="_4ControversialClaimDetails.nameAddress"></textarea></td>-->
+              <!--<td><textarea ng-model="_4ControversialClaimDetails.type"></textarea></td>-->
+
+              <!--<td><input type="number"  placeholder="00.00"  ng-model="_4ControversialClaimDetails.claimedAmt"-->
+                         <!--ng-change="ctrl.change_4ControversialClaimDetails()"/></td>-->
+
+              <!--<td><textarea ng-model="_4ControversialClaimDetails.causesOfControversy"></textarea></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="4"><strong>Grand Total</strong></td>-->
+              <!--<td>{{gotCandidate._4ControversialClaimDetailsTotalClaimedAmtEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;অংশ-ঘ&ndash;&gt;-->
+  <!--&lt;!&ndash;অংশ ঙ : দাবিকৃত অপরিশোধিত অর্থের পরিমান &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+  <!--<table class="table table-bordered">-->
+    <!--<tbody>-->
+    <!--<tr>-->
+      <!--<td align="center" colspan="3">-->
+        <!--<h4>অংশ ঙ : দাবীকৃত অপরিশোধিত অর্থের হিসাব</h4></td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>-->
+        <!--<a class="btn btn-success" ng-click="ctrl.add_5_claimedUnpaidDetailsEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+        <!--<a class="btn btn-danger" ng-click="ctrl.delete_5_claimedUnpaidDetailsEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--<table width="100%" class="table table-bordered">-->
+          <!--<tbody >-->
+          <!--<tr>-->
+            <!--<td><strong>দাবী উত্থাপনের তারিখ</strong> </td>-->
+            <!--<td><strong>দাবী উত্থাপনকারীর নাম ও ঠিকানা</strong> </td>-->
+            <!--<td><strong>অপরিশোধিত দাবীর প্রকৃতি</strong> </td>-->
+            <!--<td><strong>দাবীকৃত অপরিশোধিত অর্থের পরিমাণ (<span>ইংরেজীতে</span>)</strong> </td>-->
+            <!--<td><strong>দাবীকৃত অর্থ অপরিশোধিত থাকার কারণ</strong> </td>-->
+          <!--</tr>-->
+          <!--<tr ng-repeat="_5_claimedUnpaidDetailsEER in gotCandidate._5_claimedUnpaidDetailsEER">-->
+            <!--<td><input type="date" placeholder="yyyy/mm/dd" ng-model="_5_claimedUnpaidDetailsEER.claimed_date" /></td>-->
+            <!--<td><textarea ng-model="_5_claimedUnpaidDetailsEER.name_address"></textarea></td>-->
+            <!--<td><textarea ng-model="_5_claimedUnpaidDetailsEER.claimed_type"></textarea></td>-->
+
+            <!--<td><input type="number"  placeholder="00.00" ng-model="_5_claimedUnpaidDetailsEER.claimed_amt"-->
+                       <!--ng-change="ctrl.change_5_claimedUnpaidDetailsEER()"/></td>-->
+
+            <!--<td><textarea ng-model="_5_claimedUnpaidDetailsEER.causes_of_uncleared"></textarea></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td colspan="4"><strong>Grand Total</strong></td><td>{{gotCandidate._5_claimedUnpaidDetailsTotalClaimedAmtEER}}</td>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+      <!--<td colspan="2">-->
+        <!--<div align="center">-->
+          <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;অংশ-ঙ&ndash;&gt;-->
+  <!--&lt;!&ndash;অংশ চ : নির্বাচনী এজেন্ট কর্তৃক গৃহীত অর্থ, ইত্যাদি হিসব &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+  <!--<table class="table table-bordered">-->
+    <!--<tbody>-->
+    <!--<tr>-->
+      <!--<td align="center" colspan="3">-->
+        <!--<h3>অংশ চ : নির্বাচনী এজেন্ট কর্তৃক গৃহীত অর্থ, ইত্যাদির হিসাব</h3> </td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+      <!--<td>-->
+        <!--<a class="btn btn-success" ng-click="ctrl.add_6_agentTakenMoneyEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+        <!--<a class="btn btn-danger" ng-click="ctrl.delete_6_agentTakenMoneyEER();" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+      <!--</td>-->
+      <!--<td>-->
+        <!--<table width="100%" class="table table-bordered">-->
+          <!--<tbody >-->
+          <!--<tr>-->
+            <!--<td><strong>নির্বাচনী এজেন্ট কর্তৃক অর্থ সিকিউরিটি বা উহার সমতুল্য অর্থ গ্রহণের তারিখ</strong> </td>-->
+            <!--<td><strong>অর্থ, ইত্যাদি প্রদানকারী ব্যক্তির নাম ও ঠিকানা</strong> </td>-->
+            <!--<td><strong>অর্থের পরিমাণ অথবা সিকিউরিটির মূল্য, ইত্যাদি(<span>ইংরেজীতে</span>)</strong> </td>-->
+            <!--<td><strong>অর্থ, ইত্যাদি গ্রহণ/প্রদান করার উদ্দেশ্য</strong> </td>-->
+            <!--<td><strong>ব্যাংক একাউন্ট নম্বর, ব্যাংকের নাম, চেক নম্বর এবং তারিখ</strong> </td>-->
+          <!--</tr>-->
+          <!--<tr ng-repeat="_6_agentTakenMoneyEER in gotCandidate._6_agentTakenMoneyEER">-->
+            <!--<td><input placeholder="yyyy/mm/dd" ng-model="_6_agentTakenMoneyEER.agent_date" /></td>-->
+            <!--<td><textarea ng-model="_6_agentTakenMoneyEER.payer_name_address"></textarea></td>-->
+
+            <!--<td><input type="number"  placeholder="00.00"  ng-model="_6_agentTakenMoneyEER.money_amt"-->
+                       <!--ng-change="ctrl.change_6_agentTakenMoneyEER()"/></td>-->
+
+            <!--<td><textarea ng-model="_6_agentTakenMoneyEER.objective_to_pay"></textarea></td>-->
+            <!--<td><textarea ng-model="_6_agentTakenMoneyEER.bank_name"></textarea></td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+            <!--<td colspan="4"><strong>Grand Total</strong></td><td> {{gotCandidate._6_agentTakenMoneyTotalMoneyAmtEER}}</td>-->
+          <!--</tr>-->
+          <!--</tbody>-->
+        <!--</table>-->
+      <!--</td>-->
+    <!--</tr>-->
+
+
+    <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+      <!--<td colspan="2">-->
+        <!--<div align="center">-->
+          <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+      <!--</td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+  <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;অংশ-চ&ndash;&gt;-->
+  <!--&lt;!&ndash;(ছ) টেলিভিশন অথবা অন্য ইলেক্ট্রনিক মিডিয়ায় প্রচরণা বাবদ খরচ &ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(ছ) টেলিভিশন অথবা অন্য ইলেক্ট্রনিক মিডিয়ায় প্রচরণা বাবদ খরচ </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1o_mu_ca_TVFridgeEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1o_mu_ca_TVFridgeEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>ক্রমিক নং </strong></td>-->
+              <!--<td><strong>প্রচারিত চ্যানেল এর নাম </strong></td>-->
+              <!--<td><strong>প্রতিটি চ্যানেল এ প্রচার বাবদ খরচ  </strong></td>-->
+              <!--<td><strong>টেলিভিশনে প্রচারিত বাবদ খরচ </strong></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td colspan="3"><strong>অন্য মিডিয়ার ক্ষেত্রে </strong></td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td colspan="1"><strong>মিডিয়ার নাম </strong></td>-->
+                    <!--<td colspan="1"><strong>খরচের পরিমান</strong></td>-->
+                    <!--<td colspan="1"><strong>মোট খরচের পরিমান </strong></td>-->
+                  <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td><strong>সর্বমোট খরচের পরিমান </strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1o_mu_ca_TVFridgeEER">-->
+              <!--<td><input type="date" ng-model="item.slno1" /></td>-->
+              <!--<td><input type="text" ng-model="item.channelName2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.eachChannelCost3"-->
+                                     <!--ng-change="ctrl.change_1o_mu_ca_TVFridgeEER()"/></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.telecastCost4"-->
+                                     <!--ng-change="ctrl.change_1o_mu_ca_TVFridgeEER()"/></td>-->
+              <!--<td>-->
+                <!--<table width="100%" class="table table-bordered">-->
+                  <!--<tbody>-->
+                    <!--<tr>-->
+                      <!--<td colspan="1"><input type="text" ng-model="item.otherMedianame5" /></td>-->
+                      <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.otherMediaUnitCost6"-->
+                                             <!--ng-change="ctrl.change_1o_mu_ca_TVFridgeEER()"/></td>-->
+                      <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.otherMediaTotalCost7"-->
+                                             <!--ng-change="ctrl.change_1o_mu_ca_TVFridgeEER()"/></td>-->
+                    <!--</tr>-->
+                  <!--</tbody>-->
+                <!--</table>-->
+              <!--</td>-->
+              <!--<td>{{item.allTotalCost8}}</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="5"><strong>Grand Total</strong></td><td>{{gotCandidate._1o_mu_ca_TVFridgeTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END-&#45;&#45;(ছ)&ndash;&gt;-->
+  <!--&lt;!&ndash;(জ) বিবিধ ব্যয়&ndash;&gt;-->
+  <!--<div class="table-responsive mjh-CommonBackendTable">-->
+    <!--<table class="table table-bordered">-->
+      <!--<tbody>-->
+      <!--<tr>-->
+        <!--<td align="center" colspan="3">-->
+          <!--<h4>(জ) বিবিধ ব্যয় : কি কি খাতে কিভাবে খরচ হইয়াসে তাহা বিস্তারিত উল্লেখ করিতে হবে : </h4>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>-->
+          <!--<a class="btn btn-success" ng-click="ctrl.add_1p_mu_ca_MiscellaneousEER()" title="ADD MORE FIELD "> <i class="fa fa-plus"></i> </a>&nbsp;-->
+          <!--<a class="btn btn-danger" ng-click="ctrl.delete_1p_mu_ca_MiscellaneousEER()" title="DELETE LAST FIELD "> <i class="fa fa-minus"></i> </a>-->
+        <!--</td>-->
+        <!--<td>-->
+          <!--<table width="100%" class="table table-bordered">-->
+            <!--<tbody>-->
+            <!--<tr>-->
+              <!--<td><strong>ক্রমিক নং </strong></td>-->
+              <!--<td><strong>খাতের নাম  </strong></td>-->
+              <!--<td><strong>খরচের পরিমান </strong></td>-->
+            <!--</tr>-->
+            <!--&lt;!&ndash;Ng-Repeat&ndash;&gt;-->
+            <!--<tr ng-repeat="item in gotCandidate._1p_mu_ca_MiscellaneousEER">-->
+              <!--<td><input type="date" ng-model="item.slNo1" /></td>-->
+              <!--<td><input type="text" ng-model="item.costAreaName2" /></td>-->
+              <!--<td colspan="1"><input type="number" placeholder="00.00"  ng-model="item.totalCost3"-->
+                                     <!--ng-change="ctrl.change_1p_mu_ca_MiscellaneousEER()"/></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+              <!--<td colspan="2"><strong>Grand Total</strong></td><td>{{gotCandidate._1p_mu_ca_MiscellaneousTotalCostEER}}</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+          <!--</table>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--<tr>&lt;!&ndash;SUBMIT-BUTTON&ndash;&gt;-->
+        <!--<td colspan="2">-->
+          <!--<div align="center">-->
+            <!--<input type="submit" ng-click="ctrl.submit()" name="submit_b" value="তথ্য সংরক্ষণ করুন "> </div>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <!--</tbody>-->
+    <!--</table>-->
+  <!--</div>&lt;!&ndash;END&#45;&#45;(জ) বিবিধ ব্যয়&ndash;&gt;-->
+<!--</form>-->

@@ -1,0 +1,277 @@
+<!--<a id="scroll_top" href="#top" class="scrollup hvr-float-shadow"><i class="fa fa-chevron-up"></i></a>-->
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default ze-nav" id="scroll_top12">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="votebd-logo" href="#"><img src="../../../images/votebd-logo2.png" alt="votebd logo"/></a>
+    </div>
+    <div id="navbar2" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><div class="phone-section"><img src="images/p-icon.png" alt="phone"><span>+880-2-811-2622</span></div></li>
+        <li><div class="web-section"><img src="images/w-icon.png" alt="web"><span>www.shujan.org</span></div></li>
+         <li >
+            <div class="heder-search">
+                <input type="text" class="heder-searchTerm" placeholder="Search.....">
+                <button type="submit" class="heder-searchButton">
+                  <i class="fa fa-search"></i>
+               </button>
+            </div>
+         </li>
+        <li>
+          <a href="#"> <span style="border-left: 1px solid rgb(187, 187, 187);">&#8203;</span><i class="f-icon fa fa-facebook-official  fa-lg" aria-hidden="true"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="y-icon fa fa-youtube-square fa-lg"></i><span style="border-left: 1px solid rgb(187, 187, 187);">&#8203;</span></a>
+        </li>
+        <li>
+          <div id="google_translate_element" style="margin-top: 10px;"></div><script type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'bn', includedLanguages: 'bn,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+          }
+        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        </li>
+        <li class="dropdown user user-menu lanb">
+          <a class="dropdown-toggle" data-toggle="dropdown">
+            <i class="fa fa-flag flag-icon flag-icon-{{selectLocale.country.toLowerCase() }}"></i>
+            <span  lang="{{$root.locale.lang}}">{{ selectLocale.name | translate }} <i class="caret"></i> </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="(index, locale) in locales" ng-show="locale != selectLocale">
+              <a ng-click="setLocale(index)">
+                <span class="flag-icon flag-icon-{{locale.country.toLowerCase() }}"></span> {{locale.name | translate }}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-default ze-nav2">
+  <div class="container">
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" lang="{{$root.locale.lang}}">
+        <li  ui-sref-active="active" ><a ui-sref="front.home">{{'Home'|translate}}</a></li>
+        <li  ui-sref-active="active" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'Candidate Info Analysis'|translate}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ui-sref-active="active">
+              <a class="sub-menu" ui-sref="front.candidateSearch">{{'Candidate Profile'|translate}}</a>
+            </li>
+            <li ui-sref-active="active">
+                <a class="sub-menu" ui-sref="front.candidateAnalysis.occupationAnalysis">{{'Affidavit Based Analysis'|translate}}</a>
+            </li>
+            <li  ui-sref-active="active" ><a class="sub-menu" ui-sref="front.candidateAnalysis.taxAnalysis">{{'Income tax analysis'|translate}}</a></li>
+            <li ui-sref-active="active" >
+              <a class="sub-menu" ui-sref="front.candidateAnalysis.pfse-pi-to-meet-election-expense">{{'Probable Fund Source for Election Expense Based Analysis'|translate}}</a>
+            </li>
+            <li ui-sref-active="active" >
+              <a class="sub-menu sub-last" ui-sref="front.candidateComparison.Estimated-Prices-Of-Immoveable-Properties-To-The-Among-Candidate">{{'Assets/Liability/Income/Expense Based Analysis'|translate}}</a>
+            </li>
+            <li ui-sref-active="active">
+              <a class="sub-menu" ui-sref="front.electionAnalysis.Candidate-List-who-did-not-submit-the-return-of-election-expenses">{{'Election Expense Return Based Analysis'|translate}}</a>
+            </li>
+            <li ui-sref-active="active" >
+              <a class="sub-menu" ui-sref="front.candidate-form-discrepancy-comparison.asset">{{'Information discrepancy among the forms'|translate}}</a>
+            </li>
+          </ul>
+        </li>
+        <li  ui-sref-active="active" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'Candidate Info Comparison'|translate}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.candidateComparisonTable">{{'Seat wise Candidate Profile Comparison'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref='front.candidateComparisonAffidavit.Asset-Comparison-Of-Own-Dependent'>{{'Affidavit Based Comparision'|translate}}</a></li>
+            <li  ui-sref-active="active" ><a class="sub-menu" ui-sref='front.candidateComparisonAffidavit.Candidate-Income-Tax-And-Family-Expense'>{{'Income Tax Based Comparison'|translate}}</a></li>
+            <li  ui-sref-active="active" ><a class="sub-menu" ui-sref='front.candidateComparisonFSEE.Total-Probable-Income-Including-All-Sources-To-Meet-Election-Expenses-With-Same-Candidate'>{{'Probable Fund Source for Election Expense Based Comparision'|translate}}</a></li>
+            <li  ui-sref-active="active" ><a class="sub-menu" ui-sref="front.candidateComparisonSame.Estimated-Prices-Of-Immoveable-Properties-To-The-Same-Candidate">{{'Assets/Liabilities/Income/Expenses Based Comparision'|translate}}</a></li>
+            <li ui-sref-active="active">
+              <a class="sub-menu" ui-sref="front.electionAnalysis.Among-The-Candidates-In-A-Constituency-About-How-Much-Money-Spent">{{'Election Expense Return Based Comparison'|translate}}</a>
+            </li>
+
+            <li ui-sref-active="active">
+              <a class="sub-menu" ui-sref="front.candidateComparisonYearWise.test">{{'Election year wise candidate comparison'|translate}}</a>
+            </li>
+          </ul>
+        </li>
+        <li  ui-sref-active="active" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'Political Party Info'|translate}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li ui-sref-active="active" ><a class="sub-menu" ui-sref="front.politicalParty.allParties">{{'Registered Political Parties'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.politicalPartyBaseComparison.Political-Parties-Spent-Money-For-Election">{{'Political Party Based Comparison'|translate}}</a></li>
+          </ul>
+        </li>
+        <li  ui-sref-active="active" class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'Election Analysis'|translate}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li  ui-sref-active="active" >-->
+              <!--<a class="sub-menu" ui-sref="front.electionResult.allElectionResult">{{'All Election Result'|translate}}</a>-->
+            <!--</li>-->
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.allElectionResult">{{'Election Winners'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.genderAnalysis">{{'Male/Female Candidates Analysis'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.allCandidateList">{{'Election Candidate List'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.CwCandidateList">{{'Number of Candidates by Constituency'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.form-submission-status">{{'Candidate Form Submission Status'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.electionResult.form-review-status">{{'Candidate Form Review Status'|translate}}</a></li>
+          </ul>
+        </li>
+        <!--<li  ui-sref-active="active"  class="dropdown">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Publication <span class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li ui-sref-active="active" ><a href="#">Poster</a></li>-->
+            <!--<li ui-sref-active="active" ><a href="#">Leaflet</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <!--<li  ui-sref-active="active"  class="dropdown">-->
+          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reports <span class="caret"></span></a>-->
+          <!--<ul class="dropdown-menu">-->
+            <!--<li ui-sref-active="active" ><a href="#">Election Monitoring Ads</a></li>-->
+            <!--<li ui-sref-active="active" ><a href="#">Press Releases</a></li>-->
+          <!--</ul>-->
+        <!--</li>-->
+        <li  ui-sref-active="active"  class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{'About us'|translate}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <!--<li ui-sref-active="active" ><a class="sub-menu" ui-sref="front.aboutUs.howWeWork">{{'How we work'|translate}}</a></li>-->
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.aboutUs.purposeObjective">{{'Goals and Objectives'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.aboutUs.ourAchievements">{{'Our Achievement'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.aboutUs.join-us">{{'Join Us'|translate}}</a></li>
+            <li ui-sref-active="active"><a class="sub-menu" ui-sref="front.aboutUs.contact-us">{{'Contact Us'|translate}}</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<section ui-view class="at-view-fade-in at-view-fade-out front-cont">
+</section>
+
+<footer class="mjh-footerSection">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="mjh-footerAdd"  ng-show="$root.locale.lang == 'bn_BD'">
+          <header class="mjh-fcommonheader">
+            <h3 ng-click="goToTop12()"  lang="{{$root.locale.lang}}">{{'voted bd'|translate}}</h3>
+          </header>
+          <!--<span>(c)2015 voted.org</span><br/><br/>-->
+          <!--<span>contact@votebd.org</span><br/><br/>-->
+          <!--<span>www.votebd.org</span>-->
+
+          <div class="general_content clearboth" style="font-size: 15px;">
+            <div  lang="{{$root.locale.lang}}">সুজন সচিবালয়, হেরাল্ডিক হাইটস, ২/২, (লেভেল-৪, বি-৪), ব্লক-এ, মিরপুর রোড </div>
+            <div  lang="{{$root.locale.lang}}">ফোন: ৯১৩ ০৪৭৯ ও ৯১৪ ৬১৯৫, ফ্যাক্স: ৯১৪ ৬১৯৫ </div>
+            <div > email: <a href="mailto: shujan.info@gmail.com">shujan.info@gmail.com</a> web: <a href="http://www.shujan.org" target="_blank">www.shujan.org</a> </div>
+
+          </div>
+        </div>
+        <div class="mjh-footerAdd" ng-show="$root.locale.lang != 'bn_BD'">
+          <header class="mjh-fcommonheader">
+            <h3 ng-click="goToTop12()">{{'voted bd'|translate}}</h3>
+          </header>
+          <!--<span>(c)2015 voted.org</span><br/><br/>-->
+          <!--<span>contact@votebd.org</span><br/><br/>-->
+          <!--<span>www.votebd.org</span>-->
+
+          <div class="general_content clearboth" style="font-size: 15px;">
+            <div> Shujan Secretariat Heraldic Heights, 2/2, Mirpur Road, Mohammadpur, Dhaka-1207, Bangladesh</div>
+            <div>Phone:9130479</div>
+            <div>Email: <a href="mailto: shujan.info@gmail.com">shujan.info@gmail.com</a>
+              <div> web: <a href="http://www.shujan.org" target="_blank">www.shujan.org</a> </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-3">
+        <div class="mjh-footerLinks">
+          <header class="mjh-fcommonheader">
+            <h3  lang="{{$root.locale.lang}}">{{'Political Parties Official Site'|translate}}</h3>
+          </header>
+          <ul lang="{{$root.locale.lang}}">
+            <li><a href="http://www.albd.org/" target="_blank">{{'Bangladesh Awami League'|translate}}</a></li>
+            <li><a href="http://bangladeshnationalistparty-bnp.org/" target="_blank">{{'Bangladesh Nationalist Party - BNP'|translate}}</a></li>
+            <li><a href="http://www.jatiyo-party.org/" target="_blank">{{'Jatiyo Party'|translate}}</a></li>
+            <li><a href="http://www.jamaat-e-islami.org/" target="_blank">{{'Jamaat-e-Islami'|translate}}</a></li>
+            <li><a href="http://www.cpbbd.org/" target="_blank">{{'Communist Party of Bangladesh'|translate}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-6">
+          <header class="mjh-fcommonheader">
+            <h3  lang="{{$root.locale.lang}}">{{'image gallery'|translate}}</h3>
+          </header>
+          <ng-gallery images="footerGallery"></ng-gallery>
+
+          <!--<ul class="mjh-vimage">-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+            <!--<li>-->
+              <!--<a class="fancybox" rel="gallery1" href="images/gallery1.jpg"-->
+                 <!--title="image"><img src="images/gallery1.jpg" alt="" /></a>-->
+            <!--</li>-->
+          <!--</ul>-->
+
+      </div>
+    </div>
+  </div>
+  </div>
+</footer>
+<div class="mjh-copyright">
+  <div class="col-md-6">
+    <p class="mjh-copyright">© 2016. All Rights Reserved SHUJAN</p>
+  </div>
+  <div class="col-md-6">
+    <ul class="mjh-fSocialinks">
+      <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+      <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+      <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="scrollToTopSmooth">
+  <a ng-click="goToTop13()"><i class="icon fa-fw fa-3x ion-arrow-up-c"></i></a>
+</div>
+
+<script type="application/javascript">
+  jQuery(function($) {
+    $('html, body').scroll(function(e) {
+
+      if($("#scroll_top12").offset().top < -150){
+        $('#scrollToTopSmooth').fadeIn('slow');
+      }
+
+      if($("#scroll_top12").offset().top > -149){
+        $('#scrollToTopSmooth').fadeOut('slow');
+      }
+
+    });
+  });
+</script>

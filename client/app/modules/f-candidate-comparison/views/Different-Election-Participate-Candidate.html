@@ -1,0 +1,64 @@
+<div class="about-detail-cont">
+    <div class="jumbotron">
+      <h2 lang="{{$root.locale.lang}}">{{'Asset comparison of own, dependent'|translate}}</h2>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-lg-12">
+        <div class="clearfix">
+          <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{candidateList.candidateList.length |
+            translateNumber}}
+            {{'Candidates Analysis Report' | translate}}</h3>
+  
+          <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+          <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}" ng-click="ConvertToTextArea('exportable')">export doc</h3>
+        </div>
+        <div id="exportable">
+          <div class="table-responsive">
+            <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+              <thead>
+              <tr>
+                <th class="text-center">{{'Sl.'|translate}}</th>
+                <th class="text-center">{{'Candidate Name'|translate}}</th>
+                <th class="text-center">{{'Election'|translate}}</th>
+                <th class="text-center">{{'Candidate Post'|translate}}</th>
+                <th class="text-center" colspan="2">{{'income'|translate}}</th>
+                <th class="text-center" colspan="2">{{'Asset'|translate}}</th>
+                <th class="text-center">{{'Loan'|translate}}</th>
+                <th class="text-center">{{'Tax'|translate}}</th>
+              </tr>
+              <tr>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+                <th class="text-center">{{'Own'|translate}}</th>
+                <th class="text-center">{{'Dependent'|translate}}</th>
+                <th class="text-center">{{'Own'|translate}}</th>
+                <th class="text-center">{{'Dependent'|translate}}</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="data in candidateList">
+                <td>{{($index + 1) | translateNumber}}</td>
+                <td>{{data._id.candidateNameBnAF}}</td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{row.currentElection[0].currentElectionNameBn}}</td></tr></table></td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.electionCandidatePost[0].postNameBn) | translate}}</td></tr></table></td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.totalOwnIncomeAF) | number:0 | translateNumber}}</td></tr></table></td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.totalDependentIncomeAF) | number:0 | translateNumber}}</td></tr></table></td>
+  
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.assetMaterialOwnTotalAF) | number:0 | translateNumber}}</td></tr></table></td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.assetMaterialDependantsTotalAF) | number:0 | translateNumber}}</td></tr></table></td>
+  
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{(row.totalLoanAF) | number:0 | translateNumber}}</td></tr></table></td>
+                <td><table class="table table-hover table-bordered"><tr ng-repeat="row in data.candidate track by $index"><td>{{_19_previousTaxTR | number:0 | translateNumber}}</td></tr></table></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

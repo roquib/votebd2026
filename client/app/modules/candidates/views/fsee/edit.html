@@ -1,0 +1,794 @@
+<form>
+    <div class="panel-heading">
+      <h2> নির্বাচনী ব্যয় নির্বাহের জন্য অর্থ প্রাপ্তির সম্ভাব্য উৎস</h2>
+    </div>
+    <table class="table table-bordered">
+      <tbody>
+      <tr>
+        <td colspan="2">
+          <div align="center" class="style2">
+            <h4><span>নাম : </span>{{gotCandidate.personNameBn}} {{gotCandidate.personNameEn}}</h4>
+            <p>
+              <strong>পিতার নাম : </strong>{{gotCandidate.fatherHusbandNameBnAF}}
+            </p>
+            <p>
+              <strong>ঠিকানা: </strong>{{gotCandidate.addressBnAF}}
+            </p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td width="3%">&nbsp;</td>
+        <td width="97%"><span class="style1">১. অংশ এ-ব্যক্তিগত আয় হইতে সম্ভাব্য অর্থ</span></td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_1a_personalIncomeFSEE()" title="ADD MORE FIELD ">
+            <i class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1a_personalIncomeFSEE();" title="DELETE LAST FIELD ">
+            <i class="fa fa-minus"></i></a>
+        </td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part1">
+            <tr>
+              <td><strong>সম্ভাব্য অর্থের পরিমাণ</strong></td>
+              <td><strong>আয়ের উৎস</strong></td>
+            </tr>
+            <tr ng-repeat="_1a_personalIncomeFSEE in gotCandidate._1a_personalIncomeFSEE">
+              <td><input type="number" lang="en" class="formtextbng extraborder" rows="2" ng-model="_1a_personalIncomeFSEE.amount" cols="10" autocomplete="off"/></td>
+              <td><textarea class="formtextbng extraborder" rows="2"  cols="10"  ng-model="_1a_personalIncomeFSEE.source"  ></textarea></td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="personal"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>২.অংশ বি-আত্মীয়ের নিকট হইতে ঋণ বাবদ প্রাপ্তব্য স্বম্ভাব্য অর্থ</td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_1b_loanRelativeFSEE();" title="ADD MORE FIELD FOR Other Relation"><i class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1b_loanRelativeFSEE();" title="DELETE LAST FIELD Of Other Relations"><i class="fa fa-minus"></i></a>
+        </td>
+        <td>
+          <table width="100%">
+            <tbody id="part2">
+            <tr>
+              <td>
+                <strong>সম্ভাব্য অর্থের পরিমাণ</strong>
+              </td>
+              <td>
+                <strong>আত্মীয়ের নাম</strong>
+              </td>
+              <td>
+                <strong>আত্মীয়ের ঠিকানা</strong>
+              </td>
+              <td>
+                <strong>সম্পর্ক</strong>
+              </td>
+              <td><strong>আত্মীয়ের
+                আয়ের উৎস</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="_1b_loanRelativeFSEE in gotCandidate._1b_loanRelativeFSEE">
+              <td><input type="number" lang="en" class="formtextbng extraborder" rows="2" ng-model="_1b_loanRelativeFSEE.amount" cols="10"/></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1b_loanRelativeFSEE.name" cols="10"> </textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1b_loanRelativeFSEE.address" cols="10" > </textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1b_loanRelativeFSEE.relation" cols="10" > </textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1b_loanRelativeFSEE.source" cols="10" > </textarea></td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="loan_relative"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span
+          class="style1">৩.অংশ সি-আত্মীয়ের নিকট হইতে স্বতঃস্ফূর্তভাবে দান হিসাবে প্রাপ্তব্য সম্ভাব্য অর্থ 	</span></td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.add_1c_freeRelativeFSEE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1c_freeRelativeFSEE();"
+                                              title="DELETE LAST FIELD"><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part3">
+            <tr>
+              <td width="171">
+                <strong>সম্ভাব্য অর্থের পরিমাণ</strong>
+              </td>
+              <td width="170" align="center">
+                <strong>আত্মীয়ের নাম</strong>
+              </td>
+              <td width="165" align="center">
+                <strong>আত্মীয়ের ঠিকানা</strong>
+              </td>
+              <td width="167" align="center">
+                <strong>সম্পর্ক</strong>
+              </td>
+              <td width="178" align="center"><strong>আত্মীয়ের
+                আয়ের উৎস</strong>
+              </td>
+            </tr>
+
+            <tr ng-repeat="_1c_freeRelativeFSEE in gotCandidate._1c_freeRelativeFSEE">
+              <td>
+                <input type="number" class="formtextbng extraborder" rows="2" lang="en" ng-model="_1c_freeRelativeFSEE.amount" cols="10"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1c_freeRelativeFSEE.name" cols="10">  </textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1c_freeRelativeFSEE.address" cols="10">  </textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1c_freeRelativeFSEE.relation" cols="10" >  </textarea>
+              </td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1c_freeRelativeFSEE.source" cols="10">  </textarea></td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_c"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1"> ৪.অংশ ডি-আত্মীয় ব্যতীত অন্য কোন ব্যক্তির নিকট হইতে ঋণ বাবদ প্রাপ্তব্য অর্থ</span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.add_1d_loanManFSEE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1d_loanManFSEE();"
+                                              title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part4">
+            <tr>
+              <td>
+                <strong>সম্ভাব্য অর্থের পরিমাণ</strong>
+              </td>
+              <td align="center"><strong>ব্যক্তির
+                নাম</strong>
+              </td>
+              <td>
+                <strong>ব্যক্তির ঠিকানা</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="_1d_loanManFSEE in gotCandidate._1d_loanManFSEE">
+              <td>
+                <input type="number" class="formtextbng extraborder" lang="en" rows="2" ng-model="_1d_loanManFSEE.amount" cols="10"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1d_loanManFSEE.name" cols="10" > </textarea>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1d_loanManFSEE.address" cols="10" >  </textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_d"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1">৫.অংশ ই-আত্মীয় ব্যতীত অন্য কোন ব্যক্তির নিকট হইতে স্বতঃস্ফূর্তভাবে দান বাবদ প্রাপ্তব্য সম্ভাব্য অর্থ </span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.add_1e_freeManFSEE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;<a class="btn btn-danger" ng-click="ctrl.delete_1e_freeManFSEE();"
+                                              title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%">
+            <tbody id="part5">
+            <tr>
+              <td>
+                <strong>সম্ভাব্য অর্থের পরিমাণ</strong>
+              </td>
+              <td align="center"><strong>ব্যক্তির
+                নাম</strong>
+              </td>
+              <td align="center">
+                <strong>ব্যক্তির ঠিকানা</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="_1e_freeManFSEE in gotCandidate._1e_freeManFSEE">
+              <td>
+                 <input type="number" class="formtextbng extraborder" lang="en" rows="2" ng-model="_1e_freeManFSEE.amount" id="free_others_amount" cols="10"/>
+              </td>
+              <td>
+                 <textarea class="formtextbng extraborder" rows="2" ng-model="_1e_freeManFSEE.name" cols="10" >  </textarea>
+              </td>
+              <td>
+                 <textarea class="formtextbng extraborder" rows="2" ng-model="_1e_freeManFSEE.address" cols="10">  </textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_e"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1"> ৬.অংশ এফ-রাজনৈতিক
+                  দল/সংস্থা/এসোসিয়েশন হইতে
+                  স্বতঃস্ফূর্তভাবে দান বাবদ প্রাপ্তব্য
+                  সম্ভাব্য অর্থ</span>
+        </td>
+      </tr>
+      <tr>
+        <td><a class="btn btn-success" ng-click="ctrl.add_1f_freePartyFSEE();" title="ADD MORE FIELD "><i
+          class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1f_freePartyFSEE();"
+                                              title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a></td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part6">
+            <tr>
+              <td width="33%" align="center"><strong>সম্ভাব্য অর্থের পরিমাণ</strong></td>
+              <td width="33%" align="center"><strong>রাজনৈতিক দল/সংস্থা/এসোসিয়েশনের নাম</strong>
+              </td>
+              <td width="34%" align="center"><strong>রাজনৈতিক দল/সংস্থা/এসোসিয়েশনের কেন্দ্রীয়
+                কার্যালয়ের ঠিকানা</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="_1f_freePartyFSEE in gotCandidate._1f_freePartyFSEE">
+              <td><input type="number" class="formtextbng extraborder" rows="2" lang="en" ng-model="_1f_freePartyFSEE.amount" cols="10"/></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1f_freePartyFSEE.name" cols="10" >  </textarea></td>
+              <td><textarea class="formtextbng extraborder" rows="2" ng-model="_1f_freePartyFSEE.office" cols="10" >  </textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_f"></table>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><span class="style1"> ৭.অংশ জি-এ, বি, সি, ডি,
+                  ই এবং এফ উল্লেখিত উৎস ব্যতীত অন্য কোন উৎস হইতে প্রাপ্তব্য
+                  সম্ভাব্য অর্থ</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a class="btn btn-success" ng-click="ctrl.add_1g_freeOtherFSEE();" title="ADD MORE FIELD ">
+            <i class="fa fa-plus"></i></a>&nbsp;
+          <a class="btn btn-danger" ng-click="ctrl.delete_1g_freeOtherFSEE();"
+                                                   title="DELETE LAST FIELD "><i class="fa fa-minus"></i></a>
+        </td>
+        <td>
+          <table width="100%"  class="table table-bordered">
+            <tbody id="part7">
+            <tr>
+              <td align="center">
+                <strong>সম্ভাব্য অর্থের পরিমাণ</strong>
+              </td>
+              <td align="center"><strong>উৎসের নাম</strong></td>
+              <td align="center">
+                <strong>উৎসের ঠিকানা</strong>
+              </td>
+            </tr>
+            <tr ng-repeat="_1g_freeOtherFSEE in gotCandidate._1g_freeOtherFSEE">
+              <td>
+               <input type="number" class="formtextbng extraborder" lang="en" rows="2" ng-model="_1g_freeOtherFSEE.amount" cols="10"/>
+              </td>
+              <td>
+                <textarea class="formtextbng extraborder" rows="2" ng-model="_1g_freeOtherFSEE.name" cols="10" >  </textarea>
+              </td>
+              <td>
+                 <textarea class="formtextbng extraborder" rows="2" ng-model="_1g_freeOtherFSEE.source" cols="10">  </textarea>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <table width="100%" id="part_g"></table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td><strong >পিডিএফ ফাইল নাম</strong></td>
+              <td><input lang="en" class="formtextbng extraborder" ng-model="gotCandidate.pdfFilePathFSEE" type="text"  ></td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>
+          <table  style="width: 100%" class="table table-bordered">
+            <tbody>
+            <tr>
+              <td ><strong >মন্তব্য</strong></td>
+              <td>
+                <textarea class="formtextbng extraborder" lang="en" ng-model="gotCandidate.reviewFSEE" type="text"  ></textarea>
+
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </td>
+
+      </tr>
+      <!--<tr>-->
+        <!--<td>&nbsp;</td>-->
+        <!--<td>জমাদানের তারিখ (yyyy-mm-dd):-->
+                  <!--<span class="ui-datepicker-wrap">-->
+                  <!--<input lang="en" ng-model="gotCandidate.submissionDateFSEE" type="text" id="submission_date" size="20" value="0000-00-00" class="hasDatepicker embed">-->
+                  <!--</span>-->
+        <!--Publish:-->
+                  <!--<select ng-init="true" ng-model="gotCandidate.isPublishedFSEE">-->
+                    <!--<option value="true">Publish</option>-->
+                    <!--<option value="false">Draft</option>-->
+                  <!--</select>-->
+        <!--</td>-->
+      <!--</tr>-->
+      <tr>
+        <td colspan="2">
+          <div align="center">
+            <input type="submit" ng-click="ctrl.submit()" name="submit_b" id="submit_b" value="তথ্য সংরক্ষণ করুন ">
+          </div>
+        </td>
+      </tr>
+      <!-- Form Validation Ends Here -->
+      <script language="javascript"></script>
+      </tbody>
+    </table>
+</form><!--1ST-PART-END-->
+
+
+
+
+<!--2ND-PART-->
+<div class="table-responsive">
+  <header class="panel-heading">
+    <h2>২. দ্বিতীযেও ভাগ : সম্ভাব্য বায়ের খাতসুমূহ</h2>
+  </header>
+  <table class="table table-bordered">
+    <!--Part-(a) Poster expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ক : পোস্টারে খরচ/প্রতিটি পোস্টারে মুদ্রণকারী প্রতিষ্ঠানের নাম, প্রকাশের সংখা,  ও তারিখ উল্লেখ থাকিতে হব</span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+            <tr>
+              <td><strong>পোস্টারের  সম্ভাব্য সংখা </strong></td>
+              <td><strong>সম্ভাব্য মোট খরচ  </strong></td>
+            </tr>
+            <tr>
+              <td><input type="number" lang="en" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_PosterFSEE.posterQuantity1" rows="2" cols="10" autocomplete="off"/>
+              </td>
+              <td><input class="formtextbng extraborder" ng-model="gotCandidate._2a_da_PosterFSEE.posterTotalCost2" rows="2"  cols="10"></td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-A-End-->
+
+    <!--Part-(b) Election camp/office expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">খ: নির্বাচনী ক্যাম্প বা অফিস খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>নির্বাচনী  ক্যাম্প/অফিস এর সম্ভাব্য সংখা  </strong></td>
+            <td><strong>ক্যাম্প/অফিস স্থাপনে সম্ভাব্য মোট খরচ </strong></td>
+            <td><strong>ক্যাম্প/অফিস কর্মীদের জন্য সম্ভাব্য মোট খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CampOfficeFSEE.campQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CampOfficeFSEE.campBuildingTotalCost2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CampOfficeFSEE.campWorkerTotalCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_CampOfficeFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-B-End-->
+
+    <!--Part-(c) Candidate’s central camp/office expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">গ: প্রার্থীর কেন্দ্রীয় কাম্প বা অফিস খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>কেন্দ্রীয় কাম্প/অফিস স্থাপনা নির্মানে  সম্ভাব্য মোট খরচ</strong></td>
+            <td><strong>কেন্দ্রীয় কাম্প/অফিস কর্মীদের জন্য সম্ভাব্য মোট খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_HeadOfficeFSEE.officeBuildingTotalCost1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_HeadOfficeFSEE.officeWorkerTotalCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_HeadOfficeFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-C-End-->
+
+    <!--Part-(d) Candidates’ conveyance expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ঘ: প্রার্থীর যাতায়েত খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>নিজের বা নির্বাচনী এজেন্টদের  সম্ভাব্য মোট খরচ </strong></td>
+            <td><strong>কর্মীদের সম্ভাব্য মোট খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_ConvayanceFSEE.ownOrAgentTotalCost1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_ConvayanceFSEE.workerTotalCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_ConvayanceFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-D-End-->
+
+    <!--Part-(e) In house meeting/meeting expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ঙ: ঘরোয়া বৈঠাক বা সভা খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>ভেনুর সম্ভাব্য ভাড়া </strong></td>
+            <td><strong>সভা আয়োজনের জন্য জনবল/শ্রমিকের সম্ভাব্য মোট পারিশ্রমিক </strong></td>
+            <td><strong>আসবাবপত্র এর সম্ভাব্য ভাড়া </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_IndoorMeetingFSEE.venueQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_IndoorMeetingFSEE.workerCost2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_IndoorMeetingFSEE.furnitureCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_IndoorMeetingFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-E-End-->
+
+    <!--Part-(f) Leaflet expenditure -->
+    <tr>
+      <td width="100%"><span class="style1">চ: লিফলেট খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>মুদ্রণকারী প্রেস এর নাম </strong></td>
+            <td><strong>লিফলেটের  সম্ভাব্য সংখা </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_LeafletFSEE.pressName1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_LeafletFSEE.leafletQuantity2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_LeafletFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-F-End-->
+
+    <!--Part-(g) Handbill expenditure -->
+    <tr>
+      <td width="100%"><span class="style1">ছ : হ্যান্ডবিল খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>মুদ্রণকারী প্রেস এর নাম </strong></td>
+            <td><strong>হ্যান্ডবিল এর  সম্ভাব্য সংখা </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_HandbillFSEE.pressName1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_HandbillFSEE.handbillQuantity2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_HandbillFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-G-End-->
+
+    <!--Part-(h) Sticker expenditure -->
+    <tr>
+      <td width="97%"><span class="style1">জ  : স্টিকার খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>মুদ্রণকারী প্রেস এর নাম </strong></td>
+            <td><strong>স্টিকার এর  সম্ভাব্য সংখা </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_StickerFSEE.pressName1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_StickerFSEE.stickerQuantity2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_StickerFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-H-End-->
+
+    <!--Part-(i) (1) Banner expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ঝ   : (১) ব্যানার খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>ব্যানার এর  সম্ভাব্য সংখা </strong></td>
+            <td><strong>ব্যানার তৈরী বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>ব্যানার টাঙানো  বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_BannerFSEE.bannerQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_BannerFSEE.bannerMakingCost2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_BannerFSEE.bannerHangingCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_BannerFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-i-1-End-->
+
+    <!--Part-(i) (2) Digital banner (If applicable) expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ঝ   : (২) ডিজিটাল ব্যানার খরচ</span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>ডিজিটাল ব্যানার এর  সম্ভাব্য সংখা </strong></td>
+            <td><strong>ডিজিটাল ব্যানার তৈরী বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>ডিজিটাল ব্যানার টাঙানো  বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_DigitalBannerFSEE.bannerQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_DigitalBannerFSEE.bannerMakingCost2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_DigitalBannerFSEE.bannerHangingCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_DigitalBannerFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-i-2-End-->
+
+    <!--Part-(j) Street meeting expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">G   : পথসভা খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>পথসভা  সম্ভাব্য সংখা </strong></td>
+            <td><strong>মাইক/ হ্যান্ড মাইক বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_RallyFSEE.rallyQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_RallyFSEE.mikeingCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_RallyFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-J-End-->
+
+    <!--Part-(k) Megaphone expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ট: মাইকিং খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>বাবহরিতব্য   যানবহনের সম্ভাব্য ভাড়া </strong></td>
+            <td><strong>মাইকিং এর কাজে নিয়জিত ব্যক্তি সম্ভাব্য পরির্স্রমিক  </strong></td>
+            <td><strong>মাইকিং -এর ভাড়া  বাবদ সম্ভাব্য খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_MikingFSEE.vehicleRentCost1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_MikingFSEE.mikingWorkerCost2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_MikingFSEE.mikingRentCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_MikingFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-K-End-->
+
+    <!--Part-(l) Portrait (if applicable) expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">ঠ: পোর্ট্রেট  খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>পোর্ট্রেট এর সম্ভাব্য সংখা </strong></td>
+            <td><strong>পোর্ট্রেট মদ্রণকারী প্রতিষ্ঠানের নাম</strong></td>
+            <td><strong>পোর্ট্রেট তৈরী বাবদ সম্ভাব্য খরচ  </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_PotraitFSEE.potraitQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_PotraitFSEE.pressName2" rows="2"  cols="10"></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_PotraitFSEE.potraitMakingCost3" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_PotraitFSEE.allTotalCost4}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-L-End-->
+
+    <!--Part-(m) Expenditure for preparing the electoral symbol of the contesting candidate-->
+    <tr>
+      <td width="100%"><span class="style1">ড: প্রতিদ্বন্দী প্রার্থীর নির্বাচনী প্রতিক খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>প্রতীকের সম্ভাব্য সংখা </strong></td>
+            <td><strong>ছবি  বা প্রতিক তৈরী বাবদ খরচ </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorSymbolFSEE.symbolQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorSymbolFSEE.symbolCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_CompetitorSymbolFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-M-End-->
+
+    <!--Part-(n) Expenditure on snacks for the office of the contesting candidate-->
+    <tr>
+      <td width="100%"><span class="style1">ধ: প্রতিদ্বন্দী  প্রার্থীর অফিস আপায়ন   বাবদ খরচ  </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>অফিস এর সম্ভাব্য সংখা </strong></td>
+            <td><strong>দৈনিক  আপায়ন   বাবদ খরচ</strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorCandidate.officeQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorCandidate.dailyHospitalityCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_CompetitorCandidate.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-N-End-->
+
+    <!--Part-(o) Expenditure on worker of contesting candidate-->
+    <tr>
+      <td width="100%"><span class="style1">ণ: প্রতিদ্বন্দী  প্রার্থীর কর্মী বাবদ খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>কর্মীর সম্ভাব্য সংখা </strong></td>
+            <td><strong>জনপ্রতি দৈনিক  আপায়ন   বাবদ সম্ভাব্য খরচ</strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorWorkerFSEE.workerQuantity1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_CompetitorWorkerFSEE.dailyEachHospitalityCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_CompetitorWorkerFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-O-End-->
+
+    <!--Part-(p) Probable expenditure for publicity through TV or any electronic media-->
+    <tr>
+      <td width="100%"><span class="style1">ত : টেলিভিসন বা অন্য কোনো ইলেক্ট্রনিক মিডিয়া বাবদ সম্ভাব্য খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>টেলিভিসনে প্রচারণার  সম্ভাব্য খরচ </strong></td>
+            <td><strong>অন্য ইলেক্ট্রনিক মিডিয়ায় প্রচারণার  সম্ভাব্য খরচ</strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_TVFridgeFSEE.TVFridgeCampaignCost1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_TVFridgeFSEE.otherElectricMediaCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_TVFridgeFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-P-End-->
+
+    <!--Part-(q) Miscellaneous Expenditure-->
+    <tr>
+      <td width="100%"><span class="style1">থ: বিবিধ  খরচ </span></td>
+    </tr>
+    <tr>
+      <td width="100%">
+        <table width="100%"  class="table table-bordered">
+          <tbody>
+          <tr>
+            <td><strong>খাতের নাম </strong></td>
+            <td><strong>খরচের সম্ভাব্য পরিমান </strong></td>
+            <td><strong>সম্ভাব্য সর্বমোট খরচ </strong></td>
+          </tr>
+          <tr>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_MiscellaneousFSEE.expenseAreaName1" rows="2" cols="10"/></td>
+            <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2a_da_MiscellaneousFSEE.probableCost2" rows="2"  cols="10"></td>
+            <td>{{gotCandidate._2a_da_MiscellaneousFSEE.allTotalCost3}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr><!--Part-Q-End-->
+
+    <!--Submit-->
+    <tr>
+      <td colspan="2">
+        <div align="center">
+          <input type="submit" ng-click="ctrl.submit()"  value="তথ্য সংরক্ষণ করুন ">
+        </div>
+      </td>
+    </tr><!--Submit-end-->
+  </table>
+</div><!--2ND-PART-END-->
