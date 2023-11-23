@@ -22,7 +22,7 @@
               // console.log(typeof $scope.gotCandidate.dobTR )
               $scope.gotCandidate.dobTR = new Date($scope.gotCandidate.dobTR  );
               // console.log(typeof $scope.gotCandidate.dobTR )
-              $scope.gotCandidate.taxYearEnTR = new Date($scope.gotCandidate.taxYearEnTR  );
+              $scope.gotCandidate.taxYearEnTR = $scope.gotCandidate.taxYearEnTR;
               $scope.gotCandidate.endDateTR = new Date($scope.gotCandidate.endDateTR  );
 
 
