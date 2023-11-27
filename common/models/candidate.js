@@ -1005,6 +1005,143 @@ var getC3DataLoan = function (value, key, lang) {
   c3data[6] = [asset.unknown.title, asset.unknown.total];
   return {table: asset, c3data: c3data};
 };
+
+var getC3DataLiability = function (value, key, lang) {
+  var asset = {
+    _1: {
+      title: lang === "bn_BD" ? "৫ লাখ টাকার নিচে" : "Below 5 lakh taka",
+      total: 0,
+      minRange: 0,
+      maxRange: 500000,
+      candidate1: [],
+    },
+    _2: {
+      title:
+        lang === "bn_BD"
+          ? "৫ লাখ ১ টাকা থেকে ২৫ লাখ টাকা"
+          : "5 lakh 1 taka to 25 lakh taka",
+      total: 0,
+      minRange: 500001,
+      maxRange: 2500000,
+      candidate2: [],
+    },
+    _3: {
+      title:
+        lang === "bn_BD"
+          ? "২৫ লাখ ১ টাকা থেকে ৫০ লাখ টাকা"
+          : "25 lakh 1 taka to 50 lakh taka",
+      total: 0,
+      minRange: 2500001,
+      maxRange: 5000000,
+      candidate3: [],
+    },
+    _4: {
+      title:
+        lang === "bn_BD"
+          ? "৫০ লাখ ১ টাকা থেকে ১ কোটি টাকা"
+          : "50 lakh 1 taka to 1 crore taka",
+      total: 0,
+      minRange: 5000001,
+      maxRange: 10000000,
+      candidate4: [],
+    },
+    _5: {
+      title:
+        lang === "bn_BD"
+          ? "১ কোটি ১ টাকা থেকে ৫ কোটি টাকা"
+          : "1 crore 1 taka to 5 crore taka",
+      total: 0,
+      minRange: 10000001,
+      maxRange: 50000000,
+      candidate5: [],
+    },
+    _6: {
+      title: lang === "bn_BD" ? "৫ কোটি টাকার উপরে" : "Above 5 crore taka",
+      total: 0,
+      minRange: 50000001,
+      maxRange: Infinity,
+      candidate6: [],
+    },
+    unknown: {
+      title: lang === "bn_BD" ? "উল্লেখ নেই" : "Not to mention",
+      total: 0,
+      minRange: 0,
+      maxRange: 0,
+      candidate7: [],
+    },
+    totalCandidate: {
+      title: lang === "bn_BD" ? "মোট" : "Total",
+      total: 0,
+      minRange: 0,
+      maxRange: 0,
+    },
+  };
+  value.forEach(function (candi) {
+    console.log(candi.liabilitiesAmountAF);
+    var liabilityAF = candi.liabilitiesAmountAF;
+    if (Number(candi[key])) {
+      if (
+        asset._1.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._1.maxRange
+      ) {
+        asset._1.total++;
+        asset._1.candidate1.push(candi.candidateNameBnAF);
+      } else if (
+        asset._2.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._2.maxRange
+      ) {
+        asset._2.total++;
+        asset._2.candidate2.push(candi.candidateNameBnAF);
+      } else if (
+        asset._3.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._3.maxRange
+      ) {
+        asset._3.total++;
+        asset._3.candidate3.push(candi.candidateNameBnAF);
+      } else if (
+        asset._4.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._4.maxRange
+      ) {
+        asset._4.total++;
+        asset._4.candidate4.push(candi.candidateNameBnAF);
+      } else if (
+        asset._5.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._5.maxRange
+      ) {
+        asset._5.total++;
+        asset._5.candidate5.push(candi.candidateNameBnAF);
+      } else if (
+        asset._6.minRange <= Number(liabilityAF) &&
+        Number(liabilityAF) <= asset._6.maxRange
+      ) {
+        asset._6.total++;
+        asset._6.candidate6.push(candi.candidateNameBnAF);
+      }
+    } else {
+      asset.unknown.total++;
+      asset.unknown.candidate7.push(candi.candidateNameBnAF);
+    }
+  });
+  asset.totalCandidate.total =
+    asset._1.total +
+    asset._2.total +
+    asset._3.total +
+    asset._4.total +
+    asset._5.total +
+    asset._6.total +
+    asset.unknown.total;
+  var c3data = [];
+
+  c3data[0] = [asset._1.title, asset._1.total];
+  c3data[1] = [asset._2.title, asset._2.total];
+  c3data[2] = [asset._3.title, asset._3.total];
+  c3data[3] = [asset._4.title, asset._4.total];
+  c3data[4] = [asset._5.title, asset._5.total];
+  c3data[5] = [asset._6.title, asset._6.total];
+  c3data[6] = [asset.unknown.title, asset.unknown.total];
+  return { table: asset, c3data: c3data };
+};
+
 var getC3DataIncome = function (value, key, lang) {
   var asset = {
     "_1": {
@@ -3310,6 +3447,31 @@ module.exports = function (Candidate) {
       cb(null, {all: c3data, table: table});
     });
   };
+  Candidate.getLiabilityChart = function (whereCriteria, type, cb) {
+    whereCriteria.isPublished = { neq: false };
+    var query = {
+      //limit: whereCriteria.filter.limit,
+      where: whereCriteria,
+      include: "politicalParty",
+    };
+    Candidate.find(query).then(function (data) {
+      var c3data = getC3DataLiability(data, "liabilitiesAmountAF", type);
+      var table = [];
+      try {
+        groupCandidateByPoliticalParty(data, type).forEach(function (
+          groupCandidate
+        ) {
+          table.push({
+            politicalPartyId: groupCandidate.key,
+            partyName: groupCandidate.party,
+            data: getC3DataLiability(groupCandidate.value, "liabilitiesAmountAF", type),
+          });
+        });
+      } catch (e) {}
+
+      cb(null, { all: c3data, table: table });
+    });
+  };
   Candidate.getIncomeChart = function (whereCriteria, type, cb) {
     ////console.log(whereCriteria);
     ////console.log(type);
@@ -5243,6 +5405,14 @@ module.exports = function (Candidate) {
       returns: {arg: "data", type: 'json'}
     }
   );
+  Candidate.remoteMethod("getLiabilityChart", {
+    http: { path: "/getLiabilityChart", verb: "get" },
+    accepts: [
+      { arg: "whereCriteria", type: "json", http: { source: "query" } },
+      { arg: "type", type: "string", http: { source: "query" } },
+    ],
+    returns: { arg: "data", type: "json" },
+  });
   Candidate.remoteMethod(
     'getIncomeChart',
     {

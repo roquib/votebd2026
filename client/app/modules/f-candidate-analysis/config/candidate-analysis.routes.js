@@ -201,6 +201,12 @@
           controller: 'CandidateAnalysisLoanAnalysisCtrl',
           controllerAs: 'ctrl'
         })
+        .state('front.candidateAnalysis.liabilityAnalysis', {
+          url: '/liability-analysis',
+          templateUrl: 'modules/f-candidate-analysis/views/affidavit/liability-analysis.html',
+          controller: 'CandidateAnalysisLiabilityAnalysisCtrl',
+          controllerAs: 'ctrl'
+        })
         .state('front.candidateAnalysis.taxAnalysis', {
           url: '/tax-analysis',
           templateUrl: 'modules/f-candidate-analysis/views/affidavit/tax-analysis.html',

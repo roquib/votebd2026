@@ -217,6 +217,19 @@
           //}
         ).$promise;
       };
+      this.getCandidatesLiabilityWhere = function (electionSeatCriteria) {
+        var whereCriteria = this.verifyFilterData(electionSeatCriteria);
+        return Candidate.getLiabilityChart(
+          { whereCriteria: whereCriteria, type: $rootScope.locale.lang }
+          //  {
+          //  filter: {
+          //    fields: ['assetMaterialOwnTotalAF'],
+          //    limit: 100,
+          //    where: whereCriteria
+          //  }
+          //}
+        ).$promise;
+      };
       this.getPfseCandidates6 = function (electionSeatCriteria) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
         return Candidate.getPfseCandidates6({whereCriteria: whereCriteria}

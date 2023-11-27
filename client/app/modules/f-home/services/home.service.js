@@ -210,6 +210,21 @@
           //}
         ).$promise;
       };
+
+      this.getCandidatesLiabilityWhere = function (currentElectionCriteria) {
+        var whereCriteria = this.verifyFilterData(currentElectionCriteria);
+        return Candidate.getLiabilityChart(
+          { whereCriteria: whereCriteria, type: $rootScope.locale.lang }
+          //  {
+          //  filter: {
+          //    fields: ['assetMaterialOwnTotalAF'],
+          //    limit: 100,
+          //    where: whereCriteria
+          //  }
+          //}
+        ).$promise;
+      };
+
       this.getCandidatesTaxWhere = function (currentElectionCriteria) {
         var whereCriteria = this.verifyFilterData(currentElectionCriteria);
         return Candidate.getTaxChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}

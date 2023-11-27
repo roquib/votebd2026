@@ -23,7 +23,7 @@
       HomeService.getCurrentElectionsWithLimitSkip(5,0).then(function(data){
         $scope.currentElections=data;
       })
-      
+
 
       $scope.elections=[];
       HomeService.getFeaturedElection(1).then(function(election) {
@@ -141,6 +141,20 @@
             });
           });
 
+          //chart-6-liabilities
+          HomeService.getCandidatesLiabilityWhere(currentElectionCriteria).then(function (candidates) {
+            //console.log(candidates);
+            $scope.liabilityData = candidates.data;
+            $scope.liabilityChartAbove5Crore = $scope.liabilityData.all.c3data[5][1];
+            var chart = c3.generate({
+              data: {
+                columns: $scope.liabilityData.all.c3data,
+                type: 'pie'
+              },
+              bindto: "#liabilityChart"
+            });
+          });
+
           //chart-7 Tax
           HomeService.getCandidatesTaxWhere(currentElectionCriteria).then(function (candidates) {
             // console.log(candidates);
@@ -171,7 +185,7 @@
 
         }; //loadhcartdata2
 
-        
+
 
         $scope.candidateName = [];
         $scope.percentageofVote = [];
@@ -196,21 +210,21 @@
             this[data.politicalParty.partyNameBn].politicalPartyCandidateTotalVote += Number(data.totalCountVote);
            }
           }, {});
-          
+
           const totalCustingVote=105869352;
           $scope.percentageofPoliticalPartyVote=[];
           for(var i=0; i<currentElectionCandidateArray.length; i++){
             $scope.percentageofPoliticalPartyVote.push({partyNameBn:currentElectionCandidateArray[i].partyNameBn, politicalPartyCandidateTotalVote:((currentElectionCandidateArray[i].politicalPartyCandidateTotalVote*100)/totalCustingVote)})
           }
         })
-        
+
         $scope.partyNameBn = [];
         $scope.candidatesTotalIncome = [];
         var electionid={
           firstElectionId : "56a5ea4b28a71eb81d91f953",
           secondElectionId : "5bf627d1baa616990d38f4d3"
         }
-        
+
         $scope.options = {
           scales: {
             xAxes: [{
@@ -237,11 +251,11 @@
                 this[data.politicalParty.partyNameBn] = { partyNameBn: data.politicalParty.partyNameBn, politicalPartyCandidateTotalIncome:  0}
                 outputArray.firstElection.push(this[data.politicalParty.partyNameBn]);
               }
-              this[data.politicalParty.partyNameBn].politicalPartyCandidateTotalIncome += Number(data.grandTotalIncomeAF);  
+              this[data.politicalParty.partyNameBn].politicalPartyCandidateTotalIncome += Number(data.grandTotalIncomeAF);
             }
           }, {});
         })
-        
+
         HomeService.secondElectionPoliticalPartyCandidateIncome(electionid.secondElectionId).then(function(candidates){
           let politicalPartyCandidateTotalIncome=0;
           candidates.forEach(function(data) {
@@ -250,9 +264,9 @@
                 this[data.politicalParty.partyNameBn] = { partyNameBn: data.politicalParty.partyNameBn, politicalPartyCandidateTotalIncome:  0}
                 outputArray.secondElection.push(this[data.politicalParty.partyNameBn]);
               }
-              this[data.politicalParty.partyNameBn].politicalPartyCandidateTotalIncome += Number(data.grandTotalIncomeAF);  
-            } 
-          }, {}); 
+              this[data.politicalParty.partyNameBn].politicalPartyCandidateTotalIncome += Number(data.grandTotalIncomeAF);
+            }
+          }, {});
 
           for(var i=0; i<outputArray.firstElection.length; i++){
             for(var j=0; j<outputArray.secondElection.length; j++){
@@ -264,7 +278,7 @@
             }
           }
         })
-      
+
         $scope.$on('handleBroadcast', function (event, args) {
           // console.log("in child education");
           $scope.loadChartData();

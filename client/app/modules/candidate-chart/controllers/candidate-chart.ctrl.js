@@ -87,7 +87,7 @@
           });
         });
 
-        //chart-6-loan & liabilities
+        //chart-6-loan
         CandidateChartAnalysisService.getCandidatesLoanWhere($scope.electionSeat).then(function (candidates) {
           //console.log(candidates);
           $scope.loanData = candidates.data;
@@ -98,6 +98,20 @@
               type: 'pie'
             },
             bindto: "#loanChart"
+          });
+        });
+
+        //chart-6-liability
+        CandidateChartAnalysisService.getCandidatesLiabilityWhere($scope.electionSeat).then(function (candidates) {
+          //console.log(candidates);
+          $scope.liabilityData = candidates.data;
+          $scope.liabilityChartAbove5Crore = $scope.liabilityData.all.c3data[5][1];
+          var chart = c3.generate({
+            data: {
+              columns: $scope.liabilityData.all.c3data,
+              type: 'pie'
+            },
+            bindto: "#liabilityChart"
           });
         });
 

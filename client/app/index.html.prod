@@ -277,6 +277,7 @@
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/election-result.ctrl.js"></script>
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/income-analysis.ctrl.js"></script>
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/loan-analysis.ctrl.js"></script>
+<script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/liability-analysis.ctrl.js"></script>
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/occupation-analysis.ctrl.js"></script>
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/affidavit/politicalParty.ctrl.js"></script>
 <script src="//thp.sgp1.cdn.digitaloceanspaces.com/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Annual-Expenditures-Of-The-Among-Candidate.js"></script>
