@@ -839,7 +839,7 @@
       "type": "string"
     },
     "dobTR": {
-      "type": "date"
+      "type": "string"
     },
     "dobOldTR": {
       "type": "string"
