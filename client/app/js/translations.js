@@ -145,6 +145,7 @@ angular.module('loopbackApp').run(['gettextCatalog', function (gettextCatalog) {
     "Yes":"হ্যা",
     "No":"না",
     "Date Of Birth":"জন্ম তারিখ",
+    "Age":"বয়স",
 
 
     /*==============*/
