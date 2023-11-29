@@ -469,7 +469,26 @@
       </tr>
       <tr  ng-repeat="coac in gotCandidate.commitmentAndAchievementWhileMpAF">
         <td>{{($index+1) | translate}}</td>
-        <td><textarea  ng-model="coac.commitment" cols="30" rows="2"></textarea></td>
+        <td>
+            <select ng-model="coac.commitment">
+              <option value="development_of_power_system">বিদ্যুৎ ব্যবস্থার উন্নয়ন</option>
+              <option value="development_of_educational_institutions">শিক্ষা প্রতিষ্টানের উন্নয়ন</option>
+              <option value="development_of_communication_systems">যোগাযোগ ব্যবস্থার উন্নয়ন</option>
+              <option value="development_of_medical_health_sector">চিকিৎসা/স্বাস্থ্য খাতের উন্নয়ন</option>
+              <option value="development_of_water_resources">পানি সম্পদের উন্নয়ন</option>
+              <option value="culvert_construction">কালভার্ট নির্মাণ</option>
+              <option value="road_construction_renovation">রাস্তা নির্মাণ/ সংস্কার</option>
+              <option value="tree_planting_programme">বৃক্ষ রোপন কর্মসূচী</option>
+              <option value="park_construction">পার্ক নির্মাণ</option>
+              <option value="bridge_construction">ব্রিজ নির্মাণ</option>
+              <option value="sports_space_version">খেলাধূলার স্থান সংস্করণ</option>
+              <option value="development_of_sanitation_arsenic_waste_disposal_system">স্যানিটেশন/ আর্সেনিক/পয়:নিস্কাশন ব্যবস্থার উন্নয়ন</option>
+              <option value="rehabilitation_of_river_canal_ponds">নদী/খাল পুকুর সংস্কার</option>
+              <option value="agricultural_development">কৃষি উন্নয়ন</option>
+              <option value="development_of_internet_mobile_phone_services">ইন্টারনেট/মোবাইল/ফোন সেবার উন্নয়ন</option>
+              <option value="other_social_activities">অন্যান্য সামাজিক কার্যক্রম</option>
+            </select>
+        </td>
         <td><textarea  ng-model="coac.achievement" cols="30" rows="2"></textarea></td>
       </tr>
       <tr><td colspan="3">
