@@ -36,7 +36,7 @@
           ) {
             $scope.uploadPic = function (politicalPartyMarka) {
               politicalPartyMarka.upload = Upload.upload({
-                url: "http://192.168.2.56:3000/uploadsymbol",
+                url: "http://192.168.0.103:3000/uploadsymbol",
                 data: { politicalPartyMarka: politicalPartyMarka },
               });
               // console.log(politicalPartyMarka.upload);
@@ -95,7 +95,7 @@
           ) {
             $scope.uploadPic = function (politicalPartyMarka) {
               politicalPartyMarka.upload = Upload.upload({
-                url: "http://192.168.2.56:3000/uploadsymbol",
+                url: "http://192.168.0.103:3000/uploadsymbol",
                 data: { politicalPartyMarka: politicalPartyMarka },
               });
               // console.log(politicalPartyMarka.upload);
