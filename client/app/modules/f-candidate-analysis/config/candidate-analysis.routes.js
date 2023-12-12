@@ -164,7 +164,13 @@
         //   controllerAs: 'ctrl'
         // })
         //
-
+        .state("front.candidateAnalysis.commitmentAndAchievementAnalysis", {
+          url: "/commitment-achievement-analysis",
+          templateUrl:
+            "modules/f-candidate-analysis/views/affidavit/commitment-achievement-analysis.html",
+          controller: "CandidateCommitmentAchievementAnalysisCtrl",
+          controllerAs: "ctrl",
+        })
         .state('front.candidateAnalysis.occupationAnalysis', {
           url: '/occupation-analysis',
           templateUrl: 'modules/f-candidate-analysis/views/affidavit/occupation-analysis.html',

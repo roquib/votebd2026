@@ -58,6 +58,8 @@ angular.module('loopbackApp').run(['gettextCatalog', function (gettextCatalog) {
     "Liabilities & Loan":"দায় দেনা ও ঋণ",
     "Income tax":"আয়কর",
     "Yearly Income":"বার্ষিক আয়",
+    "Commitment And Achievement analysis":"অঙ্গীকার এবং অর্জন বিশ্লেষণ",
+    "Commitment And Achievement":"অঙ্গীকার এবং অর্জন",
 
     "Probable Fund Source for Election Expense Based Analysis":"নির্বাচনী ব্যয় নির্বাহের জন্য অর্থ প্রাপ্তির সম্ভাব্য উত্স ভিত্তিক বিশ্লেষণ",
 
