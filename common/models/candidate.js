@@ -1604,6 +1604,35 @@ var getC3DataOccupation = function (value, key, lang) {
 
   return {table: asset, c3data: c3data};
 };
+var getC3DataCommitmentsAchievements = function (value, key, lang) {
+  var asset = {
+    _1: {
+      title: lang === "bn_BD" ? "প্রতিশ্রুতিসমূহ" : "Commitment",
+      key: "প্রতিশ্রুতিসমূহ",
+      commitments: []
+    },
+    _2: {
+      title: lang === "bn_BD" ? "অর্জনসমূহ" : "Achievement",
+      key: "অর্জনসমূহ",
+      achievements: []
+    },
+  };
+  value.forEach(function (candi) {
+    if (candi[key]) {
+      if (asset._1.key == candi[key]) {
+        asset._1.commitments.push(candi.commitmentAndAchievementWhileMpAF);
+      } else if (asset._2.key == candi[key]) {
+        asset._2.achievements.push(candi.commitmentAndAchievementWhileMpAF);
+      }
+    }
+  });
+  var c3data = [];
+
+  c3data[0] = [asset._1.title, asset._1.total];
+  c3data[1] = [asset._2.title, asset._2.total];
+
+  return { table: asset, c3data: c3data };
+};
 var getC3DataEducation = function (value, key, lang) {
   var asset = {
     "_1": {
@@ -3285,6 +3314,37 @@ module.exports = function (Candidate) {
       } catch (e) {
       }
       cb(null, {all: c3data, table: table});
+    });
+  };
+  Candidate.getCommitmentAchievementChart = function (whereCriteria, type, cb) {
+    whereCriteria.isPublished = { neq: false };
+    var query = {
+      //limit: whereCriteria.filter.limit,
+      where: whereCriteria,
+      include: "politicalParty",
+    };
+    Candidate.find(query).then(function (data) {
+      ////console.log(data.length);
+
+      var c3data = getC3DataCommitmentsAchievements(data, "commitmentAndAchievementWhileMpAF", type);
+      var table = [];
+      try {
+        //table = getC3DataGroupBy(data, "totalOwnIncomeAF", "politicalParty");
+        groupCandidateByPoliticalParty(data, type).forEach(function (
+          groupCandidate
+        ) {
+          table.push({
+            politicalPartyId: groupCandidate.key,
+            partyName: groupCandidate.party,
+            data: getC3DataCommitmentsAchievements(
+              groupCandidate.value,
+              "commitmentAndAchievementWhileMpAF",
+              type
+            ),
+          });
+        });
+      } catch (e) {}
+      cb(null, { all: c3data, table: table });
     });
   };
   Candidate.getCasesChart = function (whereCriteria, type, cb) {
@@ -5360,6 +5420,14 @@ module.exports = function (Candidate) {
       returns: {arg: "data", type: 'json'}
     }
   );
+  Candidate.remoteMethod("getCommitmentAchievementChart", {
+    http: { path: "/getCommitmentAchievementChart", verb: "get" },
+    accepts: [
+      { arg: "whereCriteria", type: "json", http: { source: "query" } },
+      { arg: "type", type: "string", http: { source: "query" } },
+    ],
+    returns: { arg: "data", type: "json" },
+  });
   Candidate.remoteMethod(
     'getCasesChart',
     {

@@ -20,18 +20,18 @@
 
         $scope.loadChartData = function () {
           // console.log("console.log(this.electionSeat)", $scope.electionSeat);
-          CandidateAnalysisService.getCandidatesOccupationWhere(
+          CandidateAnalysisService.getCandidatesCommitmentsAchievementsWhere(
             $scope.electionSeat
           ).then(function (candidates) {
             // console.log(candidates.data);
-            $scope.occupationData = candidates.data;
+            $scope.commitmentsAndAchievementsData = candidates.data;
             var chart = c3.generate({
               data: {
                 // iris data from R
-                columns: $scope.occupationData.all.c3data,
+                columns: $scope.commitmentsAndAchievementsData.all.c3data,
                 type: "pie",
               },
-              bindto: "#occupation-chart",
+              bindto: "#commitment-achievement-chart",
             });
           });
         };

@@ -155,6 +155,13 @@
         return Candidate.getOccupationChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}
         ).$promise;
       };
+      this.getCandidatesCommitmentsAchievementsWhere = function (electionSeatCriteria) {
+        var whereCriteria = this.verifyFilterData(electionSeatCriteria);
+        return Candidate.getCommitmentAchievementChart({
+          whereCriteria: whereCriteria,
+          type: $rootScope.locale.lang,
+        }).$promise;
+      };
       this.getCandidatesEducationWhere = function (electionSeatCriteria) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
         return Candidate.getEducationChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
