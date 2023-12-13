@@ -1842,7 +1842,8 @@ var simplifyPfsePP = function (table, lang) {
         "lawPresentCountAF":row.candidate? row.candidate.lawPresentCountAF : null,
         "lawPresentAF": countPresent302? "*" : null,
         "lawPastCountAF":row.candidate? row.candidate.lawPastCountAF : null,
-        "lawPastAF":countPast302? "*" : null
+        "lawPastAF":countPast302? "*" : null,
+        "commitmentAndAchievementWhileMpAF": row.candidate.commitmentAndAchievementWhileMpAF ? row.candidate.commitmentAndAchievementWhileMpAF : []
       });
     });
   } else {

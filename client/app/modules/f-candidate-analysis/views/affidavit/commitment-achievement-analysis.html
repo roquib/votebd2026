@@ -4,43 +4,54 @@
     <h2>{{'Commitment And Achievement analysis'|translate}}</h2>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-lg-12" lang="{{$root.locale.lang}}">
-      <div id="commitment-achievement-chart"></div>
-    </div>
     <div class="col-xs-12 col-lg-12">
       <div class="clearfix">
-        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{commitmentsAndAchievementsData.all.table.totalCandidate.total | translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
-        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','occupation-analysis')">export excel</h3>
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{electedCandidates.length |
+          translateNumber}} {{'Candidates Analysis Report' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable')">export excel</h3>
+        <h3 class="btn btn-primary pull-right" ng-style="{'margin-right':'2px'}"
+          ng-click="ConvertToTextArea('exportable')">
+          export doc</h3>
       </div>
+      <p ng-style="{'color':'red'}">{{'যে সকল প্রার্থীর ৩০২ ধারায় মামলা আছে তাদের মামলার সংখ্যার পাশে * মার্ক করা আছে'}}
+      </p>
       <div id="exportable">
         <div class="table-responsive">
           <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
             <thead>
-            <tr>
-              <th>{{'Teams'|translate}}</th>
-              <th>{{commitmentsAndAchievementsData.all.table._1.title}}</th>
-              <th>{{commitmentsAndAchievementsData.all.table._2.title}}</th>
-            </tr>
+              <tr>
+                <td rowspan="2">{{'Sl'|translate}}.</td>
+                <td rowspan="2">{{'Name'|translate}}</td>
+                <td rowspan="2">{{'Seat'|translate}}</td>
+                <td rowspan="2">{{'Political Party'|translate}}</td>
+                <td rowspan="2">{{'Commitment And Achievement'|translate}}</td>
+              </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="tr_data in commitmentsAndAchievementsData.table">
-              <td>{{tr_data.partyName}}</td>
-                <td class="CellWithComment">
-                  <p class="CellComment">
-                  <span ng-repeat="candidateName in tr_data.data.table._1.commitments track by $index">1</span>
-                  </p>
+              <tr ng-repeat="row in commitmentsAndAchievementsData">
+                <td>{{($index+1) | translateNumber}}</td>
+                <td>{{row.candidateName}}</td>
+                <td>{{row.seatName}}</td>
+                <td>{{row.partyName}}</td>
+                <td>
+                  <table width="100%" cellspacing="0" class="databorder">
+                    <tbody>
+                      <tr ng-repeat="column in row.commitmentAndAchievementWhileMpAF">
+                        <td>
+                          <b>{{column.commitment | translate}}:</b>
+                        </td>
+                        <td>
+                          {{column.achievement}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </td>
-              <td class="CellWithComment">
-                <p class="CellComment">
-                <span ng-repeat="candidateName in tr_data.data.table._2.achievements track by $index">2</span>
-                </p>
-              </td>
-            </tr>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <!--/.col-xs-6.col-lg-4-->
   </div><!--/row-->
 </div>

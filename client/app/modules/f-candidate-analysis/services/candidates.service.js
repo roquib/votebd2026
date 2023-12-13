@@ -155,12 +155,15 @@
         return Candidate.getOccupationChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}
         ).$promise;
       };
-      this.getCandidatesCommitmentsAchievementsWhere = function (electionSeatCriteria) {
+      this.getCandidatesCommitmentsAchievementsWhere = function (electionSeatCriteria,limit) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
-        return Candidate.getCommitmentAchievementChart({
+
+        return Candidate.getCandidateLists({
           whereCriteria: whereCriteria,
+          limit: limit,
           type: $rootScope.locale.lang,
         }).$promise;
+
       };
       this.getCandidatesEducationWhere = function (electionSeatCriteria) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
