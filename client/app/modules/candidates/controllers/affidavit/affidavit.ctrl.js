@@ -27,7 +27,7 @@
       ) {
         $scope.uploadPic = function (candidatePhoto) {
           candidatePhoto.upload = Upload.upload({
-            url: "http://192.168.0.103:3000/upload",
+            url: "http://192.168.1.2:3000/upload",
             data: { candidatePhoto: candidatePhoto },
           });
 
