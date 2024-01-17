@@ -17,17 +17,7 @@
 
               $scope.initiateGotCandidate();
 
-
-              var dobTR = "1971/01/01";
-              if (
-                typeof $scope.gotCandidate.dobTR === "string" &&
-                $scope.gotCandidate.dobTR.includes('-')) {
-                  var dateString = $scope.gotCandidate.dobTR;
-                  var array = dateString.split('-');
-                  dobTR = array[2]+"/"+array[1]+"/"+array[0];
-                }
-              $scope.gotCandidate.dobTR = new Date(dobTR);
-              $scope.gotCandidate.taxYearEnTR = $scope.gotCandidate.taxYearEnTR;
+              $scope.gotCandidate.dobTR = new Date($scope.gotCandidate.dobTR);
               $scope.gotCandidate.endDateTR = new Date($scope.gotCandidate.endDateTR  );
 
 

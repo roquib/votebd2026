@@ -821,7 +821,7 @@
       "type": "string"
     },
     "taxYearEnTR": {
-      "type": "date"
+      "type": "number"
     },
     "taxYearBnTR": {
       "type": "string"
@@ -839,7 +839,7 @@
       "type": "string"
     },
     "dobTR": {
-      "type": "string"
+      "type": "date"
     },
     "dobOldTR": {
       "type": "string"

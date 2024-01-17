@@ -120,7 +120,6 @@
           if (candidate.dobTR) {
             formattedDate = formatDate(new Date(candidate.dobTR));
           }
-          candidate.dobTR = formattedDate;
           candidate.candidateDateOfBirthBnAF = formattedDate;
         return Candidate.upsert(candidate).$promise;
 
