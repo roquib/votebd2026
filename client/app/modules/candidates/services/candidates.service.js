@@ -105,24 +105,7 @@
       };
 
       this.upsertCandidate = function (candidate) {
-
-        // console.log(candidate);
-          function formatDate(date = new Date()) {
-            const year = date.toLocaleString("default", { year: "numeric" });
-            const month = date.toLocaleString("default", {
-              month: "2-digit",
-            });
-            const day = date.toLocaleString("default", { day: "2-digit" });
-
-            return [day,month, year].join("-");
-          }
-          var formattedDate = null;
-          if (candidate.dobTR) {
-            formattedDate = formatDate(new Date(candidate.dobTR));
-          }
-          candidate.candidateDateOfBirthBnAF = formattedDate;
         return Candidate.upsert(candidate).$promise;
-
       };
 
       this.deleteCandidate = function (id, successCb, cancelCb) {
