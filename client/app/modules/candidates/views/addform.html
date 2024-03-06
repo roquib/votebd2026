@@ -263,6 +263,11 @@
         <!--<a class="btn" ng-show="!gotCandidate.statusTR" ng-click="ctrl.goToAddEdit('TR',gotCandidate.id)">Add  Tax Return Return</a>-->
         <a class="btn" ng-click="ctrl.goToAddEdit('TR',gotCandidate.id)" title="Tax Return">{{gotCandidate.statusTR ? 'Edit': 'Add'}} Tax Return</a>
       </li>
+      <li>
+        <!--<a class="btn" ng-show="!gotCandidate.statusTR" ng-click="ctrl.goToAddEdit('TR',gotCandidate.id)">Add  Tax Return Return</a>-->
+        <a class="btn" ng-click="ctrl.goToAddEdit('TR2024',gotCandidate.id)" style="margin-top:10px;" title="Tax Return 2024">{{gotCandidate.statusTR ? 'Edit':
+          'Add'}} Tax Return 2024</a>
+      </li>
     </ul>
   </div>
   <section ui-view id="forms-cont" style=" background: rgb(245, 245, 245);">

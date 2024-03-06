@@ -71,6 +71,12 @@
           templateUrl: 'modules/f-candidate-search/views/tax-return/view.html',
           controller: 'CandidateSearchTaxRerurnCtrl',
           controllerAs: 'ctrl'
+        })
+        .state('front.candidateSearch.taxreturn2024', {
+          url: '/tax-return-2024/:id',
+          templateUrl: 'modules/f-candidate-search/views/tax-return-2024/view.html',
+          controller: 'CandidateSearchTaxReturn2024Ctrl',
+          controllerAs: 'ctrl'
         });
     }
   );

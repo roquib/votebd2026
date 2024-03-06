@@ -305,6 +305,9 @@
           case 'TR':
             $state.go('app.candidates.addedit.editTR', {candidateId: candidateId});
             break;
+          case 'TR2024':
+            $state.go('app.candidates.addedit.editTR2024', {candidateId: candidateId});
+            break;
         }
         //$location.hash('forms-cont');
         //$anchorScroll();

@@ -146,6 +146,12 @@
           templateUrl: 'modules/candidates/views/tax-return/edit.html',
           controllerAs: 'ctrl',
           controller: 'CandidateEditTaxReturnCrtl'
+        })
+        .state('app.candidates.addedit.editTR2024', {
+          url: '/tr2024/:candidateId',
+          templateUrl: 'modules/candidates/views/tax-return-2024/edit.html',
+          controllerAs: 'ctrl',
+          controller: 'CandidateEditTaxReturn2024Crtl'
         });
 
     });
