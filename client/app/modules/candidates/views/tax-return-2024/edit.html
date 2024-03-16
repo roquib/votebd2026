@@ -25,11 +25,6 @@
     <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.NIDNumberTR"></td>
   </tr>
   <tr>
-    <td><div align="center">৩</div></td>
-    <td><div align="left">ইউটিআইএন (যদি থাকে)</div></td>
-    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.UTIN_TR"></td>
-  </tr>
-  <tr>
     <td><div align="center">৪</div></td>
     <td><div align="left">টিআইএন</div></td>
     <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.TIN_TR"></td>
@@ -52,19 +47,27 @@
   <tr>
     <td><div align="center">৭</div></td>
     <td><div align="left">আবাসিক মর্যাদা </div></td>
-    <td>
-      <input ng-model="gotCandidate.localityTR" type="radio" value="local" checked=""> নিবাসী&nbsp;&nbsp;
-      <input ng-model="gotCandidate.localityTR" type="radio" value="non_local">অনিবাসী &nbsp;&nbsp;
+    <td style="display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;">
+      <input ng-model="gotCandidate.localityTR" style="padding-right:10px;" type="radio" value="local" checked=""> নিবাসী&nbsp;&nbsp;
+      <input ng-model="gotCandidate.localityTR" style="padding-left:10px;"type="radio" value="non_local">অনিবাসী &nbsp;&nbsp;
     </td>
   </tr>
   <tr>
     <td><div align="center">৮</div></td>
-    <td><div align="left">মর্যাদা </div></td>
-    <td>
-      <label>ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person" >
-      <label>ফার্ম</label><input type="checkbox" ng-model="gotCandidate.dignityTR.farm" >
-      <label>ব্যক্তি সংঘ</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person_org" >
-      <label>হিন্দু অবিভক্ত পরিবার</label><input type="checkbox" ng-model="gotCandidate.dignityTR.hindu" >
+    <td><div align="left">করদাতার বিশেষ সুবিধাপ্রাপ্তির ক্ষেত্রে টিক (√) চিহ্ন দিন</div></td>
+    <td style="display: flex;
+    justify-content: space-between;
+    border: none;
+    flex-wrap: wrap;
+    align-items: flex-start;">
+      <label>গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person" >
+      <label>নারী</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person" >
+      <label>তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.dignityTR.farm" > <br>
+      <label>প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person_org" >
+      <label>৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox" ng-model="gotCandidate.dignityTR.hindu" >
+      <label>প্রতিবন্ধী ব্যক্তির পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox" ng-model="gotCandidate.dignityTR.hindu" >
     </td>
   </tr>
   <tr>
@@ -108,15 +111,40 @@
     <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.phoneOfficeTR"></td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <div align="left">আবাসিক</div></td>
-    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.phoneResidenceTR"></td>
+    <td><div align="center">১৫</div></td>
+    <td><div align="left">মোবাইল</div></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.mobile"></td>
+  </tr>
+  <tr>
+    <td><div align="center">১৫</div></td>
+    <td><div align="left">ইমেইল</div></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.email"></td>
   </tr>
   <tr>
     <td><div align="center">১৬</div></td>
     <td><div align="left">ভ্যাট নিবন্ধন নম্বর (যদি থাকে)</div></td>
     <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.VATNumberTR"></td>
+  </tr>
+  <tr>
+    <td><div align="center">১৬</div></td>
+    <td><div align="left">চাকরিজীবী করদাতার ক্ষেত্রে নিয়োগকারী প্রতিষ্ঠানের নাম (একাধিক প্রতিষ্ঠান হইলে সর্বশেষ প্রতিষ্ঠানের নাম)</div></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.VATNumberTR"></td>
+  </tr>
+  <tr>
+    <td><div align="center">১২</div></td>
+    <td><div align="left">(ক) ব্যবস্য প্রতিষ্ঠানের নাম:</div></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.business_org.name"></td>
+  </tr>
+  <tr>
+    <td><div align="center">১২</div></td>
+    <td><div align="left">(খ) ব্যবসায় নিবন্ধন নম্বর(BIN)(সমূহ)</div></td>
+    <td><textarea type="text" class="formtextbng extraborder" ng-model="gotCandidate.business_org.name"></textarea></td>
+
+  </tr>
+  <tr>
+    <td><div align="center">১৩</div></td>
+    <td><div align="left">ফার্ম/ব্যক্তি সংঘের ক্ষেত্রে অংশীদার/সদস্যদের নাম ও টিআইএন (প্রয়োজনে পৃথক কাগজ ব্যবহার করুণ)</div></td>
+    <td><textarea type="text" class="formtextbng extraborder" ng-model="gotCandidate.VATNumberTR"></textarea></td>
   </tr>
   <tr>
     <td colspan="3" align="center"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
@@ -129,7 +157,7 @@
 <table class="table table-bordered">
   <tbody>
   <tr>
-    <td colspan="3" align="center"><h1>আয়কর রিটার্ন ফরম অংশ-2  <span style="font-size: 14px;font-weight: normal;">করদাতার আয় বিবরণী</span></h1></td>
+    <td colspan="3" align="center"><h1>2024 আয়কর রিটার্ন ফরম অংশ-2  <span style="font-size: 14px;font-weight: normal;">করদাতার আয় বিবরণী</span></h1></td>
   </tr>
   <!--<tr>-->
     <!--<td width="33%"><div align="left">করদাতার নাম</div></td>-->
@@ -147,119 +175,63 @@
   </tr>
   <tr>
     <td><div align="center">১</div></td>
-    <td>বেতনাদি: ধারা ২১ অনুযায়ী (তফসিল ১ অনুসারে)</td>
+    <td>চাকরি হইতে আয় (এই রিটার্নের তফসিল ১ অনুযায়ী)</td>
     <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1SalaryTR">	 </td>
   </tr>
   <tr>
     <td><div align="center">২</div></td>
-    <td>নিরাপত্তা জামানতের উপর সুদ: ধারা ২২ আনুযায়ী</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2SecurityTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">৩</div></td>
-    <td>গৃহ সম্পত্তির আয়: ধারা ২৪ অনুযায়ী (তফসিল ২ আনুসারে)</td>
+    <td>ভাড়া হইতে আয় (এই রিটার্নের তফসিল ২ অনুযায়ী)</td>
     <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._3HouseIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">৪</div></td>
-    <td>কৃষি আয়: ধারা ২৬ অনুযায়ী</td>
+    <td><div align="center">৩</div></td>
+    <td>কৃষি হইতে আয় (এই রিটার্নের তফসিল ৩ অনুযায়ী)</td>
     <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._4AgriIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">৫</div></td>
-    <td>ব্যবসা বা পেশার আয়: ধারা ২৮ অনুযায়ী</td>
+    <td><div align="center">৪</div></td>
+    <td>ব্যবসা হইতে আয় (এই রিটার্নের তফসিল ৪ অনুযায়ী)</td>
     <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._5BusinessIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">৬</div></td>
-    <td>ফার্মের আয়ের অংশ</td>
-    <td>
-      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._6FirmIncomeTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">৭</div></td>
-    <td>প্রযোজ্য ক্ষেত্রে স্বামী/স্ত্রী বা অপ্রাপ্ত বয়স্ক সন্তানের আয়: ধারা ৪৩(৪) আনুযায়ী</td>
-    <td>
-      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._7HusbandWifeSonIncomeTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">৮</div></td>
-    <td>মূলধনী লাভ: ধারা ৩১আনুযায়ী</td>
+    <td><div align="center">৫</div></td>
+    <td>মূলধনী আয়</td>
     <td>
       <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._8CapitalProfitTR"></td>
   </tr>
   <tr>
-    <td><div align="center">৯</div></td>
-    <td>অন্যান্য উৎস হতে আয়: ধারা ৩৩ অনুযায়ী</td>
+    <td><div align="center">৬</div></td>
+    <td>আর্থিক পরিসম্পদ হইতে আয় (ব্যাংক সুদ/মুনাফা, লভ্যাংশ, সঞ্চয়পত্র মুনাফা, সিকিউরিটিজ ইত্যাদি)</td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.income_financial_asset"></td>
+  </tr>
+  <tr>
+    <td><div align="center">৭</div></td>
+    <td>অন্যান্য উৎস হইতে আয় (রয়্যালটি, লাইসেন্স ফি, সম্মানী, ফি, সরকার প্রদত্ত নগদ ভর্তুকি ইত্যাদি)</td>
     <td>
       <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._9OtherSourceIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">১০</div></td>
-    <td>মোট (ক্রমিক ১ হতে ৯)</td>
-    <td >{{gotCandidate._10_1to9TotalTR=gotCandidate._1SalaryTR+gotCandidate._2SecurityTR+gotCandidate._3HouseIncomeTR+gotCandidate._4AgriIncomeTR+gotCandidate._5BusinessIncomeTR+gotCandidate._6FirmIncomeTR+gotCandidate._7HusbandWifeSonIncomeTR+gotCandidate._8CapitalProfitTR+gotCandidate._9OtherSourceIncomeTR}}</td>
+    <td><div align="center">৮</div></td>
+    <td>ফার্ম বা ব্যক্তিসংঘের আয়ের অংশ</td>
+    <td>
+      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._6FirmIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">১১</div></td>
-    <td>বিদেশ থেকে আয়</td>
+    <td><div align="center">৯</div></td>
+    <td>অপ্রাপ্ত বয়স্ক সন্তান, স্ত্রী বা স্বামীর আয় (করদাতা না হইলে)</td>
+    <td>
+      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._7HusbandWifeSonIncomeTR"></td>
+  </tr>
+  <tr>
+    <td><div align="center">১০</div></td>
+    <td>বিদেশে উদ্ভূত করযোগ্য আয়</td>
     <td>
       <input type="number" class="formtextbng extraborder"  ng-model="gotCandidate._11ForeignIncomeTR"></td>
   </tr>
   <tr>
-    <td><div align="center">১২</div></td>
-    <td>মোট আয় (ক্রমিক ১০ এবং ১১)</td>
-    <td >{{gotCandidate._12_10to11_totalTR=gotCandidate._10_1to9TotalTR+gotCandidate._11ForeignIncomeTR}}</td>
-  </tr>
-  <tr>
-    <td><div align="center">১৩   </div></td>
-    <td>মোট আয়ের উপর আরোপযোগ্য আয়কর</td>
-    <td>
-      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._13ApplicableTaxTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">১৪</div></td>
-    <td>কর রেয়াত: ধারা ৪৪(২)(বি) অনুযায়ী (তফসিল-৩ অনুসারে)</td>
-    <td>
-      <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._14TaxCommissionTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">১৫</div></td>
-    <td>প্রদেয় কর (ক্রমিক ১৩ ও ১৪ এর পার্থক্য)</td>
-    <td >{{gotCandidate._15_13_sub_14_givenTaxTR=gotCandidate._13ApplicableTaxTR-gotCandidate._14TaxCommissionTR}}</td>
-  </tr>
-  <tr>
-    <td><div align="center">১৬</div></td>
-    <td colspan="2">কর নির্ধারণ পূর্ব কর পরিশোধ:</td>
-  </tr>
-  <tr><td colspan="2" align="right">(ক)&nbsp; উৎস হত কর্তিত/সংগ্রহীত কর:(প্রামাণ্য দলিলপত্র/বিবরণী দাখিল করুন)</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._16_aReducedTaxTR"></td>
-  </tr>
-  <tr><td colspan="2" align="right">(খ)&nbsp; ধারা ৬৪/৬৮ অনুযায়ী প্রদত্ত অগ্রিম কর (চালান সংযুক্ত করুন)</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._16_bAdvancedTaxTR"></td>
-  </tr>
-  <tr><td colspan="2" align="right">(গ)&nbsp; এই রিটার্নের ভিত্তিতে প্রদত্ত কর (ধারা ৭৪) অনুযায়ী (চালান/পে অর্ডার/ব্যাংক ড্রাফট/চেক সংযুক্ত করুন)</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._16_cGivenTaxTR"></td>
-  </tr>
-  <tr><td colspan="2" align="right">(ঘ)&nbsp; প্রত্যর্পনযোগ্য করের সমন্বয়&nbsp; (যদি থাকে)</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._16_dBalanceTaxTR"></td>
-  </tr>
-  <tr><td colspan="2" align="right">মোট (ক), (খ), (গ) ও (ঘ)।</td>
-    <td>&nbsp; {{gotCandidate._16_abcdTotalTR=gotCandidate._16_aReducedTaxTR+gotCandidate._16_bAdvancedTaxTR+gotCandidate._16_cGivenTaxTR+gotCandidate._16_dBalanceTaxTR}}</td>
-  </tr>
-  <!--<tr>-->
-    <!--<td><div align="center">১৭</div></td>-->
-    <!--<td>ক্রমিক নং ১৫ ও ১৬ এর পার্থক্য (যদি থাকে)</td>-->
-    <!--<td>{{gotCandidate._17_sub_15_16_abcdTotalTR=gotCandidate._15_13_sub_14_givenTaxTR-gotCandidate._16_abcdTotalTR}}</td>-->
-  <!--</tr>-->
-  <tr>
-    <td><div align="center">১৭</div></td>
-    <td>কর অব্যাহতির ও করমুক্ত আয়ের পরিমাণ </td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._18_honorTaxTR"></td>
-  </tr>
-  <tr>
-    <td><div align="center">১৮</div></td>
-    <td>পূর্ববর্তী কর বৎসরে প্রদত্ত আয়কর</td>
-    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._19_previousTaxTR"></td>
+    <td><div align="center">১০</div></td>
+    <td>মোট আয় (ক্রমিক ১ হইতে ১০ এর সমষ্টি)</td>
+    <td >{{gotCandidate._10_1to9TotalTR=gotCandidate._1SalaryTR+gotCandidate._2SecurityTR+gotCandidate._3HouseIncomeTR+gotCandidate._4AgriIncomeTR+gotCandidate._5BusinessIncomeTR+gotCandidate._6FirmIncomeTR+gotCandidate._7HusbandWifeSonIncomeTR+gotCandidate._8CapitalProfitTR+gotCandidate._9OtherSourceIncomeTR}}</td>
   </tr>
   <tr>
     <td colspan="3" align="center"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
