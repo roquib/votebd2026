@@ -97,13 +97,15 @@
     border: none;
     flex-wrap: wrap;
     align-items: flex-start;">
-        <label>গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person">
-        <label>নারী</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person">
-        <label>তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.dignityTR.farm"> <br>
-        <label>প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.dignityTR.person_org">
-        <label>৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox" ng-model="gotCandidate.dignityTR.hindu">
+        <label>গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox"
+          ng-model="gotCandidate.dignityTR.gazetted_war_casualties">
+        <label>নারী</label><input type="checkbox" ng-model="gotCandidate.dignityTR.woman">
+        <label>তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.dignityTR.third_sex"> <br>
+        <label>প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.dignityTR.disabled_person">
+        <label>৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox"
+          ng-model="gotCandidate.dignityTR.taxpayer_aged_65_years_or_above">
         <label>প্রতিবন্ধী ব্যক্তির পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox"
-          ng-model="gotCandidate.dignityTR.hindu">
+          ng-model="gotCandidate.dignityTR.parents_or_legal_guardians_of_persons_with_disabilities">
       </td>
     </tr>
     <tr>
@@ -111,9 +113,9 @@
         <div align="center">৮</div>
       </td>
       <td>
-        <div align="left">ব্যবসা প্রতিষ্ঠান / নিয়োগকারীর নাম (প্রযোজ্য ক্ষেত্রে)</div>
+        <div align="left">জন্ম তারিখ</div>
       </td>
-      <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.businessNameTR"></td>
+      <td><input type="date" ng-model="gotCandidate.dobTR" placeholder="yyyy/mm/dd"></td>
     </tr>
     <tr>
       <td>
@@ -127,33 +129,6 @@
     <tr>
       <td>
         <div align="center">১০</div>
-      </td>
-      <td>
-        <div align="left">পিতার নাম</div>
-      </td>
-      <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.fatherNameTR"></td>
-    </tr>
-    <tr>
-      <td>
-        <div align="center">১১</div>
-      </td>
-      <td>
-        <div align="left">মাতার নাম</div>
-      </td>
-      <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.motherNameTR"></td>
-    </tr>
-    <tr>
-      <td>
-        <div align="center">১২</div>
-      </td>
-      <td>
-        <div align="left">জন্ম তারিখ (ব্যক্তির ক্ষেত্রে)</div>
-      </td>
-      <td><input type="date" ng-model="gotCandidate.dobTR" placeholder="yyyy/mm/dd"></td>
-    </tr>
-    <tr>
-      <td>
-        <div align="center">১৩</div>
       </td>
       <td>
         <div align="left">ঠিকানা : (ক). বর্তমান</div>
@@ -170,7 +145,7 @@
     </tr>
     <tr>
       <td>
-        <div align="center">১৪</div>
+        <div align="center"></div>
       </td>
       <td>
         <div align="left">টেলিফোন : অফিস / ব্যবসা </div>
@@ -179,7 +154,7 @@
     </tr>
     <tr>
       <td>
-        <div align="center">১৫</div>
+        <div align="center"></div>
       </td>
       <td>
         <div align="left">মোবাইল</div>
@@ -188,7 +163,7 @@
     </tr>
     <tr>
       <td>
-        <div align="center">১৬</div>
+        <div align="center"></div>
       </td>
       <td>
         <div align="left">ইমেইল</div>
@@ -197,26 +172,17 @@
     </tr>
     <tr>
       <td>
-        <div align="center">১৭</div>
-      </td>
-      <td>
-        <div align="left">ভ্যাট নিবন্ধন নম্বর (যদি থাকে)</div>
-      </td>
-      <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.VATNumberTR"></td>
-    </tr>
-    <tr>
-      <td>
-        <div align="center">১৮</div>
+        <div align="center">১১</div>
       </td>
       <td>
         <div align="left">চাকরিজীবী করদাতার ক্ষেত্রে নিয়োগকারী প্রতিষ্ঠানের নাম (একাধিক প্রতিষ্ঠান হইলে সর্বশেষ
           প্রতিষ্ঠানের নাম)</div>
       </td>
-      <td></td>
+      <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.email"></td>
     </tr>
     <tr>
       <td>
-        <div align="center">১৯</div>
+        <div align="center">১২</div>
       </td>
       <td>
         <div align="left">(ক) ব্যবস্য প্রতিষ্ঠানের নাম:</div>
@@ -225,28 +191,29 @@
     </tr>
     <tr>
       <td>
-        <div align="center">২০</div>
+        <div align="center"></div>
       </td>
       <td>
         <div align="left">(খ) ব্যবসায় নিবন্ধন নম্বর(BIN)(সমূহ)</div>
       </td>
-      <td><textarea type="text" class="formtextbng extraborder" ng-model="gotCandidate.business_org.name"></textarea>
+      <td><textarea type="text" class="formtextbng extraborder" ng-model="gotCandidate.business_org.bin"></textarea>
       </td>
-
     </tr>
     <tr>
       <td>
-        <div align="center">২১</div>
+        <div align="center">১৩</div>
       </td>
       <td>
         <div align="left">ফার্ম/ব্যক্তি সংঘের ক্ষেত্রে অংশীদার/সদস্যদের নাম ও টিআইএন (প্রয়োজনে পৃথক কাগজ ব্যবহার করুণ)
         </div>
       </td>
-      <td><textarea type="text" class="formtextbng extraborder" ng-model="gotCandidate.VATNumberTR"></textarea></td>
+      <td><textarea type="text" class="formtextbng extraborder"
+          ng-model="gotCandidate.name_and_tin_of_partners_members_in_case_of_firm_individual_association"></textarea>
+      </td>
     </tr>
     <tr>
-      <td colspan="3" align="center"><input class="formtextbng extraborder btn btn-primary" type="submit"
-          name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
+      <td colspan="4" style="text-align: center;" align="center"><input class="extraborder btn btn-primary"
+          type="submit" name="submit_b" style="width: 30%;" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
     </tr>
   </tbody>
 </table><!--PART-1-END-->
@@ -261,10 +228,6 @@
         </h1>
       </td>
     </tr>
-    <!--<tr>-->
-    <!--<td width="33%"><div align="left">করদাতার নাম</div></td>-->
-    <!--<td width="64%"><input type="text"  class="formtextbng extraborder" ng-model="gotCandidate.taxPayerNameTR2"></td>-->
-    <!--</tr>-->
     <tr>
       <td colspan="3" align="center">
         <input type="date" class=" extraborder" ng-model="gotCandidate.endDateTR" value="">&nbsp;তারিখে সমাপ্ত আয়
