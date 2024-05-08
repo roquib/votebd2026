@@ -811,6 +811,9 @@
     "taxPayerNameTR": {
       "type": "string"
     },
+    "TaxpayerPrivilegesTR": {
+      "type": "object"
+    },
     "dignityTR": {
       "type": "object"
     },
@@ -860,6 +863,18 @@
       "type": "string"
     },
     "phoneOfficeTR": {
+      "type": "string"
+    },
+    "mobileTR": {
+      "type": "string"
+    },
+    "emailTR": {
+      "type": "string"
+    },
+    "businessNameForJobTR": {
+      "type": "string"
+    },
+    "nameAndTinOfPartnersMembersInCaseOfFirmIndividualAssociationTR": {
       "type": "string"
     },
     "phoneResidenceTR": {

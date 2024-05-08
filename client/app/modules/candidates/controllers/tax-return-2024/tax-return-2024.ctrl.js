@@ -58,10 +58,6 @@
         this.submit = function () {
           //var _1a_personalIncomeTotalFSEE= 0, _1b_loanRelativeTotalFSEE=0, _1c_freeRelativeTotalFSEE=0, _1d_loanManTotalFSEE=0, _1e_freeManTotalFSEE=0, _1f_freePartyTotalFSEE=0, _1g_freeOtherTotalFSEE= 0;
 
-          function IsNumeric(input) {
-            return input - 0 == input && ("" + input).trim().length > 0;
-          }
-
           $scope.gotCandidate.statusTR = true;
           $scope.gotCandidate.isPublishedTR = true;
           $scope.gotCandidate.isNewFlagTR = true;
