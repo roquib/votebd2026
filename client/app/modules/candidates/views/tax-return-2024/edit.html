@@ -9,11 +9,16 @@
     </tr>
     <!--<tr><td colspan="3" align="center"><h3>পাতা ১</h3></td>-->
     <!--</tr>-->
+    <style>
+      .mr-1 {
+        margin-right: 5px !important;
+      }
+    </style>
     <tr>
       <td colspan="3">
-        <input ng-model="gotCandidate.taxfillTypeTR" type="radio" value="self" checked=""> স্বনির্ধারণী&nbsp;&nbsp;
-        <input ng-model="gotCandidate.taxfillTypeTR" type="radio" value="all">সার্বজনীন স্বনির্ধারণী&nbsp;&nbsp;
-        <input ng-model="gotCandidate.taxfillTypeTR" type="radio" value="normal">সাধারণ
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR1" type="radio" value="self" checked=""> <label for="taxfillTypeTR1">স্বনির্ধারণী&nbsp;&nbsp;</label>
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR2" type="radio" value="all"><label for="taxfillTypeTR2">সার্বজনীন স্বনির্ধারণী&nbsp;&nbsp;</label>
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR3" type="radio" value="normal"><label for="taxfillTypeTR3">সাধারণ</label>
       </td>
     </tr>
     <tr>
@@ -79,10 +84,10 @@
       <td style="display: flex;
     flex-wrap: wrap;
     align-items: flex-start;">
-        <input ng-model="gotCandidate.localityTR" style="padding-right:10px;" type="radio" value="local" checked="">
-        নিবাসী&nbsp;&nbsp;
-        <input ng-model="gotCandidate.localityTR" style="padding-left:10px;" type="radio" value="non_local">অনিবাসী
-        &nbsp;&nbsp;
+        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR1" style="padding-right:10px;" type="radio" value="local" checked="">
+        <label for="localityTR1">নিবাসী&nbsp;&nbsp;</label>
+        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR2" style="padding-left:10px;" type="radio" value="non_local"><label for="localityTR2">অনিবাসী
+          &nbsp;&nbsp;</label>
       </td>
     </tr>
     <tr>
@@ -97,15 +102,15 @@
     border: none;
     flex-wrap: wrap;
     align-items: flex-start;">
-        <label>গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox"
-          ng-model="gotCandidate.TaxpayerPrivilegesTR.gazetted_war_casualties">
-        <label>নারী</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.woman">
-        <label>তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.third_sex"> <br>
-        <label>প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.disabled_person">
-        <label>৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox"
-          ng-model="gotCandidate.TaxpayerPrivilegesTR.taxpayer_aged_65_years_or_above">
-        <label>প্রতিবন্ধী ব্যক্তির পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox"
-          ng-model="gotCandidate.TaxpayerPrivilegesTR.parents_or_legal_guardians_of_persons_with_disabilities">
+        <label for="gazetted_war_casualties">গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.gazetted_war_casualties" id="gazetted_war_casualties">
+        <label for="TaxpayerPrivilegesTR_woman">নারী</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.woman" id="TaxpayerPrivilegesTR_woman">
+        <label for="TaxpayerPrivilegesTR_third_sex">তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.third_sex" id="TaxpayerPrivilegesTR_third_sex"> <br>
+        <label for="TaxpayerPrivilegesTR_disabled_person">প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.disabled_person" id="TaxpayerPrivilegesTR_disabled_person">
+        <label for="taxpayer_aged_65_years_or_above">৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.taxpayer_aged_65_years_or_above" id="taxpayer_aged_65_years_or_above">
+        <div><label class="mr-1" for="parents_or_legal_guardians_of_persons_with_disabilities">প্রতিবন্ধী ব্যক্তির পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.parents_or_legal_guardians_of_persons_with_disabilities" id="parents_or_legal_guardians_of_persons_with_disabilities"></div>
       </td>
     </tr>
     <tr>
@@ -415,9 +420,9 @@
       </td>
       <td>মোট প্রদেয় কর (১৬+১৭+১৮)</td>
       <td>
-        Total tax payable
+        {{gotCandidate.totalTaxPayableTR=gotCandidate.taxPayableTR+gotCandidate._17_a_surchargePayableOnNetAssetsIfApplicableTR+gotCandidate._17_b_environmentSurchargeWhereApplicableTR+gotCandidate._18_lateInterestPenaltyOrAnyOtherAmountPayableUnderIncomeTaxActIfAnyTR}}
       </td>
-      <td>{{gotCandidate.totalTaxPayableTR=gotCandidate.taxPayableTR+gotCandidate._17_a_surchargePayableOnNetAssetsIfApplicableTR+gotCandidate._17_b_environmentSurchargeWhereApplicableTR+gotCandidate._18_lateInterestPenaltyOrAnyOtherAmountPayableUnderIncomeTaxActIfAnyTR}}</td>
+      <td></td>
     </tr>
     <tr>
       <td width="11%">
@@ -797,10 +802,10 @@
         </td>
       </tr>
       <tr>
-        <td><strong>সম্পত্তির অবস্থান, বিবরণ ও মালিকানার অংশ</strong></td>
-        <td><strong>মোট ভাড়া মূল্য পরিগণনা</strong></td>
-        <td><strong>টাকার পরিমাণ</strong></td>
-        <td><strong>টাকার পরিমাণ</strong></td>
+        <td width="15%"><strong>সম্পত্তির অবস্থান, বিবরণ ও মালিকানার অংশ</strong></td>
+        <td width="40%"><strong>মোট ভাড়া মূল্য পরিগণনা</strong></td>
+        <td width="25%"><strong>টাকার পরিমাণ</strong></td>
+        <td width="20%"><strong>টাকার পরিমাণ</strong></td>
       </tr>
       <tr>
         <td></td>
@@ -842,7 +847,7 @@
       </tr>
       <tr>
         <td></td>
-        <td colspan="2"><span>৭। অনুমোদনযোগ্য বিয়োজনসমূহ</span></td>
+        <td colspan="2"><strong><span>৭। অনুমোদনযোগ্য বিয়োজনসমূহ</span></strong></td>
         <td></td>
       </tr>
       <tr>
