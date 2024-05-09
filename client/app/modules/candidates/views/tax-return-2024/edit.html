@@ -16,9 +16,12 @@
     </style>
     <tr>
       <td colspan="3">
-        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR1" type="radio" value="self" checked=""> <label for="taxfillTypeTR1">স্বনির্ধারণী&nbsp;&nbsp;</label>
-        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR2" type="radio" value="all"><label for="taxfillTypeTR2">সার্বজনীন স্বনির্ধারণী&nbsp;&nbsp;</label>
-        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR3" type="radio" value="normal"><label for="taxfillTypeTR3">সাধারণ</label>
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR1" type="radio" value="self"
+          checked=""> <label for="taxfillTypeTR1">স্বনির্ধারণী&nbsp;&nbsp;</label>
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR2" type="radio" value="all"><label
+          for="taxfillTypeTR2">সার্বজনীন স্বনির্ধারণী&nbsp;&nbsp;</label>
+        <input ng-model="gotCandidate.taxfillTypeTR" class="mr-1" id="taxfillTypeTR3" type="radio" value="normal"><label
+          for="taxfillTypeTR3">সাধারণ</label>
       </td>
     </tr>
     <tr>
@@ -84,9 +87,11 @@
       <td style="display: flex;
     flex-wrap: wrap;
     align-items: flex-start;">
-        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR1" style="padding-right:10px;" type="radio" value="local" checked="">
+        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR1" style="padding-right:10px;" type="radio"
+          value="local" checked="">
         <label for="localityTR1">নিবাসী&nbsp;&nbsp;</label>
-        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR2" style="padding-left:10px;" type="radio" value="non_local"><label for="localityTR2">অনিবাসী
+        <input ng-model="gotCandidate.localityTR" class="mr-1" id="localityTR2" style="padding-left:10px;" type="radio"
+          value="non_local"><label for="localityTR2">অনিবাসী
           &nbsp;&nbsp;</label>
       </td>
     </tr>
@@ -104,13 +109,19 @@
     align-items: flex-start;">
         <label for="gazetted_war_casualties">গেজেটভুক্ত যুদ্ধাহত মুক্তিযোদ্ধা</label><input type="checkbox"
           ng-model="gotCandidate.TaxpayerPrivilegesTR.gazetted_war_casualties" id="gazetted_war_casualties">
-        <label for="TaxpayerPrivilegesTR_woman">নারী</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.woman" id="TaxpayerPrivilegesTR_woman">
-        <label for="TaxpayerPrivilegesTR_third_sex">তৃতীয় লিঙ্গ</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.third_sex" id="TaxpayerPrivilegesTR_third_sex"> <br>
-        <label for="TaxpayerPrivilegesTR_disabled_person">প্রতিবন্দী ব্যক্তি</label><input type="checkbox" ng-model="gotCandidate.TaxpayerPrivilegesTR.disabled_person" id="TaxpayerPrivilegesTR_disabled_person">
+        <label for="TaxpayerPrivilegesTR_woman">নারী</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.woman" id="TaxpayerPrivilegesTR_woman">
+        <label for="TaxpayerPrivilegesTR_third_sex">তৃতীয় লিঙ্গ</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.third_sex" id="TaxpayerPrivilegesTR_third_sex"> <br>
+        <label for="TaxpayerPrivilegesTR_disabled_person">প্রতিবন্দী ব্যক্তি</label><input type="checkbox"
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.disabled_person" id="TaxpayerPrivilegesTR_disabled_person">
         <label for="taxpayer_aged_65_years_or_above">৬৫ বৎসর বা তদূর্ধ্ব বয়সের করদাতা</label><input type="checkbox"
-          ng-model="gotCandidate.TaxpayerPrivilegesTR.taxpayer_aged_65_years_or_above" id="taxpayer_aged_65_years_or_above">
-        <div><label class="mr-1" for="parents_or_legal_guardians_of_persons_with_disabilities">প্রতিবন্ধী ব্যক্তির পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox"
-          ng-model="gotCandidate.TaxpayerPrivilegesTR.parents_or_legal_guardians_of_persons_with_disabilities" id="parents_or_legal_guardians_of_persons_with_disabilities"></div>
+          ng-model="gotCandidate.TaxpayerPrivilegesTR.taxpayer_aged_65_years_or_above"
+          id="taxpayer_aged_65_years_or_above">
+        <div><label class="mr-1" for="parents_or_legal_guardians_of_persons_with_disabilities">প্রতিবন্ধী ব্যক্তির
+            পিতামাতা বা আইনানুগ অভিভাবক</label><input type="checkbox"
+            ng-model="gotCandidate.TaxpayerPrivilegesTR.parents_or_legal_guardians_of_persons_with_disabilities"
+            id="parents_or_legal_guardians_of_persons_with_disabilities"></div>
       </td>
     </tr>
     <tr>
@@ -290,7 +301,7 @@
         <div align="center">৬</div>
       </td>
       <td>আর্থিক পরিসম্পদ হইতে আয় (ব্যাংক সুদ/মুনাফা, লভ্যাংশ, সঞ্চয়পত্র মুনাফা, সিকিউরিটিজ ইত্যাদি)</td>
-      <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.income_financial_asset"></td>
+      <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.incomeFinancialAssetTR"></td>
     </tr>
     <tr>
       <td>
@@ -334,7 +345,7 @@
       </td>
       <td>মোট আয় (ক্রমিক ১ হইতে ১০ এর সমষ্টি)</td>
       <td>
-        {{gotCandidate._10_1to9TotalTR=gotCandidate._1SalaryTR+gotCandidate._3HouseIncomeTR+gotCandidate._4AgriIncomeTR+gotCandidate._5BusinessIncomeTR+gotCandidate._8CapitalProfitTR+gotCandidate.income_financial_asset+gotCandidate._9OtherSourceIncomeTR+gotCandidate._6FirmIncomeTR+gotCandidate._7HusbandWifeSonIncomeTR+gotCandidate._11ForeignIncomeTR}}
+        {{gotCandidate._10_1to9TotalTR=gotCandidate._1SalaryTR+gotCandidate._3HouseIncomeTR+gotCandidate._4AgriIncomeTR+gotCandidate._5BusinessIncomeTR+gotCandidate._8CapitalProfitTR+gotCandidate.gotCandidate.incomeFinancialAssetTR+gotCandidate._9OtherSourceIncomeTR+gotCandidate._6FirmIncomeTR+gotCandidate._7HusbandWifeSonIncomeTR+gotCandidate._11ForeignIncomeTR}}
       </td>
     </tr>
     <tr>
@@ -350,7 +361,7 @@
       </td>
       <td>মোট কর পরিগণনাযোগ্য আয়ের উপর আরোপযোগ্য আয়কর</td>
       <td>
-        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._12ApplicableTaxTR">
+        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._13ApplicableTaxTR">
       </td>
     </tr>
     <tr>
@@ -359,7 +370,7 @@
       </td>
       <td>কর রেয়াত (এই রিটার্নের তফসিল ৫ অনুযায়ী)</td>
       <td>
-        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._13TaxCommissionTR">
+        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._14TaxCommissionTR">
       </td>
     </tr>
     <tr>
@@ -367,7 +378,8 @@
         <div align="center">১৪</div>
       </td>
       <td>রেয়াত-পরবর্তী প্রদেয় করদায় (১২-১৩)</td>
-      <td>{{gotCandidate.TaxPayableAfterConcessionTR=gotCandidate._12ApplicableTaxTR-gotCandidate._13TaxCommissionTR}}</td>
+      <td>{{gotCandidate.TaxPayableAfterConcessionTR=gotCandidate._13ApplicableTaxTR-gotCandidate._14TaxCommissionTR}}
+      </td>
     </tr>
     <tr>
       <td>
@@ -393,7 +405,8 @@
         নিট পরিসম্পদের জন্য প্রদেয় সারচার্জ (প্রযোজ্য ক্ষেত্রে)
       </td>
       <td>
-        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._17_a_surchargePayableOnNetAssetsIfApplicableTR">
+        <input type="number" class="formtextbng extraborder"
+          ng-model="gotCandidate._17_a_surchargePayableOnNetAssetsIfApplicableTR">
       </td>
     </tr>
     <tr>
@@ -402,7 +415,8 @@
       </td>
       <td>পরিবেশ সারচার্জ (প্রযোজ্য ক্ষেত্রে)</td>
       <td>
-        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._17_b_environmentSurchargeWhereApplicableTR">
+        <input type="number" class="formtextbng extraborder"
+          ng-model="gotCandidate._17_b_environmentSurchargeWhereApplicableTR">
       </td>
     </tr>
     <tr>
@@ -411,7 +425,8 @@
       </td>
       <td>বিলম্ব সুদ, জরিমানা অথবা আয়কর আইনের অধীন প্রদেয় অন্য কোনো অঙ্ক (যদি থাকে)</td>
       <td>
-        <input type="number" class="formtextbng extraborder" ng-model="gotCandidate._18_lateInterestPenaltyOrAnyOtherAmountPayableUnderIncomeTaxActIfAnyTR">
+        <input type="number" class="formtextbng extraborder"
+          ng-model="gotCandidate._18_lateInterestPenaltyOrAnyOtherAmountPayableUnderIncomeTaxActIfAnyTR">
       </td>
     </tr>
     <tr>
@@ -472,7 +487,9 @@
         <div align="center">২৪</div>
       </td>
       <td>প্রদত্ত কর (২০+২১+২২+২৩)</td>
-      <td>&nbsp; {{gotCandidate._16_abcdTotalTR=gotCandidate._16_aReducedTaxTR+gotCandidate._16_bAdvancedTaxTR+gotCandidate._16_cGivenTaxTR+gotCandidate._16_dBalanceTaxTR}}</td>
+      <td>&nbsp;
+        {{gotCandidate._16_abcdTotalTR=gotCandidate._16_aReducedTaxTR+gotCandidate._16_bAdvancedTaxTR+gotCandidate._16_cGivenTaxTR+gotCandidate._16_dBalanceTaxTR}}
+      </td>
     </tr>
     <tr>
       <td>
@@ -584,7 +601,8 @@
       </tr>
       <tr>
         <td>উৎসব ভাতা</td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1CommissionTR.income" size="20">
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1CommissionTR.income"
+            size="20">
         </td>
         <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1CommissionTR.reduceIncome"
             size="20"></td>
@@ -596,8 +614,8 @@
         <td>সহায়ক কর্মীর জন্য প্রদত্ত ভাতা</td>
         <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1BoyTR.income" size="20">
         </td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1BoyTR.reduceIncome"
-            size="20"></td>
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._1BoyTR.reduceIncome" size="20">
+        </td>
         <td>&nbsp;
           {{gotCandidate._1BoyTR.netIncome=gotCandidate._1TransportTR.income-gotCandidate._1BoyTR.reduceIncome}}
         </td>
@@ -632,10 +650,11 @@
       </tr>
       <tr>
         <td>বৈশাখী ভাতা</td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.boishakhi_allowance.income" size="20">
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.boishakhi_allowance.income"
+            size="20">
         </td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.boishakhi_allowance.reduceIncome"
-            size="20"></td>
+        <td><input type="number" class="formtextbng extraborder"
+            ng-model="gotCandidate.boishakhi_allowance.reduceIncome" size="20"></td>
         <td>&nbsp;
           {{gotCandidate.boishakhi_allowance.netIncome=gotCandidate.boishakhi_allowance.income-gotCandidate.boishakhi_allowance.reduceIncome}}
         </td>
@@ -652,8 +671,8 @@
       </tr>
       <tr>
         <td width="317">লাম্পগ্র্যান্ট</td>
-        <td width="206"><input type="number" class="formtextbng extraborder"
-            ng-model="gotCandidate.lumpgrantTR.income" size="20"></td>
+        <td width="206"><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.lumpgrantTR.income"
+            size="20"></td>
         <td width="195"><input type="number" class="formtextbng extraborder"
             ng-model="gotCandidate.lumpgrantTR.reduceIncome" size="20"></td>
         <td>&nbsp;
@@ -662,8 +681,8 @@
       </tr>
       <tr>
         <td width="317">গ্র্যাচুইটি</td>
-        <td width="206"><input type="number" class="formtextbng extraborder"
-            ng-model="gotCandidate.gratuityTR.income" size="20"></td>
+        <td width="206"><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.gratuityTR.income"
+            size="20"></td>
         <td width="195"><input type="number" class="formtextbng extraborder"
             ng-model="gotCandidate.gratuityTR.reduceIncome" size="20"></td>
         <td>&nbsp;
@@ -754,8 +773,8 @@
       </tr>
       <tr>
         <td>মোটরগাড়ি সুবিধা</td>
-        <td colspan="2"><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.automotiveFacilitiesTR"
-            size="20"></td>
+        <td colspan="2"><input type="number" class="formtextbng extraborder"
+            ng-model="gotCandidate.automotiveFacilitiesTR" size="20"></td>
         <td></td>
       </tr>
       <tr>
@@ -828,7 +847,8 @@
       <tr>
         <td></td>
         <td><span>৪। সমন্বয়কৃত অগ্রিম অঙ্ক</span></td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_1AdjustedAdvanceAmountTR"> </td>
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_1AdjustedAdvanceAmountTR">
+        </td>
         <td></td>
       </tr>
       <tr>
@@ -841,7 +861,9 @@
         <td></td>
         <td><span>৬। মোট ভাড়ামূল্য (১+২+৩)-৪-৫ </span></td>
         <td>
-          {{ gotCandidate._2_1TotalRentalPriceTR =  (gotCandidate._2_1AnnualIncomeTR + gotCandidate._2_1AdvanceIncomeTR + gotCandidate._2_1BenefitsIncomeTR) - gotCandidate._2_1AdjustedAdvanceAmountTR - gotCandidate._2_1VacancyAllowanceTR }}
+          {{ gotCandidate._2_1TotalRentalPriceTR = (gotCandidate._2_1AnnualIncomeTR + gotCandidate._2_1AdvanceIncomeTR +
+          gotCandidate._2_1BenefitsIncomeTR) - gotCandidate._2_1AdjustedAdvanceAmountTR -
+          gotCandidate._2_1VacancyAllowanceTR }}
         </td>
         <td></td>
       </tr>
@@ -853,7 +875,8 @@
       <tr>
         <td></td>
         <td>(ক) মেরামত আদায় ইত্যাদি</td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2e_receiptofRepairsTR" size="20">
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2e_receiptofRepairsTR"
+            size="20">
         </td>
         <td></td>
       </tr>
@@ -893,19 +916,22 @@
       <tr>
         <td></td>
         <td colspan="2" align="right">৮। মোট অনুমোদনযোগ্য বিয়োজন</td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2TotalAllowableDeductionsTR" size="20"></td>
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2TotalAllowableDeductionsTR"
+            size="20"></td>
       </tr>
       <tr>
         <td></td>
         <td colspan="2">৯। নীট আয় (ক্রমিক ৬ হইতে ক্রমিক ৮ এর বিয়োগফল)</td>
         <td>
-          {{ gotCandidate.rentNetIncomeTR = gotCandidate._2_1TotalRentalPriceTR - gotCandidate._2_2TotalAllowableDeductionsTR}}
+          {{ gotCandidate.rentNetIncomeTR = gotCandidate._2_1TotalRentalPriceTR -
+          gotCandidate._2_2TotalAllowableDeductionsTR}}
         </td>
       </tr>
       <tr>
         <td></td>
         <td colspan="2">১০। করদাতার অংশ (প্রযোজ্য ক্ষেত্রে)</td>
-        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2TaxpayerShareTR" size="20"></td>
+        <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate._2_2TaxpayerShareTR" size="20">
+        </td>
       </tr>
       <tr>
         <td colspan="4" align="center" style="font-size: 16px;text-align: center">
@@ -1023,7 +1049,8 @@
                 </td>
                 <td>নিট মুনাফা (ক্রমিক ২ হইতে ক্রমিক ৩ ও ৪ এর বিয়োগফল)</td>
                 <td>
-                  {{ gotCandidate.bussinessNetProfitTR =  gotCandidate._4b_GrossProfitTR - (gotCandidate._4c_all_expensesTR + gotCandidate._3d_DebtExpenditureTR)}}
+                  {{ gotCandidate.bussinessNetProfitTR = gotCandidate._4b_GrossProfitTR -
+                  (gotCandidate._4c_all_expensesTR + gotCandidate._3d_DebtExpenditureTR)}}
                 </td>
               </tr>
               <tr>
@@ -1069,7 +1096,8 @@
                 </td>
                 <td>মোট পরিসম্পদ (০৬+০৭+০৮+০৯)</td>
                 <td>
-                  {{ gotCandidate._3e_total_assetsTR = gotCandidate._3e_CashAndBankBalanceTR +  gotCandidate._3e_in_stockTR + gotCandidate._3e_fixed_assetsTR + gotCandidate._3e_OtherResourcesTR}}
+                  {{ gotCandidate._3e_total_assetsTR = gotCandidate._3e_CashAndBankBalanceTR +
+                  gotCandidate._3e_in_stockTR + gotCandidate._3e_fixed_assetsTR + gotCandidate._3e_OtherResourcesTR}}
                 </td>
               </tr>
               <tr>
@@ -1102,7 +1130,8 @@
                 </td>
                 <td>সমাপনী মূলধন (১১+১২-১৩) </td>
                 <td>
-                  {{ gotCandidate._3e_ClosingCapitalTR =gotCandidate._3e_InitialCapitalTR + gotCandidate._3e_NetProfitTR  - gotCandidate._3e_WithdrawalFromBusinessInIncomeYearTR}}
+                  {{ gotCandidate._3e_ClosingCapitalTR =gotCandidate._3e_InitialCapitalTR + gotCandidate._3e_NetProfitTR
+                  - gotCandidate._3e_WithdrawalFromBusinessInIncomeYearTR}}
                 </td>
               </tr>
               <tr>
@@ -1119,7 +1148,8 @@
                 </td>
                 <td>মোট পরিসম্পদ ও দায় (১৪+১৫) </td>
                 <td>
-                  {{ gotCandidate._3e_TotalAssetsAndLiabilitiesTR = gotCandidate._3e_ClosingCapitalTR + gotCandidate._3e_LiabilitiesTR }}
+                  {{ gotCandidate._3e_TotalAssetsAndLiabilitiesTR = gotCandidate._3e_ClosingCapitalTR +
+                  gotCandidate._3e_LiabilitiesTR }}
                 </td>
               </tr>
             </tbody>
@@ -1229,7 +1259,11 @@
                 </td>
                 <td>মোট বিনিয়োগ (ক্রমিক ১ হইতে ক্রমিক ১০ পর্যন্ত যোগফল)</td>
                 <td>
-                  {{ gotCandidate._3_totalInvestmentTR = gotCandidate._3a_lifeInsuranceTR + gotCandidate._3g_depositAmountTR + gotCandidate._3c_govtUnitMutualEtfsInvestTR + gotCandidate._3f_shareAmountTR +  gotCandidate._3e_provident_fund_act_TR + gotCandidate._3d_donationOwnAcctTR + gotCandidate._3e_ageAcctTR + gotCandidate._3h_welfareAmountTR + gotCandidate._3i_jakatAmountTR + gotCandidate._3j_othersAmountTR}}
+                  {{ gotCandidate._3_totalInvestmentTR = gotCandidate._3a_lifeInsuranceTR +
+                  gotCandidate._3g_depositAmountTR + gotCandidate._3c_govtUnitMutualEtfsInvestTR +
+                  gotCandidate._3f_shareAmountTR + gotCandidate._3e_provident_fund_act_TR +
+                  gotCandidate._3d_donationOwnAcctTR + gotCandidate._3e_ageAcctTR + gotCandidate._3h_welfareAmountTR +
+                  gotCandidate._3i_jakatAmountTR + gotCandidate._3j_othersAmountTR}}
                 </td>
               </tr>
               <tr>
@@ -1356,7 +1390,11 @@
                   <div align="center">মোট</div>
                 </td>
                 <td>
-                  {{ gotCandidate.totalLifeStyleCostTR =  gotCandidate._1_personalCostTR + gotCandidate._3_residentialCostTR + gotCandidate._4_vehicleCostTR + gotCandidate._3d_utilityExpenseCostTR +  gotCandidate._9_childEducationalExpenseTR + gotCandidate._10_travelExpenseTR + gotCandidate._11_festivalCostTR + gotCandidate._2_taxPaidLastYearTR + gotCandidate._3e_paymentsForInterestLoanCostTR }}
+                  {{ gotCandidate.totalLifeStyleCostTR = gotCandidate._1_personalCostTR +
+                  gotCandidate._3_residentialCostTR + gotCandidate._4_vehicleCostTR +
+                  gotCandidate._3d_utilityExpenseCostTR + gotCandidate._9_childEducationalExpenseTR +
+                  gotCandidate._10_travelExpenseTR + gotCandidate._11_festivalCostTR + gotCandidate._2_taxPaidLastYearTR
+                  + gotCandidate._3e_paymentsForInterestLoanCostTR }}
                 </td>
               </tr>
             </tbody>
@@ -1398,7 +1436,9 @@
               <tr>
                 <td></td>
                 <td><strong>মোট অর্জিত তহবিল</strong></td>
-                <td>{{gotCandidate._17_totalEarnedFunTR=gotCandidate._17_earnedFundTR.returnIncome+gotCandidate._17_earnedFundTR.taxFreeIncome+gotCandidate._17_earnedFundTR.otherIncome}}</td>
+                <td>
+                  {{gotCandidate._17_totalEarnedFunTR=gotCandidate._17_earnedFundTR.returnIncome+gotCandidate._17_earnedFundTR.taxFreeIncome+gotCandidate._17_earnedFundTR.otherIncome}}
+                </td>
               </tr>
               <tr>
                 <td>২।</td>
@@ -1410,7 +1450,8 @@
                 <td>৩।</td>
                 <td>অর্জিত তহবিল ও বিগত আয়বর্ষের শেষ তারিখের নীট সম্পদের যোগফল (১+২)</td>
                 <td>
-                  {{ gotCandidate.totalSumOfEarnedFundsAndNetAssetsInIncomeYearTR = gotCandidate._17_totalEarnedFunTR + gotCandidate._13_netAssetLastYearTR }}
+                  {{ gotCandidate.totalSumOfEarnedFundsAndNetAssetsInIncomeYearTR = gotCandidate._17_totalEarnedFunTR +
+                  gotCandidate._13_netAssetLastYearTR }}
                 </td>
               </tr>
               <tr>
@@ -1429,14 +1470,17 @@
                 <td></td>
                 <td><strong>মোট ব্যয় ও ক্ষতি</strong></td>
                 <td>
-                  {{ gotCandidate._15_total_familyExpenseCostTR = gotCandidate._15_familyExpenseTR.amount + gotCandidate._15_familyExpenseTR.otherDonationsExpendituresDamages}}
+                  {{ gotCandidate._15_total_familyExpenseCostTR = gotCandidate._15_familyExpenseTR.amount +
+                  gotCandidate._15_familyExpenseTR.otherDonationsExpendituresDamages}}
                 </td>
               </tr>
               <tr>
                 <td>৫।</td>
                 <td>এই আয়বর্ষের শেষ তারিখের নীট সম্পদ (৩-৪)</td>
                 <td>
-                  {{ gotCandidate.totalAssetsInIncomeYearTR = gotCandidate.totalSumOfEarnedFundsAndNetAssetsInIncomeYearTR - gotCandidate._15_total_familyExpenseCostTR }}
+                  {{ gotCandidate.totalAssetsInIncomeYearTR =
+                  gotCandidate.totalSumOfEarnedFundsAndNetAssetsInIncomeYearTR -
+                  gotCandidate._15_total_familyExpenseCostTR }}
                 </td>
               </tr>
               <tr>
@@ -1466,14 +1510,17 @@
                 <td></td>
                 <td>ব্যবসায় বহির্ভূত মোট দায়</td>
                 <td>
-                  {{ gotCandidate._11_totalLiabilitiesTR=gotCandidate._11_liabilitiesTR.mortgage+gotCandidate._11_liabilitiesTR.securities+gotCandidate._11_liabilitiesTR.other }}
+                  {{
+                  gotCandidate._11_totalLiabilitiesTR=gotCandidate._11_liabilitiesTR.mortgage+gotCandidate._11_liabilitiesTR.securities+gotCandidate._11_liabilitiesTR.other
+                  }}
                 </td>
               </tr>
               <tr>
                 <td>৭।</td>
                 <td>মোট পরিসম্পদ (ক্রমিক ৫ ও ক্রমিক ৬ এর যোগফল)</td>
                 <td>
-                  {{ gotCandidate.nonBusinesstotalAssets = gotCandidate._11_totalLiabilitiesTR + gotCandidate.totalAssetsInIncomeYearTR}}
+                  {{ gotCandidate.nonBusinesstotalAssets = gotCandidate._11_totalLiabilitiesTR +
+                  gotCandidate.totalAssetsInIncomeYearTR}}
                 </td>
               </tr>
               <tr>
@@ -1492,14 +1539,16 @@
                 <td></td>
                 <td>(বিয়োগ) ব্যবসায়িক দায় (প্রাতিষ্ঠানিক ও অপ্রাতিষ্ঠানিক)</td>
                 <td>
-                {{ gotCandidate._3e_BusinessLiabilities = gotCandidate._11_liabilitiesTR.mortgage + gotCandidate._11_liabilitiesTR.securities}}
+                  {{ gotCandidate._3e_BusinessLiabilities = gotCandidate._11_liabilitiesTR.mortgage +
+                  gotCandidate._11_liabilitiesTR.securities}}
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td>ব্যবসার মূলধন (পরিসম্পদ ও দায়ের পার্থক্য)</td>
                 <td>
-                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessBusinessCapitalTR = gotCandidate._1a_capitalTR - gotCandidate._3e_BusinessLiabilities }}
+                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessBusinessCapitalTR = gotCandidate._1a_capitalTR -
+                  gotCandidate._3e_BusinessLiabilities }}
                 </td>
               </tr>
               <tr>
@@ -1512,7 +1561,8 @@
                 <td></td>
                 <td>(গ) অংশীদারী ফার্মের মূলধনের জের</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.DueToTheCapitalOfThePartnershipFirm"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.DueToTheCapitalOfThePartnershipFirm">
+                </td>
               </tr>
               <tr>
                 <td></td>
@@ -1537,43 +1587,56 @@
                 <td></td>
                 <td>(অ) শেয়ার/ডিবেঞ্চার/বন্ড/সিকিউরিরিজ/ইউনিট সার্টিফিকেট ইত্যাদি</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._a_SharesDebenturesBondsSecuritiesUnitCertificates"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._a_SharesDebenturesBondsSecuritiesUnitCertificates">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(আ) সঞ্চয়পত্র/ডিপোজিট পেনশন স্কিম</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._b_SavingsDepositPensionScheme"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._b_SavingsDepositPensionScheme">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(ই) ঋণ প্রদান (ঋণ গ্রহণকারীর নাম ও এনআইডি উল্লেখ করুন)</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._c_LoanDisbursement"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._c_LoanDisbursement">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(ঈ) সঞ্চয়ী/মেয়াদি আমানত</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._d_SavingsFixedDeposits"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._d_SavingsFixedDeposits">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(উ) প্রভিডেন্ড ফান্ড বা অন্যান্য ফান্ড (যদি থাকে)</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._e_ProvidentFundOrOtherFunds"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._e_ProvidentFundOrOtherFunds">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(ঊ) অন্যান্য বিনিয়োগ</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._f_OtherInvestments"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._f_OtherInvestments">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>মোট আর্থিক সম্পদ</td>
                 <td>
-                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.totalFinancialAssets = gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._a_SharesDebenturesBondsSecuritiesUnitCertificates + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._b_SavingsDepositPensionScheme + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._c_LoanDisbursement + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._d_SavingsFixedDeposits + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._e_ProvidentFundOrOtherFunds + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._f_OtherInvestments}}
+                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.totalFinancialAssets =
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._a_SharesDebenturesBondsSecuritiesUnitCertificates
+                  +
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._b_SavingsDepositPensionScheme
+                  + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._c_LoanDisbursement +
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._d_SavingsFixedDeposits +
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._e_ProvidentFundOrOtherFunds
+                  + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.FinancialResources._f_OtherInvestments}}
                 </td>
               </tr>
               <tr>
@@ -1610,44 +1673,52 @@
                 <td></td>
                 <td>(অ) ব্যাংকে গচ্ছিত অর্থ</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._a_MoneyDepositedInTheBank"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._a_MoneyDepositedInTheBank">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(আ) হাতে নগদ</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._b_CashInHand"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._b_CashInHand">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>(ই) অন্যান্য অর্থ</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._c_OtherMeans"></td>
+                    ng-model="gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._c_OtherMeans">
+                </td>
               </tr>
               <tr>
                 <td></td>
                 <td>মোট আর্থিক সম্পদ</td>
                 <td>
-                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.totalNonBusinessCashAndFunds = gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._a_MoneyDepositedInTheBank + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._b_CashInHand + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._c_OtherMeans}}
+                  {{ gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.totalNonBusinessCashAndFunds =
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._a_MoneyDepositedInTheBank
+                  + gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._b_CashInHand +
+                  gotCandidate._3e_TotalLiabilitiesOutsideTheBusinessTR.NonBusinessCashAndFunds._c_OtherMeans}}
                 </td>
               </tr>
               <tr>
                 <td></td>
                 <td>বাংলাদেশে অবস্থিত মোট পরিসম্পদ</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate.TotalResourcesLocatedInBangladesh"></td>
+                    ng-model="gotCandidate.totalResourcesLocatedInBangladesh"></td>
               </tr>
               <tr>
                 <td>৯।</td>
                 <td>বাংলাদেশের বাহিরে অবস্থিত পরিসম্পদ (প্রযোজ্যতা অনুসারে)</td>
                 <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate.AssetsLocatedOutsideBangladesh"></td>
+                    ng-model="gotCandidate.assetsLocatedOutsideBangladesh"></td>
               </tr>
               <tr>
                 <td>১০।</td>
                 <td>বাংলাদেশে অবস্থিত ও বাংলাদেশের বাহিরে অবস্থিত মোট পরিসম্পদ (৮+৯)</td>
-                <td><input lang="en" type="number" class="formtextbng extraborder"
-                    ng-model="gotCandidate._3e_ageAcctTR"></td>
+                <td>
+                  {{ gotCandidate.totalAssetsInAndOutBD = gotCandidate.totalResourcesLocatedInBangladesh +
+                  gotCandidate.assetsLocatedOutsideBangladesh}}
+                </td>
               </tr>
             </tbody>
           </table>
