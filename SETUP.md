@@ -101,25 +101,75 @@ npm install loopback-connector-mongodb@5.5.0
 
 ## Running the Project
 
-### Development Mode (with auto-reload)
+### Option 1: Full Development Mode (Frontend + API with livereload)
 
 ```bash
-npm run dev
-```
-
-### Production Mode
-
-```bash
-npm start
-```
-
-### With Grunt (frontend livereload)
-
-```bash
+source ~/.nvm/nvm.sh && nvm use 12
 grunt serve
 ```
 
-The server will start at `http://localhost:3000`
+This starts:
+- **Frontend with livereload**: http://localhost:9003
+- **API Server**: http://localhost:3000
+
+### Option 2: API Server Only
+
+```bash
+source ~/.nvm/nvm.sh && nvm use 12
+npm run dev
+```
+
+- **API**: http://localhost:3000
+
+### Option 3: Production Mode
+
+```bash
+source ~/.nvm/nvm.sh && nvm use 12
+grunt build
+npm start
+```
+
+## Accessing the Admin Panel
+
+### Login URL
+
+Open your browser and go to:
+- http://localhost:9003 (if using `grunt serve`)
+- http://localhost:3000 (if using `npm run dev`)
+
+### Default Admin Credentials
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@admin.com | admin |
+| User | user@user.com | user |
+
+### Admin Panel Features
+
+After logging in as admin, you will have access to:
+
+1. **Dashboard** - Overview and statistics
+2. **Elections** - Manage election data
+3. **Candidates** - Manage candidate profiles and forms
+4. **Political Parties** - Manage party information
+5. **Users** - User management
+6. **Settings** - Application settings
+
+### Viewing the Affidavit Form (হলফনামা)
+
+1. Login as admin (`admin@admin.com` / `admin`)
+2. Navigate to **Candidates** from the sidebar
+3. Select a candidate from the list
+4. Click on the **হলফনামা (Affidavit)** tab
+
+The affidavit form contains:
+- Personal information (নাম, পিতার নাম, মাতার নাম, ঠিকানা)
+- National ID and voter information
+- Criminal case history
+- Dependents section
+- Income sources
+- Assets and liabilities
+- Signature section
 
 ## Environment Variables
 
@@ -135,15 +185,6 @@ The server will start at `http://localhost:3000`
 ```bash
 MONGODB_URL="mongodb://localhost:27017/votebd" INITDB=true npm run dev
 ```
-
-## Default Test Users
-
-After running with `INITDB=true`:
-
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@admin.com | admin |
-| User | user@user.com | user |
 
 ## API Endpoints
 
