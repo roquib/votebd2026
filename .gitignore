@@ -16,7 +16,6 @@ storage/
 providers.json
 client/app/bower_components
 client/app/images
-docs
 client/coverage
 .vagrant
 /.project
