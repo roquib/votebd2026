@@ -221,11 +221,44 @@ Add these fields to the Candidate model (`common/models/candidate.json`):
 
 ## Reference Images
 
-| Image | Content |
-|-------|---------|
-| halaf-01.png | Header, personal info, NID, voter, citizenship, tax info |
-| halaf-02.png | Criminal cases with court direction, dependents section |
-| halaf-03.png | Income sources, movable assets |
-| halaf-04.png | Movable assets (continued), immovable assets, liabilities |
-| halaf-05.png | Previous MP status, loans section |
-| halaf-06.png | Signature section with spouse name, notary details |
+All reference images are stored in `docs/images/` folder.
+
+### halaf-01.png
+Header, personal info, NID, voter, citizenship, tax info
+
+![halaf-01](images/halaf-01.png)
+
+---
+
+### halaf-02.png
+Criminal cases with court direction, dependents section
+
+![halaf-02](images/halaf-02.png)
+
+---
+
+### halaf-03.png
+Income sources, movable assets
+
+![halaf-03](images/halaf-03.png)
+
+---
+
+### halaf-04.png
+Movable assets (continued), immovable assets, liabilities
+
+![halaf-04](images/halaf-04.png)
+
+---
+
+### halaf-05.png
+Previous MP status, loans section
+
+![halaf-05](images/halaf-05.png)
+
+---
+
+### halaf-06.png
+Signature section with spouse name, notary details
+
+![halaf-06](images/halaf-06.png)
