@@ -8,6 +8,11 @@
   <tbody>
   <tr>
     <td>&nbsp;</td>
+    <td><div align="right">নির্বাচনী এলাকার নম্বর ও নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.constituencyNameNumberAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
     <td><div align="right">আমি (প্রার্থীর নাম):</div></td>
     <td><input class="formtextbng extraborder" ng-model="gotCandidate.candidateNameBnAF" size="50" type="text" ></td>
   </tr>
@@ -16,6 +21,16 @@
     <td><div align="right">জন্ম তারিখ(dd-mm-yyyy):</div></td>
     <td>
       <input class="formtextbng extraborder" ng-model="gotCandidate.candidateDateOfBirthBnAF" size="50" type="text" placeholder="dd-mm-yyyy" >
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">বয়স:</div></td>
+    <td>
+      <input class="formtextbng extraborder" ng-model="gotCandidate.ageYearsAF" size="10" type="text" placeholder="বৎসর"> বৎসর &nbsp;
+      <input class="formtextbng extraborder" ng-model="gotCandidate.ageMonthsAF" size="10" type="text" placeholder="মাস"> মাস &nbsp;
+      <input class="formtextbng extraborder" ng-model="gotCandidate.ageDaysAF" size="10" type="text" placeholder="দিন"> দিন
+      &nbsp;&nbsp; (মনোনয়নপত্র দাখিলের তারিখে)
     </td>
   </tr>
   <tr>
@@ -42,6 +57,40 @@
     <td>&nbsp;</td>
     <td><div align="right">স্থায়ী ঠিকানা:</div></td>
     <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.permanentAddressBnAF" cols="35" rows="2"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">জাতীয় পরিচয়পত্র নম্বর:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.nidNumberAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">আমি জন্ম নাগরিকত্বধারী:</div></td>
+    <td>
+      <label><input type="radio" ng-model="gotCandidate.isBirthCitizenAF" value="yes"> হ্যা</label> &nbsp;&nbsp;
+      <label><input type="radio" ng-model="gotCandidate.isBirthCitizenAF" value="no"> না</label>
+      &nbsp;&nbsp; (নির্বাচন করুন) &nbsp;&nbsp;
+      <span ng-show="gotCandidate.isBirthCitizenAF == 'yes'">তবে নাগরিকত্বধারী দেশের নাম: <input class="formtextbng extraborder" ng-model="gotCandidate.citizenCountryNameAF" size="20" type="text"></span>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">আমি পূর্বে জন্ম নাগরিকত্বধারী ছিলাম এবং তা পরিত্যাগ করিয়াছি:</div></td>
+    <td>
+      <label><input type="radio" ng-model="gotCandidate.wasPreviousCitizenAF" value="yes"> হ্যা</label> &nbsp;&nbsp;
+      <label><input type="radio" ng-model="gotCandidate.wasPreviousCitizenAF" value="no"> না</label>
+      &nbsp;&nbsp; (নির্বাচন করুন)
+    </td>
+  </tr>
+  <tr ng-show="gotCandidate.wasPreviousCitizenAF == 'yes'">
+    <td>&nbsp;</td>
+    <td><div align="right">নাগরিকত্বধারী দেশের নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.previousCitizenCountryAF" size="50" type="text" ></td>
+  </tr>
+  <tr ng-show="gotCandidate.wasPreviousCitizenAF == 'yes'">
+    <td>&nbsp;</td>
+    <td><div align="right">নাগরিকত্ব ত্যাগের তারিখ:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.citizenshipRenounceDate" size="50" type="text" placeholder="dd-mm-yyyy"></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -103,14 +152,18 @@
     </td>
   </tr>
   <tr>
+    <td colspan="3"><strong>অভিযোগসমূহ:</strong></td>
+  </tr>
+  <tr>
     <td>২</td>
-    <td colspan="3"><div align="left">ক. আমি বর্তমানে ফৌজদারী মামলায় অভিযুক্ত নহি
-      <input class="formtextbng extraborder" ng-model="gotCandidate.criminalCourtStatusAF"  type="checkbox" ng-checked="gotCandidate.criminalCourtStatusAF">
+    <td colspan="3"><div align="left">ক. আমি কখনই ফৌজদারি মামলায় অভিযুক্ত হইনি: যদি সঠিক হয়, টিক () চিহ্ন দিন
+      <label><input type="radio" ng-model="gotCandidate.neverChargedCriminalAF" value="yes"> হ্যা</label> &nbsp;
+      <label><input type="radio" ng-model="gotCandidate.neverChargedCriminalAF" value="no"> না</label>
     </div></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td colspan="2"><div align="left">খ. আমি বর্তমানে ফৌজদারী মামলায়অভিযুক্ত এবং উহার বিস্তারিত বিবরণ:</div> <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>  <span ng-click="ctrl.changeCaseListOrder('present_case')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span> </td>
+    <td colspan="2"><div align="left">খ. বর্তমানে আমার বিরুদ্ধে বিদ্যমান ফৌজদারি মামলার বিবরণ: <span ng-show="gotCandidate.neverChargedCriminalAF == 'yes'">প্রযোজ্য নয়।</span></div> <span ng-click="ctrl.submit()" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-floppy-o"></i> Save Order</span>  <span ng-click="ctrl.changeCaseListOrder('present_case')" class="pull-right btn btn-xs ng-binding btn-success"><i class="fa fa-arrows-v"></i> Change Order</span> </td>
   </tr>
   <tr><td  class="tdvalign">
     <a class="btn btn-success" ng-click="ctrl.add_lawPresentAF()" title="ADD MORE FIELD ">
@@ -136,6 +189,11 @@
       </tr>
       </tbody>
     </table>  </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">মামলার মোট সংখ্যা:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.totalPresentCasesAF" size="20" type="text"></td>
   </tr>
   <tr>
     <td>৩</td>
