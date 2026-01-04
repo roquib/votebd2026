@@ -645,50 +645,191 @@
   <tbody><tr>
     <td align="center"><h1>হলফনামা &nbsp; &nbsp; অংশ/পাতা - (৩)</h1></td>
   </tr>
-  <tr>
-    <td align="center">(গ) দায়-দেনাসমূহ</td>
-  </tr>
-  </tbody></table>
-
-
-
-<table class="table table-bordered">
-  <tbody><tr>
-    <td width="29%" align="center">&nbsp;</td>
-    <td width="29%" align="center">দায় সমূহের প্রকৃতি ও বর্ণনা</td>
-    <td width="29%" align="center">পরিমান <span style="color:#FF0000; font-weight:bold;">(ইংরেজীতে)</span></td>
-    <td width="42%">&nbsp;</td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.liabilitiesDetailsBnAF" cols="40" rows="4" ></textarea></td>
-    <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="gotCandidate.liabilitiesAmountAF" cols="40" rows="4" /></td>
-    <td>&nbsp;</td>
-  </tr>
   </tbody></table>
 
 <table class="table table-bordered">
-  <tbody id="item7">
+  <tbody>
   <tr>
-    <td width="4%"><div align="center">৭ </div></td>
-    <td colspan="3"><div align="left">ক. আমি ইতিপুর্বে জাতীয় সংসদের সদস্য নির্বাচিত হই নাই [
-      <input class="formtextbng extraborder" ng-model="gotCandidate.isPastMpAF"  type="checkbox" ng-checked="gotCandidate.isPastMpAF">
-      ] </div></td>
+    <td colspan="5"><strong>(গ) (১) দায়:</strong></td>
   </tr>
   <tr>
-    <td><div align="center"></div></td>
-    <td colspan="3"><div align="left">খ.  আমি ইতিপুর্বে জাতীয় সংসদের সদস্য নির্বাচিত হইয়াছিলাম। নির্বাচনের পুর্বে আমার দ্বারা ভোটারদেরকে প্রদত্ত প্রতিশ্রুতি এবং উহার কি পরিমাণ অর্জন সম্ভব হইয়াছিল তাহার বিবরণ (প্রযোজ্য ক্ষেত্রে)</div></td>
+    <td width="8%" align="center">ক্রমিক</td>
+    <td width="20%" align="center">আমার/আমার পরিবার</td>
+    <td width="24%" align="center">দায়ের ধরন/প্রকৃতি</td>
+    <td width="24%" align="center">দায়ের বিবরণ</td>
+    <td width="24%" align="center">পরিমাণ <span style="color:#FF0000;">(ইংরেজীতে)</span></td>
+  </tr>
+  <tr>
+    <td align="center">১</td>
+    <td>আমার নামে</td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability1TypeAF" size="20"></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability1DescAF" size="20"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.liability1AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">২</td>
+    <td>স্বামী/স্ত্রীর নামে</td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability2TypeAF" size="20"></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability2DescAF" size="20"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.liability2AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">৩</td>
+    <td>সন্তানের নামে</td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability3TypeAF" size="20"></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability3DescAF" size="20"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.liability3AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">৪</td>
+    <td>নির্ভরশীলদের নামে</td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability4TypeAF" size="20"></td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.liability4DescAF" size="20"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.liability4AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><small>(এই বিবৃতি জমা দেওয়ার সময় প্রয়োজনে অতিরিক্ত নথি সংযুক্ত করা যাইতে পারে।)</small></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td colspan="5"><strong>(গ) (২) সরকারি পাওনাদি:</strong></td>
+  </tr>
+  <tr>
+    <td width="8%" align="center">ক্রমিক</td>
+    <td width="20%" align="center">আমার/আমার পরিবার</td>
+    <td width="24%" align="center">বিবরণ</td>
+    <td width="24%" align="center">বর্তমান নয়</td>
+    <td width="24%" align="center">পরিমাণ <span style="color:#FF0000;">(ইংরেজীতে)</span></td>
+  </tr>
+  <tr>
+    <td align="center">১</td>
+    <td>আমার নামে</td>
+    <td>
+      <select ng-model="gotCandidate.govDues1TypeAF">
+        <option value="বাসভবন">বাসভবন</option>
+        <option value="যানবাহন">যানবাহন</option>
+        <option value="টেলিফোন">টেলিফোন</option>
+        <option value="বিদ্যুৎ">বিদ্যুৎ</option>
+        <option value="পৌর-কর">পৌর-কর</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.govDues1CurrentAF" size="15"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.govDues1AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">২</td>
+    <td>স্বামী/স্ত্রীর নামে</td>
+    <td>
+      <select ng-model="gotCandidate.govDues2TypeAF">
+        <option value="বাসভবন">বাসভবন</option>
+        <option value="যানবাহন">যানবাহন</option>
+        <option value="টেলিফোন">টেলিফোন</option>
+        <option value="বিদ্যুৎ">বিদ্যুৎ</option>
+        <option value="পৌর-কর">পৌর-কর</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.govDues2CurrentAF" size="15"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.govDues2AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">৩</td>
+    <td>সন্তানের নামে</td>
+    <td>
+      <select ng-model="gotCandidate.govDues3TypeAF">
+        <option value="বাসভবন">বাসভবন</option>
+        <option value="যানবাহন">যানবাহন</option>
+        <option value="টেলিফোন">টেলিফোন</option>
+        <option value="বিদ্যুৎ">বিদ্যুৎ</option>
+        <option value="পৌর-কর">পৌর-কর</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.govDues3CurrentAF" size="15"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.govDues3AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td align="center">৪</td>
+    <td>নির্ভরশীলদের নামে</td>
+    <td>
+      <select ng-model="gotCandidate.govDues4TypeAF">
+        <option value="বাসভবন">বাসভবন</option>
+        <option value="যানবাহন">যানবাহন</option>
+        <option value="টেলিফোন">টেলিফোন</option>
+        <option value="বিদ্যুৎ">বিদ্যুৎ</option>
+        <option value="পৌর-কর">পৌর-কর</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+    <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.govDues4CurrentAF" size="15"></td>
+    <td><input type="number" class="formtextbng extraborder" ng-model="gotCandidate.govDues4AmountAF" size="15"></td>
+  </tr>
+  <tr>
+    <td colspan="5"><small>*স্বামী/স্ত্রী, পুত্র/কন্যা এবং পিতা/মাতাসহ আমার উপর নির্ভরশীলদের জন্য পৃথকভাবে সরকারের পাওনাদির বিবৃতি জমা দিতে হবে। প্রয়োজনে অতিরিক্ত নথি সংযুক্ত করা যাইতে পারে।</small></td>
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-bordered">
+  <tbody>
+  <tr>
+    <td colspan="4"><strong>৮. প্রতিনিধিত্বের ইতিহাস:</strong></td>
+  </tr>
+  <tr>
+    <td width="4%">&nbsp;</td>
+    <td colspan="3"><div align="left">ক. আমি কখনো জাতীয় সংসদ সদস্য হিসেবে নির্বাচিত হইনি। যদি সঠিক হয়, (√)
+      &nbsp;&nbsp;
+      <label><input type="radio" ng-model="gotCandidate.neverElectedMpAF" value="yes"> হ্যা</label> &nbsp;&nbsp;
+      <label><input type="radio" ng-model="gotCandidate.neverElectedMpAF" value="no"> না</label>
+    </div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="3"><div align="left">খ. আমি পূর্বে সংসদ সদস্য হিসেবে নির্বাচিত হইয়াছিলাম:</div></td>
+  </tr>
+  <tr>
+    <td class="tdvalign">
+      <a class="btn btn-success" ng-click="ctrl.add_electionHistoryAF()" title="ADD MORE FIELD">
+        <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_electionHistoryAF();" title="DELETE LAST FIELD">
+        <i class="fa fa-minus"></i></a>
+    </td>
+    <td colspan="3">
+      <table class="table table-bordered">
+        <tr>
+          <td width="10%" align="center">ক্রমিক নং</td>
+          <td width="30%" align="center">নির্বাচনের বছর</td>
+          <td width="30%" align="center">নির্বাচনী এলাকা</td>
+          <td width="30%" align="center">দলীয় নাম/স্বতন্ত্র</td>
+        </tr>
+        <tr ng-repeat="eh in gotCandidate.electionHistoryAF">
+          <td align="center">{{($index+1) | translate}}</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="eh.electionYear" size="15"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="eh.constituency" size="20"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="eh.partyName" size="20"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="3"><div align="left">গ. পূর্ববর্তী নির্বাচনে নির্বাচিত হওয়ার আগে ভোটারদের কাছে করা আমার প্রতিশ্রুতি এবং পূরণকৃত প্রতিশ্রুতির বিবরণ (প্রযোজ্য ক্ষেত্রে):</div></td>
   </tr>
   <tr>
     <td><div align="center"></div></td>
     <td>
-    <table  class="table table-bordered">
-      <tr>
-        <td>ক্রমিক</td>
-        <td>প্রতিশ্রুতিসমূহ</td>
-        <td>অর্জনসমূহ</td>
-      </tr>
-      <tr  ng-repeat="coac in gotCandidate.commitmentAndAchievementWhileMpAF">
+    <table class="table table-bordered">
+        <tr>
+          <td width="10%" align="center">ক্রমিক নং</td>
+          <td width="45%" align="center">নির্বাচনপূর্ব প্রতিশ্রুতিসমূহ</td>
+          <td width="45%" align="center">অর্জনসমূহ</td>
+        </tr>
+        <tr ng-repeat="coac in gotCandidate.commitmentAndAchievementWhileMpAF">
         <td>{{($index+1) | translate}}</td>
         <td>
             <select ng-model="coac.commitment">

@@ -189,6 +189,16 @@
           $scope.gotCandidate.dependentsAF.pop();
         };
 
+        this.add_electionHistoryAF = function () {
+          if (!$scope.gotCandidate.hasOwnProperty("electionHistoryAF"))
+            $scope.gotCandidate.electionHistoryAF = [];
+
+          $scope.gotCandidate.electionHistoryAF.push({});
+        };
+        this.delete_electionHistoryAF = function () {
+          $scope.gotCandidate.electionHistoryAF.pop();
+        };
+
         /*===========ChangeOrder==============*/
         this.changeCaseListOrder = function (whichCase) {
           if (whichCase == "past_case") {
