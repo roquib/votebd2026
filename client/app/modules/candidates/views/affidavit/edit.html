@@ -8,63 +8,30 @@
   <tbody>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="right">নাম:</div></td>
+    <td><div align="right">আমি (প্রার্থীর নাম):</div></td>
     <td><input class="formtextbng extraborder" ng-model="gotCandidate.candidateNameBnAF" size="50" type="text" ></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
-    <td><div align="right">প্রচার নাম:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.campaignNameBnAF" size="50" type="text" placeholder="প্রচারিত/পরিচিত নাম"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">পিতার নাম:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.fatherNameBnAF" size="50" type="text" ></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">মা/স্বামীর নাম:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.motherHusbandNameBnAF" size="50" type="text" ></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">বর্তমান ঠিকানা:</div></td>
-    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.presentAddressBnAF" cols="35" rows="2" placeholder="বাসা নং, রোড, এলাকা, থানা, জেলা"></textarea></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">স্থায়ী ঠিকানা:</div></td>
-    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.permanentAddressBnAF" cols="35" rows="2" placeholder="গ্রাম/মহল্লা, ডাকঘর, উপজেলা, জেলা"></textarea></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">জাতীয় পরিচয়পত্র আছে কি:</div></td>
-    <td>
-      <label><input type="radio" ng-model="gotCandidate.hasNationalIdAF" ng-value="true"> হ্যাঁ</label> &nbsp;&nbsp;
-      <label><input type="radio" ng-model="gotCandidate.hasNationalIdAF" ng-value="false"> না</label>
-      &nbsp;&nbsp; <span ng-show="gotCandidate.hasNationalIdAF">নং: <input class="formtextbng extraborder" ng-model="gotCandidate.nationalIdNumberAF" size="20" type="text"></span>
-    </td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">ভোটার নম্বর:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.voterNumberAF" size="50" type="text"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">অতীতে কি নাগরিকত্ব ত্যাগ করেছেন:</div></td>
-    <td>
-      <label><input type="radio" ng-model="gotCandidate.abandonedCitizenshipAF" ng-value="true"> হ্যাঁ</label> &nbsp;&nbsp;
-      <label><input type="radio" ng-model="gotCandidate.abandonedCitizenshipAF" ng-value="false"> না</label>
-      &nbsp;&nbsp; <span ng-show="gotCandidate.abandonedCitizenshipAF">আগের দেশ: <input class="formtextbng extraborder" ng-model="gotCandidate.previousCountryAF" size="20" type="text"></span>
-    </td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">জন্ম তারিখ (dd-mm-yyyy):</div></td>
+    <td><div align="right">জন্ম তারিখ(dd-mm-yyyy):</div></td>
     <td>
       <input class="formtextbng extraborder" ng-model="gotCandidate.candidateDateOfBirthBnAF" size="50" type="text" placeholder="dd-mm-yyyy" >
     </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">পিতা/স্বামীর নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.fatherHusbandNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">মাতার নাম:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.motherNameBnAF" size="50" type="text" ></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">ঠিকানা:</div></td>
+    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.addressBnAF" cols="35" rows="2"></textarea></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
@@ -98,44 +65,9 @@
     <td align="right"><div align="right">
       <input class="formtextbng extraborder" ng-model="gotCandidate.seatInfoBnAF" size="30" type="text">
     </div></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">নির্বাচনী এলাকার নাম ও নং:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.electoralAreaNameAF" size="50" type="text" placeholder="নির্বাচনী এলাকার নাম"></td>
-  </tr>
-  <tr>
-    <td colspan="3"><strong>আয়কর ফাইল জমার তথ্য:</strong></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">১) আয়কর ফাইল জমার তারিখ ও বছর:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.incomeTaxFile1AF" size="50" type="text" placeholder="তারিখ ও বছর"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">২) আয়কর ফাইল জমার তারিখ ও বছর:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.incomeTaxFile2AF" size="50" type="text" placeholder="তারিখ ও বছর"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">৩) আয়কর ফাইল জমার তারিখ ও বছর:</div></td>
-    <td><input class="formtextbng extraborder" ng-model="gotCandidate.incomeTaxFile3AF" size="50" type="text" placeholder="তারিখ ও বছর"></td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td colspan="2">
-      <label><input type="checkbox" ng-model="gotCandidate.willSubmitCertificatesAF"> আগামী সংসদে নির্বাচিত হলে আপনি সার্টিফিকেটের সকল কপি জমা দেওয়ার অঙ্গীকার করছেন</label>
-    </td>
-  </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td><div align="right">আমি বর্তমানে সৌজন্যে সদস্য:</div></td>
-    <td>
-      <label><input type="radio" ng-model="gotCandidate.isCurrentCourtesyMemberAF" ng-value="true"> হ্যাঁ</label> &nbsp;&nbsp;
-      <label><input type="radio" ng-model="gotCandidate.isCurrentCourtesyMemberAF" ng-value="false"> না</label>
-      &nbsp;&nbsp; <span ng-show="gotCandidate.isCurrentCourtesyMemberAF">বিবরণ: <input class="formtextbng extraborder" ng-model="gotCandidate.courtesyMemberDetailsAF" size="30" type="text"></span>
-    </td>
+    <!--<td>আসনে&nbsp;&nbsp;-->
+      <!--<select ng-options="item.id as item.postNameBn for item in electionCandidatePosts" ng-model="gotCandidate.electionCandidatePostId"></select>-->
+      <!--পদে নির্বাচনে প্রার্থীরূপে প্রতিদ্বন্দ্বিতা করিতে ইচ্ছুক।</td>-->
   </tr>
   <tr>
     <td>১</td>
@@ -179,20 +111,18 @@
     <td colspan="2"><table class="table table-bordered">
       <tbody id="present_cases" ui-sortable ng-model="gotCandidate.lawPresentAF">
       <tr>
-        <td width="5%" height="30">ক্রমিক নং</td>
-        <td width="25%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
-        <td width="15%" align="center">মামলা নম্বর</td>
-        <td width="20%" align="center">যে আদালত মামলাটি আমলে নিয়াছে</td>
-        <td width="15%" align="center">আদালত নির্দেশনা</td>
-        <td width="20%" align="center">মামলার বর্তমান অবস্থা/ফলাফল</td>
+        <td width="7%" height="30">ক্রমিক নং</td>
+        <td width="32%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
+        <td width="28%" align="center">যে আদালত মামলাটি আমলে নিয়াছে </td>
+        <td width="16%" align="center">মামলা নম্বর</td>
+        <td width="17%" align="center">মামলার বর্তমান অবস্থা</td>
       </tr>
       <tr ng-repeat="lpr in gotCandidate.lawPresentAF">
         <td height="34" align="center" style="cursor: move;">{{($index+1)|translate}}</td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.whichLaw"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="10" ng-model="lpr.courtFileNo"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.whichCourt"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="10" ng-model="lpr.courtDirection"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichLaw"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichCourt"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.courtFileNo"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
       </tr>
       </tbody>
     </table>  </td>
@@ -216,21 +146,19 @@
         </td>
       </tr>
       <tr>
-        <td width="5%" height="30">ক্রমিক নং</td>
-        <td width="25%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
-        <td width="15%" align="center">মামলা নম্বর</td>
-        <td width="20%" align="center">যে আদালত মামলাটি আমলে নিয়াছে</td>
-        <td width="15%" align="center">আদালত নির্দেশনা</td>
-        <td width="20%" align="center">মামলার ফলাফল</td>
+        <td width="7%" height="30">ক্রমিক নং</td>
+        <td width="32%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
+        <td width="28%" align="center">যে আদালত মামলাটি আমলে নিয়াছে </td>
+        <td width="16%" align="center">মামলা নম্বর</td>
+        <td width="17%" align="center">মামলার ফলাফল </td>
       </tr>
 
       <tr ng-repeat="lpr in gotCandidate.lawPastAF">
         <td height="34" align="center" style="cursor: move;">{{($index+1)|translate}}</td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.whichLaw"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="10" ng-model="lpr.courtFileNo"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.whichCourt"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="10" ng-model="lpr.courtDirection"></textarea></td>
-        <td><textarea class="formtextbng extraborder" cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichLaw"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichCourt"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.courtFileNo"></textarea></td>
+        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
       </tr>
       </tbody>
     </table>	</td></tr>
@@ -256,54 +184,8 @@
       </select>
     </div></td>
   </tr><tr>
-  </tr>
-  <tr>
+  </tr><tr>
     <td>৫</td>
-    <td colspan="2"><div align="left"><strong>আমার উপর নির্ভরশীল ব্যক্তিবর্গ:</strong></div></td>
-  </tr>
-  <tr>
-    <td class="tdvalign">
-      <a class="btn btn-success" ng-click="ctrl.add_dependentsAF()" title="ADD MORE FIELD">
-        <i class="fa fa-plus"></i></a>&nbsp;
-      <a class="btn btn-danger" ng-click="ctrl.delete_dependentsAF();" title="DELETE LAST FIELD">
-        <i class="fa fa-minus"></i></a>
-    </td>
-    <td colspan="2">
-      <table class="table table-bordered">
-        <tbody>
-        <tr>
-          <td width="5%" align="center">ক্রম</td>
-          <td width="25%" align="center">নাম</td>
-          <td width="20%" align="center">সম্পর্ক</td>
-          <td width="20%" align="center">জন্ম তারিখ</td>
-          <td width="10%" align="center">বয়স</td>
-          <td width="20%" align="center">মন্তব্য</td>
-        </tr>
-        <tr ng-repeat="dependent in gotCandidate.dependentsAF">
-          <td>{{($index+1)|translate}}</td>
-          <td><input class="formtextbng extraborder" ng-model="dependent.name" type="text"></td>
-          <td>
-            <select ng-model="dependent.relationship">
-              <option value="spouse">স্বামী/স্ত্রী</option>
-              <option value="son">পুত্র</option>
-              <option value="daughter">কন্যা</option>
-              <option value="father">পিতা</option>
-              <option value="mother">মাতা</option>
-              <option value="brother">ভাই</option>
-              <option value="sister">বোন</option>
-              <option value="other">অন্যান্য</option>
-            </select>
-          </td>
-          <td><input class="formtextbng extraborder" ng-model="dependent.dateOfBirth" type="text" placeholder="dd-mm-yyyy"></td>
-          <td><input class="formtextbng extraborder" ng-model="dependent.age" type="number" style="width:60px"></td>
-          <td><input class="formtextbng extraborder" ng-model="dependent.remarks" type="text"></td>
-        </tr>
-        </tbody>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td>৬</td>
     <td colspan="2"><div align="left">আমার এবং আমার উপর নির্ভরশীলদের আয়ের উৎস/উৎসসমূহ:(ইংরেজীতে)</div></td>
   </tr>
   <tr>
@@ -703,24 +585,16 @@
     <td align="left"><input class="formtextbng extraborder" type="text" size="50" readonly="readonly" ng-model="gotCandidate.candidateNameBnAF" ></td>
   </tr>
   <tr>
+    <td>পিতা / স্বামীর নাম</td>
+    <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.fatherHusbandNameBnAF"  readonly="readonly" ></td>
+  </tr>
+  <tr>
     <td>মাতার নাম</td>
     <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.motherNameBnAF" readonly="readonly" ></td>
   </tr>
   <tr>
-    <td>পিতার নাম</td>
-    <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.fatherNameBnAF" readonly="readonly" ></td>
-  </tr>
-  <tr>
-    <td>স্বামী/স্ত্রীর নাম</td>
-    <td align="left"><input class="formtextbng extraborder" type="text" size="50" ng-model="gotCandidate.spouseNameAF"></td>
-  </tr>
-  <tr>
-    <td>বর্তমান ঠিকানা</td>
-    <td align="left"><textarea class="formtextbng extraborder" ng-model="gotCandidate.presentAddressBnAF" cols="55" rows="2" readonly="readonly"></textarea></td>
-  </tr>
-  <tr>
-    <td>স্থায়ী ঠিকানা</td>
-    <td align="left"><textarea class="formtextbng extraborder" ng-model="gotCandidate.permanentAddressBnAF" cols="55" rows="2" readonly="readonly"></textarea></td>
+    <td>ঠিকানা : </td>
+    <td align="left"> <textarea class="formtextbng extraborder" ng-model="gotCandidate.addressBnAF" cols="55" rows="3"  readonly="readonly">।</textarea></td>
   </tr>
   <tr>
     <td>যিনি জনাব / বেগম ( সাক্তকারীর নাম )</td>
