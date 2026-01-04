@@ -214,79 +214,223 @@
         </td>
       </tr>
       <tr>
-        <td width="7%" height="30">ক্রমিক নং</td>
-        <td width="32%" align="center">যে আইন ও আইনের ধারায় মামলাদায়ের করা হইয়াছে</td>
-        <td width="28%" align="center">যে আদালত মামলাটি আমলে নিয়াছে </td>
-        <td width="16%" align="center">মামলা নম্বর</td>
-        <td width="17%" align="center">মামলার ফলাফল </td>
+        <td width="5%" height="30">ক্রমিক নং</td>
+        <td width="25%" align="center">যে আইন ও আইনের ধারায় মামলা দায়ের করা হইয়াছে</td>
+        <td width="20%" align="center">যে আদালতে মামলাটি দায়ের করা হইয়াছে</td>
+        <td width="12%" align="center">মামলা নম্বর</td>
+        <td width="12%" align="center">মামলা দায়েরের বছর</td>
+        <td width="12%" align="center">মামলা নিষ্পত্তি বছর</td>
+        <td width="14%" align="center">মামলার ফলাফল</td>
       </tr>
 
       <tr ng-repeat="lpr in gotCandidate.lawPastAF">
         <td height="34" align="center" style="cursor: move;">{{($index+1)|translate}}</td>
-        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichLaw"></textarea></td>
-        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.whichCourt"></textarea></td>
-        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.courtFileNo"></textarea></td>
-        <td><textarea class="formtextbng extraborder"  cols="15" ng-model="lpr.currentStatusResult"></textarea></td>
+        <td><textarea class="formtextbng extraborder" cols="12" ng-model="lpr.whichLaw"></textarea></td>
+        <td><textarea class="formtextbng extraborder" cols="12" ng-model="lpr.whichCourt"></textarea></td>
+        <td><textarea class="formtextbng extraborder" cols="8" ng-model="lpr.courtFileNo"></textarea></td>
+        <td><input class="formtextbng extraborder" type="text" ng-model="lpr.caseFiledYear" size="8"></td>
+        <td><input class="formtextbng extraborder" type="text" ng-model="lpr.caseSettledYear" size="8"></td>
+        <td><textarea class="formtextbng extraborder" cols="10" ng-model="lpr.currentStatusResult"></textarea></td>
       </tr>
       </tbody>
     </table>	</td></tr>
   <tr>
-    <td>৪</td>
-    <td>আমার ব্যবসা/পেশার বিবরণী:</td>
-    <td><textarea class="formtextbng extraborder" ng-model="gotCandidate.candidateProfessionBusinessBnAF" cols="40" rows="2" ></textarea></td>
+    <td>&nbsp;</td>
+    <td><div align="right">মামলার মোট সংখ্যা:</div></td>
+    <td><input class="formtextbng extraborder" ng-model="gotCandidate.totalPastCasesAF" size="20" type="text"></td>
   </tr>
   <tr>
-    <td>৪.১</td>
-    <td><div align="left">আমার ব্যবসা/পেশার ধরনঃ</div></td>
-    <td> <div align="left">
-      <select ng-model="gotCandidate.professionTypeBnAF">
+    <td colspan="3"><strong>৪. পেশা:</strong></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">ক.১. আমার বর্তমান পেশা:</div></td>
+    <td>
+      <select ng-model="gotCandidate.currentProfessionAF">
         <option value="কৃষি">কৃষি</option>
-        <option value="ব্যবসা" selected="selected">ব্যবসা</option>
+        <option value="ব্যবসা">ব্যবসা</option>
         <option value="চাকুরি">চাকুরি</option>
         <option value="আইনজীবী">আইনজীবী</option>
         <option value="রাজনীতিবিদ">রাজনীতিবিদ</option>
         <option value="শিক্ষকতা">শিক্ষকতা</option>
-        <option value="গৃহিনী">গৃহিনী</option>
+        <option value="গৃহিণী">গৃহিণী</option>
         <option value="উল্লেখ নেই">উল্লেখ নেই</option>
         <option value="অন্যান্য">অন্যান্য</option>
       </select>
-    </div></td>
-  </tr><tr>
-  </tr><tr>
-    <td>৫</td>
-    <td colspan="2"><div align="left">আমার এবং আমার উপর নির্ভরশীলদের আয়ের উৎস/উৎসসমূহ:(ইংরেজীতে)</div></td>
+    </td>
   </tr>
   <tr>
-    <td class="tdvalign"><a class="btn btn-success" ng-click="ctrl.add_incomeSourceAF()" title="ADD MORE FIELD ">
-      <i class="fa fa-plus"></i></a>&nbsp;
-      <a class="btn btn-danger" ng-click="ctrl.delete_incomeSourceAF();" title="DELETE LAST FIELD ">
-        <i class="fa fa-minus"></i></a></td>
-    <td colspan="2"><table class="table table-bordered">
-      <tbody>
-      <tr>
-        <td width="5%" align="center">ক্রমিক নং</td>
-        <td width="33%" align="center">আয়ের উৎসের বিবরণ</td>
-        <td width="31%" align="center">এই খাত হইতে প্রার্থীর বাৎসরিক আয়</td>
-        <td width="31%" align="center">প্রার্থীর উপর নির্ভরশীলদের আয়</td>
-      </tr>
-      <tr ng-repeat="income in gotCandidate.incomeSourceAF">
-        <td ng-model="income.order" ng-init="income.order=$index+1">{{income.order|translate}}</td>
-        <td align="right">
-          <select ng-model="income.type">
-            <option value="business">ব্যবসা</option>
-            <option value="agriculture">কৃষিখাত</option>
-            <option value="building_fare">বাড়ি/এপার্টমেন্ট/দোকান বা অন্যান্য ভাড়া</option>
-            <option value="shares">শেয়ার, সঞ্চয়পত্র/ব্যাংক আমানত</option>
-            <option value="profession">পেশা (শিক্ষকতা, চিকিৎসা, আইন, পরামর্শক ইত্যাদি)</option>
-            <option value="service">চাকুরি</option>
-            <option value="others">অন্যান্য(সুনির্দিষ্টভাবে উল্লেখ করিয়া)</option>
-          </select>
-        </td>
-        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.own" cols="15"  /></td>
-        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.dependents" cols="15" /></td>
-      </tr>
-
-      </tbody></table></td>
+    <td>&nbsp;</td>
+    <td><div align="right">ক.২. আমার পূর্বতন পেশা:</div></td>
+    <td>
+      <select ng-model="gotCandidate.previousProfessionAF">
+        <option value="কৃষি">কৃষি</option>
+        <option value="ব্যবসা">ব্যবসা</option>
+        <option value="চাকুরি">চাকুরি</option>
+        <option value="আইনজীবী">আইনজীবী</option>
+        <option value="রাজনীতিবিদ">রাজনীতিবিদ</option>
+        <option value="শিক্ষকতা">শিক্ষকতা</option>
+        <option value="গৃহিণী">গৃহিণী</option>
+        <option value="উল্লেখ নেই">উল্লেখ নেই</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">খ. আমার স্বামী/স্ত্রীর পেশা:</div></td>
+    <td>
+      <select ng-model="gotCandidate.spouseProfessionAF">
+        <option value="কৃষি">কৃষি</option>
+        <option value="ব্যবসা">ব্যবসা</option>
+        <option value="চাকুরি">চাকুরি</option>
+        <option value="আইনজীবী">আইনজীবী</option>
+        <option value="রাজনীতিবিদ">রাজনীতিবিদ</option>
+        <option value="শিক্ষকতা">শিক্ষকতা</option>
+        <option value="গৃহিণী">গৃহিণী</option>
+        <option value="উল্লেখ নেই">উল্লেখ নেই</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><div align="right">গ. আমার স্বামী/স্ত্রীর পূর্বতন পেশা:</div></td>
+    <td>
+      <select ng-model="gotCandidate.spousePreviousProfessionAF">
+        <option value="কৃষি">কৃষি</option>
+        <option value="ব্যবসা">ব্যবসা</option>
+        <option value="চাকুরি">চাকুরি</option>
+        <option value="আইনজীবী">আইনজীবী</option>
+        <option value="রাজনীতিবিদ">রাজনীতিবিদ</option>
+        <option value="শিক্ষকতা">শিক্ষকতা</option>
+        <option value="গৃহিণী">গৃহিণী</option>
+        <option value="উল্লেখ নেই">উল্লেখ নেই</option>
+        <option value="অন্যান্য">অন্যান্য</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>৫. নির্ভরশীলদের পেশার তালিকা:</strong></td>
+  </tr>
+  <tr>
+    <td class="tdvalign">
+      <a class="btn btn-success" ng-click="ctrl.add_dependentsAF()" title="ADD MORE FIELD">
+        <i class="fa fa-plus"></i></a>&nbsp;
+      <a class="btn btn-danger" ng-click="ctrl.delete_dependentsAF();" title="DELETE LAST FIELD">
+        <i class="fa fa-minus"></i></a>
+    </td>
+    <td colspan="2">
+      <table class="table table-bordered">
+        <tbody>
+        <tr>
+          <td width="8%" align="center">ক্রমিক নং</td>
+          <td width="30%" align="center">নাম</td>
+          <td width="18%" align="center">ডিওবি/বয়স</td>
+          <td width="24%" align="center">জন্মনিবন্ধন নম্বর</td>
+          <td width="20%" align="center">মন্তব্য</td>
+        </tr>
+        <tr ng-repeat="dep in gotCandidate.dependentsAF">
+          <td align="center">{{($index+1)|translate}}</td>
+          <td><input class="formtextbng extraborder" ng-model="dep.name" size="25" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.dobOrAge" size="12" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.birthRegNo" size="18" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.remarks" size="15" type="text"></td>
+        </tr>
+        </tbody>
+      </table>
+      <small>*প্রয়োজনে অতিরিক্ত কাগজ ব্যবহার করুন</small>
+      <p><small><strong>বিশেষ দ্রষ্টব্য:</strong> গণপ্রতিনিধিত্ব আদেশ, ১৯৭২ এর ধারা ১২ এর উপ ধারা ৩(ঙ) অনুযায়ী "নির্ভরশীল" অর্থ প্রার্থী স্ত্রী বা স্বামী এবং তাহার উপর সম্পূর্ণ নির্ভরশীল পুত্র, কন্যা, পিতা, মাতা, ভাই বা বোন।</small></p>
+    </td>
+  </tr>
+  <tr>
+    <td>৬</td>
+    <td colspan="2"><div align="left">আয়ের উৎস (আমার এবং নির্ভরশীলদের আয়ের উৎস):</div></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="2">
+      <table class="table table-bordered">
+        <tbody>
+        <tr>
+          <td rowspan="2" width="5%" align="center">ক্রমিক</td>
+          <td rowspan="2" width="25%" align="center">আয়ের উৎস বিবরণ</td>
+          <td colspan="2" align="center">আমার বার্ষিক আয়</td>
+          <td colspan="2" align="center">নির্ভরশীলদের বার্ষিক আয়</td>
+        </tr>
+        <tr>
+          <td align="center">দেশের ভেতরে</td>
+          <td align="center">দেশের বাইরে</td>
+          <td align="center">দেশের ভেতরে</td>
+          <td align="center">দেশের বাইরে</td>
+        </tr>
+        <tr>
+          <td align="center">১</td>
+          <td>কৃষিখাত</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income1OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income1OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income1DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income1DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">২</td>
+          <td>বাড়ি/এপার্টমেন্ট/বাণিজ্যিক স্থান/অন্যান্য স্থাবর সম্পত্তি</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income2OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income2OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income2DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income2DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৩</td>
+          <td>শেয়ার জমা</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income3OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income3OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income3DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income3DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৪</td>
+          <td>ব্যবসা</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income4OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income4OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income4DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income4DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৫</td>
+          <td>শেয়ার, বন্ড/সঞ্চয়পত্র/ব্যাংক আমানত</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income5OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income5OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income5DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income5DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৬</td>
+          <td>পেশা (যেমন: শিক্ষকতা, চিকিৎসা, আইন, পরামর্শক ইত্যাদি)</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income6OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income6OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income6DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income6DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৭</td>
+          <td>চাকুরি</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income7OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income7OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income7DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income7DepForeignAF" size="12"></td>
+        </tr>
+        <tr>
+          <td align="center">৮</td>
+          <td>অন্য যে কোন উৎস (সুনির্দিষ্টভাবে উল্লেখ করুন)</td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income8OwnDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income8OwnForeignAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income8DepDomesticAF" size="12"></td>
+          <td><input type="text" class="formtextbng extraborder" ng-model="gotCandidate.income8DepForeignAF" size="12"></td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
   </tr>
   <tr>
     <td align="center" colspan="3"><input class="formtextbng extraborder btn btn-primary" type="submit" name="submit_b" value="তথ্য সংরক্ষন" ng-click="ctrl.submit()"></td>
@@ -350,14 +494,21 @@
             <select ng-model="assetMat.type" style="width: 200px">
               <option value="cash_taka">নগদ টাকার পরিমাণ</option>
               <option value="foreign_currency">বৈদেশিক মুদ্রার পরিমাণ (মুদ্রার নামসহ)</option>
-              <option value="bank_deposit">ব্যাংক ও আর্থিক প্রতিষঠানে জমাকৃত অর্থের পরিমাণ</option>
-              <option value="all_shares">বন্ড, ঋণপত্র, স্টক একচেঞ্জে তালিকাভুক্ত ও তালিকাভুক্ত  নয় এমন কোম্পানীর শেয়ার (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="bank_deposit">ব্যাংক ও আর্থিক প্রতিষ্ঠানে জমাকৃত অর্থের পরিমাণ</option>
+              <option value="all_shares">বন্ড, ঋণপত্র, স্টক একচেঞ্জে তালিকাভুক্ত ও তালিকাভুক্ত নয় এমন কোম্পানীর শেয়ার (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ)</option>
               <option value="dps">পোষ্টাল, সেভিংস সার্টিফিকেটসহ বিভিন্ন ধরণের সঞ্চয় পত্রে বা স্থায়ী আমানতে বিনিয়োগের পরিমাণ</option>
-              <option value="vehicles">বাস, ট্রাক, মটর গাড়ী ও মটর সাইকেল ইত্যাদির বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
-              <option value="gold_ornaments">স্বর্ণ ও অন্যান্য মূল্যবান ধাতু ও পাথর নির্মিত অলংকারাদি (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
-              <option value="electronic_goods">ইলেকট্রনিক সামগ্রীর বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ) </option>
+              <option value="vehicles">বাস, ট্রাক, মটর গাড়ী ও মটর সাইকেল ইত্যাদির বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ)</option>
+              <option value="cryptocurrency">ক্রিপটোকারেন্সি (আনুমানিক বাজার মূল্য)</option>
+              <option value="gold_ornaments">স্বর্ণ ও অন্যান্য মূল্যবান ধাতু ও পাথর নির্মিত অলংকারাদি (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ)</option>
+              <option value="electronic_goods">ইলেকট্রনিক সামগ্রীর বিবরণী (পরিমাণ, অর্জনকালীন সময়ের মূল্যসহ)</option>
               <option value="furnitures">আসবাবপত্রের বিবরণী মূল্যসহ</option>
+              <option value="mobile_laptop">মোবাইল/ল্যাপটপ/কম্পিউটার (অর্জনকালীন সময়ের মূল্য)</option>
+              <option value="business_capital">ব্যক্তিগত ব্যবসা প্রতিষ্ঠানে নিজস্ব মূলধন</option>
+              <option value="weapons">অস্ত্রশস্ত্র</option>
+              <option value="livestock">গবাদি পশু, হাঁস-মুরগি ও অন্যান্যের সংখ্যা ও মূল্য</option>
               <option value="others">অন্যান্য</option>
+              <option value="total_movable">মোট অস্থাবর সম্পদ (১-১৩ নং ক্রমিকের যোগফল)</option>
+              <option value="previous_year_movable">পূর্ববর্তী বছরের মোট অস্থাবর সম্পদ</option>
             </select>
 
           </td>
@@ -420,9 +571,11 @@
               <option value="cultivated_land">কৃষি জমির পরিমাণ ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
               <option value="noncultivated_land">অকৃষি জমি ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
               <option value="building">দালান, আবাসিক/বাণিজ্যিক সংখ্যা অবস্থান ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
-              <option value="house_apartment">বাড়ি/ এপার্টমেন্টের সংখ্যা ও অর্জনকালীন সময়ে আর্থিক মূল্য </option>
+              <option value="house_apartment">বাড়ি/এপার্টমেন্টের সংখ্যা ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
               <option value="garden_farm">চা বাগান, রাবার বাগান, মৎস্য খামার ইত্যাদির মূল্য সংখ্যা ও আর্থিক পরিমাণ</option>
-              <option value="others">অন্যান্য(বিস্তারিত বিবরণ বর্তমান মূল্যসহ)</option>
+              <option value="others">অন্যান্য (বিস্তারিত বিবরণ বর্তমান মূল্যসহ)</option>
+              <option value="total_immovable">মোট স্থাবর সম্পদ (১-৬ নং ক্রমিকের যোগফল)</option>
+              <option value="previous_year_total">পূর্ববর্তী বছরের মোট স্থাবর সম্পদ</option>
             </select>
 
           </td>

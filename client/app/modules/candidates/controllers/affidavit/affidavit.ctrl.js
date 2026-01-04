@@ -179,6 +179,16 @@
           $scope.gotCandidate.loanAF.pop();
         };
 
+        this.add_dependentsAF = function () {
+          if (!$scope.gotCandidate.hasOwnProperty("dependentsAF"))
+            $scope.gotCandidate.dependentsAF = [];
+
+          $scope.gotCandidate.dependentsAF.push({});
+        };
+        this.delete_dependentsAF = function () {
+          $scope.gotCandidate.dependentsAF.pop();
+        };
+
         /*===========ChangeOrder==============*/
         this.changeCaseListOrder = function (whichCase) {
           if (whichCase == "past_case") {
