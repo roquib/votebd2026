@@ -34,3 +34,4 @@ server/config.local.json
 server/datasources.json
 /votebd_node/nbproject/private/
 /nbproject/private/
+server-ip.json
