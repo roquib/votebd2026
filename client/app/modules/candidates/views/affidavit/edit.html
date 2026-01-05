@@ -355,10 +355,16 @@
     <td colspan="2"><table class="table table-bordered">
       <tbody>
       <tr>
-        <td width="5%" align="center">ক্রমিক নং</td>
-        <td width="33%" align="center">আয়ের উৎসের বিবরণ</td>
-        <td width="31%" align="center">এই খাত হইতে প্রার্থীর বাৎসরিক আয়</td>
-        <td width="31%" align="center">প্রার্থীর উপর নির্ভরশীলদের আয়</td>
+        <td rowspan="2" width="5%" align="center">ক্রমিক</td>
+        <td rowspan="2" width="25%" align="center">আয়ের উৎস বিবরণ</td>
+        <td colspan="2" align="center">প্রার্থীর বার্ষিক আয়</td>
+        <td colspan="2" align="center">নির্ভরশীলদের বার্ষিক আয়</td>
+      </tr>
+      <tr>
+        <td align="center">দেশের ভেতরে</td>
+        <td align="center">দেশের বাইরে</td>
+        <td align="center">দেশের ভেতরে</td>
+        <td align="center">দেশের বাইরে</td>
       </tr>
       <tr ng-repeat="income in gotCandidate.incomeSourceAF">
         <td ng-model="income.order" ng-init="income.order=$index+1">{{income.order|translate}}</td>
@@ -373,8 +379,10 @@
             <option value="others">অন্যান্য(সুনির্দিষ্টভাবে উল্লেখ করিয়া)</option>
           </select>
         </td>
-        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.own" cols="15"  /></td>
-        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.dependents" cols="15" /></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.ownDomestic" cols="15" /></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.ownForeign" cols="15" /></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.dependentsDomestic" cols="15" /></td>
+        <td><input type="number" class="formtextbng extraborder" lang="en" ng-model="income.dependentsForeign" cols="15" /></td>
       </tr>
       </tbody></table></td>
   </tr>
