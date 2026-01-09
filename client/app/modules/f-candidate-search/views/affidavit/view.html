@@ -50,7 +50,7 @@
                      <i lang="{{$root.locale.lang}}">{{'Occupation'|translate}}</i>
                      <ul>
                          <li>
-                            <span>{{ctrl.candidat.professionTypeBnAF}}</span>
+                            <span>{{ctrl.candidat | getProfession}}</span>
                          </li>
                      </ul>
                  </div>
@@ -163,7 +163,7 @@
                   {{'জন্ম তারিখ'}} :
                 </td>
                 <td>
-                  <div> {{ctrl.candidat.candidateDateOfBirthBnAF | translateNumber}}</div>
+                  <div> {{ctrl.candidat | getDob}}</div>
                 </td>
               </tr>
               <tr  class="candidate-nameinfo">
@@ -260,7 +260,7 @@
             </li>
             <li lang="{{$root.locale.lang}}">
               <p>
-                {{'4. My profession'|translate}}:-{{ctrl.candidat.candidateProfessionBusinessBnAF}}
+                {{'4. My profession'|translate}}:-{{ctrl.candidat | getProfession}}
               </p>
             </li>
             <li lang="{{$root.locale.lang}}">
@@ -282,8 +282,8 @@
                     <td ng-show="incomeSrcAf.type=='profession'" align="left">{{'Profession (Teaching, Medical practioner, lawyer, consultancy etc.) '|translate}}</td>
                     <td ng-show="incomeSrcAf.type=='service'" align="left">{{'Employment'|translate}}</td>
                     <td ng-show="incomeSrcAf.type=='others'" align="left">{{'Others ( mention specific source)'|translate}}</td>
-                    <td align="center"><div>{{incomeSrcAf.own|translateNumber}}</div></td>
-                    <td align="center"><div>{{incomeSrcAf.dependents|translateNumber}}</div></td>
+                    <td align="center"><div>{{incomeSrcAf | getIncome | translateNumber}}</div></td>
+                    <td align="center"><div>{{incomeSrcAf | getDependentsIncome | translateNumber}}</div></td>
                   </tr>
                 </tbody>
               </table>
@@ -388,7 +388,7 @@
                     </tr>
                     <tr align="center">
                       <td><strong>{{ctrl.candidat.liabilitiesDetailsBnAF}}</strong></td>
-                      <td><strong>{{ctrl.candidat.liabilitiesAmountAF}}</strong></td>
+                      <td><strong>{{ctrl.candidat | getLiability | translateNumber}}</strong></td>
                     </tr>
                   </tbody>
                 </table>
@@ -464,7 +464,7 @@
                 </tr>
                 <tr class="mjh-boderEdit">
                   <td width="30%">{{'জন্ম তারিখ'}}:</td>
-                  <td width="70%">{{ctrl.candidat.candidateDateOfBirthBnAF}}</td>
+                  <td width="70%">{{ctrl.candidat | getDob}}</td>
                 </tr>
                 <tr class="mjh-boderEdit">
                   <td width="30%">{{'Father/husband`s name '|translate}}:</td>
