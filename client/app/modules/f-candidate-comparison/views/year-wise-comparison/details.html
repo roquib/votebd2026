@@ -64,9 +64,9 @@
         </tr>
         </thead>
         <tr>
-          <td>{{reportData.c1Data.professionTypeBnAF}}</td>
-          <td>{{reportData.c2Data.professionTypeBnAF}}</td>
-          <td>{{(reportData.c1Data.professionTypeBnAF === reportData.c2Data.professionTypeBnAF) ? 'same' : 'change'|translate}}
+          <td>{{reportData.c1Data | getProfession}}</td>
+          <td>{{reportData.c2Data | getProfession}}</td>
+          <td>{{((reportData.c1Data | getProfession) === (reportData.c2Data | getProfession)) ? 'same' : 'change'|translate}}
           </td>
         </tr>
       </table>
