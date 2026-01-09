@@ -2933,12 +2933,13 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
         "loanDependent": (row.totalDependedantsAmountAF || 0 ),
         "loanTotal": (row.totalSingleAmountAF || 0 ) + (row.totalJointAmoutAF || 0 ) + (row.totalDirectorOrChairmenAmoutAF || 0 ) + (row.totalDependedantsAmountAF || 0 ),
 
-        "liabilityOwn": (row.liabilitiesAmountAF || 0 ),
-        "liabilityTotal": (row.liabilitiesAmountAF || 0 ),
+        // Liability with fallback: sum of new fields (liability1-4AmountAF) -> old field (liabilitiesAmountAF)
+        "liabilityOwn": ((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0),
+        "liabilityTotal": ((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0),
 
         "neatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ),
-        "neatLiability": (row.liabilitiesAmountAF || 0 ),
-        "neatNeatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ) - (row.liabilitiesAmountAF || 0 ),
+        "neatLiability": ((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0),
+        "neatNeatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ) - (((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0)),
 
         "_19_previousTaxTR": ((row._13ApplicableTaxTR || 0)-(row._14TaxCommissionTR || 0)),
         "totalLifeStyleCostTR": (row.totalLifeStyleCostTR || 0 )
@@ -2946,6 +2947,9 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
     });
   } else {
     data.forEach(function (row) {
+      // Calculate liability with fallback for English section
+      var liabilityTotal = ((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0);
+
       simpleData.push({
         "seatName": row.electionSeat() ? row.electionSeat().seatNameEn : null,
         "districtName": row.district() ? row.district().nameEn : null,
@@ -2965,12 +2969,13 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
         "loanDependent": (row.totalDependedantsAmountAF || 0 ),
         "loanTotal": (row.totalSingleAmountAF || 0 ) + (row.totalJointAmoutAF || 0 ) + (row.totalDirectorOrChairmenAmoutAF || 0 ) + (row.totalDependedantsAmountAF || 0 ),
 
-        "liabilityOwn": (row.liabilitiesAmountAF || 0 ),
-        "liabilityTotal": (row.liabilitiesAmountAF || 0 ),
+        // Liability with fallback: sum of new fields (liability1-4AmountAF) -> old field (liabilitiesAmountAF)
+        "liabilityOwn": liabilityTotal,
+        "liabilityTotal": liabilityTotal,
 
         "neatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ),
-        "neatLiability": (row.liabilitiesAmountAF || 0 ),
-        "neatNeatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ) - (row.liabilitiesAmountAF || 0 ),
+        "neatLiability": liabilityTotal,
+        "neatNeatAsset": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ) - liabilityTotal,
 
         "_19_previousTaxTR": ((row._13ApplicableTaxTR || 0)-(row._14TaxCommissionTR || 0)),
         "totalLifeStyleCostTR": (row.totalLifeStyleCostTR || 0 )
