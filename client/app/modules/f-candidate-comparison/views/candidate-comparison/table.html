@@ -264,7 +264,7 @@
       {{tr_data.addressBnAF}}
     </td>
     <td>{{tr_data.highestDegreeBnAF}}</td>
-    <td>{{tr_data.professionTypeBnAF}}</td>
+    <td>{{tr_data | getProfession}}</td>
     <td>
       <ul>
         <li ng-repeat="presentLaw in tr_data.lawPresentAF">{{($index+1) | translate}} . {{presentLaw.whichLaw}} <br/>({{presentLaw.currentStatusResult}})
@@ -281,9 +281,9 @@
     <td>
       <table width="100%"  cellspacing="0" class="databorder">
         <tr ng-repeat="income in tr_data.incomeSourceAF">
-          <td width="33%"><span>{{income.type | translate}}</span></td>
-          <td width="33%"><span ng-if="income.own > 0">{{income.own | number:0 | translateNumber}}</span></td>
-          <td width="33%"><span ng-if="income.dependents > 0">{{income.dependents | number:0 | translateNumber}}</span></td>
+          <td width="33%"><span>{{income.type | translateKey}}</span></td>
+          <td width="33%"><span ng-if="(income | getIncome) > 0">{{income | getIncome | number:0 | translateNumber}}</span></td>
+          <td width="33%"><span ng-if="(income | getDependentsIncome) > 0">{{income | getDependentsIncome | number:0 | translateNumber}}</span></td>
         </tr>
       <!--<tr>
           <td ></td>
@@ -303,7 +303,7 @@
             <table width="100%"  cellspacing="0" class="databorder">
               <tbody>
               <tr ng-repeat="assetMaterial in tr_data.assetMaterialAF">
-                <td width="50%">  <span>{{assetMaterial.type | translate}}:</span>
+                <td width="50%">  <span>{{assetMaterial.type | translateKey}}:</span>
                   <br> <span ng-if="assetMaterial.amountOwn">{{assetMaterial.amountOwn | translateNumber}}</span>
                   <br> <span ng-if="assetMaterial.priceOwn ">{{assetMaterial.priceOwn | number:0 | translateNumber}}</span>
                 </td>
@@ -320,7 +320,7 @@
             <table width="100%" cellspacing="0" class="databorder">
               <tbody>
               <tr ng-repeat="assetImmaterialAF in tr_data.assetImmaterialAF">
-                <td width="33%"><span>{{assetImmaterialAF.type | translate}}:</span>
+                <td width="33%"><span>{{assetImmaterialAF.type | translateKey}}:</span>
                   <br> <span>{{assetImmaterialAF.amountOwn | translateNumber}}</span>
                   <br> <span ng-if="assetImmaterialAF.priceOwn > 0">{{assetImmaterialAF.priceOwn | number:0 | translateNumber}}</span>
                 </td>
@@ -349,7 +349,7 @@
         <tbody>
         <tr align="center">
           <td>{{tr_data.liabilitiesDetailsBnAF}}</td>
-          <td>{{tr_data.liabilitiesAmountAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data | getLiability | number:0 | translateNumber}}</td>
         </tr>
 
         </tbody>
@@ -360,7 +360,7 @@
       <table width="100%"  cellspacing="0" class="databorder">
         <tbody>
         <tr ng-repeat="loan in tr_data.loanAF">
-          <td>{{loan.loanType | translate}}</td>
+          <td>{{loan.loanType | translateKey}}</td>
           <td>{{loan.bankOrganization}}</td>
           <td>{{loan.loanAmount | number:0 | translateNumber}}</td>
           <td>{{loan.debitedLoanAmount | number:0 | translateNumber}}</td>

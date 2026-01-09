@@ -42,14 +42,14 @@
               <td>{{row.candidateName}}</td>
               <td>{{row.seatName}}</td>
               <td>{{row.partyName}}</td>
-              <td>{{row.candidateDateOfBirthBnAF ? row.candidateDateOfBirthBnAF : row.dobTR}}</td>
-              <td>{{row.professionTypeBnAF |translate}}</td>
+              <td>{{row | getDob}}</td>
+              <td>{{row | getProfession | translate}}</td>
               <td>{{row.highestDegreeBnAF |translate}}</td>
               <td>{{row.lawPresentCountAF |translate}}{{row.lawPresentAF}}</td>
               <td>{{row.lawPastCountAF |translate}}{{row.lawPastAF}}</td>
               <td>{{(row.totalOwnIncomeAF+row.totalDependentIncomeAF) | translateNumber}}</td>
               <td>{{row.asset | translateNumber}}</td>
-              <td>{{row.liabilitiesAmountAF | translateNumber}}</td>
+              <td>{{row | getLiability | translateNumber}}</td>
               <td>{{row.loan | translateNumber}}</td>
               <td>{{(row._13Tax-row._14Tax) | translateNumber}}</td>
               <td>{{(row.asset-row.loan) | translateNumber}}</td>
