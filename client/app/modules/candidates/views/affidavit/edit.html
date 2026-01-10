@@ -324,18 +324,22 @@
       <table class="table table-bordered">
         <tbody>
         <tr>
-          <td width="8%" align="center">ক্রমিক নং</td>
-          <td width="30%" align="center">নাম</td>
-          <td width="18%" align="center">ডিওবি/বয়স</td>
-          <td width="24%" align="center">জন্মনিবন্ধন নম্বর</td>
-          <td width="20%" align="center">মন্তব্য</td>
+          <td width="5%" align="center">ক্রমিক নং</td>
+          <td width="20%" align="center">নাম</td>
+          <td width="15%" align="center">সম্পর্ক</td>
+          <td width="15%" align="center">পেশা</td>
+          <td width="12%" align="center">ডিওবি/বয়স</td>
+          <td width="18%" align="center">জন্মনিবন্ধন নম্বর</td>
+          <td width="15%" align="center">মন্তব্য</td>
         </tr>
         <tr ng-repeat="dep in gotCandidate.dependentsAF">
           <td align="center">{{($index+1)|translate}}</td>
-          <td><input class="formtextbng extraborder" ng-model="dep.name" size="25" type="text"></td>
-          <td><input class="formtextbng extraborder" ng-model="dep.dobOrAge" size="12" type="text"></td>
-          <td><input class="formtextbng extraborder" ng-model="dep.birthRegNo" size="18" type="text"></td>
-          <td><input class="formtextbng extraborder" ng-model="dep.remarks" size="15" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.name" size="20" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.relationship" size="12" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.profession" size="12" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.dobOrAge" size="10" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.birthRegNo" size="15" type="text"></td>
+          <td><input class="formtextbng extraborder" ng-model="dep.remarks" size="12" type="text"></td>
         </tr>
         </tbody>
       </table>
@@ -460,8 +464,10 @@
               <option value="business_capital">ব্যক্তিগত ব্যবসা প্রতিষ্ঠানে নিজস্ব মূলধন</option>
               <option value="weapons">অস্ত্রশস্ত্র</option>
               <option value="livestock">গবাদি পশু, হাঁস-মুরগি ও অন্যান্যের সংখ্যা ও মূল্য</option>
+              <option value="insurance_trust">বিমা ও ট্রাস্টের মূল্য</option>
+              <option value="foreign_movable">বিদেশে থাকা অন্যান্য অস্থাবর সম্পত্তি</option>
               <option value="others">অন্যান্য</option>
-              <option value="total_acquisition_movable">অর্জনকালীন (মোট মূল্য) (১-১৩ নম্বর পর্যন্ত)</option>
+              <option value="total_acquisition_movable">অর্জনকালীন (মোট মূল্য) (১-১৫ নম্বর পর্যন্ত)</option>
               <option value="current_value_movable">বর্তমান আনুমানিক মূল্য (১-১৩ নম্বর পর্যন্ত)</option>
               <option value="total_movable">মোট অস্থাবর সম্পদ (১-১৫ নং ক্রমিকের যোগফল)</option>
               <option value="previous_year_movable">পূর্ববর্তী বছরের মোট অস্থাবর সম্পদ</option>
@@ -529,8 +535,10 @@
               <option value="building">দালান, আবাসিক/বাণিজ্যিক সংখ্যা অবস্থান ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
               <option value="house_apartment">বাড়ি/এপার্টমেন্টের সংখ্যা ও অর্জনকালীন সময়ে আর্থিক মূল্য</option>
               <option value="garden_farm">চা বাগান, রাবার বাগান, মৎস্য খামার ইত্যাদির মূল্য সংখ্যা ও আর্থিক পরিমাণ</option>
+              <option value="insurance_trust_immovable">বিমা ও ট্রাস্টের মূল্য</option>
+              <option value="foreign_immovable">বিদেশে থাকা অন্যান্য স্থাবর সম্পত্তি</option>
               <option value="others">অন্যান্য (বিস্তারিত বিবরণ বর্তমান মূল্যসহ)</option>
-              <option value="total_acquisition_immovable">মোট অর্জনকালীন মূল্য (১-৭ নং ক্রমিকের যোগফল)</option>
+              <option value="total_acquisition_immovable">মোট অর্জনকালীন মূল্য (১-৯ নং ক্রমিকের যোগফল)</option>
               <option value="current_value_immovable">বর্তমান আনুমানিক মূল্য (১-৭ নং ক্রমিকের যোগফল)</option>
               <option value="total_immovable">মোট স্থাবর সম্পদ (১-৯ নং ক্রমিকের যোগফল)</option>
               <option value="previous_year_total">পূর্ববর্তী বছরের মোট স্থাবর সম্পদ</option>
