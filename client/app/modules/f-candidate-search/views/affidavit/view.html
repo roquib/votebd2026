@@ -263,8 +263,33 @@
                 {{'4. My profession'|translate}}:-{{ctrl.candidat | getProfession}}
               </p>
             </li>
+            <li lang="{{$root.locale.lang}}" ng-if="ctrl.candidat.dependentsAF && ctrl.candidat.dependentsAF.length > 0">
+              <p>{{'Dependents profession list'|translate}}:</p>
+              <table class="table table-bordered">
+                <tbody>
+                  <tr>
+                    <th width="5%" align="center">{{'serial number'|translate}}</th>
+                    <th width="20%" align="center">{{'Name'|translate}}</th>
+                    <th width="15%" align="center">{{'Relationship'|translate}}</th>
+                    <th width="15%" align="center">{{'Profession'|translate}}</th>
+                    <th width="12%" align="center">{{'DOB/Age'|translate}}</th>
+                    <th width="18%" align="center">{{'Birth Registration No'|translate}}</th>
+                    <th width="15%" align="center">{{'Remarks'|translate}}</th>
+                  </tr>
+                  <tr ng-repeat="dep in ctrl.candidat.dependentsAF">
+                    <td align="center">{{($index+1)|translate}}</td>
+                    <td>{{dep.name}}</td>
+                    <td>{{dep.relationship}}</td>
+                    <td>{{dep.profession}}</td>
+                    <td>{{dep.dobOrAge}}</td>
+                    <td>{{dep.birthRegNo}}</td>
+                    <td>{{dep.remarks}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </li>
             <li lang="{{$root.locale.lang}}">
-              <p>{{'5. Dependents’ and my income source/sources'|translate}}:</p>
+              <p>{{'5. Dependents' and my income source/sources'|translate}}:</p>
               <table class="table table-bordered">
                 <tbody>
                   <tr>
@@ -318,7 +343,18 @@
                           <div ng-show="assetMatAf.type == 'gold_ornaments'" align="left"><span class="style2">{{'Gold and other ornaments which is made by valuable metallic materials and stones (with the quantity and the price at the time of buying)'|translate}}</span></div>
                           <div ng-show="assetMatAf.type == 'electronic_goods'" align="left"><span class="style2">{{'Electronic items(with the quantity and the price at the time of buying)'|translate}}</span></div>
                           <div ng-show="assetMatAf.type == 'furnitures'" align="left"><span class="style2">{{'Furnitures with price'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'mobile_laptop'" align="left"><span class="style2">{{'Mobile/Laptop/Computer (price at acquisition)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'business_capital'" align="left"><span class="style2">{{'Personal business capital'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'weapons'" align="left"><span class="style2">{{'Weapons'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'livestock'" align="left"><span class="style2">{{'Livestock, poultry and others'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'cryptocurrency'" align="left"><span class="style2">{{'Cryptocurrency (estimated market value)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'insurance_trust'" align="left"><span class="style2">{{'Insurance and Trust value'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'foreign_movable'" align="left"><span class="style2">{{'Other movable property abroad'|translate}}</span></div>
                           <div ng-show="assetMatAf.type == 'others'" align="left"><span class="style2">{{'Others'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'total_acquisition_movable'" align="left"><span class="style2">{{'Total acquisition value (movable)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'current_value_movable'" align="left"><span class="style2">{{'Current estimated value (movable)'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'total_movable'" align="left"><span class="style2">{{'Total movable assets'|translate}}</span></div>
+                          <div ng-show="assetMatAf.type == 'previous_year_movable'" align="left"><span class="style2">{{'Previous year total movable assets'|translate}}</span></div>
                         </td>
                         <td align="center"><div>{{assetMatAf.amountOwn}}</div></td>
                         <td align="center"><div>{{assetMatAf.priceOwn|translateNumber}}</div></td>
@@ -359,7 +395,13 @@
                         <div ng-show="assetImatAf.type == 'building'">{{'Number of buildings with location(residential/commercial) and the price at the time of purchasing'|translate}}</div>
                         <div ng-show="assetImatAf.type == 'house_apartment'">{{'Number of house / apartment and the price at the time of purchasing '|translate}}</div>
                         <div ng-show="assetImatAf.type == 'garden_farm'">{{'Number of tea garden, rubber garden, fisheries farm etc. and the price  at the time of purchasing'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'insurance_trust_immovable'">{{'Insurance and Trust value'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'foreign_immovable'">{{'Other immovable property abroad'|translate}}</div>
                         <div ng-show="assetImatAf.type == 'others'">{{'Others(with detailed description and the initial price)'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'total_acquisition_immovable'">{{'Total acquisition value (immovable)'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'current_value_immovable'">{{'Current estimated value (immovable)'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'total_immovable'">{{'Total immovable assets'|translate}}</div>
+                        <div ng-show="assetImatAf.type == 'previous_year_total'">{{'Previous year total immovable assets'|translate}}</div>
                       </td>
                       <td align="center"><strong>{{assetMatAf.amountOwn|translateNumber}}</strong></td>
                       <td align="center"><div>{{assetImatAf.amountOwn|translateNumber}}</div></td>
