@@ -2910,6 +2910,8 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
         "districtName": row.district() ? row.district().nameBn : null,
         "candidateName": row.person() ? row.person().personNameBn : null,
         "personId": row.person() ? row.person().id : null,
+        // Profession with fallback: currentProfessionAF -> professionTypeBnAF -> candidateProfessionBusinessBnAF
+        "profession": row.currentProfessionAF || row.professionTypeBnAF || row.candidateProfessionBusinessBnAF || '',
 
         "assetMaterialOwnTotalAF": (row.assetMaterialOwnTotalAF || 0 ),
         "assetImmaterialOwnTotalAF": (row.assetImmaterialOwnTotalAF || 0 ),
@@ -2956,6 +2958,8 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
         "candidateName": row.person() ? row.person().personNameEn : null,
         "personId": row.person() ? row.person().id : null,
         "seatId": row.electionSeat() ? row.electionSeat().id : null,
+        // Profession with fallback: currentProfessionAF -> professionTypeBnAF -> candidateProfessionBusinessBnAF
+        "profession": row.currentProfessionAF || row.professionTypeBnAF || row.candidateProfessionBusinessBnAF || '',
 
         "assetOwn": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ),
         "assetDependent": (row.assetMaterialHusbandWifeTotalAF || 0 ) + (row.assetMaterialDependantsTotalAF || 0 ) + (row.assetImmaterialHusbandWifeTotalAF || 0 ) + (row.assetImmaterialDependantsTotalAF || 0 ),
