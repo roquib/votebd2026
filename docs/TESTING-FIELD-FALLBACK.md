@@ -18,6 +18,29 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 ---
 
+## Modified Files Reference
+
+### Frontend Filters
+| File | Description |
+|------|-------------|
+| `client/app/modules/core/filters/custom-filter.js` | All fallback filters (getDob, getProfession, getLiability, getIncome, getDependentsIncome, translateKey) |
+
+### Templates
+| File | Page |
+|------|------|
+| `client/app/modules/f-candidate-search/views/affidavit/view.html` | Individual Affidavit Page |
+| `client/app/modules/f-candidate-search/views/candidateprofile.html` | Candidate Profile |
+| `client/app/modules/f-election-result/views/all-candidate-info.html` | All Candidate Info |
+| `client/app/modules/f-candidate-comparison/views/candidate-comparison/table.html` | Comparison Table |
+| `client/app/modules/f-candidate-comparison/views/year-wise-comparison/details.html` | Year-wise Comparison |
+
+### Backend
+| File | Description |
+|------|-------------|
+| `common/models/candidate.js` | `simplifyCandidateAffidavitComparison()` function with liability fallback |
+
+---
+
 ## Test Scenarios
 
 ### Scenario 1: Test with New 2025 Data Format
@@ -33,14 +56,24 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 1. **Individual Affidavit Page**
    - URL: `http://localhost:9003/#/front/candidates/affidavit/{candidateId}`
+   - **File:** `client/app/modules/f-candidate-search/views/affidavit/view.html`
+   - **Lines Modified:**
+     - Line 53: `{{ctrl.candidat | getProfession}}` - Occupation box
+     - Line 166: `{{ctrl.candidat | getDob}}` - Date of birth
+     - Line 263: `{{ctrl.candidat | getProfession}}` - My profession section
+     - Line 285-286: `{{incomeSrcAf | getIncome}}`, `{{incomeSrcAf | getDependentsIncome}}` - Income table
+     - Line 391: `{{ctrl.candidat | getLiability | translateNumber}}` - Liability amount
+     - Line 467: `{{ctrl.candidat | getDob}}` - Declaration section DOB
    - Check:
-     - [ ] Date of birth displays correctly
-     - [ ] Profession shows `currentProfessionAF` value
-     - [ ] Liability total equals sum of 4 liability fields
-     - [ ] Income source shows domestic + foreign split if available
+     - [ ] Date of birth displays correctly (line 166, 467)
+     - [ ] Profession shows `currentProfessionAF` value (line 53, 263)
+     - [ ] Liability total equals sum of 4 liability fields (line 391)
+     - [ ] Income source shows domestic + foreign split if available (line 285-286)
 
 2. **All Candidate Info Page**
    - URL: `http://localhost:9003/#/front/election-result/all-candidate-info`
+   - **File:** `client/app/modules/f-election-result/views/all-candidate-info.html`
+   - **Filters Used:** `getDob`, `getProfession`, `getLiability`
    - Check:
      - [ ] DOB column shows dates correctly
      - [ ] Profession column shows new profession field
@@ -48,6 +81,8 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 3. **Candidate Comparison Table**
    - URL: `http://localhost:9003/#/front/candidate-comparison-table`
+   - **File:** `client/app/modules/f-candidate-comparison/views/candidate-comparison/table.html`
+   - **Filters Used:** All filters (getDob, getProfession, getLiability, getIncome, getDependentsIncome, translateKey)
    - Check:
      - [ ] All comparison fields display correctly
      - [ ] Asset type translations show in Bengali (when language is bn_BD)
@@ -68,6 +103,7 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 1. **Individual Affidavit Page**
    - URL: `http://localhost:9003/#/front/candidates/affidavit/{legacyCandidateId}`
+   - **File:** `client/app/modules/f-candidate-search/views/affidavit/view.html`
    - Check:
      - [ ] Date of birth shows date from `dobTR` timestamp
      - [ ] Profession shows `professionTypeBnAF` value
@@ -75,11 +111,16 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 2. **Candidate Profile Page**
    - URL: `http://localhost:9003/#/front/candidates/profile/{legacyCandidateId}`
+   - **File:** `client/app/modules/f-candidate-search/views/candidateprofile.html`
+   - **Filter Used:** `getDob`
    - Check:
      - [ ] DOB displays from fallback field
 
 3. **Year-wise Comparison**
    - URL: `http://localhost:9003/#/front/candidate-comparison/year-wise-comparison`
+   - **File:** `client/app/modules/f-candidate-comparison/views/year-wise-comparison/details.html`
+   - **Lines Modified:**
+     - Line 67-69: `{{reportData.c1Data | getProfession}}`, `{{reportData.c2Data | getProfession}}`
    - Check:
      - [ ] Profession comparison works with legacy data
 
@@ -93,6 +134,7 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 1. **All Candidate Info Page**
    - URL: `http://localhost:9003/#/front/election-result/all-candidate-info`
+   - **File:** `client/app/modules/f-election-result/views/all-candidate-info.html`
    - Select an election with mixed data
    - Check:
      - [ ] New format candidates show new field values
@@ -102,6 +144,7 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 2. **Comparison Pages**
    - URL: `http://localhost:9003/#/front/candidate-comparison-affidavit/Asset-Comparison-Of-Own-Dependent`
+   - **Backend File:** `common/models/candidate.js` (line 2936-2942, 2972-2978)
    - Check:
      - [ ] Liability values display correctly for both formats
      - [ ] Net asset calculations are correct
@@ -111,6 +154,10 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 ### Scenario 4: Test Backend API
 
 **Objective:** Verify backend aggregation includes fallback logic.
+
+**Backend File:** `common/models/candidate.js`
+- **Function:** `simplifyCandidateAffidavitComparison()` (line 2901)
+- **Liability Fallback Logic:** (line 2936-2942 for Bengali, line 2972-2978 for English)
 
 **Steps:**
 
@@ -130,6 +177,9 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 **Objective:** Verify translations work correctly.
 
+**Filter File:** `client/app/modules/core/filters/custom-filter.js`
+- **translateKey filter:** Translates dropdown keys to Bengali
+
 **Steps:**
 
 1. Switch to Bengali: Click language toggle or add `?lang=bn_BD`
@@ -143,19 +193,19 @@ MONGODB_URL="mongodb://localhost:27017/votebd" npm run dev
 
 ---
 
-## Pages to Test
+## Pages to Test - Complete Reference
 
-| Page | URL | Key Fields to Check |
-|------|-----|---------------------|
-| Individual Affidavit | `/#/front/candidates/affidavit/:id` | DOB, Profession, Income, Liability |
-| Candidate Profile | `/#/front/candidates/profile/:id` | DOB |
-| All Candidate Info | `/#/front/election-result/all-candidate-info` | DOB, Profession, Liability |
-| Comparison Table | `/#/front/candidate-comparison-table` | All fields |
-| Year-wise Comparison | `/#/front/candidate-comparison/year-wise-comparison` | Profession |
-| Asset Comparison | `/#/front/candidate-comparison-affidavit/Asset-Comparison-Of-Own-Dependent` | Asset, Liability |
-| Income Comparison | `/#/front/candidate-comparison-affidavit/Income-Comparison-Of-Own-Dependent` | Income |
-| Liability Comparison | `/#/front/candidate-comparison-affidavit/Liability-Comparison-Of-Own-Dependent` | Liability |
-| At a Glance | `/#/front/candidate-comparison-affidavit/Candidate-Comparison-At-A-Glance` | All aggregated fields |
+| Page | URL | Template File | Filters Used |
+|------|-----|---------------|--------------|
+| Individual Affidavit | `/#/front/candidates/affidavit/:id` | `f-candidate-search/views/affidavit/view.html` | getDob, getProfession, getIncome, getDependentsIncome, getLiability |
+| Candidate Profile | `/#/front/candidates/profile/:id` | `f-candidate-search/views/candidateprofile.html` | getDob |
+| All Candidate Info | `/#/front/election-result/all-candidate-info` | `f-election-result/views/all-candidate-info.html` | getDob, getProfession, getLiability |
+| Comparison Table | `/#/front/candidate-comparison-table` | `f-candidate-comparison/views/candidate-comparison/table.html` | All filters |
+| Year-wise Comparison | `/#/front/candidate-comparison/year-wise-comparison` | `f-candidate-comparison/views/year-wise-comparison/details.html` | getProfession |
+| Asset Comparison | `/#/front/candidate-comparison-affidavit/Asset-Comparison-Of-Own-Dependent` | Uses backend API | Backend fallback |
+| Income Comparison | `/#/front/candidate-comparison-affidavit/Income-Comparison-Of-Own-Dependent` | Uses backend API | Backend fallback |
+| Liability Comparison | `/#/front/candidate-comparison-affidavit/Liability-Comparison-Of-Own-Dependent` | Uses backend API | Backend fallback |
+| At a Glance | `/#/front/candidate-comparison-affidavit/Candidate-Comparison-At-A-Glance` | Uses backend API | Backend fallback |
 
 ---
 
@@ -192,6 +242,16 @@ console.log($filter('getProfession')(testRow2));
 // Test getLiability filter
 var testRow3 = {liability1AmountAF: 100000, liability2AmountAF: 50000};
 console.log($filter('getLiability')(testRow3));
+```
+
+### Verify Filter Code
+
+Open the filter file to verify implementation:
+```bash
+# View the filters
+cat client/app/modules/core/filters/custom-filter.js | grep -A 20 "filter('getDob'"
+cat client/app/modules/core/filters/custom-filter.js | grep -A 10 "filter('getProfession'"
+cat client/app/modules/core/filters/custom-filter.js | grep -A 15 "filter('getLiability'"
 ```
 
 ---
