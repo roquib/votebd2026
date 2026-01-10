@@ -15,7 +15,7 @@
             <span ng-show="$root.locale.lang != 'bn_BD'">{{ctrl.candidat.personNameEn}}</span>
             <span ng-show="$root.locale.lang == 'bn_BD'">{{ctrl.candidat.personNameBn}}</span>
           </li>
-          <li><pre>{{'জন্ম তারিখ'}}  : </pre> {{ctrl.candidat.candidateDateOfBirthBnAF}}</li>
+          <li><pre>{{'জন্ম তারিখ'}}  : </pre> {{ctrl.candidat | getDob}}</li>
           <li><pre>{{'Father'|translate}}  : </pre> {{ctrl.candidat.fatherHusbandNameBnAF}}</li>
           <li><pre>{{'Mother'|translate}}  : </pre> {{ctrl.candidat.motherNameBnAF}}</li>
           <li><pre>{{'Address'|translate}} : </pre> {{ctrl.candidat.addressBnAF}}</li>
