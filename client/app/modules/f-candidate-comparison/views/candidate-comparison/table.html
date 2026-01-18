@@ -315,11 +315,45 @@
     </td>
     <td>{{tr_data.highestDegreeBnAF}}</td>
     <td>
-      <span ng-if="tr_data.currentProfessionAF"><b>ক.১. বর্তমান পেশা:</b> {{tr_data.currentProfessionAF}}<br></span>
-      <span ng-if="tr_data.previousProfessionAF"><b>ক.২. পূর্বতন পেশা:</b> {{tr_data.previousProfessionAF}}<br></span>
-      <span ng-if="tr_data.spouseProfessionAF"><b>খ. স্বামী/স্ত্রীর পেশা:</b> {{tr_data.spouseProfessionAF}}<br></span>
-      <span ng-if="tr_data.spousePreviousProfessionAF"><b>গ. স্বামী/স্ত্রীর পূর্বতন পেশা:</b> {{tr_data.spousePreviousProfessionAF}}</span>
-      <span ng-if="!tr_data.currentProfessionAF && !tr_data.previousProfessionAF">{{tr_data | getProfession}}</span>
+      <table width="100%" cellspacing="0" class="databorder" ng-if="tr_data.currentProfessionAF || tr_data.previousProfessionAF || tr_data.spouseProfessionAF || tr_data.spousePreviousProfessionAF">
+        <tbody>
+        <tr><td colspan="2" style="font-weight:bold; background:#e8e8e8;">৪/ আমার পেশার বিবরণী</td></tr>
+        <tr style="font-weight:bold;">
+          <td>বিবরণ</td>
+          <td>পেশা</td>
+        </tr>
+        <tr>
+          <td>আমার বর্তমান পেশা</td>
+          <td>{{tr_data.currentProfessionAF}}</td>
+        </tr>
+        <tr>
+          <td>আমার পূর্বতন পেশা</td>
+          <td>{{tr_data.previousProfessionAF}}</td>
+        </tr>
+        <tr>
+          <td>স্বামী/স্ত্রীর পেশা</td>
+          <td>{{tr_data.spouseProfessionAF}}</td>
+        </tr>
+        <tr>
+          <td>স্বামী/স্ত্রীর পূর্বতন পেশা</td>
+          <td>{{tr_data.spousePreviousProfessionAF}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <table width="100%" cellspacing="0" class="databorder" ng-if="tr_data.dependentsAF && tr_data.dependentsAF.length > 0" style="margin-top:5px;">
+        <tbody>
+        <tr><td colspan="2" style="font-weight:bold; background:#e8e8e8;">৫/ নির্ভরশীলদের পেশার তালিকা</td></tr>
+        <tr style="font-weight:bold;">
+          <td>নাম</td>
+          <td>পেশা</td>
+        </tr>
+        <tr ng-repeat="dep in tr_data.dependentsAF">
+          <td>{{dep.name}}</td>
+          <td>{{dep.profession || dep.remarks}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <span ng-if="!tr_data.currentProfessionAF && !tr_data.previousProfessionAF && !tr_data.spouseProfessionAF && !tr_data.spousePreviousProfessionAF">{{tr_data | getProfession}}</span>
     </td>
     <td>
       <ul>
