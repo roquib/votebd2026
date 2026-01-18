@@ -397,6 +397,84 @@ var decodeEntities = (function() {
         }
         return total;
       };
+    })
+    // Get total movable assets (own)
+    .filter('getTotalMovableOwn', function() {
+      return function(row) {
+        if (!row || !row.assetMaterialAF || !row.assetMaterialAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.assetMaterialAF.length; i++) {
+          total += parseInt(row.assetMaterialAF[i].priceOwn) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total movable assets (spouse + dependents)
+    .filter('getTotalMovableSpouse', function() {
+      return function(row) {
+        if (!row || !row.assetMaterialAF || !row.assetMaterialAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.assetMaterialAF.length; i++) {
+          total += (parseInt(row.assetMaterialAF[i].priceHusbandWife) || 0) + (parseInt(row.assetMaterialAF[i].priceDependants) || 0);
+        }
+        return total;
+      };
+    })
+    // Get total immovable assets (own)
+    .filter('getTotalImmovableOwn', function() {
+      return function(row) {
+        if (!row || !row.assetImmaterialAF || !row.assetImmaterialAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.assetImmaterialAF.length; i++) {
+          total += parseInt(row.assetImmaterialAF[i].priceOwn) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total immovable assets (spouse + dependents)
+    .filter('getTotalImmovableSpouse', function() {
+      return function(row) {
+        if (!row || !row.assetImmaterialAF || !row.assetImmaterialAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.assetImmaterialAF.length; i++) {
+          total += (parseInt(row.assetImmaterialAF[i].priceHusbandWife) || 0) + (parseInt(row.assetImmaterialAF[i].priceDependants) || 0);
+        }
+        return total;
+      };
+    })
+    // Get total immovable assets (joint share)
+    .filter('getTotalImmovableJoint', function() {
+      return function(row) {
+        if (!row || !row.assetImmaterialAF || !row.assetImmaterialAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.assetImmaterialAF.length; i++) {
+          total += parseInt(row.assetImmaterialAF[i].priceJointSharePart) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total all assets (movable + immovable)
+    .filter('getTotalAllAssets', function() {
+      return function(row) {
+        if (!row) return 0;
+        var totalMovableOwn = 0, totalMovableSpouse = 0;
+        var totalImmovableOwn = 0, totalImmovableSpouse = 0, totalImmovableJoint = 0;
+
+        if (row.assetMaterialAF && row.assetMaterialAF.length) {
+          for (var i = 0; i < row.assetMaterialAF.length; i++) {
+            totalMovableOwn += parseInt(row.assetMaterialAF[i].priceOwn) || 0;
+            totalMovableSpouse += (parseInt(row.assetMaterialAF[i].priceHusbandWife) || 0) + (parseInt(row.assetMaterialAF[i].priceDependants) || 0);
+          }
+        }
+        if (row.assetImmaterialAF && row.assetImmaterialAF.length) {
+          for (var j = 0; j < row.assetImmaterialAF.length; j++) {
+            totalImmovableOwn += parseInt(row.assetImmaterialAF[j].priceOwn) || 0;
+            totalImmovableSpouse += (parseInt(row.assetImmaterialAF[j].priceHusbandWife) || 0) + (parseInt(row.assetImmaterialAF[j].priceDependants) || 0);
+            totalImmovableJoint += parseInt(row.assetImmaterialAF[j].priceJointSharePart) || 0;
+          }
+        }
+        return totalMovableOwn + totalMovableSpouse + totalImmovableOwn + totalImmovableSpouse + totalImmovableJoint;
+      };
     });
 
 })();
