@@ -321,6 +321,82 @@ var decodeEntities = (function() {
         // For English mode, convert underscore to space and capitalize
         return key.replace(/_/g, ' ').replace(/\b\w/g, function(l) { return l.toUpperCase(); });
       };
+    })
+    // Get total own income (domestic)
+    .filter('getTotalOwnDomestic', function() {
+      return function(row) {
+        if (!row || !row.incomeSourceAF || !row.incomeSourceAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.incomeSourceAF.length; i++) {
+          var item = row.incomeSourceAF[i];
+          var dom = parseInt(item.ownDomestic) || 0;
+          var foreign = parseInt(item.ownForeign) || 0;
+          // Fallback to old field if new fields are empty
+          if (dom === 0 && foreign === 0) dom = parseInt(item.own) || 0;
+          total += dom;
+        }
+        return total;
+      };
+    })
+    // Get total own income (foreign)
+    .filter('getTotalOwnForeign', function() {
+      return function(row) {
+        if (!row || !row.incomeSourceAF || !row.incomeSourceAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.incomeSourceAF.length; i++) {
+          total += parseInt(row.incomeSourceAF[i].ownForeign) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total dependents income (domestic)
+    .filter('getTotalDepDomestic', function() {
+      return function(row) {
+        if (!row || !row.incomeSourceAF || !row.incomeSourceAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.incomeSourceAF.length; i++) {
+          var item = row.incomeSourceAF[i];
+          var dom = parseInt(item.dependentsDomestic) || 0;
+          var foreign = parseInt(item.dependentsForeign) || 0;
+          // Fallback to old field if new fields are empty
+          if (dom === 0 && foreign === 0) dom = parseInt(item.dependents) || 0;
+          total += dom;
+        }
+        return total;
+      };
+    })
+    // Get total dependents income (foreign)
+    .filter('getTotalDepForeign', function() {
+      return function(row) {
+        if (!row || !row.incomeSourceAF || !row.incomeSourceAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.incomeSourceAF.length; i++) {
+          total += parseInt(row.incomeSourceAF[i].dependentsForeign) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total loan amount
+    .filter('getTotalLoan', function() {
+      return function(row) {
+        if (!row || !row.loanAF || !row.loanAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.loanAF.length; i++) {
+          total += parseInt(row.loanAF[i].loanAmount) || 0;
+        }
+        return total;
+      };
+    })
+    // Get total defaulted loan amount
+    .filter('getTotalDefaultedLoan', function() {
+      return function(row) {
+        if (!row || !row.loanAF || !row.loanAF.length) return 0;
+        var total = 0;
+        for (var i = 0; i < row.loanAF.length; i++) {
+          total += parseInt(row.loanAF[i].debitedLoanAmount) || 0;
+        }
+        return total;
+      };
     });
 
 })();

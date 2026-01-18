@@ -56,9 +56,15 @@
       <table width="100%" cellspacing="0" class="databorder">
         <tbody>
         <tr>
-          <td>উৎস সমূহ</td>
-          <td>প্রার্থীর নিজের</td>
-          <td>নির্ভরশীল</td>
+          <td rowspan="2">উৎস সমূহ</td>
+          <td colspan="2">প্রার্থীর নিজের</td>
+          <td colspan="2">নির্ভরশীল</td>
+        </tr>
+        <tr>
+          <td>দেশের ভেতরে</td>
+          <td>দেশের বাইরে</td>
+          <td>দেশের ভেতরে</td>
+          <td>দেশের বাইরে</td>
         </tr>
         </tbody>
       </table>
@@ -106,14 +112,39 @@
         </tbody>
       </table>
     </td>
+    <td>হলফনামায় বর্ণিত সর্বশেষ আয়কর রিটার্ন জমার বিবরণী
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>নাম</td>
+          <td>বছর</td>
+          <td>টিন</td>
+          <td>আয়</td>
+          <td>সম্পদ</td>
+          <td>কর প্রদান</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>প্রতিনিধিত্বের ইতিহাস
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td>নির্বাচনের বছর</td>
+          <td>নির্বাচনী এলাকা</td>
+          <td>দলীয় নাম/স্বতন্ত্র</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
     <td>প্রার্থীর ঋণ সংক্রান্ত বিবরণী
       <table width="100%" cellspacing="0" class="databorder">
         <tbody>
         <tr>
           <td>ঋণের ধরণ</td>
-          <td>আর্থিক প্রতিষ্ঠানের নাম</td>
           <td>ঋণের পরিমাণ</td>
-          <!--<td>খেলাপী ঋণ</td> changed 12 dec 17-->
+          <td>আর্থিক প্রতিষ্ঠানের নাম</td>
+          <td>খেলাপী ঋণ</td>
         </tr>
         </tbody>
       </table>
@@ -217,18 +248,12 @@
       <table width="100%" cellspacing="0" class="databorder">
         <tbody>
         <tr>
-          <td>
-            <center>১০(ক)</center>
-          </td>
-          <td>
-            <center>১০(খ)</center>
-          </td>
-          <td>
-            <center>১০(গ)</center>
-          </td>
-          <td>
-            <center>১০(ঘ)</center>
-          </td>
+          <td><center>১০(ক)</center></td>
+          <td><center>১০(খ)</center></td>
+          <td><center>১০(গ)</center></td>
+          <td><center>১০(ঘ)</center></td>
+          <td><center>১০(ঙ)</center></td>
+          <td><center>১০(চ)</center></td>
         </tr>
         </tbody>
       </table>
@@ -238,9 +263,34 @@
       <table width="100%" cellspacing="0" class="databorder">
         <tbody>
         <tr>
-          <td align="center">১১(ক)</td>
-          <td align="center">১১(খ)</td>
-          <td align="center">১১(গ)</td>
+          <td><center>১১(ক)</center></td>
+          <td><center>১১(খ)</center></td>
+          <td><center>১১(গ)</center></td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <center>১২</center>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td><center>১২(ক)</center></td>
+          <td><center>১২(খ)</center></td>
+          <td><center>১২(গ)</center></td>
+          <td><center>১২(ঘ)</center></td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <center>১৩</center>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr>
+          <td align="center">১৩(ক)</td>
+          <td align="center">১৩(খ)</td>
+          <td align="center">১৩(গ)</td>
         </tr>
         </tbody>
       </table>
@@ -264,7 +314,13 @@
       {{tr_data.addressBnAF}}
     </td>
     <td>{{tr_data.highestDegreeBnAF}}</td>
-    <td>{{tr_data | getProfession}}</td>
+    <td>
+      <span ng-if="tr_data.currentProfessionAF"><b>ক.১. বর্তমান পেশা:</b> {{tr_data.currentProfessionAF}}<br></span>
+      <span ng-if="tr_data.previousProfessionAF"><b>ক.২. পূর্বতন পেশা:</b> {{tr_data.previousProfessionAF}}<br></span>
+      <span ng-if="tr_data.spouseProfessionAF"><b>খ. স্বামী/স্ত্রীর পেশা:</b> {{tr_data.spouseProfessionAF}}<br></span>
+      <span ng-if="tr_data.spousePreviousProfessionAF"><b>গ. স্বামী/স্ত্রীর পূর্বতন পেশা:</b> {{tr_data.spousePreviousProfessionAF}}</span>
+      <span ng-if="!tr_data.currentProfessionAF && !tr_data.previousProfessionAF">{{tr_data | getProfession}}</span>
+    </td>
     <td>
       <ul>
         <li ng-repeat="presentLaw in tr_data.lawPresentAF">{{($index+1) | translate}} . {{presentLaw.whichLaw}} <br/>({{presentLaw.currentStatusResult}})
@@ -281,18 +337,22 @@
     <td>
       <table width="100%"  cellspacing="0" class="databorder">
         <tr ng-repeat="income in tr_data.incomeSourceAF">
-          <td width="33%"><span>{{income.type | translateKey}}</span></td>
-          <td width="33%"><span ng-if="(income | getIncome) > 0">{{income | getIncome | number:0 | translateNumber}}</span></td>
-          <td width="33%"><span ng-if="(income | getDependentsIncome) > 0">{{income | getDependentsIncome | number:0 | translateNumber}}</span></td>
+          <td width="20%"><span>{{income.type | translateKey}}</span></td>
+          <td width="20%"><span ng-if="income.ownDomestic > 0 || (!income.ownDomestic && !income.ownForeign && income.own > 0)">{{(income.ownDomestic || income.own) | number:0 | translateNumber}}</span></td>
+          <td width="20%"><span ng-if="income.ownForeign > 0">{{income.ownForeign | number:0 | translateNumber}}</span></td>
+          <td width="20%"><span ng-if="income.dependentsDomestic > 0 || (!income.dependentsDomestic && !income.dependentsForeign && income.dependents > 0)">{{(income.dependentsDomestic || income.dependents) | number:0 | translateNumber}}</span></td>
+          <td width="20%"><span ng-if="income.dependentsForeign > 0">{{income.dependentsForeign | number:0 | translateNumber}}</span></td>
         </tr>
-      <!--<tr>
-          <td ></td>
-          <td >মোট: {{tr_data.totalOwnIncomeAF | number:0 | translateNumber}}</td>
-          <td >মোট: {{tr_data.totalDependentIncomeAF | number:0 | translateNumber}}</td>
+        <tr style="font-weight:bold; background:#f5f5f5;">
+          <td>মোট:</td>
+          <td>{{tr_data | getTotalOwnDomestic | number:0 | translateNumber}}</td>
+          <td>{{tr_data | getTotalOwnForeign | number:0 | translateNumber}}</td>
+          <td>{{tr_data | getTotalDepDomestic | number:0 | translateNumber}}</td>
+          <td>{{tr_data | getTotalDepForeign | number:0 | translateNumber}}</td>
         </tr>
-        <tr>
-          <td  rowspan="3">সর্বমোট আয়: {{tr_data.grandTotalIncomeAF | number:0 | translateNumber}}</td>
-        </tr>-->
+        <tr style="font-weight:bold; background:#e8e8e8;">
+          <td colspan="5">সর্বমোট আয়: {{tr_data.grandTotalIncomeAF | number:0 | translateNumber}}</td>
+        </tr>
       </table>
     </td>
     <td>
@@ -347,23 +407,133 @@
     <td>
       <table width="100%"   cellspacing="0" class="databorder">
         <tbody>
-        <tr align="center">
-          <td>{{tr_data.liabilitiesDetailsBnAF}}</td>
+        <tr><td colspan="3" style="font-weight:bold; background:#e8e8e8;">(গ)(১) দায়</td></tr>
+        <tr ng-if="tr_data.liability1AmountAF > 0 || tr_data.liability1TypeAF || tr_data.liability1DescAF">
+          <td><b>১ - আমার নামে</b></td>
+          <td>{{tr_data.liability1TypeAF}}{{tr_data.liability1DescAF ? ': ' + tr_data.liability1DescAF : ''}}</td>
+          <td>{{tr_data.liability1AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.liability2AmountAF > 0 || tr_data.liability2TypeAF || tr_data.liability2DescAF">
+          <td><b>২ - স্বামী/স্ত্রীর নামে</b></td>
+          <td>{{tr_data.liability2TypeAF}}{{tr_data.liability2DescAF ? ': ' + tr_data.liability2DescAF : ''}}</td>
+          <td>{{tr_data.liability2AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.liability3AmountAF > 0 || tr_data.liability3TypeAF || tr_data.liability3DescAF">
+          <td><b>৩ - সন্তানের নামে</b></td>
+          <td>{{tr_data.liability3TypeAF}}{{tr_data.liability3DescAF ? ': ' + tr_data.liability3DescAF : ''}}</td>
+          <td>{{tr_data.liability3AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.liability4AmountAF > 0 || tr_data.liability4TypeAF || tr_data.liability4DescAF">
+          <td><b>৪ - নির্ভরশীলদের নামে</b></td>
+          <td>{{tr_data.liability4TypeAF}}{{tr_data.liability4DescAF ? ': ' + tr_data.liability4DescAF : ''}}</td>
+          <td>{{tr_data.liability4AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="!tr_data.liability1AmountAF && !tr_data.liability2AmountAF && !tr_data.liability3AmountAF && !tr_data.liability4AmountAF && tr_data.liabilitiesDetailsBnAF">
+          <td colspan="2">{{tr_data.liabilitiesDetailsBnAF}}</td>
+          <td>{{tr_data.liabilitiesAmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr style="font-weight:bold; background:#f5f5f5;">
+          <td colspan="2">মোট দায় (৭ গ(১))</td>
           <td>{{tr_data | getLiability | number:0 | translateNumber}}</td>
         </tr>
-
+        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues2AmountAF > 0 || tr_data.govDues3AmountAF > 0 || tr_data.govDues4AmountAF > 0"><td colspan="3" style="font-weight:bold; background:#e8e8e8;">(গ)(২) সরকারি পাওনাদি</td></tr>
+        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues1TypeAF">
+          <td><b>১ - আমার নামে</b></td>
+          <td>{{tr_data.govDues1TypeAF}}</td>
+          <td>{{tr_data.govDues1AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.govDues2AmountAF > 0 || tr_data.govDues2TypeAF">
+          <td><b>২ - স্বামী/স্ত্রীর নামে</b></td>
+          <td>{{tr_data.govDues2TypeAF}}</td>
+          <td>{{tr_data.govDues2AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.govDues3AmountAF > 0 || tr_data.govDues3TypeAF">
+          <td><b>৩ - সন্তানের নামে</b></td>
+          <td>{{tr_data.govDues3TypeAF}}</td>
+          <td>{{tr_data.govDues3AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.govDues4AmountAF > 0 || tr_data.govDues4TypeAF">
+          <td><b>৪ - নির্ভরশীলদের নামে</b></td>
+          <td>{{tr_data.govDues4TypeAF}}</td>
+          <td>{{tr_data.govDues4AmountAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues2AmountAF > 0 || tr_data.govDues3AmountAF > 0 || tr_data.govDues4AmountAF > 0" style="font-weight:bold; background:#f5f5f5;">
+          <td colspan="2">মোট সরকারি পাওনা (৭ গ(২))</td>
+          <td>{{((tr_data.govDues1AmountAF || 0) + (tr_data.govDues2AmountAF || 0) + (tr_data.govDues3AmountAF || 0) + (tr_data.govDues4AmountAF || 0)) | number:0 | translateNumber}}</td>
+        </tr>
         </tbody>
       </table>
 
+    </td>
+    <td>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr ng-if="tr_data.taxReturn1YearAF || tr_data.taxReturn1TINAF || tr_data.taxReturn1IncomeAF">
+          <td><b>আমার</b></td>
+          <td>{{tr_data.taxReturn1YearAF}}</td>
+          <td>{{tr_data.taxReturn1TINAF}}</td>
+          <td>{{tr_data.taxReturn1IncomeAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn1AssetAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn1PaidAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.taxReturn2YearAF || tr_data.taxReturn2TINAF || tr_data.taxReturn2IncomeAF">
+          <td><b>স্বামী/স্ত্রী</b></td>
+          <td>{{tr_data.taxReturn2YearAF}}</td>
+          <td>{{tr_data.taxReturn2TINAF}}</td>
+          <td>{{tr_data.taxReturn2IncomeAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn2AssetAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn2PaidAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.taxReturn3YearAF || tr_data.taxReturn3TINAF || tr_data.taxReturn3IncomeAF">
+          <td><b>সন্তান</b></td>
+          <td>{{tr_data.taxReturn3YearAF}}</td>
+          <td>{{tr_data.taxReturn3TINAF}}</td>
+          <td>{{tr_data.taxReturn3IncomeAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn3AssetAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn3PaidAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.taxReturn4YearAF || tr_data.taxReturn4TINAF || tr_data.taxReturn4IncomeAF">
+          <td><b>নির্ভরশীলদের</b></td>
+          <td>{{tr_data.taxReturn4YearAF}}</td>
+          <td>{{tr_data.taxReturn4TINAF}}</td>
+          <td>{{tr_data.taxReturn4IncomeAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn4AssetAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.taxReturn4PaidAF | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="!tr_data.taxReturn1YearAF && !tr_data.taxReturn2YearAF && !tr_data.taxReturn3YearAF && !tr_data.taxReturn4YearAF">
+          <td colspan="6" style="color:#999;">কোন তথ্য নেই</td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <table width="100%" cellspacing="0" class="databorder">
+        <tbody>
+        <tr ng-repeat="history in tr_data.electionHistoryAF">
+          <td>{{history.electionYear | translateNumber}}</td>
+          <td>{{history.constituency}}</td>
+          <td>{{history.partyName}}</td>
+        </tr>
+        <tr ng-if="!tr_data.electionHistoryAF || tr_data.electionHistoryAF.length == 0">
+          <td colspan="3" style="color:#999;">কোন তথ্য নেই</td>
+        </tr>
+        </tbody>
+      </table>
     </td>
     <td>
       <table width="100%"  cellspacing="0" class="databorder">
         <tbody>
         <tr ng-repeat="loan in tr_data.loanAF">
           <td>{{loan.loanType | translateKey}}</td>
-          <td>{{loan.bankOrganization}}</td>
           <td>{{loan.loanAmount | number:0 | translateNumber}}</td>
+          <td>{{loan.bankOrganization}}</td>
           <td>{{loan.debitedLoanAmount | number:0 | translateNumber}}</td>
+        </tr>
+        <tr ng-if="tr_data.loanAF.length > 0" style="font-weight:bold; background:#f5f5f5;">
+          <td>মোট ঋণ</td>
+          <td>{{tr_data | getTotalLoan | number:0 | translateNumber}}</td>
+          <td></td>
+          <td>{{tr_data | getTotalDefaultedLoan | number:0 | translateNumber}}</td>
         </tr>
         </tbody>
       </table>
@@ -373,45 +543,32 @@
       <table width="100%"   cellspacing="0" class="databorder">
         <tbody>
         <tr>
-          <td style="text-align:center;">
-            <span ng-if="tr_data._1_totalCapitalTR > 0">{{'(a) Business Capital (Closing balance)'|translate}} : {{tr_data._1_totalCapitalTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._2_notAgriLandHomePriceTR > 0">{{'Non-Agricultural Property (at cost with legal expenses )'|translate}} : {{tr_data._2_notAgriLandHomePriceTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._3_agriLandPriceTR > 0">{{'Agricultural Property (at cost with legal expenses )'|translate}} : {{tr_data._3_agriLandPriceTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._4_totalInvestTR > 0">{{'Investments'|translate}} : {{tr_data._4_totalInvestTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._5a_motorPriceTR > 0">{{'Motor Vehicles (at cost)'|translate}} : {{tr_data._5a_motorPriceTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._6_ornamentsTR > 0">{{'Jewellery (quantity and cost)'|translate}} : {{tr_data._6_ornamentsTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._7_furnitureTR > 0">{{'Furniture (at cost)'|translate}} : {{tr_data._7_furnitureTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._8_electronicTR > 0">{{'Electronic Equipment (at cost)'|translate}} : {{tr_data._8_electronicTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._9_totalCashBankOtherTR > 0">{{'Cash Asset Outside Business'|translate}} : {{tr_data._9_totalCashBankOtherTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._10_otherAssetsPriceTR > 0">{{'Any other assets'|translate}} : {{tr_data._10_otherAssetsPriceTR | number:0 | translateNumber}}</span>
-
-
-            <!--<hr> changed 12 dec 17
-            {{'Total Assets'|translate}} : {{tr_data._10_1_to_10_totalAssetTR | number:0 | translateNumber}}
-            <hr>-->
-            {{'Total Liabilities'|translate}} : {{tr_data._11_totalLiabilitiesTR | number:0 | translateNumber}}
-            <!--<hr>
-            {{"Total Net Assets" | translate}} : {{tr_data._12_netAssetsTR | number:0 | translateNumber}}
-
-          </td>-->
-          <td style="text-align:center;">
-            {{'Total income (serial no. 10 and 11)'|translate}} : {{tr_data._12_10to11_totalTR | number:0 | translateNumber}}<br>
-            {{'Income tax paid in the last assessment year'|translate}} : {{tr_data._15_13_sub_14_givenTaxTR | number:0 | translateNumber}}
-
+          <td style="text-align:left;">
+            <span ng-if="tr_data._1_totalCapitalTR > 0"><b>ব্যবসায়িক মূলধন:</b> {{tr_data._1_totalCapitalTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._2_notAgriLandHomePriceTR > 0"><b>অ-কৃষি সম্পদ:</b> {{tr_data._2_notAgriLandHomePriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._3_agriLandPriceTR > 0"><b>কৃষি সম্পদ:</b> {{tr_data._3_agriLandPriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._4_totalInvestTR > 0"><b>বিনিয়োগ:</b> {{tr_data._4_totalInvestTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._5a_motorPriceTR > 0"><b>মোটরযান:</b> {{tr_data._5a_motorPriceTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._6_ornamentsTR > 0"><b>অলংকার:</b> {{tr_data._6_ornamentsTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._7_furnitureTR > 0"><b>আসবাবপত্র:</b> {{tr_data._7_furnitureTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._8_electronicTR > 0"><b>ইলেকট্রনিক:</b> {{tr_data._8_electronicTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._9_totalCashBankOtherTR > 0"><b>ব্যবসা বহির্ভূত অর্থ সম্পদ:</b> {{tr_data._9_totalCashBankOtherTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._10_otherAssetsPriceTR > 0"><b>অন্যান্য সম্পদ:</b> {{tr_data._10_otherAssetsPriceTR | number:0 | translateNumber}}<br></span>
+            <hr style="margin:2px 0;">
+            <b>মোট সম্পদ:</b> {{tr_data._10_1_to_10_totalAssetTR | number:0 | translateNumber}}<br>
+            <b>মোট দায়:</b> {{tr_data._11_totalLiabilitiesTR | number:0 | translateNumber}}
           </td>
-          <td style="text-align:center;">
-            <span ng-if="tr_data._1_personalCostTR  > 0"> {{'Personal and fooding expenses'|translate}} : {{tr_data._1_personalCostTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._2_taxPaidLastYearTR  > 0"> {{'Tax paid including deduction at source of the last Tk. financial year'|translate}} : {{tr_data._2_taxPaidLastYearTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._3_residentialCostTR  > 0"> {{'Accommodation expenses'|translate}} : {{tr_data._3_residentialCostTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._4_vehicleCostTR  > 0"> {{'Transport expenses'|translate}} : {{tr_data._4_vehicleCostTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._5_electricityBillTR  > 0"> {{'Electricity Bill for residence'|translate}} : {{tr_data._5_electricityBillTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._6_waterBillTR  > 0"> {{'Wasa Bill for residence'|translate}} : {{tr_data._6_waterBillTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._7_gasBillTR  > 0"> {{'Gas Bill for residence'|translate}} : {{tr_data._7_gasBillTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._8_telephoneBillTR  > 0"> {{'Telephone Bill for residence'|translate}} : {{tr_data._8_telephoneBillTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._9_childEducationalExpenseTR  > 0"> {{'Education expenses for children'|translate}} : {{tr_data._9_childEducationalExpenseTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._10_travelExpenseTR  > 0"> {{'Personal expenses for Foreign travel'|translate}} : {{tr_data._10_travelExpenseTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._11_festivalCostTR  > 0"> {{'Festival and other special expenses, if any'|translate}} : {{tr_data._11_festivalCostTR | number:0 | translateNumber }}<br></span>
-
+          <td style="text-align:left;">
+            <b>মোট আয়:</b> {{tr_data._12_10to11_totalTR | number:0 | translateNumber}}<br>
+            <b>আরোপযোগ্য আয়কর:</b> {{tr_data._13ApplicableTaxTR | number:0 | translateNumber}}<br>
+            <b>প্রদত্ত আয়কর:</b> {{tr_data._15_13_sub_14_givenTaxTR | number:0 | translateNumber}}
+          </td>
+          <td style="text-align:left;">
+            <span ng-if="tr_data._1_personalCostTR > 0"><b>ব্যক্তিগত ও খাদ্য ব্যয়:</b> {{tr_data._1_personalCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._3_residentialCostTR > 0"><b>বাসস্থান ব্যয়:</b> {{tr_data._3_residentialCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._4_vehicleCostTR > 0"><b>যানবাহন ব্যয়:</b> {{tr_data._4_vehicleCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._5_electricityBillTR > 0"><b>বিদ্যুৎ বিল:</b> {{tr_data._5_electricityBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._9_childEducationalExpenseTR > 0"><b>সন্তান শিক্ষা ব্যয়:</b> {{tr_data._9_childEducationalExpenseTR | number:0 | translateNumber}}<br></span>
           </td>
         </tr>
         </tbody>
