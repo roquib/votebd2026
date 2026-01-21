@@ -478,28 +478,28 @@
           <td colspan="2">মোট দায় (৭ গ(১))</td>
           <td>{{tr_data | getLiability | number:0 | translateNumber}}</td>
         </tr>
-        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues2AmountAF > 0 || tr_data.govDues3AmountAF > 0 || tr_data.govDues4AmountAF > 0"><td colspan="3" style="font-weight:bold; background:#e8e8e8;">(গ)(২) সরকারি পাওনাদি</td></tr>
-        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues1TypeAF">
+        <tr><td colspan="3" style="font-weight:bold; background:#e8e8e8;">(গ)(২) সরকারি পাওনাদি</td></tr>
+        <tr>
           <td><b>১ - আমার নামে</b></td>
-          <td>{{tr_data.govDues1TypeAF}}</td>
-          <td>{{tr_data.govDues1AmountAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.govDues1TypeAF || 'উল্লেখ নাই'}}</td>
+          <td>{{tr_data.govDues1AmountAF > 0 ? (tr_data.govDues1AmountAF | number:0 | translateNumber) : '-'}}</td>
         </tr>
-        <tr ng-if="tr_data.govDues2AmountAF > 0 || tr_data.govDues2TypeAF">
+        <tr>
           <td><b>২ - স্বামী/স্ত্রীর নামে</b></td>
-          <td>{{tr_data.govDues2TypeAF}}</td>
-          <td>{{tr_data.govDues2AmountAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.govDues2TypeAF || 'উল্লেখ নাই'}}</td>
+          <td>{{tr_data.govDues2AmountAF > 0 ? (tr_data.govDues2AmountAF | number:0 | translateNumber) : '-'}}</td>
         </tr>
-        <tr ng-if="tr_data.govDues3AmountAF > 0 || tr_data.govDues3TypeAF">
+        <tr>
           <td><b>৩ - সন্তানের নামে</b></td>
-          <td>{{tr_data.govDues3TypeAF}}</td>
-          <td>{{tr_data.govDues3AmountAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.govDues3TypeAF || 'উল্লেখ নাই'}}</td>
+          <td>{{tr_data.govDues3AmountAF > 0 ? (tr_data.govDues3AmountAF | number:0 | translateNumber) : '-'}}</td>
         </tr>
-        <tr ng-if="tr_data.govDues4AmountAF > 0 || tr_data.govDues4TypeAF">
+        <tr>
           <td><b>৪ - নির্ভরশীলদের নামে</b></td>
-          <td>{{tr_data.govDues4TypeAF}}</td>
-          <td>{{tr_data.govDues4AmountAF | number:0 | translateNumber}}</td>
+          <td>{{tr_data.govDues4TypeAF || 'উল্লেখ নাই'}}</td>
+          <td>{{tr_data.govDues4AmountAF > 0 ? (tr_data.govDues4AmountAF | number:0 | translateNumber) : '-'}}</td>
         </tr>
-        <tr ng-if="tr_data.govDues1AmountAF > 0 || tr_data.govDues2AmountAF > 0 || tr_data.govDues3AmountAF > 0 || tr_data.govDues4AmountAF > 0" style="font-weight:bold; background:#f5f5f5;">
+        <tr style="font-weight:bold; background:#f5f5f5;">
           <td colspan="2">মোট সরকারি পাওনা (৭ গ(২))</td>
           <td>{{((tr_data.govDues1AmountAF || 0) + (tr_data.govDues2AmountAF || 0) + (tr_data.govDues3AmountAF || 0) + (tr_data.govDues4AmountAF || 0)) | number:0 | translateNumber}}</td>
         </tr>
