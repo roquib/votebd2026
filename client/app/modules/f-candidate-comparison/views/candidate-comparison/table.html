@@ -307,7 +307,7 @@
         src="images/document_edit.png" border="0"></a></p>
       <br>
       দল: {{tr_data.politicalParty.partyNameBn}}
-      <br>পিতা/স্বামী: {{tr_data.fatherHusbandNameBnAF}}
+      <br>পিতা: {{tr_data.fatherHusbandNameBnAF}}
       <br>
       মাতা: {{tr_data.motherNameBnAF}}
       <br>
@@ -406,10 +406,6 @@
                   <br> <span class="priceHusbandWife">{{assetMaterial.priceHusbandWife| translateNumber}}</span>
                   <br> <span class="priceDependent">{{assetMaterial.priceDependants| translateNumber}}</span>
                 </td>
-              </tr>
-              <tr style="font-weight:bold; background:#f5f5f5;">
-                <td>মোট অস্থাবর: {{tr_data | getTotalMovableOwn | number:0 | translateNumber}}</td>
-                <td>{{tr_data | getTotalMovableSpouse | number:0 | translateNumber}}</td>
               </tr>
               </tbody>
             </table>
