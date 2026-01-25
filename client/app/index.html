@@ -1,0 +1,493 @@
+<!doctype html>
+<html ng-app="loopbackApp" ng-controller="LayoutCtrl">
+<head>
+  <meta charset="utf-8">
+  <title>VoteBD :: Know your political parties and candidates before casting your valuable votes</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <!-- build:css styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="bower_components/angular-toasty/css/ng-toasty.css" />
+  <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css" />
+  <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.css" />
+  <link rel="stylesheet" href="bower_components/angular-bootstrap-nav-tree/dist/abn_tree.css" />
+  <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css" />
+  <link rel="stylesheet" href="bower_components/codemirror/theme/monokai.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+  <link rel="stylesheet" href="bower_components/flag-icon-css/css/flag-icon.min.css" />
+  <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+  <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+  <link rel="stylesheet" href="bower_components/ngGallery/src/css/ngGallery.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="/css/AdminLTE.css" />
+  <link rel="stylesheet" href="/css/c3.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/osworld-all.css" />
+  <link rel="stylesheet" href="/css/SolaimanLipi.css" />
+  
+  <!-- endbuild -->
+</head>
+<body class="{{getSetting('appTheme') }} {{ getSetting('appLayout') }} " >
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<div id="main-container" ui-view ng-class="{'full-height': currentUser.id === undefined}" ></div>
+
+<div ng-controller="toasty-controller">
+  <toasty-container toasty-defaults='{"timeout": 3000, "close-button":true, "sound": false}'></toasty-container>
+</div>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push (arguments)
+    }, i[r].l = 1 * new Date ();
+    a = s.createElement (o),
+      m = s.getElementsByTagName (o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore (a, m)
+  }) (window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga ('create', 'UA-XXXXX-X');
+  ga ('send', 'pageview');
+</script>
+
+<!-- build:js scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/api-check/dist/api-check.js"></script>
+<script src="bower_components/angular-formly/dist/formly.js"></script>
+<script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js"></script>
+<script src="bower_components/angular-toasty/js/ng-toasty.js"></script>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/angular-filter/dist/angular-filter.js"></script>
+<script src="bower_components/sweetalert/lib/sweet-alert.js"></script>
+<script src="bower_components/angular-sweetalert/SweetAlert.js"></script>
+<script src="bower_components/angular-gravatar/build/md5.js"></script>
+<script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-bootstrap-nav-tree/dist/abn_tree_directive.js"></script>
+<script src="bower_components/codemirror/lib/codemirror.js"></script>
+<script src="bower_components/codemirror/addon/mode/overlay.js"></script>
+<script src="bower_components/codemirror/mode/gfm/gfm.js"></script>
+<script src="bower_components/codemirror/mode/markdown/markdown.js"></script>
+<script src="bower_components/angular-ui-codemirror/ui-codemirror.js"></script>
+<script src="bower_components/angular-markdown-directive/markdown.js"></script>
+<script src="bower_components/angular-elastic/elastic.js"></script>
+<script src="bower_components/angular-autoFields-bootstrap/autofields.min.js"></script>
+<script src="bower_components/angular-autoFields-bootstrap/autofields-bootstrap.min.js"></script>
+<script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+<script src="bower_components/angular-translate-loader-url/angular-translate-loader-url.js"></script>
+<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+<script src="bower_components/angular-scenario/angular-scenario.js"></script>
+<script src="bower_components/tv4/tv4.js"></script>
+<script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+<script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+<script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
+<script src="bower_components/angular-ui-select/dist/select.js"></script>
+<script src="bower_components/underscore/underscore-umd.js"></script>
+<script src="bower_components/angular-schema-form-ui-select/ui-sortable.js"></script>
+<script src="bower_components/angular-schema-form-ui-select/angular-underscore.js"></script>
+<script src="bower_components/angular-schema-form-ui-select/bootstrap-ui-select.min.js"></script>
+<script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+<script src="bower_components/angular-scroll/angular-scroll.js"></script>
+<script src="bower_components/ngGallery/src/js/ngGallery.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+<script src="bower_components/angular-ui-sortable/sortable.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+<script src="bower_components/chart.js/dist/Chart.js"></script>
+<script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+<!-- build:js scripts/scripts.js -->
+<!-- JS -->
+<script src="/js/app.js"></script>
+<script src="/js/bn.js"></script>
+<script src="/js/c3.min.js"></script>
+<script src="/js/chmap.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/config.js"></script>
+<script src="/js/converter.js"></script>
+<script src="/js/cookies.js"></script>
+<script src="/js/d3.min.js"></script>
+<script src="/js/en.js"></script>
+<script src="/js/jquery.easy-ticker.min.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/lb-services.js"></script>
+<script src="/js/rconverter.js"></script>
+<script src="/js/sizer.js"></script>
+<script src="/js/svg.min.js"></script>
+<script src="/js/translations.js"></script>
+<!-- MODULES -->
+<script src="/modules/about/app.about.js"></script>
+<script src="/modules/about/controllers/about.config.js"></script>
+<script src="/modules/about/controllers/about.controller.js"></script>
+<script src="/modules/about/controllers/about.routes.js"></script>
+<script src="/modules/banner-settings/config/banner-settings.config.js"></script>
+<script src="/modules/banner-settings/config/banner-settings.routes.js"></script>
+<script src="/modules/banner-settings/services/banner-settings.service.js"></script>
+<script src="/modules/browser/app.browser.js"></script>
+<script src="/modules/browser/config/browser.config.js"></script>
+<script src="/modules/browser/config/browser.routes.js"></script>
+<script src="/modules/candidate-chart/app.candidate-chart.js"></script>
+<script src="/modules/candidate-chart/config/candidate-chart.config.js"></script>
+<script src="/modules/candidate-chart/config/candidate-chart.routes.js"></script>
+<script src="/modules/candidate-chart/controllers/candidate-chart-analysis.ctrl.js"></script>
+<script src="/modules/candidate-chart/controllers/candidate-chart.ctrl.js"></script>
+<script src="/modules/candidate-chart/services/candidates.service.js"></script>
+<script src="/modules/candidate-posts/app.candidate-posts.js"></script>
+<script src="/modules/candidate-posts/config/candidate-posts.config.js"></script>
+<script src="/modules/candidate-posts/config/candidate-posts.routes.js"></script>
+<script src="/modules/candidate-posts/services/candidate-posts.service.js"></script>
+<script src="/modules/candidate-posts/services/elections.service.js"></script>
+<script src="/modules/candidates/app.candidates.js"></script>
+<script src="/modules/candidates/config/candidates.config.js"></script>
+<script src="/modules/candidates/config/candidates.routes.js"></script>
+<script src="/modules/candidates/controllers/addedit.ctrl.js"></script>
+<script src="/modules/candidates/controllers/affidavit/affidavit.ctrl.js"></script>
+<script src="/modules/candidates/controllers/alie/alie.ctrl.js"></script>
+<script src="/modules/candidates/controllers/candidate.Ctrl.js"></script>
+<script src="/modules/candidates/controllers/candidateMerge.ctrl.js"></script>
+<script src="/modules/candidates/controllers/editform.Ctrl.js"></script>
+<script src="/modules/candidates/controllers/eer/eer.ctrl.js"></script>
+<script src="/modules/candidates/controllers/fsee/fsee.ctrl.js"></script>
+<script src="/modules/candidates/controllers/murdhanno/murdhanno.ctrl.js"></script>
+<script src="/modules/candidates/controllers/tax-return-2024/tax-return-2024.ctrl.js"></script>
+<script src="/modules/candidates/controllers/tax-return/tax-return.ctrl.js"></script>
+<script src="/modules/candidates/services/candidates.service.js"></script>
+<script src="/modules/candidates/services/current-elections.service.js"></script>
+<script src="/modules/candidates/services/districts.service.js"></script>
+<script src="/modules/candidates/services/divisions.service.js"></script>
+<script src="/modules/candidates/services/election-seats.service.js"></script>
+<script src="/modules/candidates/services/elections.service.js"></script>
+<script src="/modules/candidates/services/persons.service.js"></script>
+<script src="/modules/candidates/services/political-parties.service.js"></script>
+<script src="/modules/candidates/services/seats.service.js"></script>
+<script src="/modules/candidates/services/unions.service.js"></script>
+<script src="/modules/candidates/services/upazillas.service.js"></script>
+<script src="/modules/constituencies/app.constituencies.js"></script>
+<script src="/modules/constituencies/config/constituencies.config.js"></script>
+<script src="/modules/constituencies/config/constituencies.routes.js"></script>
+<script src="/modules/constituencies/services/constituencies.service.js"></script>
+<script src="/modules/constitutional-posts/app.constitutional-posts.js"></script>
+<script src="/modules/constitutional-posts/config/constitutional-posts.config.js"></script>
+<script src="/modules/constitutional-posts/config/constitutional-posts.routes.js"></script>
+<script src="/modules/constitutional-posts/services/constitutional-posts.service.js"></script>
+<script src="/modules/core/app.core.js"></script>
+<script src="/modules/core/config/core.config.js"></script>
+<script src="/modules/core/config/core.routes.js"></script>
+<script src="/modules/core/controllers/dashboard.ctrl.js"></script>
+<script src="/modules/core/controllers/front.ctrl.js"></script>
+<script src="/modules/core/controllers/layout.ctrl.js"></script>
+<script src="/modules/core/controllers/main.ctrl.js"></script>
+<script src="/modules/core/controllers/router.ctrl.js"></script>
+<script src="/modules/core/directives/admin-box.js"></script>
+<script src="/modules/core/directives/admin-form.js"></script>
+<script src="/modules/core/directives/admin-header.js"></script>
+<script src="/modules/core/directives/date.js"></script>
+<script src="/modules/core/directives/home.js"></script>
+<script src="/modules/core/directives/navbar.js"></script>
+<script src="/modules/core/directives/small-box.directive.js"></script>
+<script src="/modules/core/filters/custom-filter.js"></script>
+<script src="/modules/core/helpers/FormHelper.js"></script>
+<script src="/modules/core/services/api.service.js"></script>
+<script src="/modules/core/services/core.service.js"></script>
+<script src="/modules/core/services/meta.service.js"></script>
+<script src="/modules/core/services/search.service.js"></script>
+<script src="/modules/current-elections/app.current-elections.js"></script>
+<script src="/modules/current-elections/config/current-elections.config.js"></script>
+<script src="/modules/current-elections/config/current-elections.routes.js"></script>
+<script src="/modules/current-elections/services/current-elections.service.js"></script>
+<script src="/modules/current-elections/services/elections.service.js"></script>
+<script src="/modules/districts/app.districts.js"></script>
+<script src="/modules/districts/config/districts.config.js"></script>
+<script src="/modules/districts/config/districts.routes.js"></script>
+<script src="/modules/districts/services/districts.service.js"></script>
+<script src="/modules/districts/services/divisions.service.js"></script>
+<script src="/modules/divisions/app.divisions.js"></script>
+<script src="/modules/divisions/config/divisions.config.js"></script>
+<script src="/modules/divisions/config/divisions.routes.js"></script>
+<script src="/modules/divisions/services/divisions.service.js"></script>
+<script src="/modules/election-candidate-posts/app.election-candidate-posts.js"></script>
+<script src="/modules/election-candidate-posts/config/election-candidate-posts.config.js"></script>
+<script src="/modules/election-candidate-posts/config/election-candidate-posts.routes.js"></script>
+<script src="/modules/election-candidate-posts/factories/dataservice.js"></script>
+<script src="/modules/election-candidate-posts/services/current-elections.service.js"></script>
+<script src="/modules/election-candidate-posts/services/election-candidate-posts.service.js"></script>
+<script src="/modules/election-candidate-posts/services/elections.service.js"></script>
+<script src="/modules/election-seats/app.election-seats.js"></script>
+<script src="/modules/election-seats/config/election-seats.config.js"></script>
+<script src="/modules/election-seats/config/election-seats.routes.js"></script>
+<script src="/modules/election-seats/services/current-elections.service.js"></script>
+<script src="/modules/election-seats/services/districts.service.js"></script>
+<script src="/modules/election-seats/services/divisions.service.js"></script>
+<script src="/modules/election-seats/services/election-seats.service.js"></script>
+<script src="/modules/election-seats/services/elections.service.js"></script>
+<script src="/modules/election-seats/services/electionSeatcandidate.service.js"></script>
+<script src="/modules/election-seats/services/seats.service.js"></script>
+<script src="/modules/election-seats/services/unions.service.js"></script>
+<script src="/modules/election-seats/services/upazillas.service.js"></script>
+<script src="/modules/elections/app.elections.js"></script>
+<script src="/modules/elections/config/elections.config.js"></script>
+<script src="/modules/elections/config/elections.routes.js"></script>
+<script src="/modules/elections/services/elections.service.js"></script>
+<script src="/modules/entry/app.files.js"></script>
+<script src="/modules/entry/config/entry.config.js"></script>
+<script src="/modules/entry/config/entry.routes.js"></script>
+<script src="/modules/entry/controllers/entry.Ctrl.js"></script>
+<script src="/modules/entry/services/candidates.service.js"></script>
+<script src="/modules/entry/services/entry.service.js"></script>
+<script src="/modules/events/app.events.js"></script>
+<script src="/modules/events/config/events.config.js"></script>
+<script src="/modules/events/config/events.routes.js"></script>
+<script src="/modules/events/services/events.service.js"></script>
+<script src="/modules/f-about-us/app.aboutUs.js"></script>
+<script src="/modules/f-about-us/config/about-us.config.js"></script>
+<script src="/modules/f-about-us/config/about-us.routes.js"></script>
+<script src="/modules/f-about-us/controllers/about-us.ctrl.js"></script>
+<script src="/modules/f-about-us/controllers/contact-us.ctrl.js"></script>
+<script src="/modules/f-about-us/controllers/how-we-work.ctrl.js"></script>
+<script src="/modules/f-about-us/controllers/join-us.ctrl.js"></script>
+<script src="/modules/f-about-us/controllers/our-achievements.ctrl.js"></script>
+<script src="/modules/f-about-us/controllers/purpose-objective.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/app.candiate-analysis.js"></script>
+<script src="/modules/f-candidate-analysis/config/candidate-analysis.config.js"></script>
+<script src="/modules/f-candidate-analysis/config/candidate-analysis.routes.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/asset-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/case-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/commitment-achievement-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/education-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/election-result.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/income-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/liability-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/loan-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/occupation-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/affidavit/politicalParty.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Annual-Expenditures-Of-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Annual-Income-Of-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Annual-Liabilities-Of-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Price-Of-All-Properties-Of-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Prices-Of-Dwelling-Houses-To-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Prices-Of-Immoveable-Properties-To-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/alie-comparison/Estimated-Prices-Of-Other-Properties-To-The-Among-Candidate.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/candidate-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/discrepancy/asset-discrepancy.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/discrepancy/expense-discrepancy.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/discrepancy/income-discrepancy.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/discrepancy/liability-discrepancy.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/discrepancy/net-asset-discrepancy.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CLMoreThanSpendingCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CLNonComplianceSubmitReturnCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CLNotSubmitReturnCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CLRangeWiseSpentCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CLSubmitReturnCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/eerb-analysis/CWMoneySpentCrtl.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-bo-who-commits-for-donation.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-cw-candidate-count.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-cw-candidate-list.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-pi-from-donation.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-pi-from-loan.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-pi-to-meet-election-expense.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/pfse/pfse-pi-which-exceeds-spending-limits.crtl.js"></script>
+<script src="/modules/f-candidate-analysis/controllers/tax-analysis.ctrl.js"></script>
+<script src="/modules/f-candidate-analysis/services/candidates.service.js"></script>
+<script src="/modules/f-candidate-analysis/services/current-elections.service.js"></script>
+<script src="/modules/f-candidate-analysis/services/election-candidate-posts.service.js"></script>
+<script src="/modules/f-candidate-analysis/services/elections.service.js"></script>
+<script src="/modules/f-candidate-comparison/app.candidateComparison.js"></script>
+<script src="/modules/f-candidate-comparison/config/candidate-comparison.config.js"></script>
+<script src="/modules/f-candidate-comparison/config/candidate-comparison.route.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Annual-Expenditures-Of-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Annual-Income-Of-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Annual-Liabilities-Of-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Price-Of-All-Properties-Of-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Prices-Of-Dwelling-Houses-To-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Prices-Of-Immoveable-Properties-To-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/alie-comparison/Estimated-Prices-Of-Other-Properties-To-The-Same-Candidate.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Asset-Comparison-Of-Own-Dependent.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Candidate-Comparison-At-A-Glance.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Candidate-Income-Tax-And-Family-Expense.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Income-Comparison-Of-Own-Dependent.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Liability-Comparison-Of-Own-Dependent.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Loan-Comparison-Of-Own-Dependent.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-affidavite/Neat-Asset-Comparison-Of-Own-Dependent.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-fsee/All-The-Probable-Income-From-Loans-To-Meet-Election-Expenses-With-The-Same-Candidate.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-fsee/The-List-Of-Candidates-Of-Whom-Exceeds-The-Spending-Limits-To-Meet-Election-Expenses.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-fsee/Total-Probable-Income-From-Donation-To-Meet-Election-Expenses-With-The-Same-Candidate.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison-fsee/Total-Probable-Income-Including-All-Sources-To-Meet-Election-Expenses-With-Same-Candidate.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/candidate-comparison.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/canididate-comparison-affidavit.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/different-election-participate-candidate-list.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/year-wise-comparison/year-wise-details-comparison.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/controllers/year-wise-comparison/year-wise-test-comparison.ctrl.js"></script>
+<script src="/modules/f-candidate-comparison/service/candidates.service.js"></script>
+<script src="/modules/f-candidate-search/app.candidateSearch.js"></script>
+<script src="/modules/f-candidate-search/config/candidate-search.config.js"></script>
+<script src="/modules/f-candidate-search/config/candidate-search.routes.js"></script>
+<script src="/modules/f-candidate-search/controllers/affidavit/affidavit-view.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/alie/alie-view.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/candidate-profile.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/candidate-search.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/eer-murdhanno/eer-murdhanno-view.js"></script>
+<script src="/modules/f-candidate-search/controllers/eer/eer-view.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/fsee/fsee-view.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/tax-return-2024/tax-return-2024.ctrl.js"></script>
+<script src="/modules/f-candidate-search/controllers/tax-return/tax-return.ctrl.js"></script>
+<script src="/modules/f-candidate-search/services/candidates.service.js"></script>
+<script src="/modules/f-election-analysis/app.election-analysis.js"></script>
+<script src="/modules/f-election-analysis/config/election-analysis.config.js"></script>
+<script src="/modules/f-election-analysis/config/election-analysis.routes.js"></script>
+<script src="/modules/f-election-analysis/controllers/eerb-analysis/AmongAllTheCandidatesFor300ConstituenciesAboutMoneySpentPercentageCrtl.crtl.js"></script>
+<script src="/modules/f-election-analysis/controllers/eerb-analysis/AmongTheCandidatesInAConstituencyAboutHowMuchMoneySpentCrtl.crtl.js"></script>
+<script src="/modules/f-election-analysis/controllers/eerb-analysis/BetweenTheElectedMaleAndFemaleCandidatesOnAverageCampaignExpensesCrtl.crtl.js"></script>
+<script src="/modules/f-election-analysis/services/election.service.js"></script>
+<script src="/modules/f-election-result/app.election-result.js"></script>
+<script src="/modules/f-election-result/config/election-result.config.js"></script>
+<script src="/modules/f-election-result/config/election-result.routes.js"></script>
+<script src="/modules/f-election-result/controllers/all-candidate-info.ctrl.js"></script>
+<script src="/modules/f-election-result/controllers/all-election-result.ctrl.js"></script>
+<script src="/modules/f-election-result/controllers/cw-election-result.ctrl.js"></script>
+<script src="/modules/f-election-result/controllers/election-result-ctrl.js"></script>
+<script src="/modules/f-election-result/controllers/ElectionResultAllCandidateListCtrl.js"></script>
+<script src="/modules/f-election-result/controllers/form-entry-statistics.js"></script>
+<script src="/modules/f-election-result/controllers/form-review-statistics.js"></script>
+<script src="/modules/f-election-result/controllers/form-submit-statistics.js"></script>
+<script src="/modules/f-election-result/controllers/gender-analysis.ctrl.js"></script>
+<script src="/modules/f-election-result/services/election-result.service.js"></script>
+<script src="/modules/f-home/app.home.js"></script>
+<script src="/modules/f-home/config/home.config.js"></script>
+<script src="/modules/f-home/config/home.routes.js"></script>
+<script src="/modules/f-home/controllers/home.ctrl.js"></script>
+<script src="/modules/f-home/services/home.service.js"></script>
+<script src="/modules/f-political-party/app.political-party.js"></script>
+<script src="/modules/f-political-party/config/political-party.config.js"></script>
+<script src="/modules/f-political-party/config/political-party.routes.js"></script>
+<script src="/modules/f-political-party/controllers/all-parties.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/alliances.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/political-party-base-comparison/Candidates-Got-Donations-By-Constituencies.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/political-party-base-comparison/Head-Wise-Political-Parties-Expenses.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/political-party-base-comparison/Political-Parties-Spent-Money-For-Election.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/political-party-base-comparison/Political-Party-Donations-To-Candidates.ctrl.js"></script>
+<script src="/modules/f-political-party/controllers/political-party.ctrl.js"></script>
+<script src="/modules/f-political-party/services/political-party.service.js"></script>
+<script src="/modules/files/app.files.js"></script>
+<script src="/modules/files/config/file.config.js"></script>
+<script src="/modules/files/config/file.routes.js"></script>
+<script src="/modules/files/services/file.service.js"></script>
+<script src="/modules/notes/app.notes.js"></script>
+<script src="/modules/notes/config/notes.config.js"></script>
+<script src="/modules/notes/config/notes.routes.js"></script>
+<script src="/modules/notes/services/notes.service.js"></script>
+<script src="/modules/pages/app.pages.js"></script>
+<script src="/modules/pages/config/pages.config.js"></script>
+<script src="/modules/pages/config/pages.routes.js"></script>
+<script src="/modules/pages/services/page.service.js"></script>
+<script src="/modules/persons/app.persons.js"></script>
+<script src="/modules/persons/config/persons.config.js"></script>
+<script src="/modules/persons/config/persons.routes.js"></script>
+<script src="/modules/persons/services/persons.service.js"></script>
+<script src="/modules/political-parties/app.political-parties.js"></script>
+<script src="/modules/political-parties/config/political-parties.config.js"></script>
+<script src="/modules/political-parties/config/political-parties.routes.js"></script>
+<script src="/modules/political-parties/services/political-parties.service.js"></script>
+<script src="/modules/political-party-expenses/app.political-party-expenses.js"></script>
+<script src="/modules/political-party-expenses/config/political-party-expenses.config.js"></script>
+<script src="/modules/political-party-expenses/config/political-party-expenses.routes.js"></script>
+<script src="/modules/political-party-expenses/controllers/political-party-extense-add.ctrl.js"></script>
+<script src="/modules/political-party-expenses/controllers/political-party-extense-edit.ctrl.js"></script>
+<script src="/modules/political-party-expenses/services/current-elections.service.js"></script>
+<script src="/modules/political-party-expenses/services/political-parties.service.js"></script>
+<script src="/modules/political-party-expenses/services/political-party-expenses.service.js"></script>
+<script src="/modules/posts/app.posts.js"></script>
+<script src="/modules/posts/config/posts.config.js"></script>
+<script src="/modules/posts/config/posts.routes.js"></script>
+<script src="/modules/posts/services/candidates.service.js"></script>
+<script src="/modules/posts/services/posts.service.js"></script>
+<script src="/modules/products/app.products.js"></script>
+<script src="/modules/products/config/products.config.js"></script>
+<script src="/modules/products/config/products.routes.js"></script>
+<script src="/modules/products/services/categories.service.js"></script>
+<script src="/modules/products/services/products.service.js"></script>
+<script src="/modules/sandbox/app.sandbox.js"></script>
+<script src="/modules/sandbox/config/sandbox.config.js"></script>
+<script src="/modules/sandbox/config/sandbox.routes.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.autofields.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.bootstrap.alert.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.bootstrap.tabs.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.coreservice.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.dashboard.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.datepickerdemo.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.faker.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.forms.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.grid.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.icons.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.schemaform.ctrl.js"></script>
+<script src="/modules/sandbox/controllers/sandbox.trees.ctrl.js"></script>
+<script src="/modules/seats/app.seats.js"></script>
+<script src="/modules/seats/config/seats.config.js"></script>
+<script src="/modules/seats/config/seats.routes.js"></script>
+<script src="/modules/seats/services/districts.service.js"></script>
+<script src="/modules/seats/services/divisions.service.js"></script>
+<script src="/modules/seats/services/elections.service.js"></script>
+<script src="/modules/seats/services/seats.service.js"></script>
+<script src="/modules/seats/services/unions.service.js"></script>
+<script src="/modules/seats/services/upazillas.service.js"></script>
+<script src="/modules/settings/app.settings.js"></script>
+<script src="/modules/settings/config/settings.config.js"></script>
+<script src="/modules/settings/config/settings.routes.js"></script>
+<script src="/modules/settings/services/setting.service.js"></script>
+<script src="/modules/unions/app.unions.js"></script>
+<script src="/modules/unions/config/unions.config.js"></script>
+<script src="/modules/unions/config/unions.routes.js"></script>
+<script src="/modules/unions/services/unions.service.js"></script>
+<script src="/modules/unions/services/upazillas.service.js"></script>
+<script src="/modules/upazillas/app.upazillas.js"></script>
+<script src="/modules/upazillas/config/upazillas.config.js"></script>
+<script src="/modules/upazillas/config/upazillas.routes.js"></script>
+<script src="/modules/upazillas/services/districts.service.js"></script>
+<script src="/modules/upazillas/services/upazillas.service.js"></script>
+<script src="/modules/users/app.users.js"></script>
+<script src="/modules/users/config/users.auth.js"></script>
+<script src="/modules/users/config/users.config.js"></script>
+<script src="/modules/users/config/users.routes.js"></script>
+<script src="/modules/users/controllers/login.ctrl.js"></script>
+<script src="/modules/users/controllers/register.ctrl.js"></script>
+<script src="/modules/users/directives/login.js"></script>
+<script src="/modules/users/directives/register.js"></script>
+<script src="/modules/users/services/appauth.service.js"></script>
+<script src="/modules/users/services/user.service.js"></script>
+<!-- endbuild -->
+</body>
+</html>
