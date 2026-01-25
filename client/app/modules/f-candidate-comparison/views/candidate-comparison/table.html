@@ -307,11 +307,12 @@
         src="images/document_edit.png" border="0"></a></p>
       <br>
       দল: {{tr_data.politicalParty.partyNameBn}}
-      <br>পিতা: {{tr_data.fatherHusbandNameBnAF}}
+      <br>পিতা: {{tr_data.fatherHusbandNameBnAF || tr_data.fatherNameBn}}
+      <br ng-if="tr_data.husbandSpouseNameTR">স্বামী/স্ত্রী: {{tr_data.husbandSpouseNameTR}}
       <br>
       মাতা: {{tr_data.motherNameBnAF}}
       <br>
-      {{tr_data.addressBnAF}}
+      {{tr_data.addressBnAF || tr_data.presentAddressTR || tr_data.permanentAddressTR}}
     </td>
     <td>{{tr_data.highestDegreeBnAF}}</td>
     <td>
