@@ -308,7 +308,7 @@
       <br>
       দল: {{tr_data.politicalParty.partyNameBn}}
       <br>পিতা: {{tr_data.fatherHusbandNameBnAF || tr_data.fatherNameBn}}
-      <br ng-if="tr_data.husbandSpouseNameTR">স্বামী/স্ত্রী: {{tr_data.husbandSpouseNameTR}}
+      <span ng-if="tr_data.husbandSpouseNameTR && tr_data.husbandSpouseNameTR.trim()"><br>স্বামী/স্ত্রী: {{tr_data.husbandSpouseNameTR}}</span>
       <br>
       মাতা: {{tr_data.motherNameBnAF}}
       <br>
