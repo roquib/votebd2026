@@ -597,14 +597,18 @@
             <b>প্রদত্ত আয়কর:</b> {{tr_data._15_13_sub_14_givenTaxTR | number:0 | translateNumber}}
           </td>
           <td style="text-align:left;">
-            <span ng-if="tr_data._1_personalCostTR > 0"><b>ব্যক্তিগত ও খাদ্য ব্যয়:</b> {{tr_data._1_personalCostTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._3_residentialCostTR > 0"><b>বাসস্থান ব্যয়:</b> {{tr_data._3_residentialCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._1_personalCostTR > 0"><b>ব্যক্তিগত ও ভরনপোষণ:</b> {{tr_data._1_personalCostTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._2_taxPaidLastYearTR > 0"><b>বিগত বছরে পরিশোধিত আয়কর:</b> {{tr_data._2_taxPaidLastYearTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._3_residentialCostTR > 0"><b>আবাসন খরচ:</b> {{tr_data._3_residentialCostTR | number:0 | translateNumber}}<br></span>
             <span ng-if="tr_data._4_vehicleCostTR > 0"><b>যানবাহন ব্যয়:</b> {{tr_data._4_vehicleCostTR | number:0 | translateNumber}}<br></span>
             <span ng-if="tr_data._5_electricityBillTR > 0"><b>বিদ্যুৎ বিল:</b> {{tr_data._5_electricityBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._6_waterBillTR > 0"><b>পানি বিল:</b> {{tr_data._6_waterBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._7_gasBillTR > 0"><b>গ্যাস বিল:</b> {{tr_data._7_gasBillTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._8_telephoneBillTR > 0"><b>টেলিফোন বিল:</b> {{tr_data._8_telephoneBillTR | number:0 | translateNumber}}<br></span>
             <span ng-if="tr_data._9_childEducationalExpenseTR > 0"><b>সন্তান শিক্ষা ব্যয়:</b> {{tr_data._9_childEducationalExpenseTR | number:0 | translateNumber}}<br></span>
-            <span ng-if="tr_data._15_familyExpenseTR.amount > 0"><b>পারিবারিক ব্যয়:</b> {{tr_data._15_familyExpenseTR.amount | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._10_travelExpenseTR > 0"><b>বিদেশ ভ্রমণ:</b> {{tr_data._10_travelExpenseTR | number:0 | translateNumber}}<br></span>
+            <span ng-if="tr_data._11_festivalCostTR > 0"><b>উৎসব ও অন্যান্য ব্যয়:</b> {{tr_data._11_festivalCostTR | number:0 | translateNumber}}<br></span>
             <span ng-if="tr_data._15_familyExpenseTR.noAdult > 0 || tr_data._15_familyExpenseTR.noChild > 0"><b>নির্ভরশীল সদস্য:</b> <span ng-if="tr_data._15_familyExpenseTR.noAdult > 0">{{tr_data._15_familyExpenseTR.noAdult | translateNumber}} পূর্ণ বয়স্ক</span><span ng-if="tr_data._15_familyExpenseTR.noAdult > 0 && tr_data._15_familyExpenseTR.noChild > 0">, </span><span ng-if="tr_data._15_familyExpenseTR.noChild > 0">{{tr_data._15_familyExpenseTR.noChild | translateNumber}} শিশু</span><br></span>
-            <span ng-if="tr_data._15_familyExpenseTR.otherDonationsExpendituresDamages > 0"><b>দান/ব্যয়/ক্ষতি:</b> {{tr_data._15_familyExpenseTR.otherDonationsExpendituresDamages | number:0 | translateNumber}}<br></span>
           </td>
         </tr>
         </tbody>
