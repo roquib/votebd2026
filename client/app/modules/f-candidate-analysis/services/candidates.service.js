@@ -178,6 +178,14 @@
         return Candidate.getGenderChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
 
       };
+      this.getCandidatesAgeWhere = function (electionSeatCriteria) {
+        var whereCriteria = this.verifyFilterData(electionSeatCriteria);
+        return Candidate.getAgeChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
+      };
+      this.getCandidatesTaxReturnSummaryWhere = function (electionSeatCriteria) {
+        var whereCriteria = this.verifyFilterData(electionSeatCriteria);
+        return Candidate.getTaxReturnSummaryChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
+      };
       this.getCandidatesIncomeWhere = function (electionSeatCriteria) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
         return Candidate.getIncomeChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}

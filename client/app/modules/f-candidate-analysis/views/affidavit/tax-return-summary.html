@@ -1,0 +1,55 @@
+<div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{'Tax Return Summary'|translate}}</h2>
+    <p>{{'Party wise Tax Return Summary from Affidavit'|translate}}</p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{taxSummaryData.grandTotal.candidateCount | translateNumber}} {{'Candidates Tax Return Summary' | translate}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','tax-return-summary')">export excel</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+              <tr>
+                <th>{{'Party'|translate}}</th>
+                <th>{{'Candidates'|translate}}</th>
+                <th>{{'Total Income (Displayed)'|translate}}</th>
+                <th>{{'Avg Income'|translate}}</th>
+                <th>{{'Total Assets (Displayed)'|translate}}</th>
+                <th>{{'Avg Assets'|translate}}</th>
+                <th>{{'Total Tax Paid'|translate}}</th>
+                <th>{{'Avg Tax Paid'|translate}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="party in taxSummaryData.table">
+                <td>{{party.partyName}}</td>
+                <td>{{party.candidateCount | translateNumber}}</td>
+                <td>{{party.totalIncome | number:0 | translateNumber}}</td>
+                <td>{{party.avgIncome | number:0 | translateNumber}}</td>
+                <td>{{party.totalAsset | number:0 | translateNumber}}</td>
+                <td>{{party.avgAsset | number:0 | translateNumber}}</td>
+                <td>{{party.totalTaxPaid | number:0 | translateNumber}}</td>
+                <td>{{party.avgTaxPaid | number:0 | translateNumber}}</td>
+              </tr>
+              <tr class="info">
+                <th>{{'Grand Total'|translate}}</th>
+                <th>{{taxSummaryData.grandTotal.candidateCount | translateNumber}}</th>
+                <th>{{taxSummaryData.grandTotal.totalIncome | number:0 | translateNumber}}</th>
+                <th>-</th>
+                <th>{{taxSummaryData.grandTotal.totalAsset | number:0 | translateNumber}}</th>
+                <th>-</th>
+                <th>{{taxSummaryData.grandTotal.totalTaxPaid | number:0 | translateNumber}}</th>
+                <th>-</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

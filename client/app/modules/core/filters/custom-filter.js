@@ -145,6 +145,32 @@ var decodeEntities = (function() {
         return '';
       };
     })
+    // Calculate age from DOB
+    .filter('getAge', function($filter) {
+      return function(row) {
+        if (!row) return '';
+        var dob = row.candidateDateOfBirthBnAF;
+        var dobDate = null;
+
+        if (dob && dob !== 'NULL' && dob !== 'null' && dob.indexOf('Invalid') === -1) {
+          dob = $filter('bengaliToEnglish')(dob);
+          dobDate = new Date(dob);
+        } else if (row.dobTR && row.dobTR !== 0) {
+          dobDate = new Date(row.dobTR);
+        }
+
+        if (dobDate && !isNaN(dobDate.getTime())) {
+          var today = new Date();
+          var age = today.getFullYear() - dobDate.getFullYear();
+          var monthDiff = today.getMonth() - dobDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+          return age > 0 ? age : '';
+        }
+        return '';
+      };
+    })
     // Get profession with fallback: currentProfessionAF -> professionTypeBnAF
     .filter('getProfession', function() {
       return function(row) {

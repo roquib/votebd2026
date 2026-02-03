@@ -23,6 +23,9 @@
               <th>{{occupationData.all.table._3.title}}</th>
               <th>{{occupationData.all.table._4.title}}</th>
               <th>{{occupationData.all.table._5.title}}</th>
+              <th>{{occupationData.all.table._6.title}}</th>
+              <th>{{occupationData.all.table._7.title}}</th>
+              <th>{{occupationData.all.table._8.title}}</th>
               <th>{{occupationData.all.table.unknown.title}}</th>
               <th>{{occupationData.all.table.other.title}}</th>
               <th>{{'Total'|translate}}</th>
@@ -56,14 +59,29 @@
                 <span ng-repeat="candidateName in tr_data.data.table._5.candidate5 track by $index">{{candidateName}}</span>
                 </p>
               </td>
+              <td class="CellWithComment">{{tr_data.data.table._6.total | translateNumber}} ({{ ((100*tr_data.data.table._6.total)/tr_data.data.table.totalCandidate.total).toFixed(2) | translateNumber }}%)
+                <p class="CellComment">
+                <span ng-repeat="candidateName in tr_data.data.table._6.candidate6 track by $index">{{candidateName}}</span>
+                </p>
+              </td>
+              <td class="CellWithComment">{{tr_data.data.table._7.total | translateNumber}} ({{ ((100*tr_data.data.table._7.total)/tr_data.data.table.totalCandidate.total).toFixed(2) | translateNumber }}%)
+                <p class="CellComment">
+                <span ng-repeat="candidateName in tr_data.data.table._7.candidate7 track by $index">{{candidateName}}</span>
+                </p>
+              </td>
+              <td class="CellWithComment">{{tr_data.data.table._8.total | translateNumber}} ({{ ((100*tr_data.data.table._8.total)/tr_data.data.table.totalCandidate.total).toFixed(2) | translateNumber }}%)
+                <p class="CellComment">
+                <span ng-repeat="candidateName in tr_data.data.table._8.candidate8 track by $index">{{candidateName}}</span>
+                </p>
+              </td>
               <td class="CellWithComment">{{tr_data.data.table.unknown.total | translateNumber}} ({{ ((100*tr_data.data.table.unknown.total)/tr_data.data.table.totalCandidate.total).toFixed(2) | translateNumber }}%)
                 <p class="CellComment">
-                <span ng-repeat="candidateName in tr_data.data.table.unknown.candidate6 track by $index">{{candidateName}}</span>
+                <span ng-repeat="candidateName in tr_data.data.table.unknown.candidate9 track by $index">{{candidateName}}</span>
                 </p>
               </td>
               <td class="CellWithComment">{{tr_data.data.table.other.total | translateNumber}} ({{ ((100*tr_data.data.table.other.total)/tr_data.data.table.totalCandidate.total).toFixed(2) | translateNumber }}%)
                 <p class="CellComment">
-                <span ng-repeat="candidateName in tr_data.data.table.other.candidate7 track by $index">{{candidateName}}</span>
+                <span ng-repeat="candidateName in tr_data.data.table.other.candidate10 track by $index">{{candidateName}}</span>
                 </p>
               </td>
               <td>{{tr_data.data.table.totalCandidate.total | translateNumber}}</td>
@@ -75,6 +93,9 @@
               <th>{{occupationData.all.table._3.total | translateNumber}}</th>
               <th>{{occupationData.all.table._4.total | translateNumber}}</th>
               <th>{{occupationData.all.table._5.total | translateNumber}}</th>
+              <th>{{occupationData.all.table._6.total | translateNumber}}</th>
+              <th>{{occupationData.all.table._7.total | translateNumber}}</th>
+              <th>{{occupationData.all.table._8.total | translateNumber}}</th>
               <th>{{occupationData.all.table.unknown.total | translateNumber}}</th>
               <th>{{occupationData.all.table.other.total | translateNumber}}</th>
               <th>{{occupationData.all.table.totalCandidate.total | translateNumber}}</th>

@@ -219,6 +219,18 @@
           controller: 'CandidateAnalysisTaxAnalysisCtrl',
           controllerAs: 'ctrl'
         })
+        .state('front.candidateAnalysis.ageAnalysis', {
+          url: '/age-analysis',
+          templateUrl: 'modules/f-candidate-analysis/views/affidavit/age-analysis.html',
+          controller: 'CandidateAnalysisAgeAnalysisCtrl',
+          controllerAs: 'ctrl'
+        })
+        .state('front.candidateAnalysis.taxReturnSummary', {
+          url: '/tax-return-summary',
+          templateUrl: 'modules/f-candidate-analysis/views/affidavit/tax-return-summary.html',
+          controller: 'CandidateAnalysisTaxReturnSummaryCtrl',
+          controllerAs: 'ctrl'
+        })
 
         .state('front.candidateAnalysis.pfse-bo-who-commits-for-donation', {
           url: '/pfse-bo-who-commits-for-donation',

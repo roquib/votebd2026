@@ -1528,21 +1528,39 @@ var getC3DataOccupation = function (value, key, lang) {
     },
     "_5": {
       title: lang === 'bn_BD' ? "গৃহিনী" : "Housewife",
-      key: "গৃহিনী",
+      keys: ["গৃহিনী", "গৃহিণী"],
       total: 0,
       candidate5:[]
+    },
+    "_6": {
+      title: lang === 'bn_BD' ? "রাজনীতিবিদ" : "Politician",
+      keys: ["রাজনীতিবিদ", "রাজনীতি"],
+      total: 0,
+      candidate6:[]
+    },
+    "_7": {
+      title: lang === 'bn_BD' ? "শিক্ষকতা" : "Teaching",
+      key: "শিক্ষকতা",
+      total: 0,
+      candidate7:[]
+    },
+    "_8": {
+      title: lang === 'bn_BD' ? "অবসরপ্রাপ্ত" : "Retired",
+      key: "অবসরপ্রাপ্ত-চাকুরীজীবি",
+      total: 0,
+      candidate8:[]
     },
     "unknown": {
       title: lang === 'bn_BD' ? "উল্লেখ নেই" : "Not to mention",
       key: "উল্লেখ নেই",
       total: 0,
-      candidate6:[]
+      candidate9:[]
     },
     "other": {
       title: lang === 'bn_BD' ? "অন্যান্য" : "Other",
       key: "অন্যান্য",
       total: 0,
-      candidate7:[]
+      candidate10:[]
     },
     "totalCandidate": {
       title: lang === 'bn_BD' ? "মোট" : "Total",
@@ -1551,37 +1569,57 @@ var getC3DataOccupation = function (value, key, lang) {
     }
   };
   value.forEach(function (candi) {
-    if (candi[key]) {
-      if (asset._1.key == candi[key]) {
+    // Use currentProfessionAF with fallback to professionTypeBnAF
+    var profValue = candi.currentProfessionAF || candi[key];
+    if (profValue) {
+      if (asset._1.key == profValue) {
         asset._1.total++;
         asset._1.candidate1.push(candi.candidateNameBnAF);
       }
-      else if (asset._2.key == candi[key]) {
+      else if (asset._2.key == profValue) {
         asset._2.total++;
         asset._2.candidate2.push(candi.candidateNameBnAF);
       }
-      else if (asset._3.key == candi[key]) {
+      else if (asset._3.key == profValue) {
         asset._3.total++;
         asset._3.candidate3.push(candi.candidateNameBnAF);
       }
-      else if (asset._4.key == candi[key]) {
+      else if (asset._4.key == profValue) {
         asset._4.total++;
         asset._4.candidate4.push(candi.candidateNameBnAF);
       }
-      else if (asset._5.key == candi[key]) {
+      else if (asset._5.keys && asset._5.keys.indexOf(profValue) !== -1) {
         asset._5.total++;
         asset._5.candidate5.push(candi.candidateNameBnAF);
       }
-      else if (asset.unknown.key == candi[key]) {
-        asset.unknown.total++;
-        asset.unknown.candidate6.push(candi.candidateNameBnAF);
-      } else if (asset.other.key == candi[key]) {
-        asset.other.total++;
-        asset.other.candidate7.push(candi.candidateNameBnAF);
+      else if (asset._6.keys && asset._6.keys.indexOf(profValue) !== -1) {
+        asset._6.total++;
+        asset._6.candidate6.push(candi.candidateNameBnAF);
       }
-
+      else if (asset._7.key == profValue) {
+        asset._7.total++;
+        asset._7.candidate7.push(candi.candidateNameBnAF);
+      }
+      else if (asset._8.key == profValue) {
+        asset._8.total++;
+        asset._8.candidate8.push(candi.candidateNameBnAF);
+      }
+      else if (asset.unknown.key == profValue) {
+        asset.unknown.total++;
+        asset.unknown.candidate9.push(candi.candidateNameBnAF);
+      }
+      else if (asset.other.key == profValue) {
+        asset.other.total++;
+        asset.other.candidate10.push(candi.candidateNameBnAF);
+      }
+      else {
+        // Any unrecognized value goes to other
+        asset.other.total++;
+        asset.other.candidate10.push(candi.candidateNameBnAF);
+      }
     } else {
       asset.unknown.total++;
+      asset.unknown.candidate9.push(candi.candidateNameBnAF);
     }
   });
   asset.totalCandidate.total =
@@ -1590,6 +1628,9 @@ var getC3DataOccupation = function (value, key, lang) {
     asset._3.total +
     asset._4.total +
     asset._5.total +
+    asset._6.total +
+    asset._7.total +
+    asset._8.total +
     asset.unknown.total +
     asset.other.total;
   var c3data = [];
@@ -1599,8 +1640,11 @@ var getC3DataOccupation = function (value, key, lang) {
   c3data[2] = [asset._3.title, asset._3.total];
   c3data[3] = [asset._4.title, asset._4.total];
   c3data[4] = [asset._5.title, asset._5.total];
-  c3data[5] = [asset.unknown.title, asset.unknown.total];
-  c3data[6] = [asset.other.title, asset.other.total];
+  c3data[5] = [asset._6.title, asset._6.total];
+  c3data[6] = [asset._7.title, asset._7.total];
+  c3data[7] = [asset._8.title, asset._8.total];
+  c3data[8] = [asset.unknown.title, asset.unknown.total];
+  c3data[9] = [asset.other.title, asset.other.total];
 
   return {table: asset, c3data: c3data};
 };
@@ -1665,11 +1709,23 @@ var getC3DataEducation = function (value, key, lang) {
       total: 0,
       candidate5:[]
     },
+    "_6": {
+      title: lang === 'bn_BD' ? "পিএইচডি" : "PhD",
+      key: "পিএইচডি",
+      total: 0,
+      candidate6:[]
+    },
+    "_7": {
+      title: lang === 'bn_BD' ? "স্ব-শিক্ষিত" : "Self-educated",
+      keys: ["স্ব-শিক্ষিত", "স্বশিক্ষিত"],
+      total: 0,
+      candidate7:[]
+    },
     "unknown": {
       title: lang === 'bn_BD' ? "উল্লেখ নেই" : "Not to mention",
       key: "উল্লেখ নেই",
       total: 0,
-      candidate6:[]
+      candidate8:[]
     },
     "totalCandidate": {
       title: lang === 'bn_BD' ? "মোট" : "Total",
@@ -1679,7 +1735,6 @@ var getC3DataEducation = function (value, key, lang) {
   };
   value.forEach(function (candi) {
     if (candi[key]) {
-
       if (asset._1.key == candi[key]) {
         asset._1.total++;
         asset._1.candidate1.push(candi.candidateNameBnAF);
@@ -1700,11 +1755,18 @@ var getC3DataEducation = function (value, key, lang) {
         asset._5.total++;
         asset._5.candidate5.push(candi.candidateNameBnAF);
       }
+      else if (asset._6.key == candi[key]) {
+        asset._6.total++;
+        asset._6.candidate6.push(candi.candidateNameBnAF);
+      }
+      else if (asset._7.keys.indexOf(candi[key]) !== -1) {
+        asset._7.total++;
+        asset._7.candidate7.push(candi.candidateNameBnAF);
+      }
       else if (asset.unknown.key == candi[key]) {
         asset.unknown.total++;
-        asset.unknown.candidate6.push(candi.candidateNameBnAF);
+        asset.unknown.candidate8.push(candi.candidateNameBnAF);
       }
-
     } else {
       asset.unknown.total++;
     }
@@ -1715,6 +1777,8 @@ var getC3DataEducation = function (value, key, lang) {
     asset._3.total +
     asset._4.total +
     asset._5.total +
+    asset._6.total +
+    asset._7.total +
     asset.unknown.total;
   var c3data = [];
 
@@ -1723,7 +1787,9 @@ var getC3DataEducation = function (value, key, lang) {
   c3data[2] = [asset._3.title, asset._3.total];
   c3data[3] = [asset._4.title, asset._4.total];
   c3data[4] = [asset._5.title, asset._5.total];
-  c3data[5] = [asset.unknown.title, asset.unknown.total];
+  c3data[5] = [asset._6.title, asset._6.total];
+  c3data[6] = [asset._7.title, asset._7.total];
+  c3data[7] = [asset.unknown.title, asset.unknown.total];
 
   return {table: asset, c3data: c3data};
 };
@@ -1768,6 +1834,218 @@ var getC3DataGender = function (value, key, lang) {
   c3data[1] = [asset.female.title, asset.female.total];
   return {table: asset, c3data: c3data};
 };
+
+// Helper function to calculate age from DOB
+var calculateAge = function(candi) {
+  var dobDate = null;
+
+  // Try candidateDateOfBirthBnAF first
+  var dob = candi.candidateDateOfBirthBnAF;
+  if (dob && dob !== 'NULL' && dob !== 'null' && dob.indexOf && dob.indexOf('Invalid') === -1) {
+    // Convert Bengali numerals to English if needed
+    var bengali = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    var english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    for (var i = 0; i < bengali.length; i++) {
+      dob = dob.split(bengali[i]).join(english[i]);
+    }
+    dobDate = new Date(dob);
+  }
+
+  // Fallback to dobTR
+  if (!dobDate || isNaN(dobDate.getTime())) {
+    if (candi.dobTR && candi.dobTR !== 0) {
+      dobDate = new Date(candi.dobTR);
+    }
+  }
+
+  if (dobDate && !isNaN(dobDate.getTime())) {
+    var today = new Date();
+    var age = today.getFullYear() - dobDate.getFullYear();
+    var monthDiff = today.getMonth() - dobDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+      age--;
+    }
+    return age > 0 ? age : null;
+  }
+  return null;
+};
+
+var getC3DataAge = function (value, lang) {
+  var asset = {
+    "_1": {
+      title: lang === 'bn_BD' ? "২৫-৩৫ বছর" : "25-35 years",
+      min: 25,
+      max: 35,
+      total: 0,
+      candidate1: []
+    },
+    "_2": {
+      title: lang === 'bn_BD' ? "৩৬-৪৫ বছর" : "36-45 years",
+      min: 36,
+      max: 45,
+      total: 0,
+      candidate2: []
+    },
+    "_3": {
+      title: lang === 'bn_BD' ? "৪৬-৫৫ বছর" : "46-55 years",
+      min: 46,
+      max: 55,
+      total: 0,
+      candidate3: []
+    },
+    "_4": {
+      title: lang === 'bn_BD' ? "৫৬-৬৫ বছর" : "56-65 years",
+      min: 56,
+      max: 65,
+      total: 0,
+      candidate4: []
+    },
+    "_5": {
+      title: lang === 'bn_BD' ? "৬৬-৭৫ বছর" : "66-75 years",
+      min: 66,
+      max: 75,
+      total: 0,
+      candidate5: []
+    },
+    "_6": {
+      title: lang === 'bn_BD' ? "৭৫+ বছর" : "75+ years",
+      min: 76,
+      max: 200,
+      total: 0,
+      candidate6: []
+    },
+    "unknown": {
+      title: lang === 'bn_BD' ? "উল্লেখ নেই" : "Not mentioned",
+      total: 0,
+      candidate7: []
+    },
+    "totalCandidate": {
+      title: lang === 'bn_BD' ? "মোট" : "Total",
+      total: 0
+    }
+  };
+
+  value.forEach(function (candi) {
+    var age = calculateAge(candi);
+    var candidateName = candi.candidateNameBnAF || candi.personNameBn || '';
+
+    if (age !== null) {
+      if (age >= asset._1.min && age <= asset._1.max) {
+        asset._1.total++;
+        asset._1.candidate1.push(candidateName);
+      } else if (age >= asset._2.min && age <= asset._2.max) {
+        asset._2.total++;
+        asset._2.candidate2.push(candidateName);
+      } else if (age >= asset._3.min && age <= asset._3.max) {
+        asset._3.total++;
+        asset._3.candidate3.push(candidateName);
+      } else if (age >= asset._4.min && age <= asset._4.max) {
+        asset._4.total++;
+        asset._4.candidate4.push(candidateName);
+      } else if (age >= asset._5.min && age <= asset._5.max) {
+        asset._5.total++;
+        asset._5.candidate5.push(candidateName);
+      } else if (age >= asset._6.min) {
+        asset._6.total++;
+        asset._6.candidate6.push(candidateName);
+      } else {
+        asset.unknown.total++;
+        asset.unknown.candidate7.push(candidateName);
+      }
+    } else {
+      asset.unknown.total++;
+      asset.unknown.candidate7.push(candidateName);
+    }
+  });
+
+  asset.totalCandidate.total =
+    asset._1.total +
+    asset._2.total +
+    asset._3.total +
+    asset._4.total +
+    asset._5.total +
+    asset._6.total +
+    asset.unknown.total;
+
+  var c3data = [];
+  c3data[0] = [asset._1.title, asset._1.total];
+  c3data[1] = [asset._2.title, asset._2.total];
+  c3data[2] = [asset._3.title, asset._3.total];
+  c3data[3] = [asset._4.title, asset._4.total];
+  c3data[4] = [asset._5.title, asset._5.total];
+  c3data[5] = [asset._6.title, asset._6.total];
+  c3data[6] = [asset.unknown.title, asset.unknown.total];
+
+  return {table: asset, c3data: c3data};
+};
+
+// Tax Return Summary by Party - shows income, assets, tax paid
+var getTaxReturnSummaryByParty = function (data, lang) {
+  var partyData = {};
+
+  data.forEach(function(candi) {
+    var partyName = candi.politicalParty ?
+      (lang === 'bn_BD' ? candi.politicalParty.partyNameBn : candi.politicalParty.partyNameEn) :
+      (lang === 'bn_BD' ? 'স্বতন্ত্র' : 'Independent');
+
+    if (!partyData[partyName]) {
+      partyData[partyName] = {
+        partyName: partyName,
+        totalIncome: 0,
+        totalAsset: 0,
+        totalTaxPaid: 0,
+        candidateCount: 0,
+        candidates: []
+      };
+    }
+
+    var income = parseFloat(candi.taxReturn1IncomeAF) || 0;
+    var asset = parseFloat(candi.taxReturn1AssetAF) || 0;
+    var taxPaid = parseFloat(candi.taxReturn1PaidAF) || 0;
+
+    partyData[partyName].totalIncome += income;
+    partyData[partyName].totalAsset += asset;
+    partyData[partyName].totalTaxPaid += taxPaid;
+    partyData[partyName].candidateCount++;
+    partyData[partyName].candidates.push({
+      name: candi.candidateNameBnAF || '',
+      income: income,
+      asset: asset,
+      taxPaid: taxPaid
+    });
+  });
+
+  // Convert to array and calculate averages
+  var result = [];
+  var grandTotal = {
+    totalIncome: 0,
+    totalAsset: 0,
+    totalTaxPaid: 0,
+    candidateCount: 0
+  };
+
+  Object.keys(partyData).forEach(function(key) {
+    var party = partyData[key];
+    party.avgIncome = party.candidateCount > 0 ? Math.round(party.totalIncome / party.candidateCount) : 0;
+    party.avgAsset = party.candidateCount > 0 ? Math.round(party.totalAsset / party.candidateCount) : 0;
+    party.avgTaxPaid = party.candidateCount > 0 ? Math.round(party.totalTaxPaid / party.candidateCount) : 0;
+    result.push(party);
+
+    grandTotal.totalIncome += party.totalIncome;
+    grandTotal.totalAsset += party.totalAsset;
+    grandTotal.totalTaxPaid += party.totalTaxPaid;
+    grandTotal.candidateCount += party.candidateCount;
+  });
+
+  // Sort by candidate count descending
+  result.sort(function(a, b) { return b.candidateCount - a.candidateCount; });
+
+  return {
+    table: result,
+    grandTotal: grandTotal
+  };
+};
+
 var simplifyPfse = function (table, lang) {
   //console.log("before simple");
 
@@ -2904,14 +3182,70 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
   if (lang === 'bn_BD') {
     data.forEach(function (row) {
 
+      // Calculate age from DOB
+      var age = null;
+      var dob = row.candidateDateOfBirthBnAF;
+      if (dob && dob !== 'NULL' && dob !== 'null' && dob.indexOf && dob.indexOf('Invalid') === -1) {
+        var dobDate = new Date(dob.replace(/[০-৯]/g, function(d) { return '০১২৩৪৫৬৭৮৯'.indexOf(d); }));
+        if (!isNaN(dobDate.getTime())) {
+          var today = new Date();
+          age = today.getFullYear() - dobDate.getFullYear();
+          var monthDiff = today.getMonth() - dobDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+        }
+      } else if (row.dobTR && row.dobTR !== 0) {
+        var dobDate = new Date(row.dobTR);
+        if (!isNaN(dobDate.getTime())) {
+          var today = new Date();
+          age = today.getFullYear() - dobDate.getFullYear();
+          var monthDiff = today.getMonth() - dobDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+        }
+      }
+
       simpleData.push({
         "seatName": row.electionSeat() ? row.electionSeat().seatNameBn : null,
         "seatId": row.electionSeat() ? row.electionSeat().id : null,
         "districtName": row.district() ? row.district().nameBn : null,
         "candidateName": row.person() ? row.person().personNameBn : null,
         "personId": row.person() ? row.person().id : null,
+        "partyName": row.politicalParty() ? row.politicalParty().partyNameBn : null,
+        "age": age,
+        // Education
+        "degreeType": row.degreeTypeBnAF || '',
+        "highestDegree": row.highestDegreeBnAF || '',
         // Profession with fallback: currentProfessionAF -> professionTypeBnAF -> candidateProfessionBusinessBnAF
         "profession": row.currentProfessionAF || row.professionTypeBnAF || row.candidateProfessionBusinessBnAF || '',
+        "currentProfession": row.currentProfessionAF || '',
+        "previousProfession": row.previousProfessionAF || '',
+        "spouseProfession": row.spouseProfessionAF || '',
+        "spousePreviousProfession": row.spousePreviousProfessionAF || '',
+        // Gender
+        "gender": row.genderBn || row.genderBnAF || '',
+        // Tax Return from Affidavit
+        "taxReturn1TIN": row.taxReturn1TINAF || '',
+        "taxReturn1Year": row.taxReturn1YearAF || '',
+        "taxReturn1Income": row.taxReturn1IncomeAF || 0,
+        "taxReturn1Asset": row.taxReturn1AssetAF || 0,
+        "taxReturn1Paid": row.taxReturn1PaidAF || 0,
+        // Liability breakdown
+        "liability1": row.liability1AmountAF || 0,
+        "liability2": row.liability2AmountAF || 0,
+        "liability3": row.liability3AmountAF || 0,
+        "liability4": row.liability4AmountAF || 0,
+        // Government dues
+        "govDues1": row.govDues1AmountAF || 0,
+        "govDues2": row.govDues2AmountAF || 0,
+        "govDues3": row.govDues3AmountAF || 0,
+        "govDues4": row.govDues4AmountAF || 0,
+        // TR fields
+        "trTotalIncome": row._12_10to11_totalTR || 0,
+        "trTotalAsset": row._10_1_to_10_totalAssetTR || 0,
+        "trTaxPaid": row._15_13_sub_14_givenTaxTR || 0,
 
         "assetMaterialOwnTotalAF": (row.assetMaterialOwnTotalAF || 0 ),
         "assetImmaterialOwnTotalAF": (row.assetImmaterialOwnTotalAF || 0 ),
@@ -2952,14 +3286,70 @@ var simplifyCandidateAffidavitComparison = function (data, lang) {
       // Calculate liability with fallback for English section
       var liabilityTotal = ((row.liability1AmountAF || 0) + (row.liability2AmountAF || 0) + (row.liability3AmountAF || 0) + (row.liability4AmountAF || 0)) || (row.liabilitiesAmountAF || 0);
 
+      // Calculate age from DOB
+      var age = null;
+      var dob = row.candidateDateOfBirthBnAF;
+      if (dob && dob !== 'NULL' && dob !== 'null' && dob.indexOf && dob.indexOf('Invalid') === -1) {
+        var dobDate = new Date(dob.replace(/[০-৯]/g, function(d) { return '০১২৩৪৫৬৭৮৯'.indexOf(d); }));
+        if (!isNaN(dobDate.getTime())) {
+          var today = new Date();
+          age = today.getFullYear() - dobDate.getFullYear();
+          var monthDiff = today.getMonth() - dobDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+        }
+      } else if (row.dobTR && row.dobTR !== 0) {
+        var dobDate = new Date(row.dobTR);
+        if (!isNaN(dobDate.getTime())) {
+          var today = new Date();
+          age = today.getFullYear() - dobDate.getFullYear();
+          var monthDiff = today.getMonth() - dobDate.getMonth();
+          if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+            age--;
+          }
+        }
+      }
+
       simpleData.push({
         "seatName": row.electionSeat() ? row.electionSeat().seatNameEn : null,
         "districtName": row.district() ? row.district().nameEn : null,
         "candidateName": row.person() ? row.person().personNameEn : null,
         "personId": row.person() ? row.person().id : null,
         "seatId": row.electionSeat() ? row.electionSeat().id : null,
+        "partyName": row.politicalParty() ? row.politicalParty().partyNameEn : null,
+        "age": age,
+        // Education
+        "degreeType": row.degreeTypeBnAF || '',
+        "highestDegree": row.highestDegreeBnAF || '',
         // Profession with fallback: currentProfessionAF -> professionTypeBnAF -> candidateProfessionBusinessBnAF
         "profession": row.currentProfessionAF || row.professionTypeBnAF || row.candidateProfessionBusinessBnAF || '',
+        "currentProfession": row.currentProfessionAF || '',
+        "previousProfession": row.previousProfessionAF || '',
+        "spouseProfession": row.spouseProfessionAF || '',
+        "spousePreviousProfession": row.spousePreviousProfessionAF || '',
+        // Gender
+        "gender": row.genderEn || row.genderEnAF || '',
+        // Tax Return from Affidavit
+        "taxReturn1TIN": row.taxReturn1TINAF || '',
+        "taxReturn1Year": row.taxReturn1YearAF || '',
+        "taxReturn1Income": row.taxReturn1IncomeAF || 0,
+        "taxReturn1Asset": row.taxReturn1AssetAF || 0,
+        "taxReturn1Paid": row.taxReturn1PaidAF || 0,
+        // Liability breakdown
+        "liability1": row.liability1AmountAF || 0,
+        "liability2": row.liability2AmountAF || 0,
+        "liability3": row.liability3AmountAF || 0,
+        "liability4": row.liability4AmountAF || 0,
+        // Government dues
+        "govDues1": row.govDues1AmountAF || 0,
+        "govDues2": row.govDues2AmountAF || 0,
+        "govDues3": row.govDues3AmountAF || 0,
+        "govDues4": row.govDues4AmountAF || 0,
+        // TR fields
+        "trTotalIncome": row._12_10to11_totalTR || 0,
+        "trTotalAsset": row._10_1_to_10_totalAssetTR || 0,
+        "trTaxPaid": row._15_13_sub_14_givenTaxTR || 0,
 
         "assetOwn": (row.assetMaterialOwnTotalAF || 0 ) + (row.assetImmaterialOwnTotalAF || 0 ) + (row.assetJointSharePartTotalAF || 0 ),
         "assetDependent": (row.assetMaterialHusbandWifeTotalAF || 0 ) + (row.assetMaterialDependantsTotalAF || 0 ) + (row.assetImmaterialHusbandWifeTotalAF || 0 ) + (row.assetImmaterialDependantsTotalAF || 0 ),
@@ -3459,6 +3849,40 @@ module.exports = function (Candidate) {
       cb(null, {all: c3data, table: table});
     });
   };
+  Candidate.getAgeChart = function (whereCriteria, type, cb) {
+    whereCriteria.isPublished = {"neq": false};
+    var query = {
+      where: whereCriteria,
+      include: 'politicalParty'
+    };
+    Candidate.find(query).then(function (data) {
+      var c3data = getC3DataAge(data, type);
+      var table = [];
+      try {
+        groupCandidateByPoliticalParty(data, type)
+          .forEach(function (groupCandidate) {
+            table.push({
+              politicalPartyId: groupCandidate.key,
+              partyName: groupCandidate.party,
+              data: getC3DataAge(groupCandidate.value, type)
+            })
+          });
+      } catch (e) {
+      }
+      cb(null, {all: c3data, table: table});
+    });
+  };
+  Candidate.getTaxReturnSummaryChart = function (whereCriteria, type, cb) {
+    whereCriteria.isPublished = {"neq": false};
+    var query = {
+      where: whereCriteria,
+      include: 'politicalParty'
+    };
+    Candidate.find(query).then(function (data) {
+      var result = getTaxReturnSummaryByParty(data, type);
+      cb(null, result);
+    });
+  };
   Candidate.getAssetChart = function (whereCriteria, type, cb) {
     whereCriteria.isPublished = {"neq": false};
     var query = {
@@ -3636,7 +4060,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3663,7 +4087,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3689,7 +4113,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3715,7 +4139,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3741,7 +4165,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3767,7 +4191,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3795,7 +4219,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -3823,7 +4247,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4128,7 +4552,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4153,7 +4577,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4179,7 +4603,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4205,7 +4629,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4240,7 +4664,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4266,7 +4690,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4325,7 +4749,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4352,7 +4776,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4378,7 +4802,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4405,7 +4829,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4435,7 +4859,7 @@ module.exports = function (Candidate) {
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -4496,11 +4920,11 @@ module.exports = function (Candidate) {
     Promises.all([
       Candidate.find({
         where: whereQuery1,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       }),
       Candidate.find({
         where: whereQuery2,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       })
     ]).spread(function (candidateListUnsorted1, candidateListUnsorted2) {
       //console.log("in spread");
@@ -4572,19 +4996,19 @@ module.exports = function (Candidate) {
       Promises.all([
         Candidate.find({
           where: whereQuery1,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery2,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery3,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery4,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         })
       ]).spread(function (candidateListUnsorted1, candidateListUnsorted2, candidateListUnsorted3, candidateListUnsorted4) {
         ////console.log("candidate list 1", candidateList1.length);
@@ -4748,15 +5172,15 @@ module.exports = function (Candidate) {
       Promises.all([
         Candidate.find({
           where: whereQuery1,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery2,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery3,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         })
       ]).spread(function (candidateListUnsorted1, candidateListUnsorted2, candidateListUnsorted3) {
         ////console.log("candidate list 1", candidateList1.length);
@@ -4823,11 +5247,11 @@ module.exports = function (Candidate) {
       Promises.all([
         Candidate.find({
           where: whereQuery1,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         }),
         Candidate.find({
           where: whereQuery2,
-          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+          include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
         })
       ]).spread(function (candidateListUnsorted1, candidateListUnsorted2) {
         ////console.log("candidate list 1", candidateList1.length);
@@ -4894,16 +5318,16 @@ module.exports = function (Candidate) {
     Promises.all([
       Candidate.findOne({
         where: c1Query,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       }),
       Candidate.findOne({
         where: c2Query,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       }),
       Candidate.find({
         where: pQuery,
         limit: 10,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       })
     ]).spread(function (c1Data, c2Data, pData) {
 
@@ -5242,11 +5666,11 @@ module.exports = function (Candidate) {
     Promises.all([
       Candidate.find({
         where: whereQuery1,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       }),
       Candidate.find({
         where: whereQuery2,
-        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+        include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
       })
     ]).spread(function (candidateListUnsorted1, candidateListUnsorted2) {
       var candidateList1 = [];
@@ -5297,7 +5721,7 @@ module.exports = function (Candidate) {
     whereCriteria.isCaseFiledByECB_EER = true;
     var query = {
       where: whereCriteria,
-      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person"]
+      include: ['currentElection', 'electionSeat', "district", "upazilla", "union", "person", "politicalParty"]
     };
     Candidate.find(query).then(function (data) {
 
@@ -5460,6 +5884,24 @@ module.exports = function (Candidate) {
     'getGenderChart',
     {
       http: {path: '/getGenderChart', verb: 'get'},
+      accepts: [{arg: 'whereCriteria', type: 'json', http: {source: 'query'}},
+        {arg: 'type', type: 'string', http: {source: 'query'}}],
+      returns: {arg: "data", type: 'json'}
+    }
+  );
+  Candidate.remoteMethod(
+    'getAgeChart',
+    {
+      http: {path: '/getAgeChart', verb: 'get'},
+      accepts: [{arg: 'whereCriteria', type: 'json', http: {source: 'query'}},
+        {arg: 'type', type: 'string', http: {source: 'query'}}],
+      returns: {arg: "data", type: 'json'}
+    }
+  );
+  Candidate.remoteMethod(
+    'getTaxReturnSummaryChart',
+    {
+      http: {path: '/getTaxReturnSummaryChart', verb: 'get'},
       accepts: [{arg: 'whereCriteria', type: 'json', http: {source: 'query'}},
         {arg: 'type', type: 'string', http: {source: 'query'}}],
       returns: {arg: "data", type: 'json'}
