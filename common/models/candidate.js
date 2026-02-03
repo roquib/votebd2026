@@ -3745,29 +3745,42 @@ module.exports = function (Candidate) {
   Candidate.getOccupationChart = function (whereCriteria, type, cb) {
     whereCriteria.isPublished = {"neq": false};
     var query = {
-      //limit: whereCriteria.filter.limit,
       where: whereCriteria,
       include: 'politicalParty'
     };
     Candidate.find(query).then(function (data) {
-      ////console.log(data.length);
+      // Current profession data (বর্তমান পেশা)
+      var currentData = getC3DataOccupation(data, "currentProfessionAF", type);
+      var currentTable = [];
 
+      // Previous profession data (পূর্বতন পেশা)
+      var previousData = getC3DataOccupation(data, "previousProfessionAF", type);
+      var previousTable = [];
 
-      var c3data = getC3DataOccupation(data, "professionTypeBnAF", type);
-      var table = [];
       try {
-        //table = getC3DataGroupBy(data, "totalOwnIncomeAF", "politicalParty");
         groupCandidateByPoliticalParty(data, type)
           .forEach(function (groupCandidate) {
-            table.push({
+            currentTable.push({
               politicalPartyId: groupCandidate.key,
               partyName: groupCandidate.party,
-              data: getC3DataOccupation(groupCandidate.value, "professionTypeBnAF", type)
-            })
+              data: getC3DataOccupation(groupCandidate.value, "currentProfessionAF", type)
+            });
+            previousTable.push({
+              politicalPartyId: groupCandidate.key,
+              partyName: groupCandidate.party,
+              data: getC3DataOccupation(groupCandidate.value, "previousProfessionAF", type)
+            });
           });
       } catch (e) {
       }
-      cb(null, {all: c3data, table: table});
+
+      cb(null, {
+        current: { all: currentData, table: currentTable },
+        previous: { all: previousData, table: previousTable },
+        // Keep backward compatibility
+        all: currentData,
+        table: currentTable
+      });
     });
   };
   Candidate.getCommitmentAchievementChart = function (whereCriteria, type, cb) {
