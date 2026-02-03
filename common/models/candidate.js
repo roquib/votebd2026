@@ -952,31 +952,37 @@ var getC3DataLoan = function (value, key, lang) {
     }
   };
   value.forEach(function (candi) {
-    console.log(candi.liabilitiesAmountAF);
-    var liabilityAF=candi.liabilitiesAmountAF;
-    if (Number(candi[key])) {
+    // Calculate total from new liability fields, fallback to old fields
+    var newLiabilityTotal = (parseFloat(candi.liability1AmountAF) || 0) +
+                            (parseFloat(candi.liability2AmountAF) || 0) +
+                            (parseFloat(candi.liability3AmountAF) || 0) +
+                            (parseFloat(candi.liability4AmountAF) || 0);
+    var oldLiability = (parseFloat(candi.totalLoanAF) || 0) + (parseFloat(candi.liabilitiesAmountAF) || 0);
+    var liabilityAF = newLiabilityTotal > 0 ? newLiabilityTotal : oldLiability;
 
-      if (asset._1.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._1.maxRange) {
+    if (liabilityAF > 0) {
+
+      if (asset._1.minRange <= liabilityAF && liabilityAF <= asset._1.maxRange) {
         asset._1.total++;
         asset._1.candidate1.push(candi.candidateNameBnAF);
       }
-      else if (asset._2.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._2.maxRange) {
+      else if (asset._2.minRange <= liabilityAF && liabilityAF <= asset._2.maxRange) {
         asset._2.total++;
         asset._2.candidate2.push(candi.candidateNameBnAF);
       }
-      else if (asset._3.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._3.maxRange) {
+      else if (asset._3.minRange <= liabilityAF && liabilityAF <= asset._3.maxRange) {
         asset._3.total++;
         asset._3.candidate3.push(candi.candidateNameBnAF);
       }
-      else if (asset._4.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._4.maxRange) {
+      else if (asset._4.minRange <= liabilityAF && liabilityAF <= asset._4.maxRange) {
         asset._4.total++;
         asset._4.candidate4.push(candi.candidateNameBnAF);
       }
-      else if (asset._5.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._5.maxRange) {
+      else if (asset._5.minRange <= liabilityAF && liabilityAF <= asset._5.maxRange) {
         asset._5.total++;
         asset._5.candidate5.push(candi.candidateNameBnAF);
       }
-      else if (asset._6.minRange <= Number(liabilityAF) && Number(liabilityAF) <= asset._6.maxRange) {
+      else if (asset._6.minRange <= liabilityAF && liabilityAF <= asset._6.maxRange) {
         asset._6.total++;
         asset._6.candidate6.push(candi.candidateNameBnAF);
       }
@@ -1077,42 +1083,48 @@ var getC3DataLiability = function (value, key, lang) {
     },
   };
   value.forEach(function (candi) {
-    console.log(candi.liabilitiesAmountAF);
-    var liabilityAF = candi.liabilitiesAmountAF;
-    if (Number(candi[key])) {
+    // Calculate total from new liability fields, fallback to old fields
+    var newLiabilityTotal = (parseFloat(candi.liability1AmountAF) || 0) +
+                            (parseFloat(candi.liability2AmountAF) || 0) +
+                            (parseFloat(candi.liability3AmountAF) || 0) +
+                            (parseFloat(candi.liability4AmountAF) || 0);
+    var oldLiability = parseFloat(candi.liabilitiesAmountAF) || 0;
+    var liabilityAF = newLiabilityTotal > 0 ? newLiabilityTotal : oldLiability;
+
+    if (liabilityAF > 0) {
       if (
-        asset._1.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._1.maxRange
+        asset._1.minRange <= liabilityAF &&
+        liabilityAF <= asset._1.maxRange
       ) {
         asset._1.total++;
         asset._1.candidate1.push(candi.candidateNameBnAF);
       } else if (
-        asset._2.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._2.maxRange
+        asset._2.minRange <= liabilityAF &&
+        liabilityAF <= asset._2.maxRange
       ) {
         asset._2.total++;
         asset._2.candidate2.push(candi.candidateNameBnAF);
       } else if (
-        asset._3.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._3.maxRange
+        asset._3.minRange <= liabilityAF &&
+        liabilityAF <= asset._3.maxRange
       ) {
         asset._3.total++;
         asset._3.candidate3.push(candi.candidateNameBnAF);
       } else if (
-        asset._4.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._4.maxRange
+        asset._4.minRange <= liabilityAF &&
+        liabilityAF <= asset._4.maxRange
       ) {
         asset._4.total++;
         asset._4.candidate4.push(candi.candidateNameBnAF);
       } else if (
-        asset._5.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._5.maxRange
+        asset._5.minRange <= liabilityAF &&
+        liabilityAF <= asset._5.maxRange
       ) {
         asset._5.total++;
         asset._5.candidate5.push(candi.candidateNameBnAF);
       } else if (
-        asset._6.minRange <= Number(liabilityAF) &&
-        Number(liabilityAF) <= asset._6.maxRange
+        asset._6.minRange <= liabilityAF &&
+        liabilityAF <= asset._6.maxRange
       ) {
         asset._6.total++;
         asset._6.candidate6.push(candi.candidateNameBnAF);
@@ -2053,9 +2065,10 @@ var getTaxReturnSummaryByParty = function (data, lang) {
       };
     }
 
-    var income = parseFloat(candi.taxReturn1IncomeAF) || 0;
-    var asset = parseFloat(candi.taxReturn1AssetAF) || 0;
-    var taxPaid = parseFloat(candi.taxReturn1PaidAF) || 0;
+    // Try new fields first, then fallback to old TR fields
+    var income = parseFloat(candi.taxReturn1IncomeAF) || parseFloat(candi._12_10to11_totalTR) || 0;
+    var asset = parseFloat(candi.taxReturn1AssetAF) || parseFloat(candi._10_1_to_10_totalAssetTR) || 0;
+    var taxPaid = parseFloat(candi.taxReturn1PaidAF) || parseFloat(candi._13ApplicableTaxTR) || parseFloat(candi._15_13_sub_14_givenTaxTR) || 0;
 
     partyData[partyName].totalIncome += income;
     partyData[partyName].totalAsset += asset;
