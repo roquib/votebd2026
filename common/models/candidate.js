@@ -1142,6 +1142,39 @@ var getC3DataLiability = function (value, key, lang) {
   return { table: asset, c3data: c3data };
 };
 
+// Helper function to calculate total income from new incomeSourceAF array structure
+var calculateTotalIncome = function (candi, incomeType) {
+  var total = 0;
+
+  // Try new structure first: incomeSourceAF array with ownDomestic, ownForeign, dependentsDomestic, dependentsForeign
+  if (candi.incomeSourceAF && Array.isArray(candi.incomeSourceAF)) {
+    candi.incomeSourceAF.forEach(function(source) {
+      if (incomeType === 'domestic') {
+        total += (parseFloat(source.ownDomestic) || 0) + (parseFloat(source.dependentsDomestic) || 0);
+      } else if (incomeType === 'foreign') {
+        total += (parseFloat(source.ownForeign) || 0) + (parseFloat(source.dependentsForeign) || 0);
+      } else {
+        // total - all income
+        total += (parseFloat(source.ownDomestic) || 0) +
+                 (parseFloat(source.ownForeign) || 0) +
+                 (parseFloat(source.dependentsDomestic) || 0) +
+                 (parseFloat(source.dependentsForeign) || 0);
+      }
+    });
+  }
+
+  // Fallback to old structure if no new data
+  if (total === 0) {
+    if (candi.grandTotalIncomeAF) {
+      total = parseFloat(candi.grandTotalIncomeAF) || 0;
+    } else if (candi.totalOwnIncomeAF) {
+      total = parseFloat(candi.totalOwnIncomeAF) || 0;
+    }
+  }
+
+  return total;
+};
+
 var getC3DataIncome = function (value, key, lang) {
   var asset = {
     "_1": {
@@ -1209,36 +1242,38 @@ var getC3DataIncome = function (value, key, lang) {
     }
   };
   value.forEach(function (candi) {
-    if (Number(candi[key])) {
+    // Use new calculateTotalIncome helper for new incomeSourceAF structure, with fallback to old fields
+    var incomeValue = calculateTotalIncome(candi, key === 'domestic' ? 'domestic' : (key === 'foreign' ? 'foreign' : 'total'));
+    var candidateName = candi.candidateNameBnAF || candi.personNameBn || '';
 
-      if (asset._1.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._1.maxRange) {
+    if (incomeValue > 0) {
+      if (asset._1.minRange <= incomeValue && incomeValue <= asset._1.maxRange) {
         asset._1.total++;
-        asset._1.candidate1.push(candi.candidateNameBnAF);
+        asset._1.candidate1.push(candidateName);
       }
-      else if (asset._2.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._2.maxRange) {
+      else if (asset._2.minRange <= incomeValue && incomeValue <= asset._2.maxRange) {
         asset._2.total++;
-        asset._2.candidate2.push(candi.candidateNameBnAF);
+        asset._2.candidate2.push(candidateName);
       }
-      else if (asset._3.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._3.maxRange) {
+      else if (asset._3.minRange <= incomeValue && incomeValue <= asset._3.maxRange) {
         asset._3.total++;
-        asset._3.candidate3.push(candi.candidateNameBnAF);
+        asset._3.candidate3.push(candidateName);
       }
-      else if (asset._4.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._4.maxRange) {
+      else if (asset._4.minRange <= incomeValue && incomeValue <= asset._4.maxRange) {
         asset._4.total++;
-        asset._4.candidate4.push(candi.candidateNameBnAF);
+        asset._4.candidate4.push(candidateName);
       }
-      else if (asset._5.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._5.maxRange) {
+      else if (asset._5.minRange <= incomeValue && incomeValue <= asset._5.maxRange) {
         asset._5.total++;
-        asset._5.candidate5.push(candi.candidateNameBnAF);
+        asset._5.candidate5.push(candidateName);
       }
-      else if (asset._6.minRange <= Number(candi[key]) && Number(candi[key]) <= asset._6.maxRange) {
+      else if (asset._6.minRange <= incomeValue && incomeValue <= asset._6.maxRange) {
         asset._6.total++;
-        asset._6.candidate6.push(candi.candidateNameBnAF);
+        asset._6.candidate6.push(candidateName);
       }
-
     } else {
       asset.unknown.total++;
-      asset.unknown.candidate7.push(candi.candidateNameBnAF);
+      asset.unknown.candidate7.push(candidateName);
     }
   });
   asset.totalCandidate.total =
@@ -1837,9 +1872,24 @@ var getC3DataGender = function (value, key, lang) {
 
 // Helper function to calculate age from DOB
 var calculateAge = function(candi) {
+  // Try new ageYearsAF field first (direct age value from new form)
+  if (candi.ageYearsAF) {
+    // Convert Bengali numerals to English if needed
+    var ageStr = String(candi.ageYearsAF);
+    var bengali = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    var english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    for (var i = 0; i < bengali.length; i++) {
+      ageStr = ageStr.split(bengali[i]).join(english[i]);
+    }
+    var age = parseInt(ageStr);
+    if (!isNaN(age) && age > 0) {
+      return age;
+    }
+  }
+
   var dobDate = null;
 
-  // Try candidateDateOfBirthBnAF first
+  // Try candidateDateOfBirthBnAF
   var dob = candi.candidateDateOfBirthBnAF;
   if (dob && dob !== 'NULL' && dob !== 'null' && dob.indexOf && dob.indexOf('Invalid') === -1) {
     // Convert Bengali numerals to English if needed
@@ -1984,9 +2034,13 @@ var getTaxReturnSummaryByParty = function (data, lang) {
   var partyData = {};
 
   data.forEach(function(candi) {
-    var partyName = candi.politicalParty ?
-      (lang === 'bn_BD' ? candi.politicalParty.partyNameBn : candi.politicalParty.partyNameEn) :
-      (lang === 'bn_BD' ? 'স্বতন্ত্র' : 'Independent');
+    var partyName;
+    if (candi.politicalPartyId && candi.politicalParty()) {
+      var party = candi.politicalParty();
+      partyName = lang === 'bn_BD' ? party.partyNameBn : party.partyNameEn;
+    } else {
+      partyName = lang === 'bn_BD' ? 'স্বতন্ত্র' : 'Independent';
+    }
 
     if (!partyData[partyName]) {
       partyData[partyName] = {
@@ -3967,38 +4021,41 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getIncomeChart = function (whereCriteria, type, cb) {
-    ////console.log(whereCriteria);
-    ////console.log(type);
     whereCriteria.isPublished = {"neq": false};
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
     };
     Candidate.find(query).then(function (data) {
+      // Get domestic income data
+      var domesticData = getC3DataIncome(data, "domestic", type);
+      var domesticTable = [];
 
-
-      //var c3data = getC3DataIncome(data, "totalOwnIncomeAF", type);
-      var c3data = getC3DataIncome(data, "grandTotalIncomeAF", type);
-      ////console.log(c3data);
-      var table = [];
+      // Get foreign income data
+      var foreignData = getC3DataIncome(data, "foreign", type);
+      var foreignTable = [];
 
       groupCandidateByPoliticalParty(data, type)
         .forEach(function (groupCandidate) {
-
-          ////console.log('--------======-------',groupCandidate.value)
-
-          table.push({
+          domesticTable.push({
             politicalPartyId: groupCandidate.key,
             partyName: groupCandidate.party,
-            //data: getC3DataIncome(groupCandidate.value, "totalOwnIncomeAF", type)
-            data: getC3DataIncome(groupCandidate.value, "grandTotalIncomeAF", type)
-          })
+            data: getC3DataIncome(groupCandidate.value, "domestic", type)
+          });
+          foreignTable.push({
+            politicalPartyId: groupCandidate.key,
+            partyName: groupCandidate.party,
+            data: getC3DataIncome(groupCandidate.value, "foreign", type)
+          });
         });
 
-        ////console.log(table);
-
-
-      cb(null, {all: c3data, table: table});
+      cb(null, {
+        domestic: { all: domesticData, table: domesticTable },
+        foreign: { all: foreignData, table: foreignTable },
+        // Keep backward compatibility
+        all: domesticData,
+        table: domesticTable
+      });
     });
   };
   Candidate.getTaxChart = function (whereCriteria, type, cb) {

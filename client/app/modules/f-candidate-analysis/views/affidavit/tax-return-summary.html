@@ -1,13 +1,13 @@
 <div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>
 <div class="about-detail-cont">
   <div class="jumbotron" lang="{{$root.locale.lang}}">
-    <h2>{{'Tax Return Summary'|translate}}</h2>
-    <p>{{'Party wise Tax Return Summary from Affidavit'|translate}}</p>
+    <h2>{{$root.locale.lang === 'bn_BD' ? 'আয়কর রিটার্ন সারসংক্ষেপ' : 'Tax Return Summary'}}</h2>
+    <p>{{$root.locale.lang === 'bn_BD' ? 'হলফনামা থেকে দলভিত্তিক আয়কর রিটার্ন সারসংক্ষেপ' : 'Party wise Tax Return Summary from Affidavit'}}</p>
   </div>
   <div class="row">
     <div class="col-xs-12 col-lg-12">
       <div class="clearfix">
-        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{'Total'|translate}} {{taxSummaryData.grandTotal.candidateCount | translateNumber}} {{'Candidates Tax Return Summary' | translate}}</h3>
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{$root.locale.lang === 'bn_BD' ? 'মোট' : 'Total'}} {{taxSummaryData.grandTotal.candidateCount | translateNumber}} {{$root.locale.lang === 'bn_BD' ? 'প্রার্থীর আয়কর রিটার্ন সারসংক্ষেপ' : 'Candidates Tax Return Summary'}}</h3>
         <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','tax-return-summary')">export excel</h3>
       </div>
       <div id="exportable">
@@ -15,14 +15,14 @@
           <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
             <thead>
               <tr>
-                <th>{{'Party'|translate}}</th>
-                <th>{{'Candidates'|translate}}</th>
-                <th>{{'Total Income (Displayed)'|translate}}</th>
-                <th>{{'Avg Income'|translate}}</th>
-                <th>{{'Total Assets (Displayed)'|translate}}</th>
-                <th>{{'Avg Assets'|translate}}</th>
-                <th>{{'Total Tax Paid'|translate}}</th>
-                <th>{{'Avg Tax Paid'|translate}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'দল' : 'Party'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'প্রার্থী সংখ্যা' : 'Candidates'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'প্রদর্শিত আয়ের পরিমাণ' : 'Total Income (Displayed)'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'গড় আয়' : 'Avg Income'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'আয়কর রিটার্নে প্রদর্শিত সম্পদের পরিমাণ' : 'Total Assets (Displayed)'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'গড় সম্পদ' : 'Avg Assets'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'প্রদত্ত আয়করের পরিমাণ' : 'Total Tax Paid'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'গড় আয়কর' : 'Avg Tax Paid'}}</th>
               </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                 <td>{{party.avgTaxPaid | number:0 | translateNumber}}</td>
               </tr>
               <tr class="info">
-                <th>{{'Grand Total'|translate}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'সর্বমোট' : 'Grand Total'}}</th>
                 <th>{{taxSummaryData.grandTotal.candidateCount | translateNumber}}</th>
                 <th>{{taxSummaryData.grandTotal.totalIncome | number:0 | translateNumber}}</th>
                 <th>-</th>

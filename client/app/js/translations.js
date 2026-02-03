@@ -270,6 +270,8 @@ angular.module('loopbackApp').run(['gettextCatalog', function (gettextCatalog) {
     "Form20/Dha(FSEE)":"ফর্ম ২০/ঢ(এফ.এস.ই.ই)",
     "Form22/Murdhanno(EER)":"ফর্ম ২২/ণ(ই.ই.আর)",
     "Tax Return":"আয়কর",
+    "Tax Return Summary":"আয়কর রিটার্ন সারসংক্ষেপ",
+    "Age":"বয়স",
     "ALIE":"এ.এল.আই.ই (ফর্ম ২১)",
     "Expense (22)/Expense(Murdhanno)":"ব্যয়বিবরণী (২২/ণ)",
     "candidate form submission status":"প্রার্থীর ফর্ম জমা দেবার অবস্থা",
