@@ -2133,19 +2133,26 @@ var getAssetSummaryByParty = function (data, lang) {
         movableCurrent: 0,
         immovableAcquisition: 0,
         immovableCurrent: 0,
-        candidateCount: 0
+        candidateCount: 0,
+        candidates: []
       };
     }
+
+    // Per-candidate asset values
+    var candiMovableAcquisition = 0;
+    var candiMovableCurrent = 0;
+    var candiImmovableAcquisition = 0;
+    var candiImmovableCurrent = 0;
 
     // Extract movable asset totals from assetMaterialAF array
     var materialArr = candi.assetMaterialAF || [];
     materialArr.forEach(function(item) {
       if (item.type === 'total_acquisition_movable') {
-        partyData[partyName].movableAcquisition += (parseFloat(item.priceOwn) || 0) +
+        candiMovableAcquisition += (parseFloat(item.priceOwn) || 0) +
           (parseFloat(item.priceHusbandWife) || 0) +
           (parseFloat(item.priceDependants) || 0);
       } else if (item.type === 'current_value_movable') {
-        partyData[partyName].movableCurrent += (parseFloat(item.priceOwn) || 0) +
+        candiMovableCurrent += (parseFloat(item.priceOwn) || 0) +
           (parseFloat(item.priceHusbandWife) || 0) +
           (parseFloat(item.priceDependants) || 0);
       }
@@ -2155,18 +2162,34 @@ var getAssetSummaryByParty = function (data, lang) {
     var immaterialArr = candi.assetImmaterialAF || [];
     immaterialArr.forEach(function(item) {
       if (item.type === 'total_acquisition_immovable') {
-        partyData[partyName].immovableAcquisition += (parseFloat(item.priceOwn) || 0) +
+        candiImmovableAcquisition += (parseFloat(item.priceOwn) || 0) +
           (parseFloat(item.priceHusbandWife) || 0) +
           (parseFloat(item.priceDependants) || 0) +
           (parseFloat(item.priceJointOwnership) || 0) +
           (parseFloat(item.priceJointSharePart) || 0);
       } else if (item.type === 'current_value_immovable') {
-        partyData[partyName].immovableCurrent += (parseFloat(item.priceOwn) || 0) +
+        candiImmovableCurrent += (parseFloat(item.priceOwn) || 0) +
           (parseFloat(item.priceHusbandWife) || 0) +
           (parseFloat(item.priceDependants) || 0) +
           (parseFloat(item.priceJointOwnership) || 0) +
           (parseFloat(item.priceJointSharePart) || 0);
       }
+    });
+
+    // Add to party totals
+    partyData[partyName].movableAcquisition += candiMovableAcquisition;
+    partyData[partyName].movableCurrent += candiMovableCurrent;
+    partyData[partyName].immovableAcquisition += candiImmovableAcquisition;
+    partyData[partyName].immovableCurrent += candiImmovableCurrent;
+
+    // Store individual candidate breakdown
+    partyData[partyName].candidates.push({
+      name: candi.candidateNameBnAF || '',
+      seat: (candi.electionSeat && candi.electionSeat() ? (lang === 'bn_BD' ? candi.electionSeat().seatNameBn : candi.electionSeat().seatNameEn) : '') || '',
+      movableAcquisition: candiMovableAcquisition,
+      movableCurrent: candiMovableCurrent,
+      immovableAcquisition: candiImmovableAcquisition,
+      immovableCurrent: candiImmovableCurrent
     });
 
     partyData[partyName].candidateCount++;
@@ -2240,6 +2263,43 @@ var simplifyPfse = function (table, lang) {
 
   return sortByKey(simpleData, 'seatId');
 };
+// Helper to extract total acquisition and current asset values for a candidate
+var getCandiAssetBreakdown = function (candi) {
+  var acquisition = 0;
+  var current = 0;
+
+  var materialArr = candi.assetMaterialAF || [];
+  materialArr.forEach(function(item) {
+    if (item.type === 'total_acquisition_movable') {
+      acquisition += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0);
+    } else if (item.type === 'current_value_movable') {
+      current += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0);
+    }
+  });
+
+  var immaterialArr = candi.assetImmaterialAF || [];
+  immaterialArr.forEach(function(item) {
+    if (item.type === 'total_acquisition_immovable') {
+      acquisition += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0) +
+        (parseFloat(item.priceJointOwnership) || 0) +
+        (parseFloat(item.priceJointSharePart) || 0);
+    } else if (item.type === 'current_value_immovable') {
+      current += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0) +
+        (parseFloat(item.priceJointOwnership) || 0) +
+        (parseFloat(item.priceJointSharePart) || 0);
+    }
+  });
+
+  return { acquisition: acquisition, current: current };
+};
 var simplifyPfsePP = function (table, lang) {
   //console.log("before simple");
 
@@ -2268,6 +2328,8 @@ var simplifyPfsePP = function (table, lang) {
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
         "asset":row.candidate? ((row.candidate.assetMaterialOwnTotalAF || 0)+(row.candidate.assetImmaterialOwnTotalAF || 0)+(row.candidate.assetJointSharePartTotalAF || 0)+(row.candidate.assetMaterialHusbandWifeTotalAF || 0)+(row.candidate.assetMaterialDependantsTotalAF || 0)+(row.candidate.assetImmaterialHusbandWifeTotalAF || 0)+(row.candidate.assetImmaterialDependantsTotalAF || 0)) :null,
+        "assetAcquisition": row.candidate ? getCandiAssetBreakdown(row.candidate).acquisition : null,
+        "assetCurrent": row.candidate ? getCandiAssetBreakdown(row.candidate).current : null,
         "loan":row.candidate? ((row.candidate.totalSingleAmountAF || 0)+(row.candidate.totalJointAmoutAF || 0)+(row.candidate.totalDirectorOrChairmenAmoutAF || 0)+(row.candidate.totalDependedantsAmountAF || 0)) :null,
         "_13Tax":row.candidate? row.candidate._13ApplicableTaxTR :null,
         "_14Tax":row.candidate? row.candidate._14TaxCommissionTR :null,
@@ -2298,6 +2360,8 @@ var simplifyPfsePP = function (table, lang) {
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
         "asset":row.candidate? (row.candidate.assetMaterialOwnTotalAF+row.candidate.assetImmaterialOwnTotalAF+row.candidate.assetJointSharePartTotalAF+row.candidate.assetMaterialHusbandWifeTotalAF+row.candidate.assetMaterialDependantsTotalAF+row.candidate.assetImmaterialHusbandWifeTotalAF+row.candidate.assetImmaterialDependantsTotalAF) :null,
+        "assetAcquisition": row.candidate ? getCandiAssetBreakdown(row.candidate).acquisition : null,
+        "assetCurrent": row.candidate ? getCandiAssetBreakdown(row.candidate).current : null,
         "loan":row.candidate? (row.candidate.totalSingleAmountAF+row.candidate.totalJointAmoutAF+row.candidate.totalDirectorOrChairmenAmoutAF+row.candidate.totalDependedantsAmountAF) :null,
         "_13Tax":row.candidate? row.candidate._13ApplicableTaxTR :null,
         "_14Tax":row.candidate? row.candidate._14TaxCommissionTR :null,
@@ -4056,7 +4120,7 @@ module.exports = function (Candidate) {
     whereCriteria.isPublished = {"neq": false};
     var query = {
       where: whereCriteria,
-      include: 'politicalParty'
+      include: ['politicalParty', 'electionSeat']
     };
     Candidate.find(query).then(function (data) {
       var result = getAssetSummaryByParty(data, type);

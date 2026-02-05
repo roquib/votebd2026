@@ -48,6 +48,54 @@
           </table>
         </div>
       </div>
+
+      <div class="clearfix" style="margin-top: 30px;">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{$root.locale.lang === 'bn_BD' ? 'প্রার্থী ভিত্তিক সম্পদের বিবরণী' : 'Candidate-wise Asset Breakdown'}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable2','asset-summary-candidates')">export excel</h3>
+      </div>
+      <div id="exportable2">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+              <tr>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'ক্রমিক নং' : 'SL'}}</th>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'দল' : 'Party'}}</th>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'আসন' : 'Seat'}}</th>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'প্রার্থীর নাম' : 'Candidate Name'}}</th>
+                <th colspan="2">{{$root.locale.lang === 'bn_BD' ? 'অস্থাবর সম্পদ' : 'Movable Assets'}}</th>
+                <th colspan="2">{{$root.locale.lang === 'bn_BD' ? 'স্থাবর সম্পদ' : 'Immovable Assets'}}</th>
+              </tr>
+              <tr>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'অর্জনকালীন মূল্য' : 'Acquisition Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'বর্তমান বাজার মূল্য' : 'Current Market Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'অর্জনকালীন মূল্য' : 'Acquisition Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'বর্তমান বাজার মূল্য' : 'Current Market Value'}}</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="party in assetSummaryData.table" ng-init="partyIndex = $index">
+              <tr ng-repeat="candi in party.candidates" ng-init="candiIndex = $index">
+                <td ng-if="candiIndex === 0" rowspan="{{party.candidates.length}}">{{partyIndex + 1 | translateNumber}}</td>
+                <td ng-if="candiIndex === 0" rowspan="{{party.candidates.length}}">{{party.partyName}}</td>
+                <td>{{candi.seat}}</td>
+                <td>{{candi.name}}</td>
+                <td>{{candi.movableAcquisition | number:0 | translateNumber}}</td>
+                <td>{{candi.movableCurrent | number:0 | translateNumber}}</td>
+                <td>{{candi.immovableAcquisition | number:0 | translateNumber}}</td>
+                <td>{{candi.immovableCurrent | number:0 | translateNumber}}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="info">
+                <th colspan="4">{{$root.locale.lang === 'bn_BD' ? 'সর্বমোট' : 'Grand Total'}}</th>
+                <th>{{assetSummaryData.grandTotal.movableAcquisition | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.movableCurrent | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.immovableAcquisition | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.immovableCurrent | number:0 | translateNumber}}</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>

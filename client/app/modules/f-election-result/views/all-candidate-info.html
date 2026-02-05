@@ -26,6 +26,8 @@
               <td colspan="2">{{'Case'|translate}}</td>
               <td rowspan="2">{{'Income'|translate}}</td>
               <td rowspan="2">{{'Asset'|translate}}</td>
+              <td rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'অর্জনকালীন মূল্য' : 'Acquisition Value'}}</td>
+              <td rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'বর্তমান মূল্য' : 'Current Value'}}</td>
               <td rowspan="2">{{'liability'|translate}}</td>
               <td rowspan="2">{{'Loan'|translate}}</td>
               <td rowspan="2">{{'Tax'|translate}}</td>
@@ -49,6 +51,8 @@
               <td>{{row.lawPastCountAF |translate}}{{row.lawPastAF}}</td>
               <td>{{(row.totalOwnIncomeAF+row.totalDependentIncomeAF) | translateNumber}}</td>
               <td>{{row.asset | translateNumber}}</td>
+              <td>{{row.assetAcquisition | number:0 | translateNumber}}</td>
+              <td>{{row.assetCurrent | number:0 | translateNumber}}</td>
               <td>{{row | getLiability | translateNumber}}</td>
               <td>{{row.loan | translateNumber}}</td>
               <td>{{(row._13Tax-row._14Tax) | translateNumber}}</td>
