@@ -2113,6 +2113,95 @@ var getTaxReturnSummaryByParty = function (data, lang) {
   };
 };
 
+// Asset Summary by Party - shows movable/immovable acquisition & current values
+var getAssetSummaryByParty = function (data, lang) {
+  var partyData = {};
+
+  data.forEach(function(candi) {
+    var partyName;
+    if (candi.politicalPartyId && candi.politicalParty()) {
+      var party = candi.politicalParty();
+      partyName = lang === 'bn_BD' ? party.partyNameBn : party.partyNameEn;
+    } else {
+      partyName = lang === 'bn_BD' ? 'স্বতন্ত্র' : 'Independent';
+    }
+
+    if (!partyData[partyName]) {
+      partyData[partyName] = {
+        partyName: partyName,
+        movableAcquisition: 0,
+        movableCurrent: 0,
+        immovableAcquisition: 0,
+        immovableCurrent: 0,
+        candidateCount: 0
+      };
+    }
+
+    // Extract movable asset totals from assetMaterialAF array
+    var materialArr = candi.assetMaterialAF || [];
+    materialArr.forEach(function(item) {
+      if (item.type === 'total_acquisition_movable') {
+        partyData[partyName].movableAcquisition += (parseFloat(item.priceOwn) || 0) +
+          (parseFloat(item.priceHusbandWife) || 0) +
+          (parseFloat(item.priceDependants) || 0);
+      } else if (item.type === 'current_value_movable') {
+        partyData[partyName].movableCurrent += (parseFloat(item.priceOwn) || 0) +
+          (parseFloat(item.priceHusbandWife) || 0) +
+          (parseFloat(item.priceDependants) || 0);
+      }
+    });
+
+    // Extract immovable asset totals from assetImmaterialAF array
+    var immaterialArr = candi.assetImmaterialAF || [];
+    immaterialArr.forEach(function(item) {
+      if (item.type === 'total_acquisition_immovable') {
+        partyData[partyName].immovableAcquisition += (parseFloat(item.priceOwn) || 0) +
+          (parseFloat(item.priceHusbandWife) || 0) +
+          (parseFloat(item.priceDependants) || 0) +
+          (parseFloat(item.priceJointOwnership) || 0) +
+          (parseFloat(item.priceJointSharePart) || 0);
+      } else if (item.type === 'current_value_immovable') {
+        partyData[partyName].immovableCurrent += (parseFloat(item.priceOwn) || 0) +
+          (parseFloat(item.priceHusbandWife) || 0) +
+          (parseFloat(item.priceDependants) || 0) +
+          (parseFloat(item.priceJointOwnership) || 0) +
+          (parseFloat(item.priceJointSharePart) || 0);
+      }
+    });
+
+    partyData[partyName].candidateCount++;
+  });
+
+  // Convert to array and calculate grand totals
+  var result = [];
+  var grandTotal = {
+    movableAcquisition: 0,
+    movableCurrent: 0,
+    immovableAcquisition: 0,
+    immovableCurrent: 0,
+    candidateCount: 0
+  };
+
+  Object.keys(partyData).forEach(function(key) {
+    var party = partyData[key];
+    result.push(party);
+
+    grandTotal.movableAcquisition += party.movableAcquisition;
+    grandTotal.movableCurrent += party.movableCurrent;
+    grandTotal.immovableAcquisition += party.immovableAcquisition;
+    grandTotal.immovableCurrent += party.immovableCurrent;
+    grandTotal.candidateCount += party.candidateCount;
+  });
+
+  // Sort by candidate count descending
+  result.sort(function(a, b) { return b.candidateCount - a.candidateCount; });
+
+  return {
+    table: result,
+    grandTotal: grandTotal
+  };
+};
+
 var simplifyPfse = function (table, lang) {
   //console.log("before simple");
 
@@ -3960,6 +4049,17 @@ module.exports = function (Candidate) {
     };
     Candidate.find(query).then(function (data) {
       var result = getTaxReturnSummaryByParty(data, type);
+      cb(null, result);
+    });
+  };
+  Candidate.getAssetSummaryChart = function (whereCriteria, type, cb) {
+    whereCriteria.isPublished = {"neq": false};
+    var query = {
+      where: whereCriteria,
+      include: 'politicalParty'
+    };
+    Candidate.find(query).then(function (data) {
+      var result = getAssetSummaryByParty(data, type);
       cb(null, result);
     });
   };
@@ -5985,6 +6085,15 @@ module.exports = function (Candidate) {
     'getTaxReturnSummaryChart',
     {
       http: {path: '/getTaxReturnSummaryChart', verb: 'get'},
+      accepts: [{arg: 'whereCriteria', type: 'json', http: {source: 'query'}},
+        {arg: 'type', type: 'string', http: {source: 'query'}}],
+      returns: {arg: "data", type: 'json'}
+    }
+  );
+  Candidate.remoteMethod(
+    'getAssetSummaryChart',
+    {
+      http: {path: '/getAssetSummaryChart', verb: 'get'},
       accepts: [{arg: 'whereCriteria', type: 'json', http: {source: 'query'}},
         {arg: 'type', type: 'string', http: {source: 'query'}}],
       returns: {arg: "data", type: 'json'}

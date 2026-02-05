@@ -231,6 +231,12 @@
           controller: 'CandidateAnalysisTaxReturnSummaryCtrl',
           controllerAs: 'ctrl'
         })
+        .state('front.candidateAnalysis.assetSummary', {
+          url: '/asset-summary',
+          templateUrl: 'modules/f-candidate-analysis/views/affidavit/asset-summary.html',
+          controller: 'CandidateAnalysisAssetSummaryCtrl',
+          controllerAs: 'ctrl'
+        })
 
         .state('front.candidateAnalysis.pfse-bo-who-commits-for-donation', {
           url: '/pfse-bo-who-commits-for-donation',

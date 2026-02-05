@@ -186,6 +186,10 @@
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
         return Candidate.getTaxReturnSummaryChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
       };
+      this.getCandidatesAssetSummaryWhere = function (electionSeatCriteria) {
+        var whereCriteria = this.verifyFilterData(electionSeatCriteria);
+        return Candidate.getAssetSummaryChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}).$promise;
+      };
       this.getCandidatesIncomeWhere = function (electionSeatCriteria) {
         var whereCriteria = this.verifyFilterData(electionSeatCriteria);
         return Candidate.getIncomeChart({whereCriteria: whereCriteria, type: $rootScope.locale.lang}

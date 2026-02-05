@@ -1,0 +1,53 @@
+<div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>
+<div class="about-detail-cont">
+  <div class="jumbotron" lang="{{$root.locale.lang}}">
+    <h2>{{$root.locale.lang === 'bn_BD' ? 'সম্পদের বিবরণী' : 'Asset Summary'}}</h2>
+    <p>{{$root.locale.lang === 'bn_BD' ? 'হলফনামা থেকে দলভিত্তিক সম্পদের বিবরণী' : 'Party wise Asset Summary from Affidavit'}}</p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-lg-12">
+      <div class="clearfix">
+        <h3 lang="{{$root.locale.lang}}" class="pull-left">{{$root.locale.lang === 'bn_BD' ? 'মোট' : 'Total'}} {{assetSummaryData.grandTotal.candidateCount | translateNumber}} {{$root.locale.lang === 'bn_BD' ? 'প্রার্থীর সম্পদের বিবরণী' : 'Candidates Asset Summary'}}</h3>
+        <h3 class="btn btn-primary pull-right" ng-click="exportTable('exportable','asset-summary')">export excel</h3>
+      </div>
+      <div id="exportable">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" lang="{{$root.locale.lang}}">
+            <thead>
+              <tr>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'দল' : 'Party'}}</th>
+                <th rowspan="2">{{$root.locale.lang === 'bn_BD' ? 'প্রার্থী সংখ্যা' : 'Candidates'}}</th>
+                <th colspan="2">{{$root.locale.lang === 'bn_BD' ? 'অস্থাবর সম্পদ' : 'Movable Assets'}}</th>
+                <th colspan="2">{{$root.locale.lang === 'bn_BD' ? 'স্থাবর সম্পদ' : 'Immovable Assets'}}</th>
+              </tr>
+              <tr>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'অর্জনকালীন মূল্য' : 'Acquisition Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'বর্তমান বাজার মূল্য' : 'Current Market Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'অর্জনকালীন মূল্য' : 'Acquisition Value'}}</th>
+                <th>{{$root.locale.lang === 'bn_BD' ? 'বর্তমান বাজার মূল্য' : 'Current Market Value'}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="party in assetSummaryData.table">
+                <td>{{party.partyName}}</td>
+                <td>{{party.candidateCount | translateNumber}}</td>
+                <td>{{party.movableAcquisition | number:0 | translateNumber}}</td>
+                <td>{{party.movableCurrent | number:0 | translateNumber}}</td>
+                <td>{{party.immovableAcquisition | number:0 | translateNumber}}</td>
+                <td>{{party.immovableCurrent | number:0 | translateNumber}}</td>
+              </tr>
+              <tr class="info">
+                <th>{{$root.locale.lang === 'bn_BD' ? 'সর্বমোট' : 'Grand Total'}}</th>
+                <th>{{assetSummaryData.grandTotal.candidateCount | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.movableAcquisition | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.movableCurrent | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.immovableAcquisition | number:0 | translateNumber}}</th>
+                <th>{{assetSummaryData.grandTotal.immovableCurrent | number:0 | translateNumber}}</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
