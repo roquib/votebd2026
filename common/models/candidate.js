@@ -2263,6 +2263,21 @@ var simplifyPfse = function (table, lang) {
 
   return sortByKey(simpleData, 'seatId');
 };
+// Helper to calculate total income from incomeSourceAF array
+var getCandiTotalIncome = function (candi) {
+  var total = 0;
+  var arr = candi.incomeSourceAF || [];
+  arr.forEach(function(item) {
+    total += (parseFloat(item.ownDomestic) || 0) +
+      (parseFloat(item.ownForeign) || 0) +
+      (parseFloat(item.dependentsDomestic) || 0) +
+      (parseFloat(item.dependentsForeign) || 0) +
+      (parseFloat(item.own) || 0) +
+      (parseFloat(item.dependents) || 0);
+  });
+  return total || (parseFloat(candi.grandTotalIncomeAF) || 0) ||
+    ((parseFloat(candi.totalOwnIncomeAF) || 0) + (parseFloat(candi.totalDependentIncomeAF) || 0));
+};
 // Helper to extract total acquisition and current asset values for a candidate
 var getCandiAssetBreakdown = function (candi) {
   var acquisition = 0;
@@ -2326,6 +2341,7 @@ var simplifyPfsePP = function (table, lang) {
         "professionTypeBnAF":row.candidate? row.candidate.professionTypeBnAF :null,
         "candidateProfessionBusinessBnAF":row.candidate? row.candidate.candidateProfessionBusinessBnAF :null,
         "highestDegreeBnAF":row.candidate? row.candidate.highestDegreeBnAF :null,
+        "totalIncome":row.candidate? getCandiTotalIncome(row.candidate) : 0,
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
         "asset":row.candidate? ((row.candidate.assetMaterialOwnTotalAF || 0)+(row.candidate.assetImmaterialOwnTotalAF || 0)+(row.candidate.assetJointSharePartTotalAF || 0)+(row.candidate.assetMaterialHusbandWifeTotalAF || 0)+(row.candidate.assetMaterialDependantsTotalAF || 0)+(row.candidate.assetImmaterialHusbandWifeTotalAF || 0)+(row.candidate.assetImmaterialDependantsTotalAF || 0)) :null,
@@ -2359,6 +2375,7 @@ var simplifyPfsePP = function (table, lang) {
         "professionTypeBnAF":row.candidate? row.candidate.professionTypeBnAF :null,
         "candidateProfessionBusinessBnAF":row.candidate? row.candidate.candidateProfessionBusinessBnAF :null,
         "highestDegreeBnAF":row.candidate? row.candidate.highestDegreeBnAF :null,
+        "totalIncome":row.candidate? getCandiTotalIncome(row.candidate) : 0,
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
         "asset":row.candidate? (row.candidate.assetMaterialOwnTotalAF+row.candidate.assetImmaterialOwnTotalAF+row.candidate.assetJointSharePartTotalAF+row.candidate.assetMaterialHusbandWifeTotalAF+row.candidate.assetMaterialDependantsTotalAF+row.candidate.assetImmaterialHusbandWifeTotalAF+row.candidate.assetImmaterialDependantsTotalAF) :null,

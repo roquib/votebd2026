@@ -49,7 +49,7 @@
               <td>{{row.highestDegreeBnAF |translate}}</td>
               <td>{{row.lawPresentCountAF |translate}}{{row.lawPresentAF}}</td>
               <td>{{row.lawPastCountAF |translate}}{{row.lawPastAF}}</td>
-              <td>{{(row.totalOwnIncomeAF+row.totalDependentIncomeAF) | translateNumber}}</td>
+              <td>{{row.totalIncome | number:0 | translateNumber}}</td>
               <td>{{row.asset | translateNumber}}</td>
               <td>{{row.assetAcquisition | number:0 | translateNumber}}</td>
               <td>{{row.assetCurrent | number:0 | translateNumber}}</td>
