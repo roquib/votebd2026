@@ -164,7 +164,7 @@
       "type": "date"
     },
     "isPublished": {
-      "type": "boolean"
+      "type": "any"
     },
     "isFeatured": {
       "type": "boolean"

@@ -3851,6 +3851,17 @@ var candidatesGroupBySeatForReturn = function (candidate) {
 };
 module.exports = function (Candidate) {
 
+  // Helper: LoopBack boolean coercion breaks {neq: false} for null/missing fields.
+  // Use or-clause to match isPublished=true OR null OR missing.
+  function filterPublished(w) {
+    delete w.isPublished;
+    w.or = [
+      {isPublished: true},
+      {isPublished: {exists: false}},
+      {isPublished: null}
+    ];
+  }
+
   //Candidate.getOccupationChart = function (whereCriteria, type, cb) {
   //  whereCriteria.isPublished = {"neq": false};
   //  var occupationBn = ["অন্যান্য", "ব্যবসা", "আইনজীবী", "কৃষি", "উল্লেখ নেই", "চাকুরি", "গৃহিনী"];
@@ -3903,7 +3914,7 @@ module.exports = function (Candidate) {
   }
 
   Candidate.getPoliticalPartyChartNew = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -3932,7 +3943,7 @@ module.exports = function (Candidate) {
   };
 
   Candidate.getOccupationChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
@@ -3973,7 +3984,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getCommitmentAchievementChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = { neq: false };
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4004,7 +4015,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getCasesChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
@@ -4045,7 +4056,7 @@ module.exports = function (Candidate) {
     //});
   };
   Candidate.getEducationChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: 200,
       where: whereCriteria,
@@ -4077,7 +4088,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getGenderChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4106,7 +4117,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getAgeChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
@@ -4129,7 +4140,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getTaxReturnSummaryChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
@@ -4140,7 +4151,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getAssetSummaryChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: ['politicalParty', 'electionSeat']
@@ -4151,7 +4162,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getAssetChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4183,7 +4194,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getLoanChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4209,7 +4220,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getLiabilityChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = { neq: false };
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4234,7 +4245,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getIncomeChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: 'politicalParty'
@@ -4272,7 +4283,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getTaxChart = function (whereCriteria, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4301,7 +4312,7 @@ module.exports = function (Candidate) {
   Candidate.getTopElectedCandidateChart = function (whereCriteria, type, cb) {
 
     whereCriteria.resultType = 'elected';
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       where: whereCriteria,
       include: ['electionSeat','politicalParty']
@@ -4326,7 +4337,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidates6 = function (whereCriteria, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4351,7 +4362,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidates5 = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //console.log("in getPfseCandidates5 type ", type);
 
     var query = {
@@ -4378,7 +4389,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidatesDonation = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //console.log("in getPfseCandidatesDonation type ", type);
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4404,7 +4415,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidatesLoan = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //console.log("in getPfseCandidatesLoan type ", type);
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4430,7 +4441,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidatesTotalIncome = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //console.log("in getPfseCandidatesTotalIncome type ", type);
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4456,7 +4467,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidatesPiWhichExceedsSpendingLimits = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //console.log("in getPfseCandidatesPiWhichExceedsSpendingLimits type ", type);
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4483,7 +4494,7 @@ module.exports = function (Candidate) {
   };
   Candidate.getElectedCandidates = function (whereCriteria, limit, type, cb) {
     whereCriteria.resultType = 'elected';
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
 
     //console.log("in elected candidate type ", whereCriteria);
     var query = {
@@ -4511,7 +4522,7 @@ module.exports = function (Candidate) {
   };
   Candidate.getElectedCandidatesByCw = function (whereCriteria, limit, type, cb) {
     //whereCriteria.resultType = 'elected';
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
 
     //console.log("in elected candidate type ", whereCriteria);
     var query = {
@@ -4539,7 +4550,7 @@ module.exports = function (Candidate) {
   };
   Candidate.getCandidateFormSubmitStatistics = function (whereCriteria, limit, type, cb) {
     //whereCriteria.resultType = 'elected';
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //whereCriteria.candidateType = "eligible";
 
     //console.log("in elected candidate type ", whereCriteria);
@@ -4632,7 +4643,7 @@ module.exports = function (Candidate) {
    }
   Candidate.getCandidateFormEntryReviewStatistics = function (whereCriteria, limit, type, cb) {
     //whereCriteria.resultType = 'elected';
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //whereCriteria.candidateType = "eligible";
 
     //console.log("in elected candidate type ", whereCriteria);
@@ -4719,31 +4730,31 @@ module.exports = function (Candidate) {
         Candidate.count({currentElectionId: whereCriteria.currentElectionId}),
 
         Candidate.count({
-          isPublished: {"neq": false},
+          or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}],
           currentElectionId: whereCriteria.currentElectionId,
           statusAF: {inq: ['publish', true, 'true']}
         }),
         Candidate.count({
-          isPublished: {"neq": false},
+          or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}],
           currentElectionId: whereCriteria.currentElectionId,
           statusFSEE: {inq: [true, 'true']}
         }),
         Candidate.count({
-          isPublished: {"neq": false},
+          or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}],
           currentElectionId: whereCriteria.currentElectionId,
           statusEER: {inq: [true, 'true']}
         }),
         Candidate.count({
-          isPublished: {"neq": false},
+          or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}],
           currentElectionId: whereCriteria.currentElectionId,
           statusTR: {inq: [true, 'true']}
         }),
         Candidate.count({
-          isPublished: {"neq": false},
+          or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}],
           currentElectionId: whereCriteria.currentElectionId,
           statusALIE: {inq: [true, 'true']}
         }),
-        Candidate.count({isPublished: {"neq": false}, currentElectionId: whereCriteria.currentElectionId})
+        Candidate.count({or: [{isPublished: true}, {isPublished: {exists: false}}, {isPublished: null}], currentElectionId: whereCriteria.currentElectionId})
 
 
       ]).spread(function (entryAF,
@@ -4791,7 +4802,7 @@ module.exports = function (Candidate) {
 
   };
   Candidate.getCandidateLists = function (whereCriteria, limit, type, cb) {
-
+    filterPublished(whereCriteria);
     //console.log("in elected candidate type ", whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4817,7 +4828,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERB = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4842,7 +4853,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getPfseCandidatesBusinessOrganization = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4867,7 +4878,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBDidNotSubmitReturn = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = {"neq": true};
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4894,7 +4905,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBCountSubmitReturn = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     var query = {
       //limit: whereCriteria.filter.limit,
       where: whereCriteria,
@@ -4928,7 +4939,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBMoneySpentForCampaigning = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4954,7 +4965,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBMoneySpentMoreThanSpendingLimit = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -4980,7 +4991,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBRangeWiseMoneySpent = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -5013,7 +5024,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBComparisonMoneySpentAmount = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -5040,7 +5051,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBComparisonMoneySpentPercentage = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -5066,7 +5077,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getEERBComparisonGender = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     whereCriteria.statusEER = true;
     var query = {
       //limit: whereCriteria.filter.limit,
@@ -5092,7 +5103,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getALIE = function (whereCriteria, limit, type, for_what, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //whereCriteria._1b_22_CampaignCostAmountEER = {"gt": 0};
     whereCriteria.statusALIE = true;
     var query = {
@@ -5120,7 +5131,7 @@ module.exports = function (Candidate) {
     });
   };
   Candidate.getDiscrepancy = function (whereCriteria, limit, type, for_what, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //whereCriteria._1b_22_CampaignCostAmountEER = {"gt": 0};
     //whereCriteria.statusALIE = { inq: [ true, 'true'] };
     //whereCriteria.statusAF = { inq: ['publish', true, 'true'] };
@@ -5159,8 +5170,8 @@ module.exports = function (Candidate) {
     if (criteria.hasOwnProperty("currentElectionId") && criteria.currentElectionId && criteria.hasOwnProperty("currentElectionId2") && criteria.currentElectionId2) {
       whereQuery1.currentElectionId = criteria.currentElectionId;
       whereQuery2.currentElectionId = criteria.currentElectionId2;
-      whereQuery1.isPublished = {"neq": false};
-      whereQuery2.isPublished = {"neq": false};
+      filterPublished(whereQuery1);
+      filterPublished(whereQuery2);
       //whereQuery1.statusALIE = true;
       //whereQuery2.statusALIE = true;
     } else {
@@ -5239,10 +5250,10 @@ module.exports = function (Candidate) {
       whereQuery2.currentElectionId = criteria.currentElectionId2;
       whereQuery3.currentElectionId = criteria.currentElectionId3;
       whereQuery4.currentElectionId = criteria.currentElectionId4;
-      whereQuery1.isPublished = {"neq": false};
-      whereQuery2.isPublished = {"neq": false};
-      whereQuery3.isPublished = {"neq": false};
-      whereQuery4.isPublished = {"neq": false};
+      filterPublished(whereQuery1);
+      filterPublished(whereQuery2);
+      filterPublished(whereQuery3);
+      filterPublished(whereQuery4);
 
       if (criteria.hasOwnProperty("candidateType") && criteria.candidateType) {
         if (criteria.candidateType === 'possible' || criteria.candidateType === 'eligible' || criteria.candidateType === 'withdrawn') {
@@ -5409,9 +5420,9 @@ module.exports = function (Candidate) {
       whereQuery1.currentElectionId = criteria.currentElectionId;
       whereQuery2.currentElectionId = criteria.currentElectionId2;
       whereQuery3.currentElectionId = criteria.currentElectionId3;
-      whereQuery1.isPublished = {"neq": false};
-      whereQuery2.isPublished = {"neq": false};
-      whereQuery3.isPublished = {"neq": false};
+      filterPublished(whereQuery1);
+      filterPublished(whereQuery2);
+      filterPublished(whereQuery3);
 
       if (criteria.hasOwnProperty("politicalPartyId") && criteria.politicalPartyId){
         whereQuery1.politicalPartyId=criteria.politicalPartyId;
@@ -5489,8 +5500,8 @@ module.exports = function (Candidate) {
      else if (criteria.hasOwnProperty("currentElectionId") && criteria.currentElectionId && criteria.hasOwnProperty("currentElectionId2") && criteria.currentElectionId2) {
       whereQuery1.currentElectionId = criteria.currentElectionId;
       whereQuery2.currentElectionId = criteria.currentElectionId2;
-      whereQuery1.isPublished = {"neq": false};
-      whereQuery2.isPublished = {"neq": false};
+      filterPublished(whereQuery1);
+      filterPublished(whereQuery2);
 
       if (criteria.hasOwnProperty("politicalPartyId") && criteria.politicalPartyId){
         //whereQuery1.politicalPartyId=criteria.politicalPartyId;
@@ -5826,8 +5837,8 @@ module.exports = function (Candidate) {
     if (criteria.hasOwnProperty("currentElectionId") && criteria.currentElectionId && criteria.hasOwnProperty("currentElectionId2") && criteria.currentElectionId2) {
       whereQuery1.currentElectionId = criteria.currentElectionId;
       whereQuery2.currentElectionId = criteria.currentElectionId2;
-      whereQuery1.isPublished = {"neq": false};
-      whereQuery2.isPublished = {"neq": false};
+      filterPublished(whereQuery1);
+      filterPublished(whereQuery2);
     } else {
       cb(null, "must select both election");
       return;
@@ -5985,7 +5996,7 @@ module.exports = function (Candidate) {
 
   };
   Candidate.getEERBCase = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    filterPublished(whereCriteria);
     //whereCriteria.statusEER = true;
     whereCriteria.isCaseFiledByECB_EER = true;
     var query = {
