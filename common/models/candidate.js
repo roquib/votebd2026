@@ -2352,6 +2352,10 @@ var simplifyPfsePP = function (table, lang) {
         "_14Tax":row.candidate? row.candidate._14TaxCommissionTR :null,
         "candidateDateOfBirthBnAF":row.candidate? row.candidate.candidateDateOfBirthBnAF :null,
         "liabilitiesAmountAF":row.candidate? row.candidate.liabilitiesAmountAF : null,
+        "liability1AmountAF":row.candidate? row.candidate.liability1AmountAF : null,
+        "liability2AmountAF":row.candidate? row.candidate.liability2AmountAF : null,
+        "liability3AmountAF":row.candidate? row.candidate.liability3AmountAF : null,
+        "liability4AmountAF":row.candidate? row.candidate.liability4AmountAF : null,
         "lawPresentCountAF":row.candidate? row.candidate.lawPresentCountAF : null,
         "lawPresentAF": countPresent302? "*" : null,
         "lawPastCountAF":row.candidate? row.candidate.lawPastCountAF : null,
@@ -4787,12 +4791,6 @@ module.exports = function (Candidate) {
 
   };
   Candidate.getCandidateLists = function (whereCriteria, limit, type, cb) {
-    delete whereCriteria.isPublished;
-    whereCriteria.or = [
-      {isPublished: true},
-      {isPublished: {exists: false}},
-      {isPublished: null}
-    ];
 
     //console.log("in elected candidate type ", whereCriteria);
     var query = {
