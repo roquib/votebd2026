@@ -4770,7 +4770,12 @@ module.exports = function (Candidate) {
 
   };
   Candidate.getCandidateLists = function (whereCriteria, limit, type, cb) {
-    whereCriteria.isPublished = {"neq": false};
+    delete whereCriteria.isPublished;
+    whereCriteria.or = [
+      {isPublished: true},
+      {isPublished: {exists: false}},
+      {isPublished: null}
+    ];
 
     //console.log("in elected candidate type ", whereCriteria);
     var query = {
