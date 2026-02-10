@@ -14,6 +14,52 @@ This document describes **all changes** made to the Affidavit Form (হলফন
 
 ---
 
+## GENDER OPTION UPDATE (তৃতীয় লিঙ্গ)
+
+Added **তৃতীয় লিঙ্গ** (Third Gender) as a gender option across the entire system:
+
+### Frontend Forms Updated
+
+| File | Change |
+|------|--------|
+| `candidates/services/persons.service.js` | Added `{name: 'তৃতীয় লিঙ্গ', value: 'তৃতীয় লিঙ্গ'}` and `{name: 'Third Gender', value: 'third_gender'}` to genderBn/genderEn selects |
+| `persons/services/persons.service.js` | Same as above |
+| `candidates/services/candidates.service.js` | Added তৃতীয় লিঙ্গ option to both genderBn select fields |
+| `candidates/views/addform.html` | Added `<option value="তৃতীয় লিঙ্গ">তৃতীয় লিঙ্গ</option>` |
+| `candidates/views/candidateMerge.html` | Same as above |
+
+### Controllers Updated (genderBn → genderEn mapping)
+
+| File | Change |
+|------|--------|
+| `candidates/controllers/editform.Ctrl.js` | Added `তৃতীয় লিঙ্গ` → `third_gender` mapping |
+| `candidates/controllers/addedit.ctrl.js` | Added mapping in both new candidate and edit candidate save blocks |
+
+### Backend Analysis Updated
+
+| File | Change |
+|------|--------|
+| `common/models/candidate.js` | `getC3DataGender()`: added "third_gender" category with key "তৃতীয় লিঙ্গ", included in total count and c3 chart data |
+| `common/models/candidate.js` | `groupData` seat analysis: added `states.other` counter for তৃতীয় লিঙ্গ candidates |
+
+### Report Views Updated
+
+| File | Change |
+|------|--------|
+| `f-election-result/views/gender-analysis.html` | Added তৃতীয় লিঙ্গ column in header, body rows, and footer totals |
+| `f-election-result/views/election-menu.html` | Menu label updated to "Male/Female/Third Gender Candidates Analysis" |
+| `core/views/front.html` | Navigation menu label updated |
+| `core/views/front-new.html` | Navigation menu label updated |
+
+### Profile Photo Fallback Updated
+
+| File | Change |
+|------|--------|
+| `f-candidate-search/views/affidavit/view.html` | Added fallback photo for `genderEn=='third_gender'` or `genderBn=='তৃতীয় লিঙ্গ'` |
+| `constituencies/views/electionSeat.html` | Same fallback added in both candidate list and detail sections |
+
+---
+
 ## NEW FIELDS
 
 ### Page 1 - Basic Information

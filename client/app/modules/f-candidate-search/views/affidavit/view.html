@@ -27,6 +27,7 @@
                 <img ng-if="ctrl.candidat.candidatePhoto" src="assets/candidate_photos/{{ctrl.candidat.candidatePhoto}}" style="max-height:180px;">
                 <img ng-if="(!ctrl.candidat.candidatePhoto) && (ctrl.candidat.genderEn=='male')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
                 <img ng-if="(!ctrl.candidat.candidatePhoto) && (ctrl.candidat.genderEn=='female' || ctrl.candidat.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:180px;">
+                <img ng-if="(!ctrl.candidat.candidatePhoto) && (ctrl.candidat.genderEn=='third_gender' || ctrl.candidat.genderBn=='তৃতীয় লিঙ্গ')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
             </div>
              <h6>{{ctrl.candidat.candidateNameBnAF}}</h6>
              <h6> <span> <img class="vote-symbol" src="assets/party_symbols/{{ctrl.candidat.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>

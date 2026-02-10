@@ -303,7 +303,8 @@
                   label: 'Gender (Bangla)',
                   options: [
                     {name: 'পুরুষ', value: 'পুরুষ'},
-                    {name: 'মহিলা', value: 'মহিলা'}
+                    {name: 'মহিলা', value: 'মহিলা'},
+                    {name: 'তৃতীয় লিঙ্গ', value: 'তৃতীয় লিঙ্গ'}
                   ],
                   required: true
                 }
@@ -1899,7 +1900,8 @@
                   label: 'Gender (Bangla)',
                   options: [
                     {name: 'পুরুষ', value: 'পুরুষ'},
-                    {name: 'মহিলা', value: 'মহিলা'}
+                    {name: 'মহিলা', value: 'মহিলা'},
+                    {name: 'তৃতীয় লিঙ্গ', value: 'তৃতীয় লিঙ্গ'}
                   ],
                   required: true
                 }

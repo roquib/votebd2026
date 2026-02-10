@@ -109,7 +109,8 @@
               label: 'Gender (English)',
               options: [
                 {name: 'Male', value: 'male'},
-                {name: 'Female', value: 'female'}
+                {name: 'Female', value: 'female'},
+                {name: 'Third Gender', value: 'third_gender'}
               ],
               required: true
             }
@@ -121,7 +122,8 @@
               label: 'Gender (Bangla)',
               options: [
                 {name: 'পুরুষ', value: 'পুরুষ'},
-                {name: 'মহিলা', value: 'মহিলা'}
+                {name: 'মহিলা', value: 'মহিলা'},
+                {name: 'তৃতীয় লিঙ্গ', value: 'তৃতীয় লিঙ্গ'}
               ],
               required: true
             }

@@ -33,6 +33,7 @@
      <img ng-if="candidate.candidatePhoto" src="assets/candidate_photos/{{candidate.candidatePhoto}}" style="max-height:180px;">
      <img ng-if="(!candidate.candidatePhoto) && (candidate.genderEn=='male')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
      <img ng-if="(!candidate.candidatePhoto) && (candidate.genderEn=='female' || candidate.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:180px;">
+     <img ng-if="(!candidate.candidatePhoto) && (candidate.genderEn=='third_gender' || candidate.genderBn=='তৃতীয় লিঙ্গ')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:180px;">
    </div>
    <a href="/#/front/candidates/affidavit/{{candidate.id}}"><h6>{{candidate.candidateNameBnAF}}</h6></a>
    <h2><span><img src="assets/party_symbols/{{candidate.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>
@@ -58,6 +59,7 @@
          <img ng-if="candidat.candidatePhoto" src="assets/candidate_photos/{{candidat.candidatePhoto}}" style="height:175px;">
          <img ng-if="!candidat.candidatePhoto && candidat.genderEn=='male'" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:175px;">
          <img ng-if="!candidat.candidatePhoto && (candidat.genderEn=='female' || candidat.genderBn=='মহিলা')" src="images/profile-photo-female.png" alt="Profile Photo" style="max-height:175px;">
+         <img ng-if="!candidat.candidatePhoto && (candidat.genderEn=='third_gender' || candidat.genderBn=='তৃতীয় লিঙ্গ')" src="images/profile-photo.jpg" alt="Profile Photo" style="max-height:175px;">
        </div>
        <a href="/#/front/candidates/affidavit/{{candidat.id}}"><h6>{{candidat.candidateNameBnAF}}</h6></a>
        <h2><span><img src="assets/party_symbols/{{candidat.politicalParty.politicalPartyMarka}}" style="width:50px; height:30px;"></span>

@@ -333,9 +333,13 @@
             $scope.newCandidate.genderBn='পুরুষ';
             $scope.newCandidate.genderEn='male';
           }
-          if($scope.newCandidate.isPublished=='মহিলা'){
+          if($scope.newCandidate.genderBn=='মহিলা'){
             $scope.newCandidate.genderBn='মহিলা';
             $scope.newCandidate.genderEn='female';
+          }
+          if($scope.newCandidate.genderBn=='তৃতীয় লিঙ্গ'){
+            $scope.newCandidate.genderBn='তৃতীয় লিঙ্গ';
+            $scope.newCandidate.genderEn='third_gender';
           }
         }
 
@@ -382,9 +386,13 @@
             $scope.gotCandidate.genderBn='পুরুষ';
             $scope.gotCandidate.genderEn='male';
           }
-          if($scope.gotCandidate.isPublished=='মহিলা'){
+          if($scope.gotCandidate.genderBn=='মহিলা'){
             $scope.gotCandidate.genderBn='মহিলা';
             $scope.gotCandidate.genderEn='female';
+          }
+          if($scope.gotCandidate.genderBn=='তৃতীয় লিঙ্গ'){
+            $scope.gotCandidate.genderBn='তৃতীয় লিঙ্গ';
+            $scope.gotCandidate.genderEn='third_gender';
           }
         }
         CandidatesService.upsertCandidate($scope.gotCandidate).then(function (candidate) {

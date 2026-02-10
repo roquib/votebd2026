@@ -1852,6 +1852,11 @@ var getC3DataGender = function (value, key, lang) {
       key: "মহিলা",
       total: 0
     },
+    "other": {
+      title: lang === 'bn_BD' ? "তৃতীয় লিঙ্গ" : "Third Gender",
+      key: "তৃতীয় লিঙ্গ",
+      total: 0
+    },
     "totalCandidate": {
       title: lang === 'bn_BD' ? "মোট" : "Total",
       key: "মোট",
@@ -1867,6 +1872,9 @@ var getC3DataGender = function (value, key, lang) {
       else if (asset.female.key == candi[key]) {
         asset.female.total++;
       }
+      else if (asset.other.key == candi[key]) {
+        asset.other.total++;
+      }
 
     } else {
       asset.female.total++;
@@ -1874,11 +1882,13 @@ var getC3DataGender = function (value, key, lang) {
   });
   asset.totalCandidate.total =
     asset.male.total +
-    asset.female.total;
+    asset.female.total +
+    asset.other.total;
   var c3data = [];
 
   c3data[0] = [asset.male.title, asset.male.total];
   c3data[1] = [asset.female.title, asset.female.total];
+  c3data[2] = [asset.other.title, asset.other.total];
   return {table: asset, c3data: c3data};
 };
 
@@ -3771,6 +3781,7 @@ var candidatesGroupBySeatForCandidateType = function (candidate) {
     groupData[i].states.totalCandidate = 0;
     groupData[i].states.male = 0;
     groupData[i].states.female = 0;
+    groupData[i].states.other = 0;
 
 
     for (var j = 0; j < candidate.length; j++) {
@@ -3791,6 +3802,8 @@ var candidatesGroupBySeatForCandidateType = function (candidate) {
           groupData[i].states.male++;
         } else if (candidate[j].candidate.genderBn === "মহিলা") {
           groupData[i].states.female++;
+        } else if (candidate[j].candidate.genderBn === "তৃতীয় লিঙ্গ") {
+          groupData[i].states.other++;
         }
         if (candidate[j].candidate.candidateType === "elected") {
           groupData[i].states.elected++;

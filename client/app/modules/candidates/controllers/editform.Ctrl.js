@@ -33,6 +33,10 @@
                         $scope.gotCandidate.genderBn='মহিলা';
                         $scope.gotCandidate.genderEn='female';
                     }
+                    if($scope.gotCandidate.genderBn=='তৃতীয় লিঙ্গ'){
+                        $scope.gotCandidate.genderBn='তৃতীয় লিঙ্গ';
+                        $scope.gotCandidate.genderEn='third_gender';
+                    }
                 }
 
               // console.log($scope.gotCandidate);

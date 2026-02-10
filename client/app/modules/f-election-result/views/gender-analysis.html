@@ -2,7 +2,7 @@
 <!--<div ng-include="'modules/f-candidate-analysis/views/affidavit-menu.html'"></div>-->
 <div class="about-detail-cont">
   <div class="jumbotron" lang="{{$root.locale.lang}}">
-    <h2>{{'Male/Female Candidates Analysis'|translate}}</h2>
+    <h2>{{'Male/Female/Third Gender Candidates Analysis'|translate}}</h2>
   </div>
   <div class="row">
     <div class="col-xs-12 col-lg-12">
@@ -20,6 +20,7 @@
               <th >{{'Teams'|translate}}</th>
               <th>{{genderData.all.table.male.title}}</th>
               <th>{{genderData.all.table.female.title}}</th>
+              <th>{{genderData.all.table.other.title}}</th>
               <th >{{'Total'|translate}}</th>
             </tr>
             </thead>
@@ -28,12 +29,14 @@
               <td>{{tr_data.partyName}}</td>
               <td>{{tr_data.data.table.male.total | translateNumber}}</td>
               <td>{{tr_data.data.table.female.total | translateNumber}}</td>
+              <td>{{tr_data.data.table.other.total | translateNumber}}</td>
               <td>{{tr_data.data.table.totalCandidate.total | translateNumber}}</td>
             </tr>
             <tr>
               <th >{{'Total'|translate}}</th>
               <th>{{genderData.all.table.male.total | translateNumber}}</th>
               <th>{{genderData.all.table.female.total | translateNumber}}</th>
+              <th>{{genderData.all.table.other.total | translateNumber}}</th>
               <th>{{genderData.all.table.totalCandidate.total | translateNumber}}</th>
             </tr>
             </tbody>
