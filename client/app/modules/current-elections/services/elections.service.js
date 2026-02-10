@@ -106,6 +106,13 @@
             }
           },
           {
+            key: 'hijraVoter',
+            type: 'input',
+            templateOptions: {
+              label: gettextCatalog.getString('Third Gender Voter')
+            }
+          },
+          {
             key: 'detail',
             type: 'textarea',
             templateOptions: {
