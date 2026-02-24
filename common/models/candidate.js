@@ -2325,6 +2325,34 @@ var getCandiAssetBreakdown = function (candi) {
 
   return { acquisition: acquisition, current: current };
 };
+// Helper to calculate total asset value from detail items only (excludes summary rows)
+var getCandiAssetTotal = function (candi) {
+  var total = 0;
+  var summaryTypes = ['total_acquisition_movable', 'current_value_movable',
+    'total_acquisition_immovable', 'current_value_immovable'];
+
+  var materialArr = candi.assetMaterialAF || [];
+  materialArr.forEach(function(item) {
+    if (summaryTypes.indexOf(item.type) === -1) {
+      total += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0);
+    }
+  });
+
+  var immaterialArr = candi.assetImmaterialAF || [];
+  immaterialArr.forEach(function(item) {
+    if (summaryTypes.indexOf(item.type) === -1) {
+      total += (parseFloat(item.priceOwn) || 0) +
+        (parseFloat(item.priceHusbandWife) || 0) +
+        (parseFloat(item.priceDependants) || 0) +
+        (parseFloat(item.priceJointOwnership) || 0) +
+        (parseFloat(item.priceJointSharePart) || 0);
+    }
+  });
+
+  return total;
+};
 var simplifyPfsePP = function (table, lang) {
   //console.log("before simple");
 
@@ -2354,7 +2382,7 @@ var simplifyPfsePP = function (table, lang) {
         "totalIncome":row.candidate? getCandiTotalIncome(row.candidate) : 0,
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
-        "asset":row.candidate? ((row.candidate.assetMaterialOwnTotalAF || 0)+(row.candidate.assetImmaterialOwnTotalAF || 0)+(row.candidate.assetJointSharePartTotalAF || 0)+(row.candidate.assetMaterialHusbandWifeTotalAF || 0)+(row.candidate.assetMaterialDependantsTotalAF || 0)+(row.candidate.assetImmaterialHusbandWifeTotalAF || 0)+(row.candidate.assetImmaterialDependantsTotalAF || 0)) :null,
+        "asset":row.candidate? getCandiAssetTotal(row.candidate) :null,
         "assetAcquisition": row.candidate ? getCandiAssetBreakdown(row.candidate).acquisition : null,
         "assetCurrent": row.candidate ? getCandiAssetBreakdown(row.candidate).current : null,
         "loan":row.candidate? ((row.candidate.totalSingleAmountAF || 0)+(row.candidate.totalJointAmoutAF || 0)+(row.candidate.totalDirectorOrChairmenAmoutAF || 0)+(row.candidate.totalDependedantsAmountAF || 0)) :null,
@@ -2392,7 +2420,7 @@ var simplifyPfsePP = function (table, lang) {
         "totalIncome":row.candidate? getCandiTotalIncome(row.candidate) : 0,
         "totalOwnIncomeAF":row.candidate? row.candidate.totalOwnIncomeAF :null,
         "totalDependentIncomeAF":row.candidate? row.candidate.totalDependentIncomeAF :null,
-        "asset":row.candidate? (row.candidate.assetMaterialOwnTotalAF+row.candidate.assetImmaterialOwnTotalAF+row.candidate.assetJointSharePartTotalAF+row.candidate.assetMaterialHusbandWifeTotalAF+row.candidate.assetMaterialDependantsTotalAF+row.candidate.assetImmaterialHusbandWifeTotalAF+row.candidate.assetImmaterialDependantsTotalAF) :null,
+        "asset":row.candidate? getCandiAssetTotal(row.candidate) :null,
         "assetAcquisition": row.candidate ? getCandiAssetBreakdown(row.candidate).acquisition : null,
         "assetCurrent": row.candidate ? getCandiAssetBreakdown(row.candidate).current : null,
         "loan":row.candidate? (row.candidate.totalSingleAmountAF+row.candidate.totalJointAmoutAF+row.candidate.totalDirectorOrChairmenAmoutAF+row.candidate.totalDependedantsAmountAF) :null,
